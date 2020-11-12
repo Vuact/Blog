@@ -49,6 +49,7 @@ x();
 
 现在加上this, 详细的介绍下js在执⾏阶段全程都发生了什么~
 
+
 以下面例子为例：
 ```javascript
 var scope = "global scope";
