@@ -4,7 +4,7 @@
 - [深入JavaScript 执行上下文(四)：作用域链](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E5%9B%9B)%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE.md)
 - [深入JavaScript 执行上下文(五)：整个过程](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%94)%EF%BC%9A%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B.md)
 
-## 作用域链
+# 作用域链
 ----------------------
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181110195914704.png)
@@ -16,7 +16,7 @@
 
 下面，让我们以一个函数的创建和激活两个时期来讲解作用域链是如何创建和变化的。
 
-#### 1、函数创建
+## 1、函数创建
 js函数的作用域在函数定义的时候就决定了。
 
 这是因为函数有一个内部属性` [[scope]]`，
@@ -44,7 +44,7 @@ bar.[[scope]] = [
 ];
 ```
 
-#### 2、函数激活
+## 2、函数激活
 当函数激活时，进入函数上下文，创建 VO/AO 后，就会将活动对象添加到作用链的前端。
 
 这时候执行上下文的作用域链，我们命名为 Scope：
@@ -55,10 +55,10 @@ Scope = [AO].concat([[Scope]]);
 
 至此，作用域链创建完毕。
 
-#### 3、结合前面几篇来一遍
-- [深入JavaScript 执行上下文(一)：作用域](https://blog.csdn.net/b954960630/article/details/83932313)
-- [深入JavaScript 执行上下文(二)：执行上下文栈](https://blog.csdn.net/b954960630/article/details/83932469)
-- [深入JavaScript 执行上下文(三)：变量对象](https://blog.csdn.net/b954960630/article/details/83998358)
+## 3、结合前面几篇来一遍
+- [深入JavaScript 执行上下文(一)：作用域](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%B8%80)%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
+- [深入JavaScript 执行上下文(二)：执行上下文栈](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%8C)%EF%BC%9A%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.md)
+- [深入JavaScript 执行上下文(三)：变量对象](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%B8%89)%EF%BC%9A%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1.md)
 
 以下面的例子为例，结合着之前讲的变量对象 和 执行上下文栈，我们来总结一下函数执行上下文中作用域链和变量对象的创建过程：
 
@@ -170,5 +170,4 @@ ECStack = [
     globalContext
 ];
 ```
--------
-下一篇：[深入JavaScript 执行上下文(五)：整个过程](https://blog.csdn.net/b954960630/article/details/83933032)
+
