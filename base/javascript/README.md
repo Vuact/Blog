@@ -12,3 +12,4 @@
 - 深入JavaScript 模拟实现new.md
 - 深入JavaScript 继承的各种方式及优缺点.md
 - 深入JavaScript 共享传递.md
+- 深入JavaScript 赋值后的内存分布.md
