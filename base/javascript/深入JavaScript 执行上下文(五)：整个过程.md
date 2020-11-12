@@ -7,12 +7,14 @@
 - [深入JavaScript 执行上下文(五)：整个过程](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%94)%EF%BC%9A%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B.md)
 
 ---
-V8 执⾏ JS 代码的流程：JavaScript属于解释型语⾔，JavaScript 的执⾏分为 「解析 」和 「执⾏ 」两个阶段，如下：
+
+# V8 执⾏ JS 代码的流程
+JavaScript属于解释型语⾔，JavaScript 的执⾏分为 「解析 」和 「执⾏ 」两个阶段，如下：
 
 解析阶段：
  - 词法分析
  - 语法分析
- - 作⽤域规则确定
+ - 作⽤域规则确定（即：初始化各个函数[[scope]]属性的值）
  
 执⾏阶段：
  - 创建执⾏上下⽂ context
@@ -49,6 +51,13 @@ x();
 
 现在加上this, 详细的介绍下js在执⾏阶段全程都发生了什么~
 
+<br>
+过程：
+
+- 准备执行时：创建执行上下文并压栈 => 初始化执行上下文 
+- 执行时： 完善活动对象中的属性值
+
+<br>
 
 以下面例子为例：
 ```javascript
@@ -89,7 +98,7 @@ globalContext = {
  - 每一个执行环境都有一个与之相关的变量对象，其中存储着上下文中声明的：变量、函数、形式参数
  
  
-3、checkscope函数执行前阶段：初始化的同时，checkscope函数被创建，保存全局环境的作用域链，到函数checkscope的内部属性[[scope]]中
+3、**发生在解析阶段:** checkscope函数执行前阶段，初始化的同时，checkscope函数被创建，保存全局环境的作用域链，到函数checkscope的内部属性[[scope]]中
 ```javascript
 checkscope.[[scope]] = [
    globalContext.VO
@@ -127,7 +136,7 @@ ECStack = [
 执⾏环境的不同⽣命周期
  - AO 实际上是包含了 VO 的。因为除了 VO 之外，AO 还包含函数的参数 parameters，以及 arguments 这个特殊对象
 
-6、f 函数执⾏前阶段。更新 f.[[scope]]， checkscopeContext.AO.scope 等赋值
+6、**发生在解析阶段:**  f 函数执⾏前阶段。更新 f.[[scope]]， checkscopeContext.AO.scope 等赋值
 ```javascript
 f.[[scope]] = [
      checkscopeContext.AO,
