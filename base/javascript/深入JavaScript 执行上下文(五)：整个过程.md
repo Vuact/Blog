@@ -12,7 +12,7 @@
 现在加上this, 来详细的解析执行上下文栈和执行上下文的具体变化过程~ 整个过一遍。
 
 以下面例子为例：
-```
+```javascript
 var scope = "global scope";
 function checkscope(){
     var scope = "local scope";
@@ -25,24 +25,36 @@ checkscope();
 ```
 执行过程如下：
 
-（1）执行js程序，创建全局执行上下文，全局上下文被压入执行上下文栈
+（1）执行全局代码，创建全局执行上下文，全局上下文被压入执行上下文栈
+```javascript
+ECStack = [
+  globalContext
+];
 ```
-  ECStack = [
-      globalContext
-  ];
+（2）全局上下文初始化（初始化全局环境的变量对象VO，确定全局环境的Scope，绑定全局环境的this）
+
+```javascript
+globalContext = {
+    VO: {
+        global: window,
+        scope: undefined,
+        checkscope:reference to function checkscope
+    },
+    Scope: [globalContext.VO],
+    this: globalContext.VO
+}
+ ```
+ 变量对象VO：
+ - 存储了再上下文中定义的变量和函数声明；除了我们无法访问外，和普通对象没什么区别
+ - 对于函数，执行前的初始化阶段叫变量对象，执行中就变成了活动对象
+ - 每一个执行环境都有一个与之相关的变量对象，其中存储着上下文中声明的：变量、函数、形式参数
+ 
+（3）checkscope函数执行前阶段：初始化的同时，checkscope函数被创建，保存全局环境的作用域链，到函数checkscope的内部属性[[scope]]中
+```javascript
+checkscope.[[scope]] = [
+  globalContext.VO
+];
 ```
-（2）全局上下文初始化
-
-    globalContext = {
-        VO: [global],
-        Scope: [globalContext.VO],
-        this: globalContext.VO
-    }
-（3）在(2)初始化的同时，checkscope 函数被创建，保存作用域链到函数的内部属性[[scope]]
-
-    checkscope.[[scope]] = [
-      globalContext.VO
-    ];
 （4）执行 checkscope 函数，创建 checkscope 函数执行上下文，checkscope 函数执行上下文被压入执行上下文栈
 
     ECStack = [
