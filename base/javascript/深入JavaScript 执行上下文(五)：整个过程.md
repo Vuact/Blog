@@ -25,13 +25,13 @@ checkscope();
 ```
 执行过程如下：
 
-（1）执行全局代码，创建全局执行上下文，全局上下文被压入执行上下文栈
+1、执行全局代码，创建全局执行上下文，全局上下文被压入执行上下文栈
 ```javascript
 ECStack = [
   globalContext
 ];
 ```
-（2）全局上下文初始化（初始化全局环境的变量对象VO，确定全局环境的Scope，绑定全局环境的this）
+2、全局上下文初始化（初始化全局环境的变量对象VO，确定全局环境的Scope，绑定全局环境的this）
 
 ```javascript
 globalContext = {
@@ -49,29 +49,28 @@ globalContext = {
  - 对于函数，执行前的初始化阶段叫变量对象，执行中就变成了活动对象
  - 每一个执行环境都有一个与之相关的变量对象，其中存储着上下文中声明的：变量、函数、形式参数
  
-（3）checkscope函数执行前阶段：初始化的同时，checkscope函数被创建，保存全局环境的作用域链，到函数checkscope的内部属性[[scope]]中
+ 
+3、checkscope函数执行前阶段：初始化的同时，checkscope函数被创建，保存全局环境的作用域链，到函数checkscope的内部属性[[scope]]中
 ```javascript
 checkscope.[[scope]] = [
-  globalContext.VO
+   globalContext.VO
 ];
 ```
-（4）执行 checkscope 函数，创建 checkscope 函数执行上下文，checkscope 函数执行上下文被压入执行上下文栈
 
-    ECStack = [
-        checkscopeContext,
-        globalContext
-    ];
-（5）checkscope 函数执行上下文初始化：
-
-- 复制函数 [[scope]] 属性创建作用域链，
-- 用 arguments 创建活动对象，
-- 初始化活动对象，即加入形参、函数声明、变量声明，
-- 将活动对象压入 checkscope 作用域链顶端。
-
- 同时 f 函数被创建，保存作用域链到 f 函数的内部属性[[scope]]
-
-
+4、执行 checkscope 函数，创建 checkscope 函数执行上下文，checkscope 函数执行上下文被压入执行上下文栈
+```javascript
+ECStack = [
+    checkscopeContext,
+    globalContext
+];
 ```
+
+5、初始化 checkscope 函数执行上下文,会有以下几步：
+ 1. ⽤ arguments 创建活动对象 checkscopeContext.AO（活动对象初始化：形参 > 函数声明 > 变量声明）
+ 2. 利⽤ checkscopeContext.AO 与 checkscope.[[scope]]，形成checkscope 函数执⾏环境的作⽤域链 checkscopeContext.Scope
+ 3. 绑定 this 到 undefined（⾮严格模式下会绑定到全局对象）
+
+```javascript
     checkscopeContext = {
         AO: {
             arguments: {
@@ -84,22 +83,46 @@ checkscope.[[scope]] = [
         this: undefined
     }
 ```
+活动对象 AO：
+ - 在没有执⾏当前环境之前，变量对象中的属性都不能访问。但是进⼊执⾏阶段之后，变量对象转变为了活动对象，所以活动对象和变量对象其实是⼀个东⻄，只是处于
+执⾏环境的不同⽣命周期
+ - AO 实际上是包含了 VO 的。因为除了 VO 之外，AO 还包含函数的参数 parameters，以及 arguments 这个特殊对象
 
-（6）执行 f 函数，创建 f 函数执行上下文，f 函数执行上下文被压入执行上下文栈
+6、f 函数执⾏前阶段。更新 f.[[scope]]， checkscopeContext.AO.scope 等赋值
+```javascript
+f.[[scope]] = [
+     checkscopeContext.AO,
+     globalContext.VO
+];
 
-    ECStack = [
-        fContext,
-        checkscopeContext,
-        globalContext
-    ];
-（7）f 函数执行上下文初始化, 以下跟第 4 步相同：
-
-复制函数 [[scope]] 属性创建作用域链
-用 arguments 创建活动对象
-初始化活动对象，即加入形参、函数声明、变量声明
-将活动对象压入 f 作用域链顶端
-
+checkscopeContext = {
+    AO: {
+         arguments: {
+            length: 0
+         },
+         Scope: "local scope",
+         f: reference to function f(){}
+    },
+    Scope: [AO, globalContext.VO],
+    this: undefined
+ }
 ```
+
+7、执行f函数, 创建 f 函数执行上下文，f 函数执行上下文被压入执行上下文栈
+```javascript
+ECStack = [
+    fContext,
+    checkscopeContext,
+    globalContext
+];
+ ```
+ 
+8、f 函数执行环境初始化, 跟第 5 步相同：
+ 1. ⽤ arguments 创建活动对象 fContext.AO（活动对象初始化：形参 > 函数声明 > 变量声明）
+ 2. 利⽤ fContext.AO 与 f.[[scope]]，形成f函数执⾏环境的作⽤域链 fContext.Scope
+ 3. 绑定 this 到 undefined（⾮严格模式下会绑定到全局对象）
+
+```javascript
     fContext = {
         AO: {
             arguments: {
@@ -111,16 +134,29 @@ checkscope.[[scope]] = [
     }
 ```
 
-（8）f 函数执行，沿着作用域链查找 scope 值，返回 scope 值
+9、f 函数中代码执⾏。对 scope 进⾏查找。查找从作⽤域链中当前活动对象，开始沿着作⽤域链向上查找
+    // 查找过程：
+    1. fContext.AO.scope 没有该变量声明，继续
+    2. checkscopeContext.AO.scope 有该变量声明，获取其值为"local scope"
 
-（9）f 函数执行完毕，f 函数上下文从执行上下文栈中弹出
+10、f 函数执行完毕，f 函数上下文从执行上下文栈中弹出
+```javascript
+ECStack = [
+    checkscopeContext,
+    globalContext
+];
+```
+11、 checkscope 函数在执⾏完 f 处，获取 f 执⾏的返回值 "local scope"，函数继续向下执⾏。
+checkscope 函数执行完毕，checkscope 执行上下文从执行上下文栈中弹出
 
-    ECStack = [
-        checkscopeContext,
-        globalContext
-    ];
-（10）checkscope 函数执行完毕，checkscope 执行上下文从执行上下文栈中弹出
+```javascript
+ECStack = [
+    globalContext
+];
+```
+12、 代码执⾏流回到全局执⾏环境中调⽤ checoscope 处，拿到 checkScope 返回值并继续向下执⾏
+13、 直到程序终⽌，或者⻚⾯关闭。全局上下⽂出栈并销毁
 
-    ECStack = [
-        globalContext
-    ];
+
+
+   
