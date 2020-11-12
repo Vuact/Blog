@@ -4,10 +4,11 @@
 - [深入JavaScript 执行上下文(四)：作用域链](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E5%9B%9B)%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE.md)
 - [深入JavaScript 执行上下文(五)：整个过程](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%94)%EF%BC%9A%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B.md)
 
+<br>
 
 
 # 作用域
-------------------
+
 作用域是指程序源代码中定义变量的区域。
 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。下面我们来看看作用域的两种解析方式。
 
@@ -15,8 +16,9 @@
 - 静态作用域：js使用
 - 动态作用域：java、c++等使用
 
-------------------
-## 1、静态作用域：
+<br>
+
+### 1、静态作用域：
 JavaScript 采用就是词法作用域(lexical scoping)，也就是静态作用域。使用词法环境来管理。 一段代码执行前，先初始化词法环境。 
 
 下面代码若使用静态作用域：
@@ -35,7 +37,9 @@ bar();//10
 执行foo时又找不到x变量，然后到全局作用域中找，发现x=10，然后打印 10 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181110163806875.png)
 
-## 2、动态作用域：
+<br>
+
+### 2、动态作用域：
 程序运行时决定。动态作用域一般是使用动态栈来管理。 
 下面代码若使用动态作用域：
 
