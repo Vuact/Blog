@@ -1,5 +1,4 @@
 
-## 执行上下文
 ------------------
 - [深入JavaScript 执行上下文(一)：作用域](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%B8%80)%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
 - [深入JavaScript 执行上下文(二)：执行上下文栈](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%8C)%EF%BC%9A%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.md)
@@ -7,9 +6,24 @@
 - [深入JavaScript 执行上下文(四)：作用域链](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E5%9B%9B)%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE.md)
 - [深入JavaScript 执行上下文(五)：整个过程](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%94)%EF%BC%9A%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B.md)
 
-
 ---
-现在加上this, 来详细的解析执行上下文栈和执行上下文的具体变化过程~ 整个过一遍。
+V8 执⾏ JS 代码的流程：JavaScript属于解释型语⾔，JavaScript 的执⾏分为 「解释 」和 「执⾏ 」两个阶段，如下：
+
+解释阶段：
+ - 词法分析
+ - 语法分析
+ - 作⽤域规则确定
+ 
+执⾏阶段：
+ - 创建执⾏上下⽂ context
+ - 执⾏函数代码
+ - 垃圾回收
+ 
+---
+
+# js执⾏阶段的整个过程
+
+现在加上this, 详细的介绍下js在执⾏阶段全程都发生了什么~
 
 以下面例子为例：
 ```javascript
