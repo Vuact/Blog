@@ -11,7 +11,7 @@
 
 
 举个例子：
-```
+```javascript
 var a = 1;
 
 function foo() {
