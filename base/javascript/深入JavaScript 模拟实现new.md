@@ -17,7 +17,7 @@ new Person()  过程种发生了什么：
 （3）将构造函数的作用域赋给新对象（this就指向了这个新对象）
 
 
-**模拟实现new第一版:**
+#### 模拟实现new第一版:
 
 ```javascript
 var obj = {};	
@@ -85,11 +85,14 @@ console.log(p4); // Person4 {name: "dd"}
 > 期望此处引用一个对象，但又不知道引用什么，这时用null,表空缺.
 
 思路：
+
 ① 既然要判断构造函数的返回值类型，很明显从cons.apply(obj, arguments)入手，改为 var result = cons.apply(obj, arguments);
+
 ② 先不考虑null的情况，把最后一句改为return typeof result === 'object' ? result : obj;
+
 ③再考虑null的情况，加一层判断，改为return typeof result === 'object' ? result || obj : obj;
 
-**模拟实现new第二版:**
+#### 模拟实现new第二版:
 ```javascript
 function objectFactory() {
 	var obj = {};
