@@ -6,14 +6,14 @@
  - 深入JavaScript 执行上下文(四)：作用域链.md
  - 深入JavaScript 执行上下文(五)：整个过程.md
  - 深入JavaScript 闭包.md
-2、深入JavaScript 从原型到原型链.md
 
-3、call、apply、bind
+2、call、apply、bind
   - 深入JavaScript 模拟实现call、apply.md
   - 深入JavaScript 模拟实现bind.md
   
-4、继承
+3、继承
+  - 深入JavaScript 从原型到原型链.md
   - 深入JavaScript 模拟实现new.md
   - 深入JavaScript 继承的各种方式及优缺点.md
   
-5、内存分配
+4、内存分配
