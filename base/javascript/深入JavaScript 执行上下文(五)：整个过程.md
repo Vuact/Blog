@@ -52,7 +52,7 @@ x();
 现在加上this, 详细的介绍下js在执⾏阶段全程都发生了什么~
 
 <br>
-过程：
+以下过程，往复进行：
 
 - 准备执行时：创建执行上下文并压栈 => 初始化执行上下文 
 - 执行时： 完善活动对象中的属性值
@@ -98,7 +98,7 @@ globalContext = {
  - 每一个执行环境都有一个与之相关的变量对象，其中存储着上下文中声明的：变量、函数、形式参数
  
  
-3、**`发生在解析阶段:`** checkscope函数执行前阶段，初始化的同时，checkscope函数被创建，保存全局环境的作用域链，到函数checkscope的内部属性[[scope]]中
+3、**`发生在解析阶段:`** checkscope函数执行前，在解析阶段，checkscope函数被创建，保存全局环境的作用域链，到函数checkscope的内部属性[[scope]]中
 ```javascript
 checkscope.[[scope]] = [
    globalContext.VO
@@ -136,7 +136,7 @@ ECStack = [
 执⾏环境的不同⽣命周期
  - AO 实际上是包含了 VO 的。因为除了 VO 之外，AO 还包含函数的参数 parameters，以及 arguments 这个特殊对象
 
-6、**`发生在解析阶段:`**  f 函数执⾏前阶段。更新 f.[[scope]]， checkscopeContext.AO.scope 等赋值
+6、**`发生在解析阶段:`**  f 函数执⾏前，在解析阶段。 更新 f.[[scope]]， checkscopeContext.AO.scope 等赋值
 ```javascript
 f.[[scope]] = [
      checkscopeContext.AO,
