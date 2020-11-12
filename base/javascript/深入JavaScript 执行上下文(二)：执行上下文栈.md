@@ -4,17 +4,18 @@
 - [深入JavaScript 执行上下文(四)：作用域链](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E5%9B%9B)%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE.md)
 - [深入JavaScript 执行上下文(五)：整个过程](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%94)%EF%BC%9A%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B.md)
 
+<br>
 
 # 执行上下文栈（环境栈）
 
-------------------
-
-## 1、可执行代码
+### 1、可执行代码
 这就要说到 JavaScript 的可执行代码的类型有哪些了？
 其实很简单，就三种，全局代码、函数代码、eval代码。
 举个例子，当执行到一个函数的时候，就会进行准备工作，这里的“准备工作”，让我们用个更专业一点的说法，就叫做"执行上下文(execution context)"。
 
-## 2、执行上下文栈（环境栈）
+<br>
+
+### 2、执行上下文栈（环境栈）
 
 接下来问题来了，我们写的函数多了去了，如何管理创建的那么多执行上下文呢？
 所以 JavaScript 引擎创建了执行上下文栈（Execution context stack，ECS），也叫环境栈，来管理执行上下文。
@@ -72,7 +73,10 @@ ECStack.pop();
 
 // javascript接着执行下面的代码，但是ECStack底层永远有个globalContext
 ```
-## 3、思考题
+
+<br>
+
+### 3、思考题
 下面两段代码执行结果是一样的，如果从执行上下文栈的角度分析，上下两段代码有什么区别？
 ```javascript
 var scope = "global scope";
