@@ -1,5 +1,4 @@
----
-## 一、理论上的闭包：
+# 一、理论上的闭包：
 ----
 从技术理论的角度讲，所有的JavaScript函数都是闭包。
 
@@ -28,12 +27,12 @@ foo 函数可以访问变量 a，但是 a 既不是 foo 函数的局部变量，
 显然上面讲述的并不是我们实践中用的闭包，我们再接着往下看。
 <br>
 
-## 二、实践上的闭包：
+# 二、实践上的闭包：
 ---
 上面是理论上的闭包，其实还有一个实践角度上的闭包。
 
 先举个栗子：
-```
+```javascript
 function checkscope(){
     var scope = "local scope";
     function f(){
@@ -64,7 +63,7 @@ console.log(foo());  					//'local scope'
 **1.  [[scope]]属性**
 每个函数都有一个内部属性[[scope]]（即作用域链）
 现在我们根据上面谈的程序具体执行过程，来看下f函数的内部属性[[scope]]，即f 执行上下文维护的作用域链：
-```
+```javascript
 fContext = {
     Scope: [AO, checkscopeContext.AO, globalContext.VO],
 }
@@ -112,10 +111,10 @@ fContext = {
 
 <br>
 
-## 三、必刷题
+# 三、必刷题
 ------
-##### 例1：
-```
+### 例1：
+```javascript
 var data = [];
 
 for (var i = 0; i < 3; i++) {
@@ -133,14 +132,14 @@ data[2]();
 让我们分析一下原因：
 当执行到 data[0] 函数之前，此时全局上下文的 VO 为：
 
-```
+```javascript
 globalContext = {
     VO: { data: [...],   i: 3 }
 }
 ```
 当执行 data[0] 函数的时候，data[0] 函数的作用域链为：
 
-```
+```javascript
 data[0]Context = {
     Scope: [AO, globalContext.VO]
 }
@@ -151,7 +150,7 @@ data[1] 和 data[2] 是一样的道理。
 
 所以让我们改成闭包看看：
 
-```
+```javascript
 var data = [];
 
 for (var i = 0; i < 3; i++) {
@@ -168,7 +167,7 @@ data[2]();
 ```
 当执行到 data[0] 函数之前，此时全局上下文的 VO 仍为：
 
-```
+```javascript
 globalContext = {
     VO: { data: [...],   i: 3 }
 }
@@ -177,14 +176,14 @@ globalContext = {
 
 但当执行 data[0] 函数（即 return的函数）的时候，其作用域链为：
 
-```
+```javascript
 data[0]Context = {
     Scope: [AO, 匿名函数Context.AO，globalContext.VO]
 }
 ```
 匿名函数执行上下文的 AO 为：
 
-```
+```javascript
 匿名函数Context = {
     AO: {
         arguments: {
@@ -201,7 +200,7 @@ data[1] 和 data[2] 是一样的道理。
 ----
 其实我们要想输出0 1 2，可以直接将上面代码改为：
 
-```
+```javascript
 var data = [];
 
 for (let i = 0; i < 3; i++) {
@@ -220,8 +219,8 @@ ES6中加入了块级作用域。
 执行 data[0] 函数时，由于我们要打印i值，所以会沿着作用域链回溯寻找：首先会在当前匿名函数的作用域寻找i值，发现没有；再到块级作用域中找，发现有且为0，所以打印0；之后同理，输出：0 1 2
 
 ---
-##### 例2：
-```
+### 例2：
+```javascript
 var globals = 0;
 function test(parameter){
     var outerVal = 0;
@@ -246,7 +245,7 @@ a();
 **（1）** 
 在执行到 a() 函数（即return的匿名函数）之前，此时全局上下文的 VO 为：
 
-```
+```javascript
 globalContext = {
     VO: { 
     	globals: 0, 
@@ -256,7 +255,7 @@ globalContext = {
 }
 ```
 而test函数执行上下文的 AO 为：
-```
+```javascript
 testContext = {
     AO: {
         arguments: {
@@ -273,7 +272,7 @@ testContext = {
 **（2）**
 当执行 a() 函数的时候，a() 函数的作用域链为：
 
-```
+```javascript
 aContext = {
     Scope: [AO, testContext.AO, globalContext.VO]
 }
@@ -285,10 +284,10 @@ aContext = {
 -----
 下面我们看一个误用闭包的例子~
 
-##### 例3：
+### 例3：
 
 
-```
+```javascript
 function test(){
     var outerVal = 0;
     return function(){
