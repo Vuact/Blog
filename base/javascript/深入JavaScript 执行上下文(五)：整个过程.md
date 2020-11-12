@@ -7,7 +7,7 @@
 - [深入JavaScript 执行上下文(五)：整个过程](https://github.com/Vuact/document/blob/main/base/javascript/%E6%B7%B1%E5%85%A5JavaScript%20%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87(%E4%BA%94)%EF%BC%9A%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B.md)
 
 ---
-V8 执⾏ JS 代码的流程：JavaScript属于解释型语⾔，JavaScript 的执⾏分为 「解释 」和 「执⾏ 」两个阶段，如下：
+V8 执⾏ JS 代码的流程：JavaScript属于解释型语⾔，JavaScript 的执⾏分为 「解析 」和 「执⾏ 」两个阶段，如下：
 
 解析阶段：
  - 词法分析
