@@ -24,7 +24,7 @@ js函数的作用域在函数定义的时候就决定了。
 
 举个例子：
 
-```
+```javascript
 function foo() {
     function bar() {
         ...
@@ -33,7 +33,7 @@ function foo() {
 ```
 函数创建时，各自的[[scope]]为：
 
-```
+```javascript
 foo.[[scope]] = [
   globalContext.VO			//全局环境的变量对象
 ];
@@ -49,7 +49,7 @@ bar.[[scope]] = [
 
 这时候执行上下文的作用域链，我们命名为 Scope：
 
-```
+```javascript
 Scope = [AO].concat([[Scope]]);
 ```
 
@@ -62,7 +62,7 @@ Scope = [AO].concat([[Scope]]);
 
 以下面的例子为例，结合着之前讲的变量对象 和 执行上下文栈，我们来总结一下函数执行上下文中作用域链和变量对象的创建过程：
 
-```
+```javascript
 var scope = "global scope";
 function checkscope(){
     var scope2 = 'local scope';
@@ -75,14 +75,14 @@ checkscope();
 **（0）**
 执行全局代码，创建全局上下文，并将其压入执行上下文栈中；
 
-```
+```javascript
 ECStack = [
     globalContext
 ];
 ```
 **（1）**
 全局上下文初始化
-```
+```javascript
 globalContext = {
     VO: [global],
     Scope: [globalContext.VO],
@@ -93,7 +93,7 @@ globalContext = {
 在(1)初始化的同时，checkscope 函数被创建，保存作用域链到 函数内部属性[[scope]]
 
 
-```
+```javascript
 checkscope.[[scope]] = [
     globalContext.VO
 ]; 
@@ -101,7 +101,7 @@ checkscope.[[scope]] = [
 **（3）**
 执行 checkscope 函数，创建 checkscope 函数执行上下文，并将其压入执行上下文栈中；
 
-```
+```javascript
 ECStack = [
     checkscopeContext,
     globalContext
@@ -113,7 +113,7 @@ checkscope 函数并不立刻执行，开始做准备工作，即
 **第一步：** 
 复制函数[[scope]]属性创建作用域链
 
-```
+```javascript
 checkscopeContext = {
     Scope: checkscope.[[scope]],      
 }
@@ -122,7 +122,7 @@ checkscopeContext = {
 **第二步：** 
 用 arguments 创建活动对象，随后初始化活动对象，加入形参、函数声明、变量声明
 
-```
+```javascript
 checkscopeContext = {
     AO: {
         arguments: {
@@ -137,7 +137,7 @@ checkscopeContext = {
 将活动对象压入 checkscope 作用域链顶端
 Scope = [AO].concat([[Scope]]);
 
-```
+```javascript
 checkscopeContext = {
     AO: {
         arguments: {
@@ -151,7 +151,7 @@ checkscopeContext = {
 **（5）**
 准备工作做完，`开始执行函数`，随着函数的执行，修改 AO 的属性值
 
-```
+```javascript
 checkscopeContext = {
     AO: {
         arguments: {
@@ -165,7 +165,7 @@ checkscopeContext = {
 **（6）**
 查找到 scope2 的值，返回后函数执行完毕，函数上下文从执行上下文栈中弹出
 
-```
+```javascript
 ECStack = [
     globalContext
 ];
