@@ -223,4 +223,4 @@ foo = 1;		     //全局变量foo
 console.log(foo);	 //打印1，事实上函数foo已经不存在了，变成了1
 ```
 
-<p>下一篇：<a href="https://blog.csdn.net/b954960630/article/details/83932775" rel="nofollow">深入JavaScript 执行上下文(四)：作用域链</a></p>
+
