@@ -11,3 +11,4 @@
 - 深入JavaScript 从原型到原型链.md
 - 深入JavaScript 模拟实现new.md
 - 深入JavaScript 继承的各种方式及优缺点.md
+- 深入JavaScript 共享传递.md
