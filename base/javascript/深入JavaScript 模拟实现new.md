@@ -13,9 +13,10 @@ var child = new Person('sam', 18);
 new Person()  过程种发生了什么：
 （1）创建了一个新对象 
 （2）这个新对象 的__proto__指向了Person的原型对象。
-不懂请看：[深入JavaScript 从原型到原型链](https://blog.csdn.net/b954960630/article/details/84958798)
+不懂请看：《深入JavaScript 从原型到原型链》
 （3）将构造函数的作用域赋给新对象（this就指向了这个新对象）
 
+<br>
 
 #### 模拟实现new第一版:
 
@@ -41,6 +42,7 @@ console.log(child2);
 输出：Person {name: "sam2", age: 118}
 
 
+<br>
 <br>
 
 ### 例2
@@ -84,6 +86,7 @@ console.log(p4); // Person4 {name: "dd"}
 > null不是对象。
 > 期望此处引用一个对象，但又不知道引用什么，这时用null,表空缺.
 
+
 思路：
 
 ① 既然要判断构造函数的返回值类型，很明显从cons.apply(obj, arguments)入手，改为 var result = cons.apply(obj, arguments);
@@ -91,6 +94,8 @@ console.log(p4); // Person4 {name: "dd"}
 ② 先不考虑null的情况，把最后一句改为return typeof result === 'object' ? result : obj;
 
 ③再考虑null的情况，加一层判断，改为return typeof result === 'object' ? result || obj : obj;
+
+<br>
 
 #### 模拟实现new第二版:
 ```javascript
