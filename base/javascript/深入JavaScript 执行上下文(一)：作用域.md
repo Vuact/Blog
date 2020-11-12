@@ -33,7 +33,7 @@ bar();//10
 ```
 看下面作用域链:执行bar函数时，在bar的作用域(scope)中找不到foo函数，然后再到全局作用域(global scope)中找，正好全局作用域中有，然后执行foo; 
 执行foo时又找不到x变量，然后到全局作用域中找，发现x=10，然后打印 10 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181110163806875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2I5NTQ5NjA2MzA=,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20181110163806875.png)
 
 #### 2、动态作用域：
 程序运行时决定。动态作用域一般是使用动态栈来管理。 
