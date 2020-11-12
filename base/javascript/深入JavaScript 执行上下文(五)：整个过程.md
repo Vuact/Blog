@@ -9,7 +9,7 @@
 ---
 V8 执⾏ JS 代码的流程：JavaScript属于解释型语⾔，JavaScript 的执⾏分为 「解释 」和 「执⾏ 」两个阶段，如下：
 
-解释阶段：
+解析阶段：
  - 词法分析
  - 语法分析
  - 作⽤域规则确定
@@ -19,6 +19,27 @@ V8 执⾏ JS 代码的流程：JavaScript属于解释型语⾔，JavaScript 的�
  - 执⾏函数代码
  - 垃圾回收
  
+
+注：作⽤域在解析阶段就确定，不会改变；⽽执⾏上下⽂，是在执⾏阶段才确定，可能发⽣改变。举个例⼦：
+```javascript
+var a = 10;
+
+function fn() {
+   var b = 20;
+   function bar() {
+      console.log(this.b); // 200
+      console.log(a + b); // 30
+   }
+   return bar;
+}
+
+var x = fn(),
+b = 200;
+x();
+```
+上⾯的打印的结果为 200、30，是因为对于 this.b 来说，this 的指向，就是执⾏上下⽂中确定的；⽽ bar 函数中的 b 值，是在 js解析阶段 bar 函数定义时，就已经明确 bar 
+函数的作⽤域链，为 bar -> fn -> 全局，所以 b 变量会沿着作⽤域链寻找，找到 fn 中的定义，值为 20
+
 ---
 
 # js执⾏阶段的整个过程
