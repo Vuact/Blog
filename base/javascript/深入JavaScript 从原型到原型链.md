@@ -193,6 +193,14 @@ console.log(Function.prototype.__proto__ === Object.prototype); //true
 
 <br>
 
+概念：
+构造函数C的prototype有一个指针(__proto__) 指向 构造函数B的prototype；
+B的prototype的指针又指向 构造函数A的prototype，以此类推形成的原型的链条
+继承关系为C -> B -> A，A是祖先。
+
+
+<br>
+
 ### 2、原型链的操作
 
 ```javascript
