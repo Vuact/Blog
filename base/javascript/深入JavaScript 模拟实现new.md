@@ -114,8 +114,8 @@ function objectFactory() {
 
 `var child = new Person(value);`等价于下面三句
 
+```
 ① var child = {}; 
-
 ② child.__proto__ = Person.prototype; 
-
 ③ Person.call(child,value);
+```
