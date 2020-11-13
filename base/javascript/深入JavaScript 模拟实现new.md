@@ -2,7 +2,7 @@ new 运算符创建一个用户定义的对象类型的实例或具有构造函�
 
 <br>
 
-### 例1
+# 例1
 ```javascript
 function Person(name, age) {
     this.name = name;
@@ -18,7 +18,7 @@ new Person()  过程种发生了什么：
 
 <br>
 
-#### 模拟实现new第一版:
+### 模拟实现new第一版:
 
 ```javascript
 var obj = {};	
@@ -45,7 +45,7 @@ console.log(child2);
 <br>
 <br>
 
-### 例2
+# 例2
 
 ```javascript
 function Person1(name) {
@@ -97,7 +97,7 @@ console.log(p4); // Person4 {name: "dd"}
 
 <br>
 
-#### 模拟实现new第二版:
+### 模拟实现new第二版:
 ```javascript
 function objectFactory() {
 	var obj = {};
@@ -107,3 +107,15 @@ function objectFactory() {
 	return typeof result === 'object' ? result || obj : obj;
 }
 ```
+
+<br>
+
+# 小结
+
+`var child = new Person(value);`等价于下面三句
+
+① var child = {}; 
+
+② child.__proto__ = Person.prototype; 
+
+③ Person.call(child,value);
