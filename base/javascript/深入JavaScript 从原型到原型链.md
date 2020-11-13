@@ -182,10 +182,12 @@ console.log(Function.prototype.__proto__ === Object.prototype); //true
 ### 1、什么是原型链？
 简单点理解，就是由若干__proto__连起来形成的链条，就是原型链。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2018121119550756.png)
+
 拿上面例子来说：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181211160921419.png)
-就是一条原型链;
-(f1能使用Foo.prototype和Object.prototype里的属性和方法，即实现面向对象编程语言的继承关系)
+就是一条原型链;(f1能使用Foo.prototype和Object.prototype里的属性和方法，即实现面向对象编程语言的继承关系)
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181211210517727.png)
 也是一条原型链;
 
@@ -206,6 +208,7 @@ console.log(f1.toString()); //'[object Object]'
 ```
 上面例子的原型链如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181211160921419.png)
+
 下面我们看看执行后五句，发生了什么：
 
 - f1.name = 'bty';
