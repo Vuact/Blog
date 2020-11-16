@@ -212,11 +212,9 @@ console.log((foo.bar, foo.bar)());
 
 ### 示例1：foo.bar()
 
-在示例 1 中，MemberExpression 计算的结果是 foo.bar，那么 foo.bar 是不是一个 Reference 呢？
+在示例 1 中，MemberExpression 计算的结果是 foo.bar,
 
-查看规范 Property Accessors，这里展示了一个计算的过程，什么都不管了，就看最后一步：
-
-我们得知该表达式返回了一个 Reference 类型！
+foo.bar是 Reference 类型！
 
 根据之前的内容，我们知道该值为：
 
