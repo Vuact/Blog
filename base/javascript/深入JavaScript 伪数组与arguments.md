@@ -1,71 +1,97 @@
-# JavaScript深入之类数组对象与arguments
+# 一、简介
 
->JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点
+伪数组，又叫类数组：
 
-## 类数组对象
+- 是对象，不是数组（ obj instanceof Array === false）
+- 必须有length属性，但如果这个对象的length不为0，那么必须要按照数组下标存储数据
+- 不能调用push()、indexOf()等 数组方法
 
-所谓的类数组对象:
+为了方便大家理解，举几个例子：
 
->拥有一个 length 属性和若干索引属性的对象
-
-举个例子：
-
-```js
-var array = ['name', 'age', 'sex'];
-
-var arrayLike = {
-    0: 'name',
-    1: 'age',
-    2: 'sex',
-    length: 3
-}
-```
-
-即便如此，为什么叫做类数组对象呢？
-
-那让我们从读写、获取长度、遍历三个方面看看这两个对象。
-
-## 读写
 
 ```js
-console.log(array[0]); // name
-console.log(arrayLike[0]); // name
+// 不是伪数组
+var obj = {};
+var obj2 = { length: 3 };
+var obj3 = { 'a':1 , length:1};
 
-array[0] = 'new name';
-arrayLike[0] = 'new name';
+// 是伪数组
+var obj4 = { length: 0 };
+var obj5 = { 0: '888', length: 1 };
+var obj6 = { 0: '1', 1：2 , length: 2 };
+var obj7 = { 99: 'abc', length: 100 }
 ```
 
-## 长度
+概括来说：
 
-```js
-console.log(array.length); // 3
-console.log(arrayLike.length); // 3
+伪数组就是：是对象不是数组； 有length属性，有数组的索引特征，但没有数组的push()等方法。
+
+<br>
+
+**典型的伪数组：**
+
+ - 函数的arguments参数
+ - HTMLCollection对象、NodeList对象 (调用getElementsByTagName,document.childNodes之类的,它们返回的是NodeList对象)
+ - jQuery对象
+
+<br>
+
+**伪数组与真数组：**
+要知道 `数组是有length属性的，而对象没有`；因而为了让对象也有length属性，所以伪数组诞生了。
+其实伪数组和真数组都是对象，也都有length属性，甚至连访问元素的方式(eg：arguments[2])都一样；但不同的是，`伪数组不能像数组那样调用像push()、indexOf()之类的数组方法`。
+
+<br>
+
+**怎么判断 是 伪数组 还是 真数组？**
+
+我们可以用instanceof、constructor、Object.prototype.toString.call(X)等来判断是否为伪数组。
+
+<br><br>
+
+# 二、调用数组方法
+伪数组不能像数组那样调用像push()、indexOf()之类的方法，但我就是任性的想调用，怎么办？
+
+既然无法直接调用，我们可以用 Function.call 间接调用：
+
+```
+var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
+
+console.log(Array.prototype.join.call(arrayLike, '&')); // 'name&age&sex'
+
+console.log(Array.prototype.slice.call(arrayLike, 0));// ["name", "age", "sex"] 
+// slice可以做到类数组转数组
+
+var a = Array.prototype.map.call(arrayLike, function(item){
+    return item.toUpperCase();
+});
+console.log(a);// ["NAME", "AGE", "SEX"]
 ```
 
-## 遍历
-
-```js
-for(var i = 0, len = array.length; i < len; i++) {
-   ……
-}
-for(var i = 0, len = arrayLike.length; i < len; i++) {
-    ……
-}
+# 三、伪数组转数组：
+我们有四种方法，将伪数据转换为真正的Array对象：
 ```
+var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
 
-是不是很像？
+// 1. slice
+console.log(Array.prototype.slice.call(arrayLike)); // ["name", "age", "sex"] 
 
-那类数组对象可以使用数组的方法吗？比如：
+// 2. splice
+console.log(Array.prototype.splice.call(arrayLike, 0)); // ["name", "age", "sex"] 
 
-```js
-arrayLike.push('4');
+// 3. ES6 Array.from
+console.log(Array.from(arrayLike)); // ["name", "age", "sex"] 
+
+// 4. apply
+console.log(Array.prototype.concat.apply([], arrayLike));// ["name", "age", "sex"] 
 ```
+上面的四种方法，只有用splice的方法会改变伪数组，另外三种都会返回一个新数组。
 
-然而上述代码会报错: arrayLike.push is not a function
 
-所以终归还是类数组呐……
 
-## 调用数组方法
+-------
+
+
+# 调用数组方法
 
 如果类数组就是任性的想用数组的方法怎么办呢？
 
