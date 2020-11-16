@@ -15,11 +15,9 @@
 
 ### 1、Types
 
->ECMAScript 的类型分为语言类型和规范类型。
-
->ECMAScript 语言类型是开发者直接使用 ECMAScript 可以操作的。其实就是我们常说的Undefined, Null, Boolean, String, Number, 和 Object。
-
->而规范类型相当于 meta-values，是用来用算法描述 ECMAScript 语言结构和 ECMAScript 语言类型的。规范类型包括：Reference, List, Completion, Property Descriptor, Property Identifier, Lexical Environment, 和 Environment Record。
+>- ECMAScript 的类型分为语言类型和规范类型。
+>- ECMAScript 语言类型是开发者直接使用 ECMAScript 可以操作的。其实就是我们常说的Undefined, Null, Boolean, String, Number, 和 Object。
+>- 而规范类型相当于 meta-values，是用来用算法描述 ECMAScript 语言结构和 ECMAScript 语言类型的。规范类型包括：Reference, List, Completion, Property Descriptor, Property Identifier, Lexical Environment, 和 Environment Record。
 
 没懂？没关系，我们只要知道在 ECMAScript 规范中还有一种只存在于规范中的类型，它们的作用是用来描述语言底层行为逻辑。
 
@@ -132,21 +130,16 @@ GetValue 返回对象属性真正的值，但是要注意：
 这里讲了当函数调用的时候，如何确定 this 的取值。
 
 只看第一步、第六步、第七步：
-
->1.Let *ref* be the result of evaluating MemberExpression.
-
->6.If Type(*ref*) is Reference, then
-
->       a.If IsPropertyReference(ref) is true, then
-
->           i.Let thisValue be GetBase(ref).
-
->       b.Else, the base of ref is an Environment Record
-
->           i.Let thisValue be the result of calling the ImplicitThisValue concrete method of GetBase(ref).
->7.Else, Type(*ref*) is not Reference.
-
->       a. Let thisValue be undefined.
+```
+1.Let *ref* be the result of evaluating MemberExpression.
+6.If Type(*ref*) is Reference, then
+       a.If IsPropertyReference(ref) is true, then
+           i.Let thisValue be GetBase(ref).
+       b.Else, the base of ref is an Environment Record
+           i.Let thisValue be the result of calling the ImplicitThisValue concrete method of GetBase(ref).
+7.Else, Type(*ref*) is not Reference.
+       a. Let thisValue be undefined.
+```
 
 让我们描述一下：
 
