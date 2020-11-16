@@ -79,19 +79,9 @@ var BarReference = {
 
 而且规范中还提供了获取 Reference 组成部分的方法，比如 GetBase 和 IsPropertyReference。
 
-这两个方法很简单，简单看一看：
+（1）GetBase: 返回 reference 的 base value。
 
-1.GetBase
-
->GetBase(V). Returns the base value component of the reference V.
-
-返回 reference 的 base value。
-
-2.IsPropertyReference
-
->IsPropertyReference(V). Returns true if either the base value is an object or HasPrimitiveBase(V) is true; otherwise returns false.
-
-简单的理解：如果 base value 是一个对象，就返回true。
+（2）IsPropertyReference：如果 base value 是一个对象，就返回true。
 
 <br>
 
@@ -123,9 +113,9 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 # 二、如何确定this的值
 
-关于 Reference 讲了那么多，为什么要讲 Reference 呢？到底 Reference 跟本文的主题 this 有哪些关联呢？如果你能耐心看完之前的内容，以下开始进入高能阶段：
+到底 Reference 跟本文的主题 this 有哪些关联呢？以下开始进入高能阶段：
 
-看规范 11.2.3 Function Calls：
+看规范 Function Calls：
 
 这里讲了当函数调用的时候，如何确定 this 的取值。
 
@@ -155,11 +145,11 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 <br>
 
-### 具体分析
+## 具体分析
 
 让我们一步一步看：
 
-1. 计算 MemberExpression 的结果赋值给 ref
+### 1、计算 MemberExpression 的结果赋值给 ref
 
 什么是 MemberExpression？看规范 11.2 Left-Hand-Side Expressions：
 
@@ -200,7 +190,7 @@ foo.bar(); // MemberExpression 是 foo.bar
 
 所以简单理解 MemberExpression 其实就是()左边的部分。
 
-2.判断 ref 是不是一个 Reference 类型。
+### 2、判断 ref 是不是一个 Reference 类型。
 
 关键就在于看规范是如何处理各种 MemberExpression，返回的结果是不是一个Reference类型。
 
@@ -228,7 +218,7 @@ console.log((false || foo.bar)());
 console.log((foo.bar, foo.bar)());
 ```
 
-#### foo.bar()
+#### 示例1：foo.bar()
 
 在示例 1 中，MemberExpression 计算的结果是 foo.bar，那么 foo.bar 是不是一个 Reference 呢？
 
@@ -269,9 +259,7 @@ GetBase 也已经铺垫了，获得 base value 值，这个例子中就是foo，
 
 唉呀妈呀，为了证明 this 指向foo，真是累死我了！但是知道了原理，剩下的就更快了。
 
-#### (foo.bar)()
-
-看示例2：
+#### 示例2：(foo.bar)()
 
 ```js
 console.log((foo.bar)());
@@ -287,9 +275,9 @@ foo.bar 被 () 包住，查看规范 11.1.6 The Grouping Operator
 
 实际上 () 并没有对 MemberExpression 进行计算，所以其实跟示例 1 的结果是一样的。
 
-#### (foo.bar = foo.bar)()
+#### 示例3：(foo.bar = foo.bar)()
 
-看示例3，有赋值操作符，查看规范 11.13.1 Simple Assignment ( = ): 
+有赋值操作符，查看规范 Simple Assignment ( = ): 
 
 计算的第三步：
 
@@ -303,7 +291,7 @@ foo.bar 被 () 包住，查看规范 11.1.6 The Grouping Operator
 
 this 为 undefined，非严格模式下，this 的值为 undefined 的时候，其值会被隐式转换为全局对象。
 
-#### (false || foo.bar)()
+#### 示例4：(false || foo.bar)()
 
 看示例4，逻辑与算法，查看规范 11.11 Binary Logical Operators：
 
@@ -313,7 +301,7 @@ this 为 undefined，非严格模式下，this 的值为 undefined 的时候，�
 
 因为使用了 GetValue，所以返回的不是 Reference 类型，this 为 undefined
 
-#### (foo.bar, foo.bar)()
+#### 示例5：(foo.bar, foo.bar)()
 
 看示例5，逗号操作符，查看规范11.14 Comma Operator ( , )
 
@@ -323,7 +311,8 @@ this 为 undefined，非严格模式下，this 的值为 undefined 的时候，�
 
 因为使用了 GetValue，所以返回的不是 Reference 类型，this 为 undefined
 
-### 揭晓结果
+
+#### 揭晓结果
 
 所以最后一个例子的结果是：
 
@@ -353,7 +342,9 @@ console.log((foo.bar, foo.bar)()); // 1
 
 注意：以上是在非严格模式下的结果，严格模式下因为 this 返回 undefined，所以示例 3 会报错。
 
-### 补充
+<br>
+
+## 补充
 
 最最后，忘记了一个最最普通的情况：
 
