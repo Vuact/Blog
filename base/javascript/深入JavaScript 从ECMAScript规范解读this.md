@@ -126,8 +126,6 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 2.判断 ref 是不是一个 Reference 类型
 
-    //ref是通过GetBase()获得
-
     2.1 如果 ref 是 Reference，并且 IsPropertyReference(ref) 是 true, 那么 this 的值为 GetBase(ref)
 
     2.2 如果 ref 是 Reference，并且 base value 值是 Environment Record, 那么this的值为 ImplicitThisValue(ref)
