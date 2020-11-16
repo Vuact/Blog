@@ -30,7 +30,7 @@ JavaScript中的this格外的不一样，比如Java语言中的this是在代码�
 
 以下的代码均是在 非严格模式下。
 
-**例1：** 
+#### 例1： 
 ```javascript
 var a = 10;
 console.log(this.a); //10 
@@ -41,7 +41,7 @@ console.log(obj.a); //Window
 //若在严格模式下：this会指向undefined 
 ```
 
-**例2：** 
+#### 例2：
 ```javascript
 var a = 1;
 function fun() {
@@ -52,7 +52,7 @@ fun();//1
 
 //若在严格模式下：运行fun()会报错
 ```
-**例3：** 
+#### 例3：
 ```javascript
 var a = 1;
 var obj = {
@@ -70,7 +70,7 @@ fun函数虽然在obj.b方法中定义，但它还是一个普通函数，直接
 
 <br>
 
-**例4：** 看下面闭包
+#### 例4：看下面闭包
 ```javascript
 var name = "The Window";　　
 var object = {　　　　
@@ -95,7 +95,9 @@ object.getNameFunc()();
 在new Function()里面的this，不论它是在构造函数中，还是函数调用中， 
 this都指向 全局对象。
 
-**例5：** 
+<br>
+
+#### 例5 
 ```javascript
 (function(){
     var f = new Function('alert(this)');
@@ -118,7 +120,7 @@ foo.bar();
 ### 2、对象中调用
 （1）作为对象的方法 调用
 
-**例1：** 
+#### 例1：
 ```javascript
 var a = 1;
 var obj = {
@@ -136,7 +138,7 @@ b所引用的匿名函数作为obj的一个方法调用，这时候this指向调
 
 <br>
 
-**例2：** 
+#### 例2：
 ```javascript
 var a = 1;
 var obj = {
@@ -153,7 +155,7 @@ console.log(t());//1
 
 <br>
 
-**例3：** 
+#### 例3：
 当obj在全局声明的时候，obj内部属性中的this指向全局对象，当obj在一个函数中声明的时候，严格模式下this会指向undefined，非严格模式自动转为指向全局对象。
 ```javascript
 var a = 1000;
@@ -178,12 +180,15 @@ console.log(obj.b);//1001
 
 何为构造函数？所谓构造函数就是用来new对象的函数，像Function、Object、Array、Date等都是全局定义的构造函数。其实每一个函数都可以new对象，那些批量生产我们需要的对象的函数就叫它构造函数罢了。注意，构造函数首字母记得大写。
 
-**例：** 
+#### 例1
 构造函数中的this：指向新创建的对象（红圈部分）
 ![这里写图片描述](https://img-blog.csdn.net/20180720173237369?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2I5NTQ5NjA2MzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 另外还有一点，prototype对象的方法的this指向实例对象，因为实例对象的
 __ proto __已经指向了原型函数的prototype。这就涉及原型链的知识了，即方法会沿着对象的原型链进行查找。实际上不仅仅是构造函数的prototype，即便是在整个原型链中，this代表的也都是当前对象的值。
-**例2：** 
+
+<br>
+
+#### 例2：
 下面说明this指向实例 
 ```javascript
 function Person(name){ 
@@ -216,7 +221,7 @@ var sam1 = new Person('sam1');
 
 ### 4、使用apply和call
 
-**例1：** apply和call实际只是将 obj.b里的this指针的指向做了改变。
+#### 例1： apply和call实际只是将 obj.b里的this指针的指向做了改变。
 ```javascript
 var a = 1;
 var obj = {
@@ -235,7 +240,7 @@ console.log(obj.b.call(undefined)); //1
 ```
 
 
-**例2：** apply和call实际只是将 Point里的this指针的指向做了改变，point.move.call后，move方法开始指向circle对象。
+#### 例2：apply和call实际只是将 Point里的this指针的指向做了改变，point.move.call后，move方法开始指向circle对象。
 
 ```javascript
 function Point(x,y){
@@ -272,7 +277,7 @@ eval()中的this：指向调用上下文中的this
 
 eval() 方法可以将字符串转换为 JavaScript 代码，使用 eval() 方法时，this 指向哪里呢？答案很简单，看谁在调用 eval() 方法，调用者的执行环境中的 this 就被 eval() 方法继承下来了。
 
-**例：** 
+#### 例：
 ```javascript
 // 全局上下文
 function f1(){
@@ -294,7 +299,7 @@ console.log(o.f()); // "stone"
 ### 6、bind() 中的 this
 调用 f.bind(someObject) 会创建一个与 f 具有相同函数体和作用域的函数，但是在这个新函数中，this 将永久地被绑定到了 bind 的第一个参数，无论这个函数是如何被调用的(即使调用call或apply也不能改变this的指向)
 
-**例：** 
+#### 例：
 
 ```javascript
 function f() {
@@ -369,7 +374,7 @@ console.log(o.f(), o.g()); // 28, stone
 # 三、箭头函数
 箭头函数是一个不可以用call和apply改变this的典型。
 
-**例1：** 
+#### 例1
 
 ```javascript
 var a = 1;
@@ -387,7 +392,7 @@ fun.call(obj)	//1
 
 <br>
 
-**例2：**
+#### 例2
 ```javascript
 var a = 1;
 var obj = {
@@ -406,7 +411,7 @@ fun.call(obj);//2
 
 <br>
 
- **例3：**
+#### 例3
 ```javascript
 function Fun() {
 	this.name = 'Damonare';
@@ -421,7 +426,7 @@ f.say();//window
 
 <br>
 
- **例4：**
+#### 例4
 ```javascript
 function Fun() {
 	this.name = 'Damonare';
