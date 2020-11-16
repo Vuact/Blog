@@ -126,6 +126,8 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 2.判断 ref 是不是一个 Reference 类型
 
+    //ref是通过GetBase()获得
+
     2.1 如果 ref 是 Reference，并且 IsPropertyReference(ref) 是 true, 那么 this 的值为 GetBase(ref)
 
     2.2 如果 ref 是 Reference，并且 base value 值是 Environment Record, 那么this的值为 ImplicitThisValue(ref)
@@ -263,12 +265,6 @@ foo.bar 被 () 包住，实际上 () 并没有对 MemberExpression 进行计算�
 
 有赋值操作符，查看规范 Simple Assignment ( = ): 
 
-计算的第三步：
-
->3.Let rval be GetValue(rref).
-
-因为使用了 GetValue，所以返回的值不是 Reference 类型，
-
 按照之前讲的判断逻辑：
 
 > 2.3 如果 ref 不是Reference，那么 this 的值为 undefined
@@ -281,11 +277,7 @@ this 为 undefined，非严格模式下，this 的值为 undefined 的时候，�
 
 看示例4，逻辑与算法，查看规范 11.11 Binary Logical Operators：
 
-计算第二步：
-
->2.Let lval be GetValue(lref).
-
-因为使用了 GetValue，所以返回的不是 Reference 类型，this 为 undefined
+返回的不是 Reference 类型，this 为 undefined
 
 <br>
 
@@ -293,11 +285,7 @@ this 为 undefined，非严格模式下，this 的值为 undefined 的时候，�
 
 看示例5，逗号操作符，查看规范11.14 Comma Operator ( , )
 
-计算第二步：
-
->2.Call GetValue(lref).
-
-因为使用了 GetValue，所以返回的不是 Reference 类型，this 为 undefined
+返回的不是 Reference 类型，this 为 undefined
 
 
 <br>
