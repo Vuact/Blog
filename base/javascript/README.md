@@ -8,6 +8,7 @@
 - 深入JavaScript 闭包.md
 - 深入JavaScript 从ECMAScript规范解读this.md
 - 深入JavaScript this实战演练.md
+- 深入JavaScript 伪数组与arguments
 - 深入JavaScript 模拟实现call、apply.md
 - 深入JavaScript 模拟实现bind.md
 - 深入JavaScript 从原型到原型链.md
