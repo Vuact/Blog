@@ -41,7 +41,7 @@ Reference 的构成，由三个组成部分，分别是：
 
 简单理解的话：
 
-base value 就是属性所在的对象或者就是 EnvironmentRecord，它的值只可能是 undefined, an Object, a Boolean, a String, a Number, or an environment record 其中的一种。
+base value 就是属性所在的对象 或者是 EnvironmentRecord，它的值只可能是 undefined, an Object, a Boolean, a String, a Number, or an environment record 其中的一种。
 
 referenced name 就是属性的名称。
 
@@ -105,7 +105,7 @@ GetValue(fooReference) // 1;
 
 GetValue 返回对象属性真正的值，但是要注意：
 
-**调用 GetValue，返回的将是具体的值，而不再是一个 Reference**
+`调用 GetValue，返回的将是具体的值，而不再是一个 Reference`
 
 这个很重要，这个很重要，这个很重要。
 
@@ -115,23 +115,12 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 到底 Reference 跟本文的主题 this 有哪些关联呢？以下开始进入高能阶段：
 
-看规范 Function Calls：
+根据ECMAScript规范，我们可以通过以下步骤，
 
-这里讲了当函数调用的时候，如何确定 this 的取值。
+`在函数调用的时候，确定 this 的取值。`
 
-只看第一步、第六步、第七步：
-```
-1.Let *ref* be the result of evaluating MemberExpression.
-6.If Type(*ref*) is Reference, then
-       a.If IsPropertyReference(ref) is true, then
-           i.Let thisValue be GetBase(ref).
-       b.Else, the base of ref is an Environment Record
-           i.Let thisValue be the result of calling the ImplicitThisValue concrete method of GetBase(ref).
-7.Else, Type(*ref*) is not Reference.
-       a. Let thisValue be undefined.
-```
 
-让我们描述一下：
+**步骤：**
 
 1.计算 MemberExpression 的结果赋值给 ref
 
