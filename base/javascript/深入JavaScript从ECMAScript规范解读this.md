@@ -1,6 +1,3 @@
-# JavaScript深入之从ECMAScript规范解读this
-
->JavaScript深入系列第六篇，本篇我们追根溯源，从ECMAScript5规范解读this在函数调用时到底是如何确定的。
 
 ## 前言
 
@@ -12,7 +9,7 @@
 * 作用域链(Scope chain)
 * this
 
-今天重点讲讲 this，然而不好讲。
+今天重点讲讲 this。
 
 ……
 
@@ -30,19 +27,11 @@
 
 首先是第 8 章 Types：
 
->Types are further subclassified into ECMAScript language types and specification types.
+>ECMAScript 的类型分为语言类型和规范类型。
 
->An ECMAScript language type corresponds to values that are directly manipulated by an ECMAScript programmer using the ECMAScript language. The ECMAScript language types are Undefined, Null, Boolean, String, Number, and Object.
+>ECMAScript 语言类型是开发者直接使用 ECMAScript 可以操作的。其实就是我们常说的Undefined, Null, Boolean, String, Number, 和 Object。
 
->A specification type corresponds to meta-values that are used within algorithms to describe the semantics of ECMAScript language constructs and ECMAScript language types. The specification types are Reference, List, Completion, Property Descriptor, Property Identifier, Lexical Environment, and Environment Record.
-
-我们简单的翻译一下：
-
-ECMAScript 的类型分为语言类型和规范类型。
-
-ECMAScript 语言类型是开发者直接使用 ECMAScript 可以操作的。其实就是我们常说的Undefined, Null, Boolean, String, Number, 和 Object。
-
-而规范类型相当于 meta-values，是用来用算法描述 ECMAScript 语言结构和 ECMAScript 语言类型的。规范类型包括：Reference, List, Completion, Property Descriptor, Property Identifier, Lexical Environment, 和 Environment Record。
+>而规范类型相当于 meta-values，是用来用算法描述 ECMAScript 语言结构和 ECMAScript 语言类型的。规范类型包括：Reference, List, Completion, Property Descriptor, Property Identifier, Lexical Environment, 和 Environment Record。
 
 没懂？没关系，我们只要知道在 ECMAScript 规范中还有一种只存在于规范中的类型，它们的作用是用来描述语言底层行为逻辑。
 
@@ -50,29 +39,13 @@ ECMAScript 语言类型是开发者直接使用 ECMAScript 可以操作的。其
 
 ## Reference
 
-那什么又是 Reference ？
-
-让我们看 8.7 章 The Reference Specification Type：
-
->The Reference type is used to explain the behaviour of such operators as delete, typeof, and the assignment operators. 
-
-所以 Reference 类型就是用来解释诸如 delete、typeof 以及赋值等操作行为的。
+Reference 类型就是用来解释诸如 delete、typeof 以及赋值等操作行为的。
 
 抄袭尤雨溪大大的话，就是：
 
 >这里的 Reference 是一个 Specification Type，也就是 “只存在于规范里的抽象类型”。它们是为了更好地描述语言的底层行为逻辑才存在的，但并不存在于实际的 js 代码中。
 
-再看接下来的这段具体介绍 Reference 的内容：
-
->A Reference is a resolved name binding. 
-
->A Reference consists of three components, the base value, the referenced name and the Boolean valued strict reference flag. 
-
->The base value is either undefined, an Object, a Boolean, a String, a Number, or an environment record (10.2.1). 
-
->A base value of undefined indicates that the reference could not be resolved to a binding. The referenced name is a String.
-
-这段讲述了 Reference 的构成，由三个组成部分，分别是：
+Reference 的构成，由三个组成部分，分别是：
 
 * base value
 * referenced name
@@ -449,16 +422,4 @@ console.log((false || foo.bar)()); // 1
 
 此外，又如何确定调用函数的对象是谁呢？在写文章之初，我就面临着这些问题，最后还是放弃从多个情形下给大家讲解 this 指向的思路，而是追根溯源的从 ECMASciript 规范讲解 this 的指向，尽管从这个角度写起来和读起来都比较吃力，但是一旦多读几遍，明白原理，绝对会给你一个全新的视角看待 this 。而你也就能明白，尽管 foo() 和 (foo.bar = foo.bar)() 最后结果都指向了 undefined，但是两者从规范的角度上却有着本质的区别。
 
-此篇讲解执行上下文的 this，即便不是很理解此篇的内容，依然不影响大家了解执行上下文这个主题下其他的内容。所以，依然可以安心的看下一篇文章。
 
-## 下一篇文章
-
-[《JavaScript深入之执行上下文》](https://github.com/mqyqingfeng/Blog/issues/8)
-
-## 深入系列
-
-JavaScript深入系列目录地址：[https://github.com/mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog)。
-
-JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。
-
-如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。
