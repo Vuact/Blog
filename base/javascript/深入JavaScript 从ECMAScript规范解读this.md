@@ -178,6 +178,8 @@ foo.bar(); // MemberExpression 是 foo.bar
 
 所以简单理解 MemberExpression 其实就是`()左边的部分`。
 
+<br>
+
 #### 2、判断 ref 是不是一个 Reference 类型。
 
 关键就在于看规范是如何处理各种 MemberExpression，返回的结果是不是一个Reference类型。
