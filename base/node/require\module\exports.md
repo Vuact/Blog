@@ -5,7 +5,6 @@
 
 # 模块
 
----
 
 - require：引用exports或module导出的变量
 - module：导出(单个变量)  module.exports
@@ -23,9 +22,9 @@
 
 ## 1、exports
 
-----
 
-### （1）导出多个变量
+
+#### （1）导出多个变量
 
 ```javascript
 exports.hello = function () {
@@ -51,7 +50,7 @@ hello2();
 
 输出：1 2
 
-### （2）导出单个变量
+#### （2）导出单个变量
 
 ```javascript
 exports.hello = function () {
@@ -76,7 +75,7 @@ hello();
 
 ## 2、module
 
-----
+
 
 ```javascript
 module.exports = function () {
@@ -90,9 +89,10 @@ hello();
 
 
 
-## require在同一文件多次引用同一个模块，引用模块只初始化一次
+## 3、注意
+require在同一文件多次引用同一个模块，引用模块只初始化一次
 
-----
+
 
 test.js
 
