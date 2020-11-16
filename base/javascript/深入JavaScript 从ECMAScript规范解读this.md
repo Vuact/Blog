@@ -140,9 +140,8 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 #### 1、计算 MemberExpression 的结果赋值给 ref
 
-什么是 MemberExpression？看规范 11.2 Left-Hand-Side Expressions：
-
-MemberExpression :
+什么是 MemberExpression？
+根据规范, MemberExpression :
 
 * PrimaryExpression // 原始表达式 可以参见《JavaScript权威指南第四章》
 * FunctionExpression    // 函数定义表达式
@@ -177,7 +176,7 @@ foo.bar(); // MemberExpression 是 foo.bar
 
 ```
 
-所以简单理解 MemberExpression 其实就是()左边的部分。
+所以简单理解 MemberExpression 其实就是`()左边的部分`。
 
 #### 2、判断 ref 是不是一个 Reference 类型。
 
