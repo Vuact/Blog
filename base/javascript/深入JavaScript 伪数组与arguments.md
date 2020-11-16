@@ -1,4 +1,4 @@
-# 伪数组
+# 一、伪数组
 
 伪数组，又叫类数组：
 
@@ -49,7 +49,7 @@ var obj7 = { 99: 'abc', length: 100 }
 
 <br><br>
 
-## 一、调用数组方法
+## 1、调用数组方法
 伪数组不能像数组那样调用像push()、indexOf()之类的方法，但我就是任性的想调用，怎么办？
 
 既然无法直接调用，我们可以用 Function.call 间接调用：
@@ -68,7 +68,7 @@ var a = Array.prototype.map.call(arrayLike, function(item){
 console.log(a);// ["NAME", "AGE", "SEX"]
 ```
 
-## 二、伪数组转数组：
+## 2、伪数组转数组：
 我们有四种方法，将伪数据转换为真正的Array对象：
 ```js
 var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
@@ -93,7 +93,7 @@ console.log(Array.prototype.concat.apply([], arrayLike));// ["name", "age", "sex
 <br>
 
 
-# Arguments对象
+# 二、Arguments对象
 
 Arguments 对象就是一个伪数组对象.
 
