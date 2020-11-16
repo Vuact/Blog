@@ -6,15 +6,14 @@
 * 作用域链(Scope chain)
 * this
 
-今天重点讲讲 this。
+今天重点讲讲 this。首先从 ECMASciript5 规范开始讲起。
 
-……
+<br>
+<br>
 
-首先从 ECMASciript5 规范开始讲起。
+# 一、ECMASciript5 规范
 
-# ECMASciript5 规范
-
-### Types
+### 1、Types
 
 >ECMAScript 的类型分为语言类型和规范类型。
 
@@ -26,7 +25,9 @@
 
 今天我们要讲的重点是便是其中的 Reference 类型。它与 this 的指向有着密切的关联。
 
-###  Reference
+<br>
+
+### 2、Reference
 
 Reference 类型就是用来解释诸如 delete、typeof 以及赋值等操作行为的。
 
@@ -96,7 +97,7 @@ var BarReference = {
 
 <br>
 
-### GetValue
+### 3、GetValue
 
 紧接着ECMAScript规范中有一个从 Reference 类型获取对应值的方法： GetValue。
 
@@ -122,7 +123,7 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 <br>
 
-# 如何确定this的值
+# 二、如何确定this的值
 
 关于 Reference 讲了那么多，为什么要讲 Reference 呢？到底 Reference 跟本文的主题 this 有哪些关联呢？如果你能耐心看完之前的内容，以下开始进入高能阶段：
 
@@ -158,6 +159,8 @@ GetValue 返回对象属性真正的值，但是要注意：
     2.2 如果 ref 是 Reference，并且 base value 值是 Environment Record, 那么this的值为 ImplicitThisValue(ref)
 
     2.3 如果 ref 不是 Reference，那么 this 的值为 undefined
+
+<br>
 
 ### 具体分析
 
