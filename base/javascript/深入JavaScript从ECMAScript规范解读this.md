@@ -1,7 +1,4 @@
-
-## 前言
-
-在[《JavaScript深入之执行上下文栈》](https://github.com/mqyqingfeng/Blog/issues/4)中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。
+当JavaScript代码执行一段可执行代码时，会创建对应的执行上下文。
 
 对于每个执行上下文，都有三个重要属性
 
@@ -13,19 +10,11 @@
 
 ……
 
-因为我们要从 ECMASciript5 规范开始讲起。
+首先从 ECMASciript5 规范开始讲起。
 
-先奉上 ECMAScript 5.1 规范地址：
+# ECMASciript5 规范
 
-英文版：[http://es5.github.io/#x15.1](http://es5.github.io/#x15.1)
-
-中文版：[http://yanhaijing.com/es5/#115](http://yanhaijing.com/es5/#115)
-
-让我们开始了解规范吧！
-
-## Types
-
-首先是第 8 章 Types：
+### Types
 
 >ECMAScript 的类型分为语言类型和规范类型。
 
@@ -37,7 +26,7 @@
 
 今天我们要讲的重点是便是其中的 Reference 类型。它与 this 的指向有着密切的关联。
 
-## Reference
+###  Reference
 
 Reference 类型就是用来解释诸如 delete、typeof 以及赋值等操作行为的。
 
@@ -51,9 +40,7 @@ Reference 的构成，由三个组成部分，分别是：
 * referenced name
 * strict reference
 
-可是这些到底是什么呢？
-
-我们简单的理解的话：
+简单理解的话：
 
 base value 就是属性所在的对象或者就是 EnvironmentRecord，它的值只可能是 undefined, an Object, a Boolean, a String, a Number, or an environment record 其中的一种。
 
@@ -107,9 +94,11 @@ var BarReference = {
 
 简单的理解：如果 base value 是一个对象，就返回true。
 
-## GetValue
+<br>
 
-除此之外，紧接着在 8.7.1 章规范中就讲了一个用于从 Reference 类型获取对应值的方法： GetValue。
+### GetValue
+
+紧接着ECMAScript规范中有一个从 Reference 类型获取对应值的方法： GetValue。
 
 简单模拟 GetValue 的使用：
 
@@ -131,7 +120,9 @@ GetValue 返回对象属性真正的值，但是要注意：
 
 这个很重要，这个很重要，这个很重要。
 
-## 如何确定this的值
+<br>
+
+# 如何确定this的值
 
 关于 Reference 讲了那么多，为什么要讲 Reference 呢？到底 Reference 跟本文的主题 this 有哪些关联呢？如果你能耐心看完之前的内容，以下开始进入高能阶段：
 
@@ -168,7 +159,7 @@ GetValue 返回对象属性真正的值，但是要注意：
 
     2.3 如果 ref 不是 Reference，那么 this 的值为 undefined
 
-## 具体分析
+### 具体分析
 
 让我们一步一步看：
 
@@ -241,7 +232,7 @@ console.log((false || foo.bar)());
 console.log((foo.bar, foo.bar)());
 ```
 
-### foo.bar()
+#### foo.bar()
 
 在示例 1 中，MemberExpression 计算的结果是 foo.bar，那么 foo.bar 是不是一个 Reference 呢？
 
@@ -282,7 +273,7 @@ GetBase 也已经铺垫了，获得 base value 值，这个例子中就是foo，
 
 唉呀妈呀，为了证明 this 指向foo，真是累死我了！但是知道了原理，剩下的就更快了。
 
-### (foo.bar)()
+#### (foo.bar)()
 
 看示例2：
 
@@ -300,7 +291,7 @@ foo.bar 被 () 包住，查看规范 11.1.6 The Grouping Operator
 
 实际上 () 并没有对 MemberExpression 进行计算，所以其实跟示例 1 的结果是一样的。
 
-### (foo.bar = foo.bar)()
+#### (foo.bar = foo.bar)()
 
 看示例3，有赋值操作符，查看规范 11.13.1 Simple Assignment ( = ): 
 
@@ -316,7 +307,7 @@ foo.bar 被 () 包住，查看规范 11.1.6 The Grouping Operator
 
 this 为 undefined，非严格模式下，this 的值为 undefined 的时候，其值会被隐式转换为全局对象。
 
-### (false || foo.bar)()
+#### (false || foo.bar)()
 
 看示例4，逻辑与算法，查看规范 11.11 Binary Logical Operators：
 
@@ -326,7 +317,7 @@ this 为 undefined，非严格模式下，this 的值为 undefined 的时候，�
 
 因为使用了 GetValue，所以返回的不是 Reference 类型，this 为 undefined
 
-### (foo.bar, foo.bar)()
+#### (foo.bar, foo.bar)()
 
 看示例5，逗号操作符，查看规范11.14 Comma Operator ( , )
 
@@ -404,22 +395,6 @@ base value 正是 Environment Record，所以会调用 ImplicitThisValue(ref)
 
 所以最后 this 的值就是 undefined。
 
-## 多说一句
 
-尽管我们可以简单的理解 this 为调用函数的对象，如果是这样的话，如何解释下面这个例子呢？
-
-```js
-var value = 1;
-
-var foo = {
-  value: 2,
-  bar: function () {
-    return this.value;
-  }
-}
-console.log((false || foo.bar)()); // 1
-```
-
-此外，又如何确定调用函数的对象是谁呢？在写文章之初，我就面临着这些问题，最后还是放弃从多个情形下给大家讲解 this 指向的思路，而是追根溯源的从 ECMASciript 规范讲解 this 的指向，尽管从这个角度写起来和读起来都比较吃力，但是一旦多读几遍，明白原理，绝对会给你一个全新的视角看待 this 。而你也就能明白，尽管 foo() 和 (foo.bar = foo.bar)() 最后结果都指向了 undefined，但是两者从规范的角度上却有着本质的区别。
 
 
