@@ -13,7 +13,7 @@
 
 # 一、ECMASciript5 规范
 
-### 1、Types
+## 1、Types
 
 >- ECMAScript 的类型分为语言类型和规范类型。
 >- ECMAScript 语言类型是开发者直接使用 ECMAScript 可以操作的。其实就是我们常说的Undefined, Null, Boolean, String, Number, 和 Object。
@@ -25,7 +25,7 @@
 
 <br>
 
-### 2、Reference
+## 2、Reference
 
 Reference 类型就是用来解释诸如 delete、typeof 以及赋值等操作行为的。
 
@@ -72,20 +72,20 @@ foo.bar(); // foo
 // bar对应的Reference是：
 var BarReference = {
     base: foo,
-    propertyName: 'bar',
+    name: 'bar',
     strict: false
 };
 ```
 
 而且规范中还提供了获取 Reference 组成部分的方法，比如 GetBase 和 IsPropertyReference。
 
-（1）GetBase: 返回 reference 的 base value。
+- GetBase: 返回 reference 的 base value。
 
-（2）IsPropertyReference：如果 base value 是一个对象，就返回true。
+- IsPropertyReference：如果 base value 是一个对象，就返回true。
 
 <br>
 
-### 3、GetValue
+## 3、GetValue
 
 紧接着ECMAScript规范中有一个从 Reference 类型获取对应值的方法： GetValue。
 
