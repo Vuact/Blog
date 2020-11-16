@@ -1,4 +1,4 @@
-# 一、简介
+# 伪数组
 
 伪数组，又叫类数组：
 
@@ -28,7 +28,7 @@ var obj7 = { 99: 'abc', length: 100 }
 
 <br>
 
-**典型的伪数组：**
+#### 典型的伪数组：
 
  - 函数的arguments参数
  - HTMLCollection对象、NodeList对象 (调用getElementsByTagName,document.childNodes之类的,它们返回的是NodeList对象)
@@ -36,24 +36,25 @@ var obj7 = { 99: 'abc', length: 100 }
 
 <br>
 
-**伪数组与真数组：**
+#### 伪数组与真数组：
+
 要知道 `数组是有length属性的，而对象没有`；因而为了让对象也有length属性，所以伪数组诞生了。
 其实伪数组和真数组都是对象，也都有length属性，甚至连访问元素的方式(eg：arguments[2])都一样；但不同的是，`伪数组不能像数组那样调用像push()、indexOf()之类的数组方法`。
 
 <br>
 
-**怎么判断 是 伪数组 还是 真数组？**
+#### 怎么判断 是 伪数组 还是 真数组？
 
 我们可以用instanceof、constructor、Object.prototype.toString.call(X)等来判断是否为伪数组。
 
 <br><br>
 
-# 二、调用数组方法
+## 一、调用数组方法
 伪数组不能像数组那样调用像push()、indexOf()之类的方法，但我就是任性的想调用，怎么办？
 
 既然无法直接调用，我们可以用 Function.call 间接调用：
 
-```
+```js
 var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
 
 console.log(Array.prototype.join.call(arrayLike, '&')); // 'name&age&sex'
@@ -67,9 +68,9 @@ var a = Array.prototype.map.call(arrayLike, function(item){
 console.log(a);// ["NAME", "AGE", "SEX"]
 ```
 
-# 三、伪数组转数组：
+## 二、伪数组转数组：
 我们有四种方法，将伪数据转换为真正的Array对象：
-```
+```js
 var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
 
 // 1. slice
@@ -88,52 +89,13 @@ console.log(Array.prototype.concat.apply([], arrayLike));// ["name", "age", "sex
 
 
 
--------
+<br>
+<br>
 
 
-# 调用数组方法
+# Arguments对象
 
-如果类数组就是任性的想用数组的方法怎么办呢？
-
-既然无法直接调用，我们可以用 Function.call 间接调用：
-
-```js
-var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
-
-Array.prototype.join.call(arrayLike, '&'); // name&age&sex
-
-Array.prototype.slice.call(arrayLike, 0); // ["name", "age", "sex"] 
-// slice可以做到类数组转数组
-
-Array.prototype.map.call(arrayLike, function(item){
-    return item.toUpperCase();
-}); 
-// ["NAME", "AGE", "SEX"]
-```
-
-## 类数组转对象
-
-在上面的例子中已经提到了一种类数组转数组的方法，再补充三个：
-
-```js
-var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
-// 1. slice
-Array.prototype.slice.call(arrayLike); // ["name", "age", "sex"] 
-// 2. splice
-Array.prototype.splice.call(arrayLike, 0); // ["name", "age", "sex"] 
-// 3. ES6 Array.from
-Array.from(arrayLike); // ["name", "age", "sex"] 
-// 4. apply
-Array.prototype.concat.apply([], arrayLike)
-```
-
-那么为什么会讲到类数组对象呢？以及类数组有什么应用吗？
-
-要说到类数组对象，Arguments 对象就是一个类数组对象。在客户端 JavaScript 中，一些 DOM 方法(document.getElementsByTagName()等)也返回类数组对象。
-
-## Arguments对象
-
-接下来重点讲讲 Arguments 对象。
+Arguments 对象就是一个伪数组对象.
 
 Arguments 对象只定义在函数体中，包括了函数的参数和其他属性。在函数体中，arguments 指代该函数的 Arguments 对象。
 
@@ -153,7 +115,7 @@ foo('name', 'age', 'sex')
 
 我们可以看到除了类数组的索引属性和length属性之外，还有一个callee属性，接下来我们一个一个介绍。
 
-## length属性
+### 1、length属性
 
 Arguments对象的length属性，表示实参的长度，举个例子：
 
@@ -170,7 +132,9 @@ foo(1)
 // 实参的长度为：1
 ```
 
-## callee属性
+<br>
+
+### 2、callee属性
 
 Arguments 对象的 callee 属性，通过它可以调用函数自身。
 
@@ -194,9 +158,11 @@ data[2]();
 // 2
 ```
 
-接下来讲讲 arguments 对象的几个注意要点：
+<br>
 
-## arguments 和对应参数的绑定
+
+### 3、arguments 对象的几个注意要点
+#### （1）arguments 和对应参数的绑定
 
 ```js
 function foo(name, age, sex, hobbit) {
@@ -233,7 +199,9 @@ foo('name', 'age')
 
 除此之外，以上是在非严格模式下，如果是在严格模式下，实参和 arguments 是不会共享的。
 
-## 传递参数
+<br>
+
+#### （2）传递参数
 
 将参数从一个函数传递到另一个函数
 
@@ -249,7 +217,7 @@ function bar(a, b, c) {
 foo(1, 2, 3)
 ```
 
-## 强大的ES6
+#### （3）强大的ES6
 
 使用ES6的 ... 运算符，我们可以轻松转成数组。
 
@@ -261,7 +229,7 @@ function func(...arguments) {
 func(1, 2, 3);
 ```
 
-## 应用
+### 4、应用
 
 arguments的应用其实很多
 
