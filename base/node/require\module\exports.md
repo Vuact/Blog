@@ -3,6 +3,8 @@
 >- NodeJS使用[CMD](http://wiki.commonjs.org/)模块系统，主模块作为程序入口点，所有模块在执行过程中只初始化一次。
 >- 除非JS模块不能满足需求，否则不要轻易使用二进制模块
 
+<br>
+
 # 模块
 
 
@@ -18,7 +20,8 @@
 
 3. exports 是指向的 module.exports 的引用
 
-   
+
+<br>
 
 ## 1、exports
 
@@ -71,7 +74,7 @@ hello();
 
 输出：1
 
-
+<br>
 
 ## 2、module
 
@@ -87,7 +90,7 @@ const hello = require('./test.js');
 hello();
 ```
 
-
+<br>
 
 ## 3、注意
 require在同一文件多次引用同一个模块，引用模块只初始化一次
