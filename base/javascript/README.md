@@ -22,3 +22,4 @@
 
 ### JavaScript专题
 - JavaScript专题 防抖.md
+- JavaScript专题 节流.md
