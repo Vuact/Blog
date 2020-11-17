@@ -39,7 +39,7 @@ console.log(flatten(arr))
 
 <br>
 
-## 1、法二：递归
+## 2、法二：递归
 
 我们最一开始能想到的莫过于循环数组元素，如果还是一个数组，就递归调用该方法：
 
@@ -110,9 +110,11 @@ console.log(flatten(arr))
 ```
 
 <br>
-<br>
 
 ----
+
+<br>
+<br>
 
 # undercore
 
