@@ -335,8 +335,19 @@ Student.prototype.learn = function (something) {
 
 //继承函数
 function extend(child, parent) {
-    child.prototype = Object.create(parent.prototype);
-    child.prototype.constructor = child;
+    //child.prototype = Object.create(parent.prototype);
+    //child.prototype.constructor = child;
+    
+    //与上两句等价
+    child.prototype = Object.create(parent.prototype, {
+	constructor: {
+	    value: child,
+	    writable: true,
+	    configurable: true,
+	    enumerable: false,
+	},
+    });
+	    
     return child;
 }
 ```
