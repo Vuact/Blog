@@ -345,3 +345,16 @@ document.getElementById("button").addEventListener('click', function(){
 
 相关的代码可以在 [Github 博客仓库](https://github.com/mqyqingfeng/Blog/tree/master/demos/debounce) 中找到
 
+<br>
+
+## 防抖的应用场景
+防抖函数的应用场景很多，
+
+1、比如我们需要得到浏览器窗口resize前后窗口的大小。
+
+当浏览器窗口被拖动的时候，这个响应函数便会触发多次，但是我们实际上想得到的只有resize前和resize后的窗口大小。这时候使用防抖便能很好的解决这个问题。
+
+2、另一个很经典的使用场景是表单验证，往往表单验证是和input框的onChange绑定在一起的。
+
+但是如果直接绑定onChange事件，用户的每个字符输入都会触发校验，可能会造成输入卡顿或者给用户抛出错误的校验失败信息，伤害用户体验。这时候如果我们给onChange绑定的是一个经过防抖处理的响应函数，便能很好的避免这种问题了。
+
