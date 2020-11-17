@@ -9,7 +9,9 @@
 
 关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器。
 
-## 使用时间戳
+<br>
+
+## 第一版：使用时间戳
 
 让我们来看第一种方法：使用时间戳，当触发事件的时候，我们取出当前的时间戳，然后减去之前的时间戳(最一开始值设为 0 )，如果大于设置的时间周期，就执行函数，然后更新时间戳为当前的时间戳，如果小于，就不执行。
 
@@ -45,7 +47,10 @@ container.onmousemove = throttle(getUserAction, 1000);
 
 我们可以看到：当鼠标移入的时候，事件立刻执行，每过 1s 会执行一次，如果在 4.2s 停止触发，以后不会再执行事件。
 
-## 使用定时器
+
+<br>
+
+## 第二版：使用定时器
 
 接下来，我们讲讲第二种实现方式，使用定时器。
 
@@ -82,7 +87,9 @@ function throttle(func, wait) {
 1. 第一种事件会立刻执行，第二种事件会在 n 秒后第一次执行
 2. 第一种事件停止触发后没有办法再执行事件，第二种事件停止触发后依然会再执行一次事件
 
-## 双剑合璧
+<br>
+
+## 第三版：双剑合璧
 
 那我们想要一个什么样的呢？
 
@@ -130,7 +137,9 @@ function throttle(func, wait) {
 
 我们可以看到：鼠标移入，事件立刻执行，晃了 3s，事件再一次执行，当数字变成 3 的时候，也就是 6s 后，我们立刻移出鼠标，停止触发事件，9s 的时候，依然会再执行一次事件。
 
-## 优化
+<br>
+
+## 第四版：优化
 
 但是我有时也希望无头有尾，或者有头无尾，这个咋办？
 
@@ -177,7 +186,9 @@ function throttle(func, wait, options) {
 }
 ```
 
-## 取消
+<br>
+
+## 第五版：取消
 
 在 debounce 的实现中，我们加了一个 cancel 方法，throttle 我们也加个 cancel 方法：
 
@@ -191,6 +202,8 @@ throttled.cancel = function() {
 }
 ...
 ```
+
+<br>
 
 ## 注意
 
@@ -212,14 +225,8 @@ container.onmousemove = throttle(getUserAction, 1000, {
 
 至此我们已经完整实现了一个 underscore 中的 throttle 函数，恭喜，撒花！
 
+<br>
+
 ## 演示代码
 
 相关的代码可以在 [Github 博客仓库](https://github.com/mqyqingfeng/Blog/tree/master/demos/throttle) 中找到
-
-## 专题系列
-
-JavaScript专题系列目录地址：[https://github.com/mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog)。
-
-JavaScript专题系列预计写二十篇左右，主要研究日常开发中一些功能点的实现，比如防抖、节流、去重、类型判断、拷贝、最值、扁平、柯里、递归、乱序、排序等，特点是研(chao)究(xi) underscore 和 jQuery 的实现方式。
-
-如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎 star，对作者也是一种鼓励。
