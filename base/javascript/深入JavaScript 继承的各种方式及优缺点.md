@@ -303,7 +303,7 @@ console.log(child1.colors);     //["red", "blue", "green"]
 
 # 七、继承练习
 
-根据以下代码，实现Person和Student两个实例对象
+根据以下代码，实现Person和Student两个构造函数
 ```js
 var person = new Person('sam', 18);
 person.sayHi(); //I am sam
@@ -314,6 +314,8 @@ student.learn('javascript');//amy learn javascript
 ```
 
 解：
+
+#### ES5写法
 ```js
 function Person(name, age) {
     this.name = name;
@@ -349,6 +351,31 @@ function extend(child, parent) {
     });
 	    
     return child;
+}
+```
+
+#### ES6写法
+```js
+class Person {
+    constructor(name, age) {
+	this.name = name;
+	this.age = age;
+    }
+
+    sayHi() {
+	console.log('I am ' + this.name);
+    }
+}
+class Student extends Person {
+    constructor(name, age, school, grade) {
+	super(name, age);
+	this.school = school;
+	this.grade = grade;
+    }
+
+    learn(something) {
+	console.log(`${this.name} learn ${something}`);
+    }
 }
 ```
 
