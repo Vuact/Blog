@@ -298,3 +298,46 @@ console.log(child1.colors);     //["red", "blue", "green"]
 
 **寄生组合式继承的优点：**
 这种方式的高效率体现它只调用了一次 Parent 构造函数，并且因此避免了在 Parent.prototype 上面创建不必要的、多余的属性。与此同时，原型链还能保持不变；因此，还能够正常使用 instanceof 和 isPrototypeOf。开发人员普遍认为寄生组合式继承是引用类型最理想的继承范式。
+
+<br>
+
+# 七、继承练习
+
+根据以下代码，实现Person和Student两个实例对象
+```js
+var person = new Person('sam', 18);
+person.sayHi(); //I am sam
+
+var student = new Student('amy', 18, '清华大学','一年级');
+student.sayHi(); //I am amy
+student.learn('javascript');//amy learn javascript
+```
+
+解：
+```js
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Persion.prototype.sayHi = { 
+    console.log('I am ' + this.name);
+};
+
+function Student(name, age, school, grade) {
+    Person.call(this, name, age);
+    this.school = school;
+    this.grade = grade;
+}
+extend(Student, Person);
+Student.prototype.learn = function(something) {
+    console.log(`${this.name} learn ${something}`);
+};
+
+//继承函数
+function extend(child, parent) {
+    child.prototype = Object.create(parent.prototype);
+    child.prototype.constructor = child;
+    return child;
+}
+```
+
