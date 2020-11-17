@@ -231,3 +231,22 @@ console.log(f1.toString()); //'[object Object]'
 先在f1对象上查找有没有name属性，发现没有；再到看看Foo.prototype上有没有，发现有，则输出 'Feidian'
 - console.log(f1.toString());
 先在f1对象上找有没有toString()方法，没有；再看看Foo.prototype上有没有，还有没；再沿着原型链到Object.prototype上找，发现有，则调用该方法。
+
+
+### 3、练习
+```js
+Object.prototype.a = 'a'
+
+Function.prototype.b = 'b'
+
+function Animal() {}
+
+const obj = new Animal()
+
+console.log(obj.a) // 'a'
+console.log(obj.b) // undefined
+```
+看下面原型链得以上输出
+```
+原型链：obj => Animal.prototype => Object.prototype
+```
