@@ -81,6 +81,8 @@ function flatten(arr) {
 console.log(flatten(arr))
 ```
 
+reduce的使用请参考：[点我](https://blog.csdn.net/b954960630/article/details/81432881)
+
 <br>
 
 ## 4、法四：...
