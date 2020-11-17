@@ -301,6 +301,13 @@ console.log(child1.colors);     //["red", "blue", "green"]
 
 <br>
 
+#### 继承核心就三点：
+- 通过Parent.call(this, name) ： Child继承Parent的实例属性。   
+- 通过Child.prototype = Object.create(Parent.prototype) ：Child.prototype继承Parent.prototype的属性和方法
+- 改变Child.prototype.constructor的指向
+
+<br>
+
 # 七、继承练习
 
 根据以下代码，实现Person和Student两个构造函数
@@ -368,7 +375,7 @@ class Person {
 }
 class Student extends Person {
     constructor(name, age, school, grade) {
-	super(name, age);
+	super(name, age); //相当于Person.call(this, name, age);
 	this.school = school;
 	this.grade = grade;
     }
