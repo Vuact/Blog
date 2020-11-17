@@ -61,13 +61,18 @@ container.onmousemove = getUserAction;
 
 今天重点讲讲防抖的实现。
 
-## 防抖
+<br>
+<br>
+
+# 防抖
 
 防抖的原理就是：你尽管触发事件，但是我一定在事件停止触发 n 秒后才执行。
 
 这意味着如果你在一个事件触发的 n 秒内又触发了这个事件，那我就以新的事件触发的时间为准，在此时间 n 秒后才执行。
 
 总之，就是要等你触发完事件 n 秒内不再触发事件，我才执行，真是任性呐!
+
+<br>
 
 ## 第一版
 
@@ -98,7 +103,10 @@ container.onmousemove = debounce(getUserAction, 1000);
 
 棒棒哒，我们接着完善它。
 
-## this
+<br>
+
+
+## 第二版: this指向
 
 如果我们在 `getUserAction` 函数中 `console.log(this)`，在不使用 `debounce` 函数的时候，`this` 的值为：
 
@@ -130,7 +138,9 @@ function debounce(func, wait) {
 
 现在 this 已经可以正确指向了。让我们看下个问题：
 
-## event 对象
+<br>
+
+## 第三版: event 对象
 
 JavaScript 在事件处理函数中会提供事件对象 event，我们修改下 getUserAction 函数：
 
@@ -171,7 +181,10 @@ function debounce(func, wait) {
 1. this 指向
 2. event 对象
 
-## 立刻执行
+
+<br>
+
+## 第四版: 立刻执行
 
 这个时候，代码已经很是完善了，但是为了让这个函数更加完善，我们接下来思考一个新的需求。
 
@@ -213,7 +226,18 @@ function debounce(func, wait, immediate) {
 
 ![debounce 第四版](https://github.com/mqyqingfeng/Blog/raw/master/Images/debounce/debounce-4.gif)
 
-## 返回值
+关于定时器的引用值：
+```js
+let timer2 = null;
+console.log(timer2);//null
+timer2 = setTimeout(function () { }, 1000);
+console.log(timer2);//22
+clearTimeout(timer2);
+console.log(timer2);//22
+```
+<br>
+
+## 第五版: 返回值
 
 此时注意一点，就是 getUserAction 函数可能是有返回值的，所以我们也要返回函数的执行结果，但是当 immediate 为 false 的时候，因为使用了 setTimeout ，我们将 func.apply(context, args) 的返回值赋给变量，最后再 return 的时候，值将会一直是 undefined，所以我们只在 immediate 为 true 的时候返回函数的执行结果。 
 
@@ -246,7 +270,9 @@ function debounce(func, wait, immediate) {
 }
 ```
 
-## 取消
+<br>
+
+## 第六版: 取消
 
 最后我们再思考一个小需求，我希望能取消 debounce 函数，比如说我 debounce 的时间间隔是 10 秒钟，immediate 为 true，这样的话，我只有等 10 秒后才能重新触发事件，现在我希望有一个按钮，点击后，取消防抖，这样我再去触发，就可以又立刻执行啦，是不是很开心？
 
@@ -312,6 +338,8 @@ document.getElementById("button").addEventListener('click', function(){
 ![debounce-cancel](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/debounce/debounce-cancel.gif)
 
 至此我们已经完整实现了一个 underscore 中的 debounce 函数，恭喜，撒花！
+
+<br>
 
 ## 演示代码
 
