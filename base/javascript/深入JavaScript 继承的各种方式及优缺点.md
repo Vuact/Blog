@@ -319,7 +319,7 @@ function Person(name, age) {
     this.name = name;
     this.age = age;
 }
-Persion.prototype.sayHi = { 
+Person.prototype.sayHi = function () {
     console.log('I am ' + this.name);
 };
 
@@ -329,7 +329,7 @@ function Student(name, age, school, grade) {
     this.grade = grade;
 }
 extend(Student, Person);
-Student.prototype.learn = function(something) {
+Student.prototype.learn = function (something) {
     console.log(`${this.name} learn ${something}`);
 };
 
