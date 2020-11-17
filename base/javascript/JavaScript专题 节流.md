@@ -230,3 +230,34 @@ container.onmousemove = throttle(getUserAction, 1000, {
 ## 演示代码
 
 相关的代码可以在 [Github 博客仓库](https://github.com/mqyqingfeng/Blog/tree/master/demos/throttle) 中找到
+
+<br>
+
+## 节流的应用场景
+
+节流有一些很经典的应用场景
+
+比如对于一个Button短时间内进行多次点击，可能没有必要触发多次handler，这时候就可以对click的响应函数进行节流处理。
+
+或者一个使用键盘控制的飞机大战的游戏，子弹的射出速度是有限制的，不管你在短时间内触发多少次发射按键，永远只会有一枚子弹被发射。
+
+再或者是在实现无限滚动时，需要去监测内容底部是否已经接近window底部，如果是的话就需要去请求新的内容。关于无限滚动，有一个很棒的 [codePen](https://codepen.io/dcorb/pen/eJLMxa) demo。
+
+<br>
+
+## requestAnimationFrame
+
+在最后要提一下requestAnimationFrame这个浏览器API。这个函数可以理解为 throttle(handler, 16) (16为60fps计算得出) 的浏览器原生实现。当然浏览器不仅做了简单的throttle，还有一些分片和空闲thread监测功能，来保证被这个函数处理的函数能满足每秒60帧的要求。
+
+在某些情况下我们也可以调用这个函数来完成类似throttle的功能。但是需要注意的是
+
+- 你需要手动触发requestAnimationFrame，但是throttle一旦被设置好后是自动触发的
+- requestAnimationFrame不支持IE9及以下
+- requestAnimationFrame是一个浏览器API，nodejs无法使用。
+
+<br><br>
+
+# 防抖节流总结
+- 防抖是指某个函数在空闲x ms后才被调用，如果该段时间内该函数被触发，则重置计时器。常用场景有resize事件或者input框的onChang事件
+- 节流是指某个函数在x ms内只能被触发一次。常用场景有button的click事件或者键盘事件等。
+- requestAnimationFrame是浏览器提供的API，提供了throttle(handler,16)类似的功能但是会有更多浏览器级别的优化来保证每秒16帧的渲染结果。
