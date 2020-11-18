@@ -48,17 +48,17 @@ const person = {name: 'John', age: 20};
 ```js
 
 Array.prototype.myFindIndex = function(callBack, context) {
-	for(var i = 0; i < this.length; i++) {	
-		if(callBack.call(context, this[i], i, this)) return i;
-	}
-	return -1;
+    for(var i = 0; i < this.length; i++) {	
+	if(callBack.call(context, this[i], i, this)) return i;
+    }
+    return -1;
 	
-	//this值指向array
-	//若context值为undefined, 在非严格模式下指向windows
+    //this值指向array
+    //若context值为undefined, 在非严格模式下指向windows
 };
 
 console.log([12, 5, 18, 44].myFindIndex(function(item) {
-	return item > 15;
+     return item > 15;
 })); //2
 ```
 <br>
