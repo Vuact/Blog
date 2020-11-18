@@ -78,12 +78,10 @@ Function.prototype.myCall = function (context) {
 
 <br>
 
-### 3、注意：调用call、apply的函数不能是箭头函数
+### 3、注意：不能用箭头函数调用call、apply，否则指向会不准
 
 
 
-
-因而凡是涉及到call、apply的地方，其调用函数都不可以是箭头函数, 否则会导致
 
 ```javascript
 var value = 2;
@@ -98,8 +96,11 @@ bar.call(foo ,'bty', 18);  // 2   'bty'   18
 ```
 我们看到bar中的this.value值是2，并不是1, 说明this值指向了window对象。
 
-我们都知道箭头函数无this，其this与前上下文相关；箭头函数若调用call，根据上面实现原理中的 `context.fn = this; `得知，
-这里this
+我们都知道箭头函数无this，其this与前上下文相关；
+
+箭头函数若调用call，根据上面实现原理中的 `context.fn = this; `得知，this值实际指向的是箭头函数的上下文（在例子中即指向window）
+
+因而凡是涉及到call、apply的地方，其调用函数都不可以是箭头函数！！！
 
 <br>
 
