@@ -74,9 +74,9 @@ console.log(flatten(arr))
 var arr = [1, [2, [3, 4]]];
 
 function flatten(arr) {
-    return arr.reduce(function(prev, next){
-        return prev.concat(Array.isArray(next) ? flatten(next) : next)
-    }, [])
+   return arr.reduce((prev, item) => {
+        return prev.concat(Array.isArray(item) ? flatten(item) : item);
+   }, []);
 }
 
 console.log(flatten(arr))
