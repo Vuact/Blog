@@ -9,11 +9,19 @@ ES6 对数组新增了 findIndex 方法，它会返回数组中满足提供的�
 举个例子：
 
 ```js
-function isBigEnough(element) {
-  return element >= 15;
+function isBigEnough(value, index, arr) {
+  console.log(value, index, arr);
+  return value >= 15;
 }
 
-[12, 5, 8, 130, 44].findIndex(isBigEnough);  // 3
+const resIndex = [12, 5, 18, 44].findIndex(isBigEnough);  
+console.log(resIndex);
+
+//输出：
+// 12 0 [ 12, 5, 18, 44 ]
+// 5 1 [ 12, 5, 18, 44 ]
+// 18 2 [ 12, 5, 18, 44 ]
+// 2
 ```
 
 findIndex 会找出第一个大于 15 的元素的下标，所以最后返回 3。
