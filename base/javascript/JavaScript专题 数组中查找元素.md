@@ -67,17 +67,16 @@ console.log([12, 5, 18, 44].myFindIndex(function(item) {
 findIndex 是正序查找，但正如 indexOf 还有一个对应的 lastIndexOf 方法，我们也想写一个倒序查找的 findLastIndex 函数。实现自然也很简单，只要修改下循环即可。
 
 ```js
-function findLastIndex(array, predicate, context) {
-    var length = array.length;
-    for (var i = length; i >= 0; i--) {
-        if (predicate.call(context, array[i], i, array)) return i;
+Array.prototype.myFindLastIndex = function(callBack, context) {
+    for(var i = this.length - 1; i >= 0; i--) {	
+	if(callBack.call(context, this[i], i, this)) return i;
     }
     return -1;
-}
+};
 
-console.log(findLastIndex([1, 2, 3, 4], function(item, index, array){
-    if (item == 1) return true;
-})) // 0
+console.log([12, 5, 18, 44].myFindLastIndex(function(item) {
+     return item > 15;
+})); //3
 ```
 
 <br>
