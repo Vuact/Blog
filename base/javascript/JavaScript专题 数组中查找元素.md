@@ -129,20 +129,20 @@ sortedIndex([10, 20, 30], 25); // 2
 
 ```js
 // 第一版
-function sortedIndex(array, obj) {
-
-    var low = 0, high = array.length;
-
-    while (low < high) {
-        var mid = Math.floor((low + high) / 2);
-        if (array[mid] < obj) low = mid + 1;
-        else high = mid;
-    }
-
-    return high;
+Array.prototype.sortedIndex = function (obj) {
+	var low = 0, 
+	    high = this.length;
+	
+	while (low < high) {
+	      var mid = Math.floor((low + high) / 2);
+	      if(this[mid] < obj) low = mid + 1;
+	      else high = mid;
+	}
+	
+	return high;
 };
 
-console.log(sortedIndex([10, 20, 30, 40, 50], 35)) // 3
+console.log([10, 20, 30, 40, 50].sortedIndex(35)) // 3
 ```
 
 现在的方法虽然能用，但通用性不够，比如我们希望能处理这样的情况：
