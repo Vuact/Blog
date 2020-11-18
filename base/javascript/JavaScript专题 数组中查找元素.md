@@ -2,7 +2,7 @@
 
 在实现前，先看看 ES6 的 findIndex 方法，让大家了解 findIndex 的使用方法。
 
-## findIndex
+# 1、findIndex
 
 ES6 对数组新增了 findIndex 方法，它会返回数组中满足提供的函数的第一个元素的索引，否则返回 -1。
 
@@ -39,24 +39,31 @@ const person = {name: 'John', age: 20};
 
 是不是很简单，其实，我们自己去实现一个 findIndex 也很简单。
 
-## 实现findIndex
+<br>
+
+### 实现findIndex
 
 思路自然很明了，遍历一遍，返回符合要求的值的下标即可。
 
 ```js
-function findIndex(array, predicate, context) {
-    for (var i = 0; i < array.length; i++) {
-        if (predicate.call(context, array[i], i, array)) return i;
-    }
-    return -1;
-}
+Array.prototype.myFindIndex = function(callBack, context) {
+	//this值指向array
+	//若context值为undefined, 在非严格模式下指向windows
+	
+	for(var i = 0; i < this.length; i++) {	
+		if(callBack.call(context, this[i], i, this)) return i;
+	}
+	return -1;
+};
 
-console.log(findIndex([1, 2, 3, 4], function(item, i, array){
-    if (item == 3) return true;
-})) // 2
+var test = [12, 5, 18, 44].myFindIndex(function(item) {
+	return item > 15;
+});
+console.log(test); //2
 ```
+<br>
 
-## findLastIndex
+# 2、findLastIndex
 
 findIndex 是正序查找，但正如 indexOf 还有一个对应的 lastIndexOf 方法，我们也想写一个倒序查找的 findLastIndex 函数。实现自然也很简单，只要修改下循环即可。
 
@@ -74,7 +81,9 @@ console.log(findLastIndex([1, 2, 3, 4], function(item, index, array){
 })) // 0
 ```
 
-## createIndexFinder
+<br>
+
+# 3、createIndexFinder
 
 然而问题在于，findIndex 和 findLastIndex 其实有很多重复的部分，如何精简冗余的内容呢？这便是我们要学习的地方，日后面试问到此类问题，也是加分的选项。
 
@@ -101,7 +110,10 @@ var findIndex = createIndexFinder(1);
 var findLastIndex = createIndexFinder(-1);
 ```
 
-## sortedIndex
+
+<br>
+
+# 4、sortedIndex
 
 findIndex 和 findLastIndex 的需求算是结束了，但是又来了一个新需求：在一个排好序的数组中找到 value 对应的位置，保证插入数组后，依然保持有序的状态。
 
@@ -172,7 +184,10 @@ function sortedIndex(array, obj, iteratee, context) {
 };
 ```
 
-## indexOf
+
+<br>
+
+# 5、indexOf
 
 sortedIndex 也完成了，现在我们尝试着去写一个 indexOf 和 lastIndexOf 函数，学习 findIndex 和 FindLastIndex 的方式，我们写一版：
 
@@ -196,6 +211,9 @@ var result = indexOf([1, 2, 3, 4, 5], 2);
 
 console.log(result) // 1
 ```
+
+<br>
+
 
 ## fromIndex
 
@@ -236,6 +254,8 @@ function createIndexOfFinder(dir) {
 var indexOf = createIndexOfFinder(1);
 var lastIndexOf = createIndexOfFinder(-1);
 ```
+
+<br>
 
 ## 优化
 
