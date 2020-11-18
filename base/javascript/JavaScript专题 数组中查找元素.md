@@ -46,20 +46,20 @@ const person = {name: 'John', age: 20};
 思路自然很明了，遍历一遍，返回符合要求的值的下标即可。
 
 ```js
+
 Array.prototype.myFindIndex = function(callBack, context) {
-	//this值指向array
-	//若context值为undefined, 在非严格模式下指向windows
-	
 	for(var i = 0; i < this.length; i++) {	
 		if(callBack.call(context, this[i], i, this)) return i;
 	}
 	return -1;
+	
+	//this值指向array
+	//若context值为undefined, 在非严格模式下指向windows
 };
 
-var test = [12, 5, 18, 44].myFindIndex(function(item) {
+console.log([12, 5, 18, 44].myFindIndex(function(item) {
 	return item > 15;
-});
-console.log(test); //2
+})); //2
 ```
 <br>
 
