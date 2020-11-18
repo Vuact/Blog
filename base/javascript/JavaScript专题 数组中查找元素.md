@@ -46,7 +46,7 @@ const person = {name: 'John', age: 20};
 
 ```js
 
-Array.prototype.myFindIndex = function (callBack, context) {
+Array.prototype.findIndex = function (callBack, context) {
     for(var i = 0; i < this.length; i++) {	
 	if(callBack.call(context, this[i], i, this)) return i;
     }
@@ -56,7 +56,7 @@ Array.prototype.myFindIndex = function (callBack, context) {
     //若context值为undefined, 在非严格模式下指向windows
 };
 
-console.log([12, 5, 18, 44].myFindIndex(function (item) {
+console.log([12, 5, 18, 44].findIndex(function (item) {
      return item > 15;
 })); //2
 ```
@@ -67,21 +67,21 @@ console.log([12, 5, 18, 44].myFindIndex(function (item) {
 findIndex 是正序查找，但正如 indexOf 还有一个对应的 lastIndexOf 方法，我们也想写一个倒序查找的 findLastIndex 函数。实现自然也很简单，只要修改下循环即可。
 
 ```js
-Array.prototype.myFindLastIndex = function(callBack, context) {
+Array.prototype.findLastIndex = function(callBack, context) {
     for(var i = this.length - 1; i >= 0; i--) {	
 	if(callBack.call(context, this[i], i, this)) return i;
     }
     return -1;
 };
 
-console.log([12, 5, 18, 44].myFindLastIndex(function (item) {
+console.log([12, 5, 18, 44].findLastIndex(function (item) {
      return item > 15;
 })); //3
 ```
 
 <br>
 
-# 3、createIndexFinder
+# 3、createIndexFinder: findIndex与findLastIndex合体
 
 然而问题在于，findIndex 和 findLastIndex 其实有很多重复的部分，如何精简冗余的内容呢？这便是我们要学习的地方，日后面试问到此类问题，也是加分的选项。
 
@@ -102,8 +102,8 @@ Array.prototype.createIndexFinder = function (direction) {
      }
 };
 
-Array.prototype.myFindIndex = Array.prototype.createIndexFinder(1);
-Array.prototype.myFindLastIndex = Array.prototype.createIndexFinder(-1);
+Array.prototype.findIndex = Array.prototype.createIndexFinder(1);
+Array.prototype.findLastIndex = Array.prototype.createIndexFinder(-1);
 ```
 
 
