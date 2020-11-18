@@ -95,7 +95,9 @@ Array.prototype.createIndexFinder = function (direction) {
 	
      return function (callBack, context) {
 	  var i = direction > 0 ? 0 : this.length - 1;	
-	  for (; i >= 0 && i < this.length; i += direction) {	
+	  var step = direction > 0 ? 1 : -1;
+	  
+	  for (; i >= 0 && i < this.length; i += step) {	
 	        if(callBack.call(context, this[i], i, this)) return i;
 	  }
 	  return -1;
