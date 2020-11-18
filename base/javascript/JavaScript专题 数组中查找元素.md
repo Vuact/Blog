@@ -26,6 +26,17 @@ console.log(resIndex);
 
 findIndex 会找出第一个大于 15 的元素的下标，所以最后返回 2。
 
+findIndex还接受第二个参数，用来绑定回调函数的this对象。
+
+```js
+function f(item){
+  return item > this.age;
+}
+
+const person = {name: 'John', age: 20};
+[10, 12, 26, 15].find(f, person);    // 26
+```
+
 是不是很简单，其实，我们自己去实现一个 findIndex 也很简单。
 
 ## 实现findIndex
