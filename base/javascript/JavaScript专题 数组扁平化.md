@@ -68,6 +68,11 @@ console.log(flatten(arr))
 
 ## 3、法三：reduce + 递归
 
+只要满足下面两点就可以用reduce
+
+- 对数组进行处理
+- 最终返回一个值(这个值可以是Number、Array、Object等等)
+
 既然是对数组进行处理，最终返回一个值，我们就可以考虑使用 reduce 来简化代码：
 
 ```js
@@ -82,7 +87,7 @@ function flatten(arr) {
 console.log(flatten(arr))
 ```
 
-reduce的使用请参考：[点我](https://blog.csdn.net/b954960630/article/details/81432881)
+reduce的说明及使用请参考：[狠狠戳我](https://blog.csdn.net/b954960630/article/details/81432881)
 
 <br>
 
