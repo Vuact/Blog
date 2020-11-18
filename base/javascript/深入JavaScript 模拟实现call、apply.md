@@ -77,6 +77,30 @@ Function.prototype.myCall = function (context) {
 ```
 
 <br>
+
+### 3、注意：调用call、apply的函数不能是箭头函数
+
+
+
+
+因而凡是涉及到call、apply的地方，其调用函数都不可以是箭头函数, 否则会导致
+
+```javascript
+var value = 2;
+var foo = { value: 1 };
+
+var bar = (name, age) => {
+    console.log(this.value);
+    console.log(name, age);
+}
+
+bar.call(foo ,'bty', 18);  // 2   'bty'   18
+```
+我们看到bar中的this.value值是2，并不是1, 说明this值指向了window对象。
+
+我们都知道箭头函数无this，其this与前上下文相关；箭头函数若调用call，根据上面实现原理中的 `context.fn = this; `得知，
+这里this
+
 <br>
 
 # 二、apply()
