@@ -9,7 +9,7 @@ ES6 对数组新增了 findIndex 方法，它会返回数组中满足提供的�
 举个例子：
 
 ```js
-function isBigEnough(value, index, arr) {
+function isBigEnough (value, index, arr) {
   console.log(value, index, arr);
   return value >= 15;
 }
@@ -31,7 +31,7 @@ findIndex还接受第二个参数，用来绑定回调函数的this对象。
 ```js
 const person = {name: 'John', age: 20};
 
-[10, 12, 26, 15].findIndex(function(item) {//用第二个参数时，回调不能是箭头函数
+[10, 12, 26, 15].findIndex(function (item) {//用第二个参数时，回调不能是箭头函数
      return item > this.age;
 }, person);    // 2
 ```
@@ -46,7 +46,7 @@ const person = {name: 'John', age: 20};
 
 ```js
 
-Array.prototype.myFindIndex = function(callBack, context) {
+Array.prototype.myFindIndex = function (callBack, context) {
     for(var i = 0; i < this.length; i++) {	
 	if(callBack.call(context, this[i], i, this)) return i;
     }
@@ -56,7 +56,7 @@ Array.prototype.myFindIndex = function(callBack, context) {
     //若context值为undefined, 在非严格模式下指向windows
 };
 
-console.log([12, 5, 18, 44].myFindIndex(function(item) {
+console.log([12, 5, 18, 44].myFindIndex(function (item) {
      return item > 15;
 })); //2
 ```
@@ -74,7 +74,7 @@ Array.prototype.myFindLastIndex = function(callBack, context) {
     return -1;
 };
 
-console.log([12, 5, 18, 44].myFindLastIndex(function(item) {
+console.log([12, 5, 18, 44].myFindLastIndex(function (item) {
      return item > 15;
 })); //3
 ```
@@ -90,22 +90,20 @@ underscore 的思路就是利用传参的不同，返回不同的函数。这个
 让我们直接模仿 underscore 的实现：
 
 ```js
-function createIndexFinder(dir) {
-    return function(array, predicate, context) {
+Array.prototype.createIndexFinder = function (direction) {
+     direction = direction || 1;
+	
+     return function (callBack, context) {
+	  var i = direction > 0 ? 0 : this.length - 1;	
+	  for (; i >= 0 && i < this.length; i += direction) {	
+	        if(callBack.call(context, this[i], i, this)) return i;
+	  }
+	  return -1;
+     }
+};
 
-        var length = array.length;
-        var index = dir > 0 ? 0 : length - 1;
-
-        for (; index >= 0 && index < length; index += dir) {
-            if (predicate.call(context, array[index], index, array)) return index;
-        }
-
-        return -1;
-    }
-}
-
-var findIndex = createIndexFinder(1);
-var findLastIndex = createIndexFinder(-1);
+Array.prototype.myFindIndex = Array.prototype.createIndexFinder(1);
+Array.prototype.myFindLastIndex = Array.prototype.createIndexFinder(-1);
 ```
 
 
