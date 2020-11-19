@@ -172,7 +172,7 @@ Array.prototype.sortedIndex = function (obj, iteratee, context) {
     iteratee = cb(iteratee, context);
 
     var low = 0, 
-		high = this.length;
+	high = this.length;
 	
     while (low < high) {
         var mid = Math.floor((low + high) / 2);
