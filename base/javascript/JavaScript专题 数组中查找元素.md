@@ -148,7 +148,6 @@ console.log([10, 20, 30, 40, 50].sortedIndex(35)) // 3
 现在的方法虽然能用，但通用性不够，比如我们希望能处理这样的情况：
 
 ```js
-// stooges 配角 比如 三个臭皮匠 The Three Stooges
 var stooges = [{name: 'stooge1', age: 10}, {name: 'stooge2', age: 30}];
 
 var result = sortedIndex(stooges, {name: 'stooge3', age: 20}, function(stooge){
@@ -162,20 +161,22 @@ console.log(result) // 1
 
 ```js
 // 第二版
-function cb(fn, context) {
-    return function(obj) {
-        return fn ? fn.call(context, obj) : obj;
-    }
+function cb(func, context) {
+       if (context === void 0) return func;
+       return function() {
+           return func.apply(context, arguments);
+      };
 }
 
-function sortedIndex(array, obj, iteratee, context) {
+Array.prototype.sortedIndex = function (obj, iteratee, context) {
+    iteratee = cb(iteratee, context);
 
-    iteratee = cb(iteratee, context)
-
-    var low = 0, high = array.length;
+    var low = 0, 
+		high = this.length;
+	
     while (low < high) {
         var mid = Math.floor((low + high) / 2);
-        if (iteratee(array[mid]) < iteratee(obj)) low = mid + 1;
+        if (iteratee(this[mid]) < iteratee(obj)) low = mid + 1;
         else high = mid;
     }
     return high;
