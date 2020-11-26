@@ -5,9 +5,8 @@
 |窗口最大化、最小化（当前程序）|⌘ + Control + f|
 |关闭当前程序|⌘ + q|
 
-<br><br>
 
-## 谷歌浏览器
+## Chrome
 |操作|快捷键|
 |-----|-----|
 |打开新的标签页，并跳转到该标签页|⌘ + t|
@@ -37,3 +36,9 @@
 
 
 [learn more >>](https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&hl=zh-Hans)
+
+
+## Vscode
+|操作|快捷键|
+|-----|-----|
+||
