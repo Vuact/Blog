@@ -21,6 +21,7 @@
 |打开“历史记录”页|⌘ + y|
 |打开“开发者工具”|⌘ + Option + i|
 |打开 JavaScript 控制台|⌘ + Option + j|
+|打开书签管理器|⌘ + Option + b|
 |---------------------------|---------------------------|
 |搜索页面内容|⌘ + f|
 |搜索页面匹配的下一条内容|⌘ + g|
@@ -34,4 +35,4 @@
 |向上滚动网页，一次一个屏幕|Shift + 空格键|
 
 
-[learn](https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&hl=zh-Hans)
+[learn more >>](https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&hl=zh-Hans)
