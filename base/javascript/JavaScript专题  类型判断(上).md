@@ -190,15 +190,7 @@ function type(obj) {
 }
 ```
 
-# isFunction
 
-有了 type 函数后，我们可以对常用的判断直接封装，比如 isFunction:
-
-```js
-function isFunction(obj) {
-    return type(obj) === "function";
-}
-```
 
 # 数组
 
