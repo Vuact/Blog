@@ -96,11 +96,12 @@ Array.prototype.createIndexFinder = function (direction) {
      direction = direction || 1;
 	
      return function (callBack, context) {
-	  var i = direction > 0 ? 0 : this.length - 1;	
+          var arr = this;
+	  var i = direction > 0 ? 0 : arr.length - 1;	
 	  var step = direction > 0 ? 1 : -1;
 	  
-	  for (; i >= 0 && i < this.length; i += step) {	
-	        if(callBack.call(context, this[i], i, this)) return i;
+	  for (; i >= 0 && i < arr.length; i += step) {	
+	        if(callBack.call(context, arr[i], i, arr)) return i;
 	  }
 	  return -1;
      }
@@ -132,16 +133,17 @@ sortedIndex([10, 20, 30], 25); // 2
 ```js
 // 第一版
 Array.prototype.sortedIndex = function (obj) {
-	var low = 0, 
-	    high = this.length;
-	
-	while (low < high) {
-	      var mid = Math.floor((low + high) / 2);
-	      if(this[mid] < obj) low = mid + 1;
-	      else high = mid;
-	}
-	
-	return high;
+    var arr = this;
+    var low = 0, 
+        high = arr.length;
+
+    while (low < high) {
+      var mid = Math.floor((low + high) / 2);
+      if(arr[mid] < obj) low = mid + 1;
+      else high = mid;
+    }
+
+    return high;
 };
 
 console.log([10, 20, 30, 40, 50].sortedIndex(35)) // 3
