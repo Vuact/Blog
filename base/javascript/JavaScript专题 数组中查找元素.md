@@ -195,6 +195,7 @@ Array.prototype.sortedIndex = function (obj, iteratee, context) {
 sortedIndex 也完成了，现在我们尝试着去写一个 indexOf 和 lastIndexOf 函数，学习 findIndex 和 FindLastIndex 的方式，我们写一版：
 
 ```js
+// 第一版
 Array.prototype.createIndexOfFinder = function (director) {
   director = director || 1;
   return function (obj) {
@@ -235,30 +236,31 @@ console.log(result, result2); // 1 1
 
 ```js
 // 第二版
-function createIndexOfFinder(dir) {
+Array.prototype.createIndexOfFinder = function (dir) {
+  dir = dir || 1;
+  return function (obj, idx) {
+    var arr = this;
+    var step = dir > 0 ? 1 : -1;
+    var startIdx = 0,
+      length = arr.length;
 
-    return function(array, item, idx){
-        var length = array.length;
-        var i = 0;
-
-        if (typeof idx == "number") {
-            if (dir > 0) {
-                i = idx >= 0 ? idx : Math.max(length + idx, 0);
-            }
-            else {
-                length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
-            }
+    if (typeof idx == "number") {
+        if (dir > 0) {
+            startIdx = idx >= 0 ? idx : Math.max(length + idx, 0);
+        }else {
+            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
         }
-
-        for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
-            if (array[idx] === item) return idx;
-        }
-        return -1;
     }
-}
 
-var indexOf = createIndexOfFinder(1);
-var lastIndexOf = createIndexOfFinder(-1);
+    for (idx = dir > 0 ? startIdx : length - 1; idx >= 0 && idx < length; idx += step) {
+      if (obj === arr[idx]) return idx;
+    }
+    return -1;
+  };
+};
+
+Array.prototype.indexOf = Array.prototype.createIndexOfFinder(1);
+Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1);
 ```
 
 <br>
