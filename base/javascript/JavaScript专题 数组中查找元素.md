@@ -121,7 +121,7 @@ findIndex 和 findLastIndex 的需求算是结束了，但是又来了一个新�
 假设该函数命名为 sortedIndex，效果为：
 
 ```js
-sortedIndex([10, 20, 30], 25); // 2
+[10, 20, 30].sortedIndex(25); // 2
 ```
 
 也就是说如果，注意是如果，25 按照此下标插入数组后，数组变成 [10, 20, 25, 30]，数组依然是有序的状态。
@@ -154,7 +154,7 @@ console.log([10, 20, 30, 40, 50].sortedIndex(35)) // 3
 ```js
 var stooges = [{name: 'stooge1', age: 10}, {name: 'stooge2', age: 30}];
 
-var result = sortedIndex(stooges, {name: 'stooge3', age: 20}, function(stooge){
+var result = stooges.sortedIndex({name: 'stooge3', age: 20}, function(stooge){
     return stooge.age
 });
 
