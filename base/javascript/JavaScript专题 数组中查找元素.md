@@ -195,24 +195,27 @@ Array.prototype.sortedIndex = function (obj, iteratee, context) {
 sortedIndex 也完成了，现在我们尝试着去写一个 indexOf 和 lastIndexOf 函数，学习 findIndex 和 FindLastIndex 的方式，我们写一版：
 
 ```js
-// 第一版
-function createIndexOfFinder(dir) {
-    return function(array, item){
-        var length = array.length;
-        var index = dir > 0 ? 0 : length - 1;
-        for (; index >= 0 && index < length; index += dir) {
-            if (array[index] === item) return index;
-        }
-        return -1;
+Array.prototype.createIndexOfFinder = function (director) {
+  director = director || 1;
+  return function (obj) {
+    var arr = this;
+    var index = director > 0 ? 0 : arr.length - 1;
+    var step = director > 0 ? 1 : -1;
+
+    for (; index >= 0 && index < arr.length; index += step) {
+      if (obj === arr[index]) return index;
     }
-}
+    return -1;
+  };
+};
 
-var indexOf = createIndexOfFinder(1);
-var lastIndexOf = createIndexOfFinder(-1);
+Array.prototype.indexOf = Array.prototype.createIndexOfFinder(1);
+Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1);
 
-var result = indexOf([1, 2, 3, 4, 5], 2);
+var result = [1, 2, 3, 4, 5].indexOf(2);
+var result2 = [1, 2, 3, 4, 5].lastIndexOf(2);
 
-console.log(result) // 1
+console.log(result, result2); // 1 1
 ```
 
 <br>
