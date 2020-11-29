@@ -287,16 +287,16 @@ Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1);
 
 ```js
 // 第三版
-function createIndexOfFinder(dir, predicate) {
-
-    return function(array, item, idx){
-
+Array.prototype.createIndexOfFinder = (dir, predicate) {
+    dir = dir || 1;
+    return function(item, idx){
+	var arr = this;
         if () { ... }
 
         // 判断元素是否是 NaN
         if (item !== item) {
             // 在截取好的数组中查找第一个满足isNaN函数的元素的下标
-            idx = predicate(array.slice(i, length), isNaN)
+            idx = predicate(arr.slice(i, length), isNaN)
             return idx >= 0 ? idx + i: -1;
         }
 
@@ -304,8 +304,8 @@ function createIndexOfFinder(dir, predicate) {
     }
 }
 
-var indexOf = createIndexOfFinder(1, findIndex);
-var lastIndexOf = createIndexOfFinder(-1, findLastIndex);
+Array.prototype.indexOf = Array.prototype.createIndexOfFinder(1, findIndex);
+Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1, findLastIndex);
 ```
 
 第二个优化是支持对有序的数组进行更快的二分查找。
