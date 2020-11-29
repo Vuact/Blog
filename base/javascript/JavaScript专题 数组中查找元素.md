@@ -2,7 +2,7 @@
 
 在实现前，先看看 ES6 的 findIndex 方法，让大家了解 findIndex 的使用方法。
 
-# 1、findIndex
+# 1、ES6: findIndex
 
 ES6 对数组新增了 findIndex 方法，它会返回数组中满足提供的函数的第一个元素的索引，否则返回 -1。
 
@@ -63,7 +63,7 @@ console.log([12, 5, 18, 44].findIndex(function (item) {
 ```
 <br>
 
-# 2、findLastIndex
+# 2、ES6: findLastIndex
 
 findIndex 是正序查找，但正如 indexOf 还有一个对应的 lastIndexOf 方法，我们也想写一个倒序查找的 findLastIndex 函数。实现自然也很简单，只要修改下循环即可。
 
@@ -194,7 +194,7 @@ Array.prototype.sortedIndex = function (obj, iteratee, context) {
 
 sortedIndex 也完成了，现在我们尝试着去写一个 indexOf 和 lastIndexOf 函数，学习 findIndex 和 FindLastIndex 的方式，我们写一版：
 
-### 第一版：
+### （1）第一版：
 
 ```js
 // 第一版
@@ -224,7 +224,7 @@ console.log(result, result2); // 1 1
 <br>
 
 
-### 第二版
+### （2）第二版
 
 但是即使是数组的 indexOf 方法也可以多传递一个参数 fromIndex，从 MDN 中看到 fromIndex 的讲究可有点多：
 
@@ -267,7 +267,7 @@ Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1);
 
 <br>
 
-### 第三版
+### （3）第三版
 
 到此为止，已经很接近原生的 indexOf 函数了，但是 underscore 在此基础上还做了两点优化。
 
