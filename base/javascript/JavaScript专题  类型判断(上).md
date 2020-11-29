@@ -1,32 +1,15 @@
 类型判断在 web 开发中有非常广泛的应用，简单的有判断数字还是字符串，进阶一点的有判断数组还是对象，再进阶一点的有判断日期、正则、错误类型，再再进阶一点还有比如判断 plainObject、空对象、Window 对象等等。
 
-以上都会讲，今天是上半场。
 
-## typeof
+# typeof
 
-我们最最常用的莫过于 typeof，注意，尽管我们会看到诸如：
+JavaScript 共六种数据类型，分别是：
 
-```js
-console.log(typeof('yayu')) // string
-```
-
-的写法，但是 typeof 可是一个正宗的运算符，就跟加减乘除一样！这就能解释为什么下面这种写法也是可行的：
-
-```js
-console.log(typeof 'yayu') // string
-```
-
-引用《JavaScript权威指南》中对 typeof 的介绍：
-
->typeof 是一元操作符，放在其单个操作数的前面，操作数可以是任意类型。返回值为表示操作数类型的一个字符串。
-
-那我们都知道，在 ES6 前，JavaScript 共六种数据类型，分别是：
-
-Undefined、Null、Boolean、Number、String、Object 
+Undefined、Null、Boolean、Number、String、Symbol、Object 
 
 然而当我们使用 typeof 对这些数据类型的值进行操作的时候，返回的结果却不是一一对应，分别是：
 
-undefined、object、boolean、number、string、object 
+undefined、object、boolean、number、string、symbol、object 
 
 注意以上都是小写的字符串。Null 和 Object 类型都返回了 object 字符串。
 
@@ -51,7 +34,9 @@ console.log(typeof error); // object
 
 返回的都是 object 呐，这可怎么区分~ 所以有没有更好的方法呢？
 
-## Obejct.prototype.toString
+<br>
+
+# Obejct.prototype.toString
 
 是的，当然有！这就是 Object.prototype.toString！
 
@@ -151,7 +136,9 @@ a();
 
 所以我们可以识别至少 14 种类型，当然我们也可以算出来，[[class]] 属性至少有 12 个。
 
-## type API
+<br>
+
+# type API
 
 既然有了 Object.prototype.toString 这个神器！那就让我们写个 type 函数帮助我们以后识别各种类型的值吧！
 
@@ -203,7 +190,7 @@ function type(obj) {
 }
 ```
 
-## isFunction
+# isFunction
 
 有了 type 函数后，我们可以对常用的判断直接封装，比如 isFunction:
 
@@ -213,7 +200,7 @@ function isFunction(obj) {
 }
 ```
 
-## 数组
+# 数组
 
 jQuery 判断数组类型，旧版本是通过判断 Array.isArray 方法是否存在，如果存在就使用该方法，不存在就使用 type 函数。
 
