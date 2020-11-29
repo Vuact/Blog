@@ -308,6 +308,7 @@ Array.prototype.indexOf = Array.prototype.createIndexOfFinder(1, findIndex);
 Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1, findLastIndex);
 ```
 
+### （4）第四版
 第二个优化是支持对有序的数组进行更快的二分查找。
 
 如果 indexOf 第三个参数不传开始搜索的下标值，而是一个布尔值 true，就认为数组是一个排好序的数组，这时候，就会采用更快的二分法进行查找，这个时候，可以利用我们写的 sortedIndex 函数。
