@@ -198,12 +198,12 @@ sortedIndex 也完成了，现在我们尝试着去写一个 indexOf 和 lastInd
 
 ```js
 // 第一版
-Array.prototype.createIndexOfFinder = function (director) {
-  director = director || 1;
+Array.prototype.createIndexOfFinder = function (dir) {
+  dir = dir || 1;
   return function (obj) {
     var arr = this;
-    var index = director > 0 ? 0 : arr.length - 1;
-    var step = director > 0 ? 1 : -1;
+    var index = dir > 0 ? 0 : arr.length - 1;
+    var step = dir > 0 ? 1 : -1;
 
     for (; index >= 0 && index < arr.length; index += step) {
       if (obj === arr[index]) return index;
@@ -239,22 +239,20 @@ console.log(result, result2); // 1 1
 ```js
 // 第二版
 Array.prototype.createIndexOfFinder = function (dir) {
-  dir = dir || 1;
   return function (obj, idx) {
     var arr = this;
-    var step = dir > 0 ? 1 : -1;
-    var startIdx = 0,
+    var i = 0,
       length = arr.length;
 
     if (typeof idx == "number") {
         if (dir > 0) {
-            startIdx = idx >= 0 ? idx : Math.max(length + idx, 0);
+            i = idx >= 0 ? idx : Math.max(length + idx, 0);
         }else {
             length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
         }
     }
 
-    for (idx = dir > 0 ? startIdx : length - 1; idx >= 0 && idx < length; idx += step) {
+    for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
       if (obj === arr[idx]) return idx;
     }
     return -1;
@@ -288,7 +286,6 @@ Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1);
 ```js
 // 第三版
 Array.prototype.createIndexOfFinder = function (dir, predicate) {
-    dir = dir || 1;
     return function(item, idx){
 	var arr = this;
         if () { ... }
