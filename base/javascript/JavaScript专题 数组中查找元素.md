@@ -194,6 +194,8 @@ Array.prototype.sortedIndex = function (obj, iteratee, context) {
 
 sortedIndex 也完成了，现在我们尝试着去写一个 indexOf 和 lastIndexOf 函数，学习 findIndex 和 FindLastIndex 的方式，我们写一版：
 
+### 第一版：
+
 ```js
 // 第一版
 Array.prototype.createIndexOfFinder = function (director) {
@@ -222,7 +224,7 @@ console.log(result, result2); // 1 1
 <br>
 
 
-## fromIndex
+### 第二版
 
 但是即使是数组的 indexOf 方法也可以多传递一个参数 fromIndex，从 MDN 中看到 fromIndex 的讲究可有点多：
 
@@ -265,7 +267,7 @@ Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1);
 
 <br>
 
-## 优化
+### 第三版
 
 到此为止，已经很接近原生的 indexOf 函数了，但是 underscore 在此基础上还做了两点优化。
 
