@@ -287,7 +287,7 @@ Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1);
 
 ```js
 // 第三版
-Array.prototype.createIndexOfFinder = (dir, predicate) {
+Array.prototype.createIndexOfFinder = function (dir, predicate) {
     dir = dir || 1;
     return function(item, idx){
 	var arr = this;
@@ -316,9 +316,9 @@ Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1, findLastIn
 
 ```js
 // 第四版
-function createIndexOfFinder(dir, predicate, sortedIndex) {
-
-    return function(array, item, idx){
+Array.prototype.createIndexOfFinder = function (dir, predicate, sortedIndex) {
+    return function(item, idx){
+    	var array = this;
         var length = array.length;
         var i = 0;
 
@@ -329,8 +329,7 @@ function createIndexOfFinder(dir, predicate, sortedIndex) {
             else {
                 length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
             }
-        }
-        else if (sortedIndex && idx && length) {
+        }else if (sortedIndex && idx && length) {
             idx = sortedIndex(array, item);
             // 如果该插入的位置的值正好等于元素的值，说明是第一个符合要求的值
             return array[idx] === item ? idx : -1;
@@ -349,8 +348,8 @@ function createIndexOfFinder(dir, predicate, sortedIndex) {
     }
 }
 
-var indexOf = createIndexOfFinder(1, findIndex, sortedIndex);
-var lastIndexOf = createIndexOfFinder(-1, findLastIndex);
+Array.prototype.indexOf = Array.prototype.createIndexOfFinder(1, findIndex, sortedIndex);
+Array.prototype.lastIndexOf = Array.prototype.createIndexOfFinder(-1, findLastIndex);
 ```
 
 值得注意的是：在 underscore 的实现中，只有 indexOf 是支持有序数组使用二分查找，lastIndexOf 并不支持。
