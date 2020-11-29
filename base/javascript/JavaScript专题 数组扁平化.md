@@ -26,13 +26,13 @@ console.log(flatten(arr)) // [1, 2, 3, 4]
 ```js
 var arr = [1, [2, [3, 4]]];
 
-function flatten(arr) {
+function flatter(arr) {
     return arr.toString().split(',').map(function(item){
         return +item
     })
 }
 
-console.log(flatten(arr))
+console.log(flatter(arr))
 ```
 
 然而这种方法使用的场景却非常有限，如果数组是 [1, '1', 2, '2'] 的话，这种方法就会产生错误的结果。
@@ -44,24 +44,24 @@ console.log(flatten(arr))
 我们最一开始能想到的莫过于循环数组元素，如果还是一个数组，就递归调用该方法：
 
 ```js
-var arr = [1, [2, [3, 4]]];
+var arr = [1, ["2", [3, 4]]];
 
-function flatten(arr) {
-    let res = [];
-    
-    arr.forEach(item => {
-        if (Array.isArray(item)) {
-            res = res.concat(flatten(item));
-        } else {
-            res.push(item);
-        }
-    });
-    
-    return res;
+function flatter(arr) {
+  var res = [];
+
+  arr.forEach((item) => {
+    if (Array.isArray(item)) {
+      res = res.concat(flatter(item));
+    } else {
+      res.push(item);
+    }
+  });
+
+  return res;
 }
 
+console.log(flatter(arr));
 
-console.log(flatten(arr))
 ```
 
 <br>
@@ -78,13 +78,13 @@ console.log(flatten(arr))
 ```js
 var arr = [1, [2, [3, 4]]];
 
-function flatten(arr) {
+function flatter(arr) {
    return arr.reduce((prev, item) => {
         return prev.concat(Array.isArray(item) ? flatten(item) : item);
    }, []);
 }
 
-console.log(flatten(arr))
+console.log(flatter(arr))
 ```
 
 reduce的说明及使用请参考：[狠狠戳我](https://blog.csdn.net/b954960630/article/details/81432881)
