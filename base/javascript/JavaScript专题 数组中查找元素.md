@@ -47,8 +47,9 @@ const person = {name: 'John', age: 20};
 ```js
 
 Array.prototype.findIndex = function (callBack, context) {
-    for(var i = 0; i < this.length; i++) {	
-	if(callBack.call(context, this[i], i, this)) return i;
+    var arr = this;
+    for(var i = 0; i < arr.length; i++) {	
+	if(callBack.call(context, arr[i], i, arr)) return i;
     }
     return -1;
 	
@@ -68,8 +69,9 @@ findIndex 是正序查找，但正如 indexOf 还有一个对应的 lastIndexOf 
 
 ```js
 Array.prototype.findLastIndex = function(callBack, context) {
-    for(var i = this.length - 1; i >= 0; i--) {	
-	if(callBack.call(context, this[i], i, this)) return i;
+    var arr = this;
+    for(var i = arr.length - 1; i >= 0; i--) {	
+	if(callBack.call(context, arr[i], i, arr)) return i;
     }
     return -1;
 };
