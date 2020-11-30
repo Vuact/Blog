@@ -23,12 +23,12 @@ js数据类型分两大类
 
 ```js
 //（1）标准类型
-typeof null;	  //object
-typeof undefined; //undefined
-typeof true;	  //boolean
-typeof 12;        //number
-typeof "bty";     //string
-typeof Symbol();   //"symbol"
+typeof null;	     //object
+typeof undefined;    //undefined
+typeof true;	     //boolean
+typeof 12;           //number
+typeof "bty";        //string
+typeof Symbol();     //symbol
 typeof {name:'bty'}; //object
 
 
@@ -184,6 +184,7 @@ var string = '123';      // [object String]
 var boolean = true;      // [object Boolean]
 var und = undefined;     // [object Undefined]
 var nul = null;          // [object Null]
+var symbol = Symbol(); // [object Symbol]
 
 
 //（2）可以识别 内置对象 类型
@@ -205,7 +206,7 @@ function checkType() {
         console.log(Object.prototype.toString.call(arguments[i]))
     }
 }
-checkType(number, string, boolean, und, nul, obj, array, date, error, reg, func, sam, Person, sam2);
+checkType(number, string, boolean, und, nul, symbol, obj, array, date, error, reg, func, sam, Person, sam2);
 ```
 
 ```js
