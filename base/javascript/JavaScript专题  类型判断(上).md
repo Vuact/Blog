@@ -1,3 +1,211 @@
+js数据类型分两大类
+
+- 简单类型：Number、String、Boolean、Null、Undefined、Symbol
+- 复杂类型：Object
+
+从内存的角度讲：简单类型存储在栈中，复杂数据类型存储在堆中。
+
+
+类型识别四种方法：
+
+ - typeof 
+ - instanceof
+ - constructor
+ - Object.prototype.toString.call()
+
+注：检测数组用	Array.isArray()
+
+<br><br>
+
+# 一、typeof
+- 可以识别标准类型(Null除外)
+- 不能识别 内置对象 类型(Function除外)
+- 不能识别自定义类型及父子关系
+
+```js
+//（1）标准类型
+typeof "bty"; 		//string
+typeof 12;			//number
+typeof true;		//boolean
+typeof undefined;	//undefined
+typeof null;		//object
+typeof {name:'bty'};//object
+
+//（2）内置对象类型
+typeof function(){}	//function
+typeof [];			//object
+typeof new Date;	//object
+typeof	/\d/;		//object
+
+//（3）自定义对象类型
+function Person(){};
+typeof new Person;  //object
+```
+
+<br><br>
+
+# 二、instanceof
+
+- 不能判断标准类型 
+- 能判断内置对象类型
+- 能判断自定义对象类型及父子关系（原型链）
+
+```js
+//（1）不能判断标准类型
+1 instanceof Number;	//false
+"bty" instanceof String //false
+
+//（2）能判断内置对象类型
+[] instanceof Array;	//true
+/\d/ instanceof RegExp;	//true
+
+//（3）能判断自定义对象类型及父子关系
+function Point(x,y){
+	this.x = x;
+	this.y = y;
+}
+function Circle(x,y,r){
+	Point.call(this,x,y);
+	this.radius = r;
+}
+Circle.prototype = new Point();
+Circle.prototype.constructor = Circle;
+
+var c = new Circle(1,1,2);
+c instanceof Object; //true
+c instanceof Circle 	//true
+c instanceof Point		//true
+```
+
+>注：对于判别是否为一个数组，比较好的方式是用Array.isArray()
+
+<br><br>
+
+# 三、constructor
+
+- 可以识别标准类型(Undefined/Null除外)
+- 可以识别内置对象类型
+- 可以识别自定义对象类型，不能识别父子关系
+
+缺点：不能识别Undefined/Null，不能检测祖先类型，
+			若完全重写prototype，自定义对象类型会无法识
+```js
+//（1）可以识别标准类型(Undefined/Null除外)
+"bty".constructor === String;    //true
+(1).constructor === Number;		 //true
+true.constructor === Boolean;    //true
+({}).constructor === Object;     //true
+
+//（2）可以识别内置对象类型
+[].constructor === Array;		//true
+{}.constructor === Object;		//true
+[].constructor === Object; //false  //说明不能识别继承关系
+
+//（3）可以识别自定义对象类型，不能识别父子关系
+function Person(name){
+	this.name = name;
+}
+new Person('bty').constructor === Person; //true
+new Person('bty').constructor === Object; //false
+
+	//自定义对象,重写prototype的部分属性
+	function Person(name){
+	    this.name = name;
+	}
+	Person.prototype.sayHello = function(){};
+	new Person('bty').constructor === Person; //true
+	
+	//自定义对象,完全重写prototype，会无法识别
+	function Person(name){
+	    this.name = name;
+	}
+	Person.prototype={};
+	new Person('bty').constructor === Person; //false
+```
+将constructor进行下封装:
+```js
+//将constructor进行下封装
+function getConstructorName(obj){
+	return obj && obj.constructor && obj.constructor.toString().match(/function\s*([^(]*)/)[1];
+}
+getContructorName([]) === "Array"; //true
+```
+
+<br><br>
+
+# 四、Object.prototype.toString.call()
+
+- 可以识别标准类型
+- 可以识别 内置对象 类型 
+- 不能识别自定义对象类型及父子关系
+
+ `Object.prototype.toString.call()` 方法，用`{}.toString.call()`也OK~
+```js
+//（1）可以识别标准类型
+console.log({}.toString.call(null));//[object Null]
+console.log(Object.prototype.toString.call(null));//[object Null]
+console.log({}.toString.call(undefined));//[object Undefined]
+console.log({}.toString.call(1));//[object Number]
+console.log({}.toString.call('ss'));//[object String]
+console.log({}.toString.call(true));//[object Boolean]
+
+//（2）可以识别 内置对象 类型
+console.log({}.toString.call(new Boolean(null)));//[object Boolean]
+console.log(new Boolean(null) instanceof Object);//true
+console.log(new Boolean(null) instanceof Boolean);//true
+
+console.log({}.toString.call(function(){}));//[object Function]
+console.log({}.toString.call([]));//[object Array]
+console.log({}.toString.call(new Date()));//[object Date]
+console.log({}.toString.call(new Error()));//[object Error]
+
+//（3）不能识别自定义对象类型及父子关系
+var o = {};
+var sam = Object.create(o);
+console.log({}.toString.call(sam));//[object Object]
+
+function Person(){}
+var sam2 = new Person();
+console.log({}.toString.call(sam2));   //[object Object]
+console.log({}.toString.call(Person));//[object Function]
+
+```
+
+也可以将Object.prototype.toString.call()进行下封装，如下：
+```
+//将Object.prototype.toString进行下封装
+function type(obj){
+	rerturn Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+}
+//标准类型
+type("abb");		//string
+type(1);			//number
+type(true);			//boolean
+type(undefined);	//undefined
+type(null);			//null
+type({});			//object
+
+//内置对象类型
+type([]);			//array
+type(new Date);		//date
+type(/\d/);			//regexp
+type(function(){});	//function
+
+//自定义类型
+function Point(x,y){
+	this.x = x;
+	this.y = y;
+}
+type(new Point(1,2));//object
+
+```
+
+--------
+
+
+----------
+
+
 类型判断在 web 开发中有非常广泛的应用，简单的有判断数字还是字符串，进阶一点的有判断数组还是对象，再进阶一点的有判断日期、正则、错误类型，再再进阶一点还有比如判断 plainObject、空对象、Window 对象等等。
 
 
