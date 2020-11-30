@@ -308,7 +308,7 @@ var isArray = Array.isArray || function( obj ) {
 
 ## 1、EmptyObject
 
-jQuery提供了 isEmptyObject 方法来判断是否是空对象，代码简单，我们直接看源码：
+jQuery提供了 isEmptyObject 方法来判断是否为空对象，代码简单，我们直接看源码：
 
 ```js
 function isEmptyObject( obj ) {
@@ -319,17 +319,11 @@ function isEmptyObject( obj ) {
     }
     return true;
 }
-```
 
-其实所谓的 isEmptyObject 就是判断是否有属性，for 循环一旦执行，就说明有属性，有属性就会返回 false。
-
-但是根据这个源码我们可以看出isEmptyObject实际上判断的并不仅仅是空对象。
-
-举个栗子：
-
-```js
 console.log(isEmptyObject({})); // true
 console.log(isEmptyObject([])); // true
+
+//但是根据这个源码我们可以看出isEmptyObject实际上判断的并不仅仅是空对象。
 console.log(isEmptyObject(null)); // true
 console.log(isEmptyObject(undefined)); // true
 console.log(isEmptyObject(1)); // true
@@ -337,9 +331,26 @@ console.log(isEmptyObject('')); // true
 console.log(isEmptyObject(true)); // true
 ```
 
-以上都会返回 true。
+其实所谓的 isEmptyObject 就是判断是否有属性，for 循环一旦执行，就说明有属性，有属性就会返回 false。
 
-但是既然 jQuery 是这样写，可能是因为考虑到实际开发中 isEmptyObject 用来判断 {} 和 {a: 1} 是足够的吧。如果真的是只判断 {}，完全可以结合上篇写的 type 函数筛选掉不适合的情况。
+<br>
+
+#### 不建议使用Object.keys()方法来判断是否为空对象：
+
+因为for in 还会遍历原型上的属性，而Object.keys()不会。
+```js
+function isEmptyObject2(obj) {
+  return !!obj ? Object.keys(obj).length === 0 : true;
+}
+
+function Person() {}
+Person.prototype.name = "111";
+var person = new Person();
+
+console.log(isEmptyObject(person)); //false
+console.log(isEmptyObject2(person));//true
+```
+>注：用 !! 是做强制类型转换，将值转换为布尔值。
 
 <br>
 
@@ -376,6 +387,8 @@ function isArrayLike(obj) {
         typeof length === "number" && length > 0 && (length - 1) in obj;
 }
 ```
+>注：用 !! 是做强制类型转换，将值转换为布尔值。
+
 
 重点分析 return 这一行，使用了或语句，只要一个为 true，结果就返回 true。
 
