@@ -56,7 +56,7 @@ function Person(){};
 typeof new Person;  //object
 ```
 
-<br><br>
+<br>
 
 # 2、instanceof
 
@@ -101,7 +101,7 @@ c instanceof Point	//true
 
 >注：对于判别是否为一个数组，比较好的方式是用Array.isArray()
 
-<br><br>
+<br>
 
 # 3、constructor
 
@@ -158,7 +158,7 @@ function getConstructorName(obj){
 getContructorName([]) === "Array"; //true
 ```
 
-<br><br>
+<br>
 
 # 4、Object.prototype.toString.call()
 
@@ -344,7 +344,7 @@ console.log(isEmptyObject(true)); // true
 
 但是既然 jQuery 是这样写，可能是因为考虑到实际开发中 isEmptyObject 用来判断 {} 和 {a: 1} 是足够的吧。如果真的是只判断 {}，完全可以结合上篇写的 type 函数筛选掉不适合的情况。
 
-<br><br>
+<br>
 
 ## 2、Window对象
 
@@ -459,7 +459,7 @@ var isArrayLike = function(collection) {
 };
 ```
 
-<br><br>
+<br>
 
 ## 4、isElement
 
