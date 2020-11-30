@@ -23,11 +23,12 @@ js数据类型分两大类
 
 ```js
 //（1）标准类型
-typeof "bty";    //string
-typeof 12;       //number
-typeof true;	  //boolean
-typeof undefined; //undefined
 typeof null;	  //object
+typeof undefined; //undefined
+typeof true;	  //boolean
+typeof 12;        //number
+typeof "bty";     //string
+typeof Symbol();   //"symbol"
 typeof {name:'bty'}; //object
 
 
