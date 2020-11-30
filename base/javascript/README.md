@@ -21,6 +21,7 @@
 - 深入JavaScript 赋值后的内存分布.md
 
 ### JavaScript专题
+- JavaScript专题 类型判断.md
 - JavaScript专题 防抖.md
 - JavaScript专题 节流.md
 - JavaScript专题 数组扁平化.md
