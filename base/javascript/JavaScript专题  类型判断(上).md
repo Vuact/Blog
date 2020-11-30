@@ -24,18 +24,18 @@ js数据类型分两大类
 
 ```js
 //（1）标准类型
-typeof "bty"; 		//string
-typeof 12;			//number
-typeof true;		//boolean
-typeof undefined;	//undefined
-typeof null;		//object
-typeof {name:'bty'};//object
+typeof "bty";    //string
+typeof 12;       //number
+typeof true;	  //boolean
+typeof undefined; //undefined
+typeof null;	  //object
+typeof {name:'bty'}; //object
 
 //（2）内置对象类型
-typeof function(){}	//function
-typeof [];			//object
-typeof new Date;	//object
-typeof	/\d/;		//object
+typeof function(){}   //function
+typeof [];	      //object  
+typeof new Date;      //object
+typeof	/\d/;	      //object
 
 //（3）自定义对象类型
 function Person(){};
@@ -58,23 +58,25 @@ typeof new Person;  //object
 //（2）能判断内置对象类型
 [] instanceof Array;	//true
 /\d/ instanceof RegExp;	//true
+new Boolean(null) instanceof Object; //true
+new Boolean(null) instanceof Boolean; //true
 
 //（3）能判断自定义对象类型及父子关系
 function Point(x,y){
-	this.x = x;
-	this.y = y;
+    this.x = x;
+    this.y = y;
 }
 function Circle(x,y,r){
-	Point.call(this,x,y);
-	this.radius = r;
+    Point.call(this,x,y);
+    this.radius = r;
 }
 Circle.prototype = new Point();
 Circle.prototype.constructor = Circle;
 
 var c = new Circle(1,1,2);
-c instanceof Object; //true
+c instanceof Object;    //true
 c instanceof Circle 	//true
-c instanceof Point		//true
+c instanceof Point	//true
 ```
 
 >注：对于判别是否为一个数组，比较好的方式是用Array.isArray()
@@ -92,41 +94,42 @@ c instanceof Point		//true
 ```js
 //（1）可以识别标准类型(Undefined/Null除外)
 "bty".constructor === String;    //true
-(1).constructor === Number;		 //true
+(1).constructor === Number;      //true
 true.constructor === Boolean;    //true
 ({}).constructor === Object;     //true
 
 //（2）可以识别内置对象类型
-[].constructor === Array;		//true
-{}.constructor === Object;		//true
+[].constructor === Array;   //true
+{}.constructor === Object;  //true
 [].constructor === Object; //false  //说明不能识别继承关系
 
 //（3）可以识别自定义对象类型，不能识别父子关系
 function Person(name){
-	this.name = name;
+   this.name = name;
 }
 new Person('bty').constructor === Person; //true
 new Person('bty').constructor === Object; //false
 
-	//自定义对象,重写prototype的部分属性
-	function Person(name){
-	    this.name = name;
-	}
-	Person.prototype.sayHello = function(){};
-	new Person('bty').constructor === Person; //true
-	
-	//自定义对象,完全重写prototype，会无法识别
-	function Person(name){
-	    this.name = name;
-	}
-	Person.prototype={};
-	new Person('bty').constructor === Person; //false
+//自定义对象,重写prototype的部分属性
+function Person(name){
+    this.name = name;
+}
+Person.prototype.sayHello = function(){};
+new Person('bty').constructor === Person; //true
+
+//自定义对象,完全重写prototype，会无法识别
+function Person(name){
+    this.name = name;
+}
+Person.prototype={};
+new Person('bty').constructor === Person; //false
 ```
 将constructor进行下封装:
+
 ```js
 //将constructor进行下封装
 function getConstructorName(obj){
-	return obj && obj.constructor && obj.constructor.toString().match(/function\s*([^(]*)/)[1];
+     return obj && obj.constructor && obj.constructor.toString().match(/function\s*([^(]*)/)[1];
 }
 getContructorName([]) === "Array"; //true
 ```
@@ -142,62 +145,58 @@ getContructorName([]) === "Array"; //true
  `Object.prototype.toString.call()` 方法，用`{}.toString.call()`也OK~
 ```js
 //（1）可以识别标准类型
-console.log({}.toString.call(null));//[object Null]
 console.log(Object.prototype.toString.call(null));//[object Null]
-console.log({}.toString.call(undefined));//[object Undefined]
-console.log({}.toString.call(1));//[object Number]
-console.log({}.toString.call('ss'));//[object String]
-console.log({}.toString.call(true));//[object Boolean]
+console.log({}.toString.call(null));//[object Null]
+console.log(Object.prototype.toString.call(undefined));//[object Undefined]
+console.log(Object.prototype.toString.call(1));//[object Number]
+console.log(Object.prototype.toString.call('ss'));//[object String]
+console.log(Object.prototype.toString.call(true));//[object Boolean]
 
 //（2）可以识别 内置对象 类型
-console.log({}.toString.call(new Boolean(null)));//[object Boolean]
-console.log(new Boolean(null) instanceof Object);//true
-console.log(new Boolean(null) instanceof Boolean);//true
-
-console.log({}.toString.call(function(){}));//[object Function]
-console.log({}.toString.call([]));//[object Array]
-console.log({}.toString.call(new Date()));//[object Date]
-console.log({}.toString.call(new Error()));//[object Error]
+console.log(Object.prototype.toString.call(new Boolean(null)));//[object Boolean]
+console.log(Object.prototype.toString.call(function(){}));//[object Function]
+console.log(Object.prototype.toString.call([]));//[object Array]
+console.log(Object.prototype.toString.call(new Date()));//[object Date]
+console.log(Object.prototype.toString.call(new Error()));//[object Error]
 
 //（3）不能识别自定义对象类型及父子关系
 var o = {};
 var sam = Object.create(o);
-console.log({}.toString.call(sam));//[object Object]
+console.log(Object.prototype.toString.call(sam));//[object Object]
 
 function Person(){}
 var sam2 = new Person();
-console.log({}.toString.call(sam2));   //[object Object]
-console.log({}.toString.call(Person));//[object Function]
-
+console.log(Object.prototype.toString.call(sam2));   //[object Object]
+console.log(Object.prototype.toString.call(Person));//[object Function]
 ```
 
 也可以将Object.prototype.toString.call()进行下封装，如下：
 ```
 //将Object.prototype.toString进行下封装
 function type(obj){
-	rerturn Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+  return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
 }
 //标准类型
-type("abb");		//string
-type(1);			//number
-type(true);			//boolean
-type(undefined);	//undefined
-type(null);			//null
-type({});			//object
+type("abb");	//string
+type(1);	//number
+type(true);	//boolean
+type(undefined);//undefined
+type(null);     //null
+type({});	//object
 
 //内置对象类型
-type([]);			//array
-type(new Date);		//date
-type(/\d/);			//regexp
-type(function(){});	//function
+type([]);	    //array
+type(new Date);	    //date
+type(/\d/);	    //regexp
+type(function(){}); //function
 
 //自定义类型
 function Point(x,y){
-	this.x = x;
-	this.y = y;
+    this.x = x;
+    this.y = y;
 }
-type(new Point(1,2));//object
 
+type(new Point(1,2));//object
 ```
 
 --------
@@ -206,43 +205,7 @@ type(new Point(1,2));//object
 ----------
 
 
-类型判断在 web 开发中有非常广泛的应用，简单的有判断数字还是字符串，进阶一点的有判断数组还是对象，再进阶一点的有判断日期、正则、错误类型，再再进阶一点还有比如判断 plainObject、空对象、Window 对象等等。
 
-
-# typeof
-
-JavaScript 共六种数据类型，分别是：
-
-Undefined、Null、Boolean、Number、String、Symbol、Object 
-
-然而当我们使用 typeof 对这些数据类型的值进行操作的时候，返回的结果却不是一一对应，分别是：
-
-undefined、object、boolean、number、string、symbol、object 
-
-注意以上都是小写的字符串。Null 和 Object 类型都返回了 object 字符串。
-
-尽管不能一一对应，但是 typeof 却能检测出函数类型：
-
-```js
-function a() {}
-
-console.log(typeof a); // function
-```
-
-所以 typeof 能检测出六种类型的值，但是，除此之外 Object 下还有很多细分的类型呐，如 Array、Function、Date、RegExp、Error 等。
-
-如果用 typeof 去检测这些类型，举个例子：
-
-```js
-var date = new Date();
-var error = new Error();
-console.log(typeof date); // object
-console.log(typeof error); // object
-```
-
-返回的都是 object 呐，这可怎么区分~ 所以有没有更好的方法呢？
-
-<br>
 
 # Obejct.prototype.toString
 
