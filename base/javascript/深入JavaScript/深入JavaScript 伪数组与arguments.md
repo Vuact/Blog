@@ -115,7 +115,7 @@ foo('name', 'age', 'sex')
 
 我们可以看到除了类数组的索引属性和length属性之外，还有一个callee属性，接下来我们一个一个介绍。
 
-### 1、length属性
+## 1、length属性
 
 Arguments对象的length属性，表示实参的长度，举个例子：
 
@@ -134,7 +134,7 @@ foo(1)
 
 <br>
 
-### 2、callee属性
+## 2、callee属性
 
 Arguments 对象的 callee 属性，通过它可以调用函数自身。
 
@@ -161,7 +161,7 @@ data[2]();
 <br>
 
 
-### 3、arguments 对象的几个注意要点
+## 3、arguments 对象的几个注意要点
 #### （1）arguments 和对应参数的联动
 
 ```js
@@ -232,7 +232,9 @@ function func(...arguments) {
 func(1, 2, 3);
 ```
 
-### 4、应用
+<br>
+
+## 4、应用
 
 arguments的应用其实很多
 
