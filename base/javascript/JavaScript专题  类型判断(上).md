@@ -6,9 +6,9 @@ js数据类型分两大类
 从内存的角度讲：简单类型存储在栈中，复杂数据类型存储在堆中。
 
 ------
-<br>
+#### 目录
 
-##### 一、类型判断的方法：
+##### 一、类型判断的方法
 
  - typeof 
  - instanceof
@@ -16,13 +16,14 @@ js数据类型分两大类
  - Object.prototype.toString.call()
  - Array.isArray()
  
-<br>
+##### 二、类型判断进阶
 
-##### 二、类型判断进阶：
 - EmptyObject
 - Window对象
 - isArrayLike
 - isElement
+
+------
 
 <br>
 
@@ -187,7 +188,6 @@ console.log(Object.prototype.toString.call(date)) // [object Date]
 
 由此我们可以看到这个 class 值就是识别对象类型的关键！我们可以用 Object.prototype.toString 方法识别出更多类型！
 
-<br>
 
 ## 4.1、优缺点：
 
@@ -236,7 +236,6 @@ function a() {
 }
 a();
 ```
-<br>
 
 ## 4.2、type API
 
@@ -313,14 +312,12 @@ jQuery提供了 isEmptyObject 方法来判断是否是空对象，代码简单�
 
 ```js
 function isEmptyObject( obj ) {
-
-        var name;
-
-        for ( name in obj ) {
-            return false;
-        }
-
-        return true;
+    var name;
+    
+    for ( name in obj ) {
+       return false;
+    }
+    return true;
 }
 ```
 
@@ -348,7 +345,7 @@ console.log(isEmptyObject(true)); // true
 
 ## 2、Window对象
 
-Window 对象作为客户端 JavaScript 的全局对象，它有一个 window 属性指向自身，这点在[《JavaScript深入之变量对象》](https://github.com/mqyqingfeng/Blog/issues/5)中讲到过。我们可以利用这个特性判断是否是 Window 对象。
+Window 对象作为客户端 JavaScript 的全局对象，它有一个 window 属性指向自身。我们可以利用这个特性判断是否是 Window 对象。
 
 ```js
 function isWindow( obj ) {
