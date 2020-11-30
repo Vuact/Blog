@@ -5,8 +5,9 @@ js数据类型分两大类
 
 从内存的角度讲：简单类型存储在栈中，复杂数据类型存储在堆中。
 
+<br>
 
-类型判断的方法：
+##### 类型判断的方法：
 
  - typeof 
  - instanceof
@@ -14,7 +15,7 @@ js数据类型分两大类
  - Object.prototype.toString.call()
  - Array.isArray()
 
-<br><br>
+<br>
 
 # 一、typeof
 - 可以识别标准类型(Null除外)
@@ -48,6 +49,8 @@ typeof new Person;  //object
 
 # 二、instanceof
 
+instanceof是沿着原型链来查找的。
+
 - 不能判断标准类型 
 - 能判断内置对象类型
 - 能判断自定义对象类型及父子关系（原型链）
@@ -60,7 +63,9 @@ typeof new Person;  //object
 
 //（2）能判断内置对象类型
 [] instanceof Array;	//true
+[] instanceof Object;   //true
 /\d/ instanceof RegExp;	//true
+/\d/ instanceof Object; //true
 new Boolean(null) instanceof Object; //true
 new Boolean(null) instanceof Boolean; //true
 
