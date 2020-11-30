@@ -138,37 +138,70 @@ getContructorName([]) === "Array"; //true
 
 # 四、Object.prototype.toString.call()
 
+
+当 toString 方法被调用的时候，下面的步骤会被执行：
+
+1. 如果 this 值是 undefined，就返回 [object Undefined]
+2. 如果 this 的值是 null，就返回 [object Null]
+3. 让 O 成为 ToObject(this) 的结果
+4. 让 class 成为 O 的内部属性 [[Class]] 的值
+5. 最后返回由 "[object " 和 class 和 "]" 三个部分组成的字符串
+
+通过规范，我们至少知道了调用 Object.prototype.toString 会返回一个由 "[object " 和 class 和 "]" 组成的字符串，而 class 是要判断的对象的内部属性。
+
+让我们写个 demo:
+
+```js
+console.log(Object.prototype.toString.call(undefined)) // [object Undefined]
+console.log(Object.prototype.toString.call(null)) // [object Null]
+
+var date = new Date();
+console.log(Object.prototype.toString.call(date)) // [object Date]
+```
+
+由此我们可以看到这个 class 值就是识别对象类型的关键！我们可以用 Object.prototype.toString 方法识别出更多类型！
+
+优缺点：
+
 - 可以识别标准类型
 - 可以识别 内置对象 类型 
 - 不能识别自定义对象类型及父子关系
 
- `Object.prototype.toString.call()` 方法，用`{}.toString.call()`也OK~
 ```js
 //（1）可以识别标准类型
-console.log(Object.prototype.toString.call(null));//[object Null]
-console.log({}.toString.call(null));//[object Null]
-console.log(Object.prototype.toString.call(undefined));//[object Undefined]
-console.log(Object.prototype.toString.call(1));//[object Number]
-console.log(Object.prototype.toString.call('ss'));//[object String]
-console.log(Object.prototype.toString.call(true));//[object Boolean]
+var number = 1;          // [object Number]
+var string = '123';      // [object String]
+var boolean = true;      // [object Boolean]
+var und = undefined;     // [object Undefined]
+var nul = null;          // [object Null]
+
 
 //（2）可以识别 内置对象 类型
-console.log(Object.prototype.toString.call(new Boolean(null)));//[object Boolean]
-console.log(Object.prototype.toString.call(function(){}));//[object Function]
-console.log(Object.prototype.toString.call([]));//[object Array]
-console.log(Object.prototype.toString.call(new Date()));//[object Date]
-console.log(Object.prototype.toString.call(new Error()));//[object Error]
+var obj = {a: 1}         // [object Object]
+var array = [1, 2, 3];   // [object Array]
+var date = new Date();   // [object Date]
+var error = new Error(); // [object Error]
+var reg = /a/g;          // [object RegExp]
+var func = function a(){}; // [object Function]
+
 
 //（3）不能识别自定义对象类型及父子关系
-var o = {};
-var sam = Object.create(o);
-console.log(Object.prototype.toString.call(sam));//[object Object]
+var sam = Object.create({}); //[object Object]
+function Person(){}   //[object Function]
+var sam2 = new Person();  //[object Object]
 
-function Person(){}
-var sam2 = new Person();
-console.log(Object.prototype.toString.call(sam2));   //[object Object]
-console.log(Object.prototype.toString.call(Person));//[object Function]
+function checkType() {
+    for (var i = 0; i < arguments.length; i++) {
+        console.log(Object.prototype.toString.call(arguments[i]))
+    }
+}
+checkType(number, string, boolean, und, nul, obj, array, date, error, reg, func, sam, Person, sam2);
 ```
+
+
+
+
+
 
 也可以将Object.prototype.toString.call()进行下封装，如下：
 ```
@@ -286,7 +319,6 @@ function checkType() {
 }
 
 checkType(number, string, boolean, und, nul, obj, array, date, error, reg, func)
-
 ```
 
 除了以上 11 种之外，还有：
