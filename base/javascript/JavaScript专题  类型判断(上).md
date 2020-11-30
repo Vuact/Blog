@@ -79,7 +79,7 @@ function Circle(x,y,r){
     Point.call(this,x,y);
     this.radius = r;
 }
-Circle.prototype = new Point();
+Circle.prototype = Object.create(Point.prototype);
 Circle.prototype.constructor = Circle;
 
 var c = new Circle(1,1,2);
