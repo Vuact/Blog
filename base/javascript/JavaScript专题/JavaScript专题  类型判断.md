@@ -461,7 +461,7 @@ var arrLike = {
 这就是满足 isArrayLike 的三个条件，其实除了 jQuery 之外，很多库都有对 isArrayLike 的实现，比如 underscore:
 
 ```js
-var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1; //避免内存溢出
 
 var isArrayLike = function(collection) {
     var length = getLength(collection);
@@ -479,6 +479,9 @@ isElement = function(obj) {
     return !!(obj && obj.nodeType === 1);
 };
 ```
+- 问：!!(obj && obj.nodeType === 1)为什么不能直接写成 obj && obj.nodeType === 1
+- 答：isElement 函数用来判断元素是否是 Element，结果只有两种，true 或者 false。
+而 || 和 && 的返回值实际上不是布尔值，而是返回比较中的两个值中的一个，用 !! 是做强制类型转换，将值转换为布尔值。
 
 
 
