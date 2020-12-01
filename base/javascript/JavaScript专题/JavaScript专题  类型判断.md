@@ -184,9 +184,9 @@ console.log(Object.prototype.toString.call(null)) // [object Null]
 
 var date = new Date();
 console.log(Object.prototype.toString.call(date)) // [object Date]
-
 console.log(Object.prototype.toString.call(location)); // [object Location]
 console.log(Object.prototype.toString.call(history)); // [object History]
+console.log(Object.prototype.toString.call(new Promise(function() {}))); // [object Promise]
 ```
 
 由此我们可以看到这个 class 值就是识别对象类型的关键！我们可以用 Object.prototype.toString 方法识别出更多类型！
@@ -302,7 +302,23 @@ console.log(type(undefined));//undefined
 console.log(type([]));       //array
 console.log(type(Array));    //function
 ```
+个人感觉写成下面这样更好些，（当然jQuery有其自身的考虑所以写成上形式）
+```js
+function type(obj) {
+  var toString = Object.prototype.toString;
 
+  if (obj == null) {
+    return String(obj);
+  }
+
+  return typeof obj === "object"
+    ? toString
+        .call(obj)
+        .slice(8, toString.call(obj).length - 1)
+        .toLowerCase()
+    : typeof obj;
+}
+```
 <br>
 
 # 5、数组isArray
