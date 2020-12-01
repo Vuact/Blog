@@ -393,12 +393,12 @@ function isArrayLike(obj) {
 ```
 >注：用 !! 是做强制类型转换，将值转换为布尔值。
 
+重点分析 return 这一行，使用了或语句，只要一个为 true，结果就返回 true。
+
 >满足以下3个条件即为：伪数组
 >- 是对象，不是数组（ obj instanceof Array === false）
 >- 必须有length属性，但如果这个对象的length不为0，那么必须要按照数组下标存储数据  （ `{ length: 0 } 就是个伪数组` ）
 >- 不能调用push()、indexOf()等 数组方法
-
-重点分析 return 这一行，使用了或语句，只要一个为 true，结果就返回 true。
 
 所以如果 isArrayLike 返回true，至少要满足三个条件之一：
 
