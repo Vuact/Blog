@@ -68,7 +68,7 @@ var arr = [function(){
 
 var new_arr = JSON.parse(JSON.stringify(arr));
 
-console.log(new_arr);
+console.log(new_arr); //[null, Object]
 ```
 
 我们会发现 new_arr 变成了：
