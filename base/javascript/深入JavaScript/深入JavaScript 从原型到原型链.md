@@ -234,6 +234,7 @@ console.log(f1.toString()); //'[object Object]'
 
 
 ### 3、练习
+#### 例1：
 ```js
 Object.prototype.a = 'a'
 
@@ -250,3 +251,21 @@ console.log(obj.b) // undefined
 ```
 原型链：obj => Animal.prototype => Object.prototype
 ```
+<br>
+
+#### 例2：
+解释下列代码输出：
+```js
+Object.toString.call([]);            //报错
+Object.toString.call(function() {}); //function() {}
+Object.prototype.toString.call([]);  //[object Array]
+Object.prototype.toString.call(function() {});  //[object Function]
+```
+先看原型链：Object => Function.prototype => Object.prototype
+
+Object没有toString方法，而Function.prototype和Object.prototype有toString方法；
+
+沿着原型链访问到的是Function.prototype的toString方法。
+
+先看原型链：Object => Function.prototype => Object.prototype
+先看原型链：Object => Function.prototype => Object.prototype
