@@ -286,7 +286,7 @@ var class2type = {};
 function type(obj) {
     // 一箭双雕 （undefined == null 为 true）
     if (obj == null) {
-        return obj + "";
+        return obj + "";  // (XXX + "")用来将XXX转换为字符串
     }
     
     return typeof obj === "object" || typeof obj === "function" ?
