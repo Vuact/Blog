@@ -44,6 +44,7 @@ Function.prototype.myCall = function (context) {
 }
 ```
 （2）给bar函数的形参赋值：将call函数的arguments 的第一个元素删除，然后把修改后的arguments传给 foo.fn 作为参数。
+
 （3）执行bar函数，即执行foo.fn；为了不给foo添加多余的属性，执行完bar函数后，我们再删除foo的fn属性，即delete foo.fn
 ```javascript
 Function.prototype.myCall = function (context) {
@@ -58,8 +59,11 @@ Function.prototype.myCall = function (context) {
 ```
 注：关于eval('context.fn(' + args +')')的eval里，其实是进行了字符串的拼接操作：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181214142917369.png)
+
 （4）若call没传参数 或 call的第一个参数为null/undefined，则让this指向window
+
 （5）返回fn函数的return值
+
 **所以最终版：**
 
 ```javascript
