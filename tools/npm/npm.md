@@ -1,6 +1,6 @@
-#### init
+# init
 
------
+
 
 ```javascript
 npm init  //初始化package.json 文件
@@ -9,9 +9,8 @@ npm init --yes //偷懒免去一直按enter
 
 
 
-#### install  / uninstall
+# install  / uninstall
 
---------
 
 依赖管理是 npm 的核心功能，原理就是执行 `npm install` 从 package.json 中的 dependencies, devDependencies 将依赖包安装到当前目录的 ./node_modules 文件夹中。
 
@@ -36,9 +35,7 @@ npm i XXXXX -D
 
 
 
-#### opt flag
-
------
+# opt flag
 
 | flag                          | description                                                  |
 | :---------------------------- | :----------------------------------------------------------- |
@@ -60,9 +57,8 @@ npm i -g @vrfly/vrfly-dev@3.10.0 --no-optional --unsafe-perm=true --registry=htt
 
 
 
-#### update
+# update
 
-------
 
 ```javascript
 //更新已安装模块
@@ -71,9 +67,8 @@ npm update <packageName>
 
 
 
-#### registry
+# registry
 
-------
 
 ```powershell
 npm set registry http://npm.gs.sogou-inc.com
@@ -81,9 +76,7 @@ npm set registry http://npm.gs.sogou-inc.com
 
 
 
-#### npm run
-
------
+# npm run
 
 ```javascript
 npm run XX //XX为 package.json 文件scripts对象的属性名
