@@ -254,7 +254,7 @@ a();
 var class2type = {};
 
 // 生成class2type映射
-"Boolean Number String Function Array Date RegExp Object Error Null Undefined".split(" ").map(function(item, index) {
+"Null Undefined Boolean Number String Function Array Date RegExp Object Error".split(" ").map(function(item, index) {
     class2type["[object " + item + "]"] = item.toLowerCase();
 })
 
@@ -263,12 +263,17 @@ function type(obj) {
         class2type[Object.prototype.toString.call(obj)] || "object" :
         typeof obj;
 }
+
+console.log(type(null));     //object
+console.log(type(undefined));//undefined
+console.log(type([]));       //array
+console.log(type(Array));    //function
 ```
+我们发现type(null)输出的是object，与理想不符，
 
-嗯，看起来很完美的样子~~ 但是注意，在 IE6 中，null 和 undefined 会被 Object.prototype.toString 识别成 [object Object]！
+而且在 IE6 中，null 和 undefined 会被 Object.prototype.toString 识别成 [object Object]！
 
-我去，竟然还有这个兼容性！有什么简单的方法可以解决吗？那我们再改写一版，绝对让你惊艳！
-
+那我们再改写一版：
 ```js
 // 第二版
 var class2type = {};
@@ -279,10 +284,11 @@ var class2type = {};
 })
 
 function type(obj) {
-    // 一箭双雕
+    // 一箭双雕 （undefined == null 为 true）
     if (obj == null) {
         return obj + "";
     }
+    
     return typeof obj === "object" || typeof obj === "function" ?
         class2type[Object.prototype.toString.call(obj)] || "object" :
         typeof obj;
