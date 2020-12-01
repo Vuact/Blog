@@ -302,6 +302,11 @@ console.log(type(undefined));//undefined
 console.log(type([]));       //array
 console.log(type(Array));    //function
 ```
+
+>- 问：实现type方法的时候为什么不直接用Object.prototype.toString.call()的形式判断所有类型，而是将基本数据类型使用typeof呢？<br>
+>- 答：用typeof判断效率更高一点 !![](https://user-images.githubusercontent.com/10160349/54362391-d180bf00-46a3-11e9-80f8-a590d3f49a12.png)
+
+
 个人感觉写成下面这样更好些，（当然jQuery有其自身的考虑所以写成上形式）
 ```js
 function type(obj) {
