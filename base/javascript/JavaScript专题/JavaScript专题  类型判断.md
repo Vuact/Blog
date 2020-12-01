@@ -184,6 +184,9 @@ console.log(Object.prototype.toString.call(null)) // [object Null]
 
 var date = new Date();
 console.log(Object.prototype.toString.call(date)) // [object Date]
+
+console.log(Object.prototype.toString.call(location)); // [object Location]
+console.log(Object.prototype.toString.call(history)); // [object History]
 ```
 
 由此我们可以看到这个 class 值就是识别对象类型的关键！我们可以用 Object.prototype.toString 方法识别出更多类型！
