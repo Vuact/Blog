@@ -310,16 +310,11 @@ console.log(type(Array));    //function
 个人感觉写成下面这样更好些，（当然jQuery有其自身的考虑所以写成上形式）
 ```js
 function type(obj) {
-  var toString = Object.prototype.toString;
-
-  if (obj == null) {
-    return String(obj);
-  }
-
+  if (obj == null) return obj + "";
   return typeof obj === "object"
-    ? toString
+    ? Object.prototype.toString
         .call(obj)
-        .slice(8, toString.call(obj).length - 1)
+        .slice(8, Object.prototype.toString.call(obj).length - 1)
         .toLowerCase()
     : typeof obj;
 }
