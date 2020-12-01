@@ -254,7 +254,7 @@ a();
 var class2type = {};
 
 // 生成class2type映射
-"Null Undefined Boolean Number String Function Array Date RegExp Object Error".split(" ").map(function(item, index) {
+"Null Undefined Symbol Boolean Number String Function Array Date RegExp Object Error".split(" ").map(function(item, index) {
     class2type["[object " + item + "]"] = item.toLowerCase();
 })
 
@@ -279,7 +279,7 @@ console.log(type(Array));    //function
 var class2type = {};
 
 // 生成class2type映射
-"Boolean Number String Function Array Date RegExp Object Error".split(" ").map(function(item, index) {
+"Symbol Boolean Number String Function Array Date RegExp Object Error".split(" ").map(function(item, index) {
     class2type["[object " + item + "]"] = item.toLowerCase();
 })
 
