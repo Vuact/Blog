@@ -479,9 +479,11 @@ isElement = function(obj) {
     return !!(obj && obj.nodeType === 1);
 };
 ```
-- 问：!!(obj && obj.nodeType === 1)为什么不能直接写成 obj && obj.nodeType === 1
-- 答：isElement 函数用来判断元素是否是 Element，结果只有两种，true 或者 false。
-而 || 和 && 的返回值实际上不是布尔值，而是返回比较中的两个值中的一个，用 !! 是做强制类型转换，将值转换为布尔值。
+问：`!!(obj && obj.nodeType === 1)`为什么不能直接写成 `obj && obj.nodeType === 1`
+
+答：isElement 函数用来判断元素是否是 Element，返回值只能是布尔值（true 或 false）。
+
+|| 和 && 的返回值实际上不是布尔值，而是返回比较中的两个值中的一个，用 !! 是做强制类型转换，将值转换为布尔值。
 
 
 
