@@ -293,6 +293,11 @@ function type(obj) {
         class2type[Object.prototype.toString.call(obj)] || "object" :
         typeof obj;
 }
+
+console.log(type(null));     //null
+console.log(type(undefined));//undefined
+console.log(type([]));       //array
+console.log(type(Array));    //function
 ```
 
 <br>
