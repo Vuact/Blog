@@ -403,7 +403,7 @@ function isArrayLike(obj) {
 所以如果 isArrayLike 返回true，至少要满足三个条件之一：
 
 1. 是数组
-2. 长度为 0 
+2. 长度为 0 （ `{ length: 0 } 就是个伪数组` ）
 3. lengths 属性是大于 0 的数组，并且obj[length - 1]必须存在
 
 第一个就不说了（是功能要求），看第二个，为什么长度为 0 就可以直接判断为 true 呢？
