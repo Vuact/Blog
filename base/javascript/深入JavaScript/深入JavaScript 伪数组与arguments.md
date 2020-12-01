@@ -19,7 +19,35 @@ var obj3 = { 'a':1 , length:1};
 var obj4 = { length: 0 };
 var obj5 = { 0: '888', length: 1 };
 var obj6 = { 0: '1', 1：2 , length: 2 };
-var obj7 = { 99: 'abc', length: 100 }
+var obj7 = { 99: 'abc', length: 100 }；
+```
+
+```js
+//数组
+var arr = [1];
+var arr2 = [1, ,];
+var arr3 = [1, , ,];
+
+console.log(arr, arr.length); //[1]  1
+console.log(arr2, arr2.length); //[1, undefined] 2
+console.log(arr3, arr3.length); //[1, undefined, undefined] 3
+
+//伪数组：对应的依次是
+var arrLike = {
+  0: 1,
+  length: 1
+};
+var arrLike2 = {
+  0: 1,
+  1: undefined,
+  length: 2
+};
+var arrLike3 = {
+  0: 1,
+  1: undefined,
+  2: undefined,
+  length: 3
+};
 ```
 
 概括来说：
