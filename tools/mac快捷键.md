@@ -80,6 +80,7 @@
 |窗口最大化、最小化（当前程序）|⌘ + Control + f|
 |关闭当前程序|⌘ + q|
 
+<br><br>
 
 修饰键
 - Command（或 Cmd）⌘
@@ -87,4 +88,3 @@
 - Option（或 Alt）⌥
 - Control（或 Ctrl）⌃
 - Caps Lock ⇪
-- Fn
