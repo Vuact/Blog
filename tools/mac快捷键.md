@@ -79,3 +79,12 @@
 |---|---|
 |窗口最大化、最小化（当前程序）|⌘ + Control + f|
 |关闭当前程序|⌘ + q|
+
+
+修饰键
+- Command（或 Cmd）⌘
+- Shift ⇧
+- Option（或 Alt）⌥
+- Control（或 Ctrl）⌃
+- Caps Lock ⇪
+- Fn
