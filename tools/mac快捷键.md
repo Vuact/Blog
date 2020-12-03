@@ -69,7 +69,7 @@
 |搜索：查找上一个匹配项|Enter|
 |搜索：查找下一个匹配项|Enter + ⇧|
 |删除一整行|⌘ + delete|
-
+[learn more >>](https://geek-docs.com/vscode/vscode-tutorials/vscode-code-debugger.html)
 
 
 
