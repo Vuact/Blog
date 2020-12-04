@@ -536,6 +536,31 @@ var isArrayLike = function(collection) {
     return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
 };
 ```
+<br>
+
+----
+个人感觉这么写更好些：
+```js
+const MAX_ARRAY_INDEX = Math.pow(2, 53) - 1; //避免内存溢出
+
+function isArrayLike(obj) {
+  if (isWindow(obj) || type(obj) === "function") {
+    return false;
+  }
+
+  const length =
+    !!obj &&
+    typeof obj.length === "number" &&
+    obj.length >= 0 &&
+    obj.length <= MAX_ARRAY_INDEX &&
+    obj.length;
+
+  return (
+    Array.isArray(obj) || length === 0 || (length > 0 && length - 1 in obj)
+  );
+}
+```
+----
 
 <br>
 
