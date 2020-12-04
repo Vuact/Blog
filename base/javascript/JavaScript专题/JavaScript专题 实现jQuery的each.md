@@ -10,7 +10,7 @@ jQuery.each(object, [callback])
 
 ```js
 // 遍历数组
-$.each( [0,1,2], function(i, n){
+$.each([0,1,2], function(i, n){
     console.log( "Item #" + i + ": " + n );
 });
 
