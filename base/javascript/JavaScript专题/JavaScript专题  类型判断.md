@@ -320,14 +320,20 @@ console.log(type(Array));    //function
 
 个人感觉写成下面这样更好些，（当然jQuery有其自身的考虑所以写成上形式）
 ```js
+const typeMap = "Symbol Boolean Number String Function Array Date RegExp Object Error"
+  .split(" ")
+  .reduce((prev, item) => {
+    prev[`[object ${item}]`] = item.toLowerCase();
+    return prev;
+  }, {});
+
 function type(obj) {
-  if (obj == null) return obj + "";
-  return typeof obj === "object"
-    ? Object.prototype.toString
-        .call(obj)
-        .slice(8, Object.prototype.toString.call(obj).length - 1)
-        .toLowerCase()
-    : typeof obj;
+  //解决IE6 中的兼容
+  if(null == obj) return '' + obj;
+
+  return typeof obj !== "object" && typeof obj !== "function"
+    ? typeof obj
+    : typeMap[Object.prototype.toString.call(obj)] || 'object';
 }
 ```
 <br>
