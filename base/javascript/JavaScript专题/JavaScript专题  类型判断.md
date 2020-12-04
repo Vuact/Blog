@@ -334,7 +334,7 @@ function type(obj) {
   //解决IE6 中的兼容
   if(null == obj) return '' + obj;
 
-  return typeof obj !== "object" && typeof obj !== "function"
+  return typeof obj !== "object"
     ? typeof obj
     : typeMap[Object.prototype.toString.call(obj)] || 'object';
 }
@@ -417,7 +417,8 @@ Window 对象作为客户端 JavaScript 的全局对象，它有一个 window �
 
 ```js
 function isWindow( obj ) {
-    return obj != null && obj === obj.window;
+    return !!obj && obj === obj.window;
+    //return obj != null && obj === obj.window;
 }
 ```
 <br>
