@@ -338,7 +338,8 @@ jQuery 判断数组类型，旧版本是通过判断 Array.isArray 方法是否�
 
 ```js
 var isArray = Array.isArray || function( obj ) {
-    return type(obj) === "array";
+     // return Object.prototype.toString.call(obj) === '[object Array]';
+     return type(obj) === "array";
 }
 ```
 <br><br>
