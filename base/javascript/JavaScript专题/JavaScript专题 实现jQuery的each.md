@@ -52,7 +52,7 @@ $.each( [0, 1, 2, 3, 4, 5], function(i, n){
 - 如果是对象，就使用 for in 循环。有一个例外是类数组对象，对于类数组对象，我们依然可以使用 for 循环。
 - 中止循环：按照 jQuery each 的实现，当回调函数返回 false 的时候，我们就中止循环
 
->判断类数组对象和数组: 见【JavaScript专题 类型判断】isArrayLike 函数。
+>判断伪数组和数组: 见【JavaScript专题 类型判断】isArrayLike 函数。
 
 所以，第一版：
 
