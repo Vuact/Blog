@@ -168,14 +168,18 @@ function each(obj, callback) {
 
 ----
 
-个人感觉这么写更酷一些：
+个人版本如下，优点：代码复用度高；缺点：每次循环都多了两次判断，增加了计算量；
 ```js
 function each(obj, callback) {
   for (let i in obj) {
-      i = isArrayLike(obj) ? Number(i) : i;
-      if (callback.call(obj[i], i, obj[i]) === false) {
-          break;
-      }
+    i = isArrayLike(obj) ? Number(i) : i;
+    if (isNaN(i)) {
+      continue;
+    }
+
+    if (callback.call(obj[i], i, obj[i]) === false) {
+      break;
+    }
   }
 
   return obj;
