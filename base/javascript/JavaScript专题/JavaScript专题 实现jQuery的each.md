@@ -49,11 +49,9 @@ $.each( [0, 1, 2, 3, 4, 5], function(i, n){
 
 首先，我们肯定要根据参数的类型进行判断，如果是数组，就调用 for 循环，如果是对象，就使用 for in 循环，有一个例外是类数组对象，对于类数组对象，我们依然可以使用 for 循环。
 
-更多关于类数组对象的知识，我们可以查看[《JavaScript专题之类数组对象与arguments》](https://github.com/mqyqingfeng/Blog/issues/14)
+那么又该如何判断类数组对象和数组呢？实际上，我们在【JavaScript专题 类型判断】就讲过jQuery 数组和类数组对象判断函数 isArrayLike 的实现。
 
-那么又该如何判断类数组对象和数组呢？实际上，我们在[《JavaScript专题之类型判断(下)》](https://github.com/mqyqingfeng/Blog/issues/30)就讲过jQuery 数组和类数组对象判断函数 isArrayLike 的实现。
-
-所以，我们可以轻松写出第一版：
+所以，第一版：
 
 ```js
 // 第一版
