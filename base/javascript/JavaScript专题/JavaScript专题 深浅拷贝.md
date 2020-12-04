@@ -1,4 +1,4 @@
-# 数组的浅拷贝
+# 浅拷贝
 
 如果是数组，我们可以利用数组的一些方法比如：slice、concat 返回一个新数组的特性来实现拷贝。
 
@@ -43,7 +43,10 @@ console.log(new_arr) // [{old: 'new'}, ['new']]
 
 所以我们可以看出使用 concat 和 slice 是一种浅拷贝。
 
-# 数组的深拷贝
+<br>
+
+
+# 深拷贝
 
 那如何深拷贝一个数组呢？这里介绍一个技巧，不仅适用于数组还适用于对象！那就是：
 
@@ -75,7 +78,10 @@ console.log(new_arr); //[null, Object]
 
 ![不能拷贝函数](https://github.com/mqyqingfeng/Blog/raw/master/Images/copy/copy1.png)
 
-## 浅拷贝的实现
+<br>
+
+
+# 浅拷贝的实现
 
 以上三个方法 concat、slice、JSON.stringify 都算是技巧类，可以根据实际项目情况选择使用，接下来我们思考下如何实现一个对象或者数组的浅拷贝。
 
@@ -99,7 +105,9 @@ var shallowCopy = function(obj) {
 }
 ```
 
-## 深拷贝的实现
+<br>
+
+# 深拷贝的实现
 
 那如何实现一个深拷贝呢？说起来也好简单，我们在拷贝的时候判断一下属性值的类型，如果是对象，我们递归调用深拷贝函数不就好了~
 
