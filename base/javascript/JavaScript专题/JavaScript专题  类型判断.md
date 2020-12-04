@@ -159,6 +159,16 @@ function getConstructorName(obj){
 }
 getContructorName([]) === "Array"; //true
 ```
+####  `"bty".constructor` 的实质 
+
+字符串bty是基本类型值，而却访问了constructor属性
+
+```
+其实在后台发生了 ① 创建String类型的一个实例。②在实例上调用指定的方法。 ③ 销毁这个实例
+
+即相当于执行了 ① var temp = new String("bty"); ② temp.constructor ③ temp = null;
+```
+`true.constructor`、`(1).constructor` 也是同样的原理。
 
 <br>
 
