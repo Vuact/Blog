@@ -159,7 +159,7 @@ function getConstructorName(obj){
 }
 getContructorName([]) === "Array"; //true
 ```
-####  `"bty".constructor` 的实质 
+####  注："bty".constructor 的实质 
 
 字符串bty是基本类型值，而却访问了constructor属性
 
