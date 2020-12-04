@@ -164,6 +164,24 @@ function each(obj, callback) {
     return obj;
 }
 ```
+<br>
+
+----
+
+个人感觉这么写更酷一些：
+```js
+function each(obj, callback) {
+  for (let i in obj) {
+      i = isArrayLike(obj) ? Number(i) : i;
+      if (callback.call(obj[i], i, obj[i]) === false) {
+          break;
+      }
+  }
+
+  return obj;
+}
+```
+----
 
 <br>
 
