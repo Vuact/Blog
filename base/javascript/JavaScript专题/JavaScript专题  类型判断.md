@@ -20,8 +20,8 @@ js数据类型分两大类
 
 - EmptyObject
 - Window对象
-- isArrayLike
 - isElement
+- isArrayLike
 
 ------
 
