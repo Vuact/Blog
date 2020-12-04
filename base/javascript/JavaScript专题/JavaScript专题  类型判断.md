@@ -423,7 +423,23 @@ function isWindow( obj ) {
 ```
 <br>
 
-## 3、isArrayLike
+## 3、isElement
+
+isElement 判断是不是 DOM 元素。
+```js
+isElement = function(obj) {
+    return !!(obj && obj.nodeType === 1);
+};
+```
+问：`!!(obj && obj.nodeType === 1)`为什么不能直接写成 `obj && obj.nodeType === 1`
+
+答：isElement 函数用来判断元素是否是 Element，返回值只能是布尔值（true 或 false）。
+
+|| 和 && 的返回值实际上不是布尔值，而是返回比较中的两个值中的一个，用 !! 是做强制类型转换，将值转换为布尔值。
+
+<br>
+
+## 4、isArrayLike
 
 现在我们来看jQuery 中的 isArrayLike 函数
 
@@ -555,6 +571,10 @@ function isArrayLike(obj) {
     obj.length <= MAX_ARRAY_INDEX &&
     obj.length;
 
+  if (isElement(obj) && length) {
+    return true;
+  }
+
   return (
     Array.isArray(obj) || length === 0 || (length > 0 && length - 1 in obj)
   );
@@ -564,19 +584,7 @@ function isArrayLike(obj) {
 
 <br>
 
-## 4、isElement
 
-isElement 判断是不是 DOM 元素。
-```js
-isElement = function(obj) {
-    return !!(obj && obj.nodeType === 1);
-};
-```
-问：`!!(obj && obj.nodeType === 1)`为什么不能直接写成 `obj && obj.nodeType === 1`
-
-答：isElement 函数用来判断元素是否是 Element，返回值只能是布尔值（true 或 false）。
-
-|| 和 && 的返回值实际上不是布尔值，而是返回比较中的两个值中的一个，用 !! 是做强制类型转换，将值转换为布尔值。
 
 
 
