@@ -115,6 +115,7 @@ c instanceof Point	//true
 ```js
 //（1）可以识别标准类型(Undefined/Null除外)
 "bty".constructor === String;    //true
+1.constructor === Number;        //报错
 (1).constructor === Number;      //true
 true.constructor === Boolean;    //true
 ({}).constructor === Object;     //true
