@@ -1,6 +1,6 @@
 
-
-## extend 基本用法
+# 一、extend 第一版
+## 1、基本用法
 
 extend 的功能:  合并两个或者更多的对象的内容到第一个对象中。
 
@@ -43,35 +43,36 @@ console.log($.extend(obj1, obj2, obj3));
 
 当两个对象出现相同字段的时候，后者会覆盖前者，而不会进行深层次的覆盖。
 
-## extend 第一版
+<br>
 
-结合着上篇写得 [《JavaScript专题之深浅拷贝》](https://github.com/mqyqingfeng/Blog/issues/32)，我们尝试着自己写一个 extend 函数：
+## 2、第一版
+
+结合着上篇的 《JavaScript专题 深浅拷贝》，我们尝试着自己写一个 extend 函数：
 
 ```js
 // 第一版
 function extend() {
-    var name, options, copy;
-    var length = arguments.length;
-    var i = 1;
-    var target = arguments[0];
+  var target = arguments[0];
 
-    for (; i < length; i++) {
-        options = arguments[i];
-        if (options != null) {
-            for (name in options) {
-                copy = options[name];
-                if (copy !== undefined){
-                    target[name] = copy;
-                }
-            }
-        }
-    }
+  for (var i = 1; i < arguments.length; i++) {
+      var options = arguments[i];
+      if (options != null) {
+          for (var name in options) {
+              var copy = options[name];
+              if (copy !== undefined){
+                  target[name] = copy;
+              }
+          }
+      }
+  }
 
-    return target;
+  return target;
 };
 ```
 
-## extend 深拷贝
+# 二、extend 第二版
+
+## 1、extend 深拷贝
 
 那如何进行深层次的复制呢？jQuery v1.1.4 加入了一个新的用法：
 
@@ -110,7 +111,7 @@ console.log($.extend(true, obj1, obj2, obj3));
 
 因为采用了深拷贝，会遍历到更深的层次进行添加和覆盖。
 
-## extend 第二版
+## 2、第二版
 
 我们来实现深拷贝的功能，值得注意的是：
 
