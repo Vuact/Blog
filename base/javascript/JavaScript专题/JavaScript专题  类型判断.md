@@ -611,6 +611,8 @@ console.log($.isPlainObject(Object.assign({a: 1}, {b: 2}))); // true
 console.log($.isPlainObject(new Person('yayu'))); // false
 
 console.log($.isPlainObject(Object.create({}))); // false
+
+console.log($.isPlainObject(Object.create(new Object()))); // false
 ```
 
 由此我们可以看到，除了 {} 和 new Object 创建的之外，jQuery 认为一个没有原型的对象也是一个纯粹的对象。
