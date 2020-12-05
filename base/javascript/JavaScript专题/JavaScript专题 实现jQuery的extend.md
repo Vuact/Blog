@@ -59,7 +59,7 @@ function extend() {
       if (options != null) {
           for (var name in options) {
               var copy = options[name];
-              if (copy !== undefined){
+              if (copy !== void 0){
                   target[name] = copy;
               }
           }
@@ -154,7 +154,7 @@ function extend() {
         if (deep && copy && typeof copy == "object") {
           // 递归调用
           target[name] = extend(deep, src, copy);
-        } else if (copy !== undefined) {
+        } else if (copy !== void 0) {
           target[name] = copy;
         }
       }
