@@ -168,6 +168,8 @@ function extend() {
 
 在实现上，核心的部分还是跟上篇实现的深浅拷贝函数一致，如果要复制的对象的属性值是一个对象，就递归调用 extend。不过 extend 的实现中，多了很多细节上的判断，比如第一个参数是否是布尔值，target 是否是一个对象，不传参数时的默认值等。
 
+<br>
+
 接下来，我们看几个 jQuery 的 extend 使用效果：
 
 ## target 是函数
@@ -188,12 +190,10 @@ console.log(a.target); // b
 
 实际上，在 underscore 的实现中，underscore 的各种方法便是挂在了函数上！
 
-所以在这里我们还要判断是不是函数，这时候我们便可以使用[《JavaScript专题之类型判断(上)》](https://github.com/mqyqingfeng/Blog/issues/28)中写得 isFunction 函数
-
 我们这样修改：
 
 ```js
-if (typeof target !== "object" && !isFunction(target)) {
+if (typeof target !== "object" && typeof target !== 'function') {
     target = {};
 }
 ```
