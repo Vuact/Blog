@@ -2,11 +2,7 @@
 
 ## extend 基本用法
 
-先来看看 extend 的功能，引用 jQuery 官网：
-
-> Merge the contents of two or more objects together into the first object.
-
-翻译过来就是，合并两个或者更多的对象的内容到第一个对象中。
+extend 的功能:  合并两个或者更多的对象的内容到第一个对象中。
 
 让我们看看 extend 的用法：
 
