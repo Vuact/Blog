@@ -589,7 +589,13 @@ function isArrayLike(obj) {
 
 https://segmentfault.com/a/1190000013403810
 
-plainObject 来自于 jQuery，可以翻译成纯粹的对象，所谓"纯粹的对象"，就是该对象是通过 "{}" 或 "new Object" 创建的，该对象含有零个或者多个键值对。
+
+
+plainObject 来自于 jQuery，可以翻译成纯粹的对象，所谓"纯粹的对象"，就是该对象是通过  {}、new Object()、Object.create(null) 创建的，该对象含有零个或者多个键值对。
+
+- 该对象由 Object 构造函数创建，或者 [[Prototype]] 为 null 。
+- 就是通过 { }、new Object()、Object.create(null) 创建的对象。
+
 
 之所以要判断是不是 plainObject，是为了跟其他的 JavaScript对象如 null，数组，宿主对象（documents）等作区分，因为这些用 typeof 都会返回object。
 
@@ -601,8 +607,11 @@ function Person(name) {
 }
 
 console.log($.isPlainObject({})) // true
+console.log($.isPlainObject({a:1})) // true
 
 console.log($.isPlainObject(new Object)) // true
+console.log($.isPlainObject(new Object())) // true
+console.log($.isPlainObject(new Object({1:2}))) // true
 
 console.log($.isPlainObject(Object.create(null))); // true
 
