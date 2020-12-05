@@ -323,7 +323,7 @@ console.log(type(Array));    //function
 
 个人感觉写成下面这样更好些，（当然jQuery有其自身的考虑所以写成上形式）
 ```js
-const typeMap = "Symbol Boolean Number String Function Array Date RegExp Object Error"
+const class2type = "Symbol Boolean Number String Function Array Date RegExp Object Error"
   .split(" ")
   .reduce((prev, item) => {
     prev[`[object ${item}]`] = item.toLowerCase();
@@ -336,7 +336,7 @@ function type(obj) {
 
   return typeof obj !== "object"
     ? typeof obj
-    : typeMap[Object.prototype.toString.call(obj)] || 'object';
+    : class2type[Object.prototype.toString.call(obj)] || 'object';
 }
 
 console.log(type(null)); //null
