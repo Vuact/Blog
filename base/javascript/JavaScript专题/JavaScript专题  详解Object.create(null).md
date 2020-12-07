@@ -43,8 +43,9 @@ porsche.name = "Porsche 911"; // "name"是"porsche"的属性, 而不是"car"的
 porsche.isSportsCar = true; // 继承的属性可以被覆写
 
 porsche.introduction();
-
-//输出： 
+```
+输出：
+```
 "Hi girl, this is a Porsche 911. Do you like to have a drink with me ? true"
 ```
 <br>
