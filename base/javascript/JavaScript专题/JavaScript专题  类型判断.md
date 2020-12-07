@@ -624,7 +624,7 @@ console.log($.isPlainObject(Object.create(new Object()))); // false
 
 由此我们可以看到，除了 {} 和 new Object 创建的之外，jQuery 认为一个没有原型的对象也是一个纯粹的对象。
 
-实际上随着 jQuery 版本的提升，isPlainObject 的实现也在变化，我们今天讲的是 3.3.1 版本下的 isPlainObject，我们直接看源码：
+我们来看看jQuery 3.3.1 版本下的源码: 
 
 ```js
 var class2type = {};
@@ -679,13 +679,13 @@ function isPlainObject(obj) {
 ```
 从源码来看，isPlainObject()方法 的实现，主要分三部分
 
-#### 1、去掉类型不是Object 的
+##### 1、去掉类型不是Object 的
 
 用的是 `Object.prototype.toString.call()` 方法
 
-#### 2、判断对象有没有原型，没有原型的对象算纯粹对象
+##### 2、判断对象有没有原型，没有原型的对象算纯粹对象
 
-#### 3、判断是不是通过 `{}` 或 `new Object` 方式创建的对象
+##### 3、判断是不是通过 `{}` 或 `new Object` 方式创建的对象
 
 这就要判断他们的构造函数了，所以用 `Function.prototype.toString` 方法, 
 
