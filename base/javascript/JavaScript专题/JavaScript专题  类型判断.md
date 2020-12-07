@@ -624,60 +624,87 @@ console.log($.isPlainObject(Object.create(new Object()))); // false
 
 由此我们可以看到，除了 {} 和 new Object 创建的之外，jQuery 认为一个没有原型的对象也是一个纯粹的对象。
 
-实际上随着 jQuery 版本的提升，isPlainObject 的实现也在变化，我们今天讲的是 3.0 版本下的 isPlainObject，我们直接看源码：
+实际上随着 jQuery 版本的提升，isPlainObject 的实现也在变化，我们今天讲的是 3.3.1 版本下的 isPlainObject，我们直接看源码：
 
 ```js
-// 上节中写 type 函数时，用来存放 toString 映射结果的对象
 var class2type = {};
 
-// 相当于 Object.prototype.toString
+//Object.getPrototypeOf() 方法返回指定对象的原型（内部[[Prototype]]属性的值）。
+var getProto = Object.getPrototypeOf;
+
+//相当于  Object.prototype.toString
 var toString = class2type.toString;
 
-// 相当于 Object.prototype.hasOwnProperty
+//hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性
+//相当于 Object.prototype.hasOwnProperty
 var hasOwn = class2type.hasOwnProperty;
 
+//因为 hasOwn 是一个函数，所以这里调用的是内置对象 Function 的toString() 方法
+//相当于  Function.prototype.toString
+var fnToString = hasOwn.toString;
+
+//相当于  Function.prototype.toString.call(Object)
+//就是Object 构造函数 转字符串的结果
+// ObjectFunctionString 其实就是 "function Object() { [native code] }" 这样的一个字符串
+var ObjectFunctionString = fnToString.call(Object);
+
 function isPlainObject(obj) {
-    var proto, Ctor;
+  var proto, Ctor;
 
-    // 排除掉明显不是obj的以及一些宿主对象如Window
-    if (!obj || toString.call(obj) !== "[object Object]") {
-        return false;
-    }
+  //先去掉类型不是 Object 的
+  //也就是用 Object.prototype.toString.call(obj) 这种方式，返回值不是 "[object Object]" 的，比如 数组 window history
+  if (!obj || toString.call(obj) !== "[object Object]") {
+    return false;
+  }
 
-    /**
-     * getPrototypeOf es5 方法，获取 obj 的原型
-     * 以 new Object 创建的对象为例的话
-     * obj.__proto__ === Object.prototype
-     */
-    proto = Object.getPrototypeOf(obj);
+  //获取对象原型，赋值给 proto
+  proto = getProto(obj);
 
-    // 没有原型的对象是纯粹的，Object.create(null) 就在这里返回 true
-    if (!proto) {
-        return true;
-    }
+  //如果对象没有原型，那也算纯粹的对象，比如用 Object.create(null) 这种方式创建的对象
+  if (!proto) {
+    return true;
+  }
 
-    /**
-     * 以下判断通过 new Object 方式创建的对象
-     * 判断 proto 是否有 constructor 属性，如果有就让 Ctor 的值为 proto.constructor
-     * 如果是 Object 函数创建的对象，Ctor 在这里就等于 Object 构造函数
-     */
-    Ctor = hasOwn.call(proto, "constructor") && proto.constructor;
+  //最后判断是不是通过 "{}" 或 "new Object" 方式创建的对象
+  //如果 proto 有 constructor属性，Ctor 的值就为 proto.constructor，
+  //原型的 constructor 属性指向关联的构造函数
+  Ctor = hasOwn.call(proto, "constructor") && proto.constructor;
 
-    // 在这里判断 Ctor 构造函数是不是 Object 构造函数，用于区分自定义构造函数和 Object 构造函数
-    return typeof Ctor === "function" && hasOwn.toString.call(Ctor) === hasOwn.toString.call(Object);
+  //如果 Ctor 类型是  "function" ，并且调用Function.prototype.toString 方法后得到的字符串 与 "function Object() { [native code] }" 这样的字符串相等就返回true
+  //用来区分 自定义构造函数和 Object 构造函数
+  return (
+    typeof Ctor === "function" && fnToString.call(Ctor) === ObjectFunctionString
+  );
 }
 ```
+从源码来看，isPlainObject()方法 的实现，主要分三部分
 
-注意：我们判断 Ctor 构造函数是不是 Object 构造函数，用的是 hasOwn.toString.call(Ctor)，这个方法可不是 Object.prototype.toString，不信我们在函数里加上下面这两句话：
+#### 1、去掉类型不是Object 的
+
+用的是 `Object.prototype.toString.call()` 方法
+
+#### 2、判断对象有没有原型，没有原型的对象算纯粹对象
+
+#### 3、判断是不是通过 `{}` 或 `new Object` 方式创建的对象
+
+这就要判断他们的构造函数了，所以用 `Function.prototype.toString` 方法, 
+
+>Function 对象覆盖了从 Object 继承来的 Object.prototype.toString 方法。
+>函数的 toString 方法会返回一个表示函数源代码的字符串。具体来说，包括 function关键字，形参列表，大括号，以及函数体中的内容。
 
 ```js
-console.log(hasOwn.toString.call(Ctor)); // function Object() { [native code] }
-console.log(Object.prototype.toString.call(Ctor)); // [object Function]
+function fn(said) {
+  this.say = said;
+}
+
+Function.prototype.toString.call(fn);
+//"function fn(said){
+//    this.say = said;
+//}"
+
+Function.prototype.toString.call(Object);
+//"function Object() { [native code] }"
 ```
-
-发现返回的值并不一样，这是因为 hasOwn.toString 调用的其实是 Function.prototype.toString，毕竟 hasOwnProperty 可是一个函数！
-
-而且 Function 对象覆盖了从 Object 继承来的 Object.prototype.toString 方法。函数的 toString 方法会返回一个表示函数源代码的字符串。具体来说，包括 function关键字，形参列表，大括号，以及函数体中的内容。
 
 <br>
 
