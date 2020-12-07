@@ -67,6 +67,8 @@ console.log(o);
 
 再看看使用Object.create()创建对象：
 
+### 1、Object.create(null, {···})
+
 ```js
 var o = Object.create(null, {
   a: {
@@ -85,6 +87,8 @@ console.log(o);
 可以看到，新创建的对象除了自身属性a之外，原型链上没有任何属性，也就是没有继承Object的任何东西，此时如果我们调用o.toString()会报Uncaught TypeError的错误。
 
 大家可能会注意到，第一个参数使用了null。也就是说将null设置成了新创建对象的原型，自然就不会有原型链上的属性。我们再把上面的例子改一改：
+
+### 2、Object.create({}, {···})
 
 ```js
 var o = Object.create(
@@ -107,6 +111,9 @@ console.log(o);
 我们看到，这样创建的对象和使用`{}`创建对象已经很相近了，但是还是有一点区别：多了一层`proto`嵌套。
 
 我们最后再来改一下：
+
+### 3、Object.create(Object.prototype, {···})
+
 ```js
 var o = Object.create(Object.prototype, {
   a: {
