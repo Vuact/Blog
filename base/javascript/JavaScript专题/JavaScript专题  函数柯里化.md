@@ -1,12 +1,6 @@
-# JavaScript专题之函数柯里化
-
-## 定义
+# 定义
 
 维基百科中对柯里化 (Currying) 的定义为：
-
-> In mathematics and computer science, currying is the technique of translating the evaluation of a function that takes multiple arguments (or a tuple of arguments) into evaluating a sequence of functions, each with a single argument. 
-
-翻译成中文：
 
 在数学和计算机科学中，柯里化是一种将使用多个参数的一个函数转换成一系列使用一个参数的函数的技术。
 
@@ -25,7 +19,9 @@ var addCurry = curry(add);
 addCurry(1)(2) // 3
 ```
 
-## 用途
+<br>
+
+# 用途
 
 我们会讲到如何写出这个 curry 函数，并且会将这个 curry 函数写的很强大，但是在编写之前，我们需要知道柯里化到底有什么用？
 
