@@ -55,8 +55,8 @@ porsche.introduction();
 先看看我们经常使用的{}创建的对象是什么样子的：
 
 ```js
-var o = {a：1};
-console.log(o)
+var o = { a: 1 };
+console.log(o);
 ```
 
 控制台输出：
@@ -68,14 +68,15 @@ console.log(o)
 再看看使用Object.create()创建对象：
 
 ```js
-var o = Object.create(null,{
-    a:{
-           writable:true,
-        configurable:true,
-        value:'1'
-    }
-})
-console.log(o)
+var o = Object.create(null, {
+  a: {
+    writable: true,
+    configurable: true,
+    value: "1"
+  }
+});
+
+console.log(o);
 ```
 控制台输出：
 ![](https://user-gold-cdn.xitu.io/2018/4/11/162b2ef2d7089a2f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
@@ -86,14 +87,18 @@ console.log(o)
 大家可能会注意到，第一个参数使用了null。也就是说将null设置成了新创建对象的原型，自然就不会有原型链上的属性。我们再把上面的例子改一改：
 
 ```js
-var o = Object.create({},{
-    a:{
-           writable:true,
-        configurable:true,
-        value:'1'
+var o = Object.create(
+  {},
+  {
+    a: {
+      writable: true,
+      configurable: true,
+      value: "1"
     }
-})
-console.log(o)
+  }
+);
+
+console.log(o);
 ```
 将null改为{}，控制台输出：
 
@@ -103,14 +108,15 @@ console.log(o)
 
 我们最后再来改一下：
 ```js
-var o = Object.create(Object.prototype,{
-    a:{
-           writable:true,
-        configurable:true,
-        value:'1'
-    }
-})
-console.log(o)
+var o = Object.create(Object.prototype, {
+  a: {
+    writable: true,
+    configurable: true,
+    value: "1"
+  }
+});
+
+console.log(o);
 ```
 控制台输出：
 ![](https://user-gold-cdn.xitu.io/2018/4/11/162b2ef5f507c834?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
