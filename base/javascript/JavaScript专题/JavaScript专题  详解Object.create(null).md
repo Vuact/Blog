@@ -1,4 +1,4 @@
->在Vue和Vuex的源码中，作者都使用了Object.create(null)来初始化一个新对象。为什么不用更简洁的{}呢？
+>在Vue和Vuex的源码中，作者都使用了Object.create(null)来初始化一个新对象。那为什么不用更简洁的 `{}` 呢？往下看···
 
 <br>
 
@@ -6,9 +6,11 @@
 
 照搬一下MDN上的定义：
 
-Object.create(proto,[propertiesObject])
+```js
+Object.create(proto, [propertiesObject])
+```
 
-- proto:新创建对象的原型对象
+- proto: 新创建对象的原型对象
 - propertiesObject:可选。要添加到新对象的可枚举（新添加的属性是其自身的属性，而不是其原型链上的属性）的属性。
 
 举个例子：
