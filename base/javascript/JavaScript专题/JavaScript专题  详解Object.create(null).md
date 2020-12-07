@@ -95,10 +95,62 @@ console.log(o)
 
 ![](https://user-gold-cdn.xitu.io/2018/4/11/162b2ef45967219d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
-我们看到，这样创建的对象和使用{}创建对象已经很相近了，但是还是有一点区别：多了一层proto嵌套。
+我们看到，这样创建的对象和使用`{}`创建对象已经很相近了，但是还是有一点区别：多了一层`proto`嵌套。
 
 我们最后再来改一下：
 ```js
+var o = Object.create(Object.prototype,{
+    a:{
+           writable:true,
+        configurable:true,
+        value:'1'
+    }
+})
+console.log(o)
+```
+控制台输出：
+![](https://user-gold-cdn.xitu.io/2018/4/11/162b2ef5f507c834?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+
+这次就和使用`{}`创建的对象一模一样了。至此，我相信大家已经对两者的区别十分清楚了。
+
+<br>
+
+# Object.create(null)的使用场景
+再回到文章开头的问题，为什么很多源码作者会使用Object.create(null)来初始化一个新对象呢？这是作者的习惯，还是一个最佳实践？
+
+其实都不是，这并不是作者不经思考随便用的，也不是javascript编程中的最佳实践，而是需要因地制宜，具体问题具体分析。
+
+我们进一步比较一下Object.create(null)和{}创建控对象的区别：
+
+在控制台打印如下：
+
+![](https://user-gold-cdn.xitu.io/2018/4/11/162b2ef76658b2f1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+从上图可以看到，使用create创建的对象，没有任何属性，显示No properties，我们可以把它当作一个非常纯净的map来使用，我们可以自己定义hasOwnProperty、toString方法，不管是有意还是不小心，我们完全不必担心会将原型链上的同名方法覆盖掉。举个例子：
+
+```js
+//Demo1:
+var a= {...省略很多属性和方法...};
+//如果想要检查a是否存在一个名为toString的属性，你必须像下面这样进行检查：
+if(Object.prototype.hasOwnProperty.call(a,'toString')){
+    ...
+}
+//为什么不能直接用a.hasOwnProperty('toString')?因为你可能给a添加了一个自定义的hasOwnProperty
+//你无法使用下面这种方式来进行判断,因为原型上的toString方法是存在的：
+if(a.toString){}
+
+//Demo2:
+var a=Object.create(null)
+//你可以直接使用下面这种方式判断，因为存在的属性，都将定义在a上面，除非手动指定原型：
+if(a.toString){}
 ```
 
-https://juejin.cn/post/6844903589815517192
+另一个使用create(null)的理由是，在我们使用for..in循环的时候会遍历对象原型链上的属性，使用create(null)就不必再对属性进行检查了，当然，我们也可以直接使用Object.keys[]。
+
+### 总结：
+
+- 你需要一个非常干净且高度可定制的对象当作数据字典的时候；
+- 想节省hasOwnProperty带来的一丢丢性能损失并且可以偷懒少些一点代码的时候
+
+用Object.create(null)吧！其他时候，请用{}。
