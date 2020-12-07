@@ -677,9 +677,10 @@ function isPlainObject(obj) {
   );
 }
 ```
-从源码来看，isPlainObject()方法 的实现，主要分三部分
 
 ### 总结：
+
+从源码来看，isPlainObject()方法 的实现，主要分三部分
 
 
 #### 1、去掉类型不是Object 的
@@ -710,10 +711,3 @@ Function.prototype.toString.call(Object);
 ```
 
 <br>
-
-
-
-
-
-
-
