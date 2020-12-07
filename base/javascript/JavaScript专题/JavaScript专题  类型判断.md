@@ -679,13 +679,16 @@ function isPlainObject(obj) {
 ```
 从源码来看，isPlainObject()方法 的实现，主要分三部分
 
-##### 1、去掉类型不是Object 的
+### 总结：
+
+
+#### 1、去掉类型不是Object 的
 
 用的是 `Object.prototype.toString.call()` 方法
 
-##### 2、判断对象有没有原型，没有原型的对象算纯粹对象
+#### 2、判断对象有没有原型，没有原型的对象算纯粹对象
 
-##### 3、判断是不是通过 `{}` 或 `new Object` 方式创建的对象
+#### 3、判断是不是通过 `{}` 或 `new Object` 方式创建的对象
 
 这就要判断他们的构造函数了，所以用 `Function.prototype.toString` 方法, 
 
