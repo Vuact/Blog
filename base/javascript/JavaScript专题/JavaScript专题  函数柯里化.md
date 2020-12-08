@@ -103,9 +103,9 @@ var name = person.map(prop('name'))
 ```js
 // 第一版
 var curry = function (fn) {
-    var args = [].slice.call(arguments, 1);
+    var args = Array.prototype.slice.call(arguments, 1);
     return function() {
-        var newArgs = args.concat([].slice.call(arguments));
+        var newArgs = args.concat(Array.prototype.slice.call(arguments));
         return fn.apply(this, newArgs);
     };
 };
@@ -136,9 +136,11 @@ addCurry(1, 2) // 3
 ```js
 // 第二版
 function sub_curry(fn) {
-    var args = [].slice.call(arguments, 1);
+    //功能：将第二个及以后的参数传给第一个参数(即函数)，并返回。
+    
+    var args = Array.prototype.slice.call(arguments, 1);
     return function() {
-        return fn.apply(this, args.concat([].slice.call(arguments)));
+        return fn.apply(this, args.concat(Array.prototype.slice.call(arguments)));
     };
 }
 
