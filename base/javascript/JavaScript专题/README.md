@@ -12,4 +12,5 @@
 - JavaScript专题 偏函数
 - JavaScript专题 惰性函数
 - JavaScript专题 函数组合
+- JavaScript专题 函数记忆
 
