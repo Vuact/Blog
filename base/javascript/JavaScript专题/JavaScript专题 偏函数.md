@@ -2,7 +2,7 @@
 
 维基百科中对偏函数 (Partial application) 的定义为：
 
->在计算机科学中，局部应用是指固定一个函数的一些参数，然后产生另一个更小元的函数。
+在计算机科学中，局部应用是指固定一个函数的一些参数，然后产生另一个更小元的函数。
 
 什么是元？元是指函数参数的个数，比如一个带有两个参数的函数被称为二元函数。
 
@@ -24,9 +24,11 @@ addOne(2) // 3
 
 个人觉得翻译成“局部应用”或许更贴切些，以下全部使用“局部应用”。
 
+<br>
+
 ## 柯里化与局部应用
 
-如果看过上一篇文章[《JavaScript专题之柯里化》](https://github.com/mqyqingfeng/Blog/issues/42)，实际上你会发现这个例子和柯里化太像了，所以两者到底是有什么区别呢？
+如果看过上一篇文章《JavaScript专题 柯里化》，实际上你会发现这个例子和柯里化太像了，所以两者到底是有什么区别呢？
 
 其实也很明显：
 
@@ -37,6 +39,8 @@ addOne(2) // 3
 如果说两者有什么关系的话，引用 [functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon#partial-application) 中的描述就是：
 
 >  Curried functions are automatically partially applied.
+
+<br>
 
 ## partial
 
@@ -55,6 +59,8 @@ addOne(2) // 3
 ```
 
 然而使用 bind 我们还是改变了 this 指向，我们要写一个不改变 this 指向的方法。
+
+<br>
 
 ## 第一版
 
@@ -92,6 +98,8 @@ obj.addOne(2); // ???
 // 使用 partial 时，结果为 5
 ```
 
+<br>
+
 ## 第二版
 
 然而正如 curry 函数可以使用占位符一样，我们希望 partial 函数也可以实现这个功能，我们再来写第二版：
@@ -120,6 +128,8 @@ var subtract = function(a, b) { return b - a; };
 subFrom20 = partial(subtract, _, 20);
 subFrom20(5);
 ```
+
+<br>
 
 ## 写在最后
 
