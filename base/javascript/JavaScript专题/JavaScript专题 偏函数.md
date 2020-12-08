@@ -124,8 +124,8 @@ function partial(fn) {
 
 ```js
 var subtract = function(a, b) { return b - a; };
-subFrom20 = partial(subtract, _, 20);
-subFrom20(5);
+var subFrom20 = partial(subtract, _, 20);
+subFrom20(5); //15
 ```
 
 <br>
