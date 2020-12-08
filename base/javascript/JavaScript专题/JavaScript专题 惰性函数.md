@@ -68,6 +68,15 @@ var foo = function() {
     return foo();
 };
 ```
+或者使用闭包的形式：
+```js
+var foo = (function() {
+  var t = new Date();
+  return function() {
+      return t;
+  };
+})();
+```
 <br>
 
 # 二、更多应用
