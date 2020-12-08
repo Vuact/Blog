@@ -92,6 +92,19 @@ var name = person.map(prop('name'))
 
 <br>
 
+其实bind也是柯里化实现的：
+
+```js
+function a(a, b){
+    console.log(a, b);
+}
+
+var fn = a.bind(this, "a");
+fn("b");
+```
+
+<br>
+
 # 二、实现
 
 ## 1、第一版
