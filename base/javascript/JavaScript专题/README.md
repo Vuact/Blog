@@ -10,4 +10,5 @@
 - JavaScript专题 数组中查找元素
 - JavaScript专题 实现jQuery的each
 - JavaScript专题 函数柯里化
+- JavaScript专题 偏函数
 
