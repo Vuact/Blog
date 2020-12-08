@@ -278,5 +278,38 @@ fn(_, 2)(_, _, 4)(1)(3)(5)
 
 <br>
 
+# 四、面试题
 
+### 例1：
+编写一个sum函数，实现如下功能：
+```js
+console.log(sum(1)(2)(3)) // 6
+```
+#### 答：
+```js
+function sum(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c;
+    };
+  };
+}
+```
 
+### 例2：
+根据例1，实现sum(1)(2)(3)(4)(5)...(n)
+#### 答：
+如果想实现 sum(1)(2)(3)(4)(5)...(n)就得嵌套n-1个匿名函数，
+```js
+function sum(a) {
+  return function(b) {
+       ...
+      return function(n) {
+          
+      }
+  }
+}
+```
+最终实现即上面 版本3
+
+<br>
