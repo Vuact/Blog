@@ -285,7 +285,7 @@ fn(_, 2)(_, _, 4)(1)(3)(5)
 ```js
 console.log(sum(1)(2)(3)) // 6
 ```
-#### 答：
+答：
 ```js
 function sum(a) {
   return function (b) {
@@ -295,11 +295,12 @@ function sum(a) {
   };
 }
 ```
+<br>
 
 ### 例2：
 根据例1，实现sum(1)(2)(3)(4)(5)...(n)
-#### 答：
-如果想实现 sum(1)(2)(3)(4)(5)...(n)就得嵌套n-1个匿名函数，
+
+ 答：如果想实现 sum(1)(2)(3)(4)(5)...(n)就得嵌套n-1个匿名函数，
 ```js
 function sum(a) {
   return function(b) {
