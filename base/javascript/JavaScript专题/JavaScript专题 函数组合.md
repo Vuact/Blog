@@ -1,10 +1,8 @@
-
-
-## 需求
+需求：
 
 我们需要写一个函数，输入 'kevin'，返回 'HELLO, KEVIN'。
 
-## 尝试
+# 一、尝试
 
 ```js
 var toUpperCase = function(x) { return x.toUpperCase(); };
@@ -19,7 +17,9 @@ greet('kevin');
 
 还好我们只有两个步骤，首先小写转大写，然后拼接字符串。如果有更多的操作，greet 函数里就需要更多的嵌套，类似于 `fn3(fn2(fn1(fn0(x))))`。
 
-## 优化
+<br>
+
+# 二、优化
 
 试想我们写个 compose 函数：
 
@@ -51,8 +51,9 @@ compose(d, compose(c, compose(b, a)))
 ```js
 compose(d, c, b, a)
 ```
+<br>
 
-## compose
+# 三、compose
 
 我们直接抄袭 underscore 的 compose 函数的实现：
 
@@ -73,7 +74,9 @@ function compose() {
 
 在此之前，我们先了解一个概念叫做 pointfree。
 
-## pointfree
+<br>
+
+# 四、pointfree
 
 pointfree 指的是函数无须提及将要操作的数据是什么样的。依然是以最初的需求为例：
 
@@ -94,7 +97,7 @@ var greet = compose(hello, toUpperCase);
 greet('kevin');
 ```
 
-我们再举个稍微复杂一点的例子，为了方便书写，我们需要借助在[《JavaScript专题之函数柯里化》](https://github.com/mqyqingfeng/Blog/issues/42)中写到的 curry 函数：
+我们再举个稍微复杂一点的例子，为了方便书写，我们需要借助在《JavaScript专题之函数柯里化》中写到的 curry 函数：
 
 ```js
 // 需求：输入 'kevin daisy kelly'，返回 'K.D.K'
@@ -133,6 +136,8 @@ var initials = R.compose(R.join('.'), R.map(R.compose(R.toUpper, R.head)), R.spl
 那么使用 pointfree 模式究竟有什么好处呢？
 
 > pointfree 模式能够帮助我们减少不必要的命名，让代码保持简洁和通用，更符合语义，更容易复用，测试也变得轻而易举。
+
+<br>
 
 ## 实战
 
