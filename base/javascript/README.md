@@ -17,6 +17,7 @@
 - 深入JavaScript 模拟实现new
 - 深入JavaScript 创建对象的各种方式及优缺点
 - 深入JavaScript 继承的各种方式及优缺点
+- 深入JavaScript 详解Object.create(null)
 - 深入JavaScript 共享传递
 - 深入JavaScript 赋值后的内存分布
 
