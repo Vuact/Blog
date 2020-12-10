@@ -80,8 +80,8 @@ greet('kevin'); //HELLO, KEVIN
 用ES6实现 compose：
 ```js
 const compose = (...funcs) => {
-  return (component) => {
-    return funcs.reduce((a, b) => b(a), component);
+  return (val) => {
+    return funcs.reduceRight((a, b) => b(a), val);
   };
 };
 ```
@@ -98,7 +98,7 @@ const compose = (...funcs) => {
 ```js
 const compose = (...funcs) => {
   return (component) => {
-    return funcs.reduce((a, b) => b(a), component);
+    return funcs.reduceRight((a, b) => b(a), component);
   };
 };
 
