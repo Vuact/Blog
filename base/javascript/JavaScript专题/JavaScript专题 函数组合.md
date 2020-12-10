@@ -55,7 +55,7 @@ compose(d, c, b, a)
 
 # 三、compose
 
-### 1、实现
+## 1、实现
 我们直接抄袭 underscore 的 compose 函数的实现：
 
 ```js
@@ -82,7 +82,7 @@ const compose = (...funcs) => {
 
 
 
-### 2、使用
+## 2、使用
 
 现在的 compose 函数已经可以支持多个函数了，然而有了这个又有什么用呢？
 
