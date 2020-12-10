@@ -55,6 +55,7 @@ compose(d, c, b, a)
 
 # 三、compose
 
+### 1、实现
 我们直接抄袭 underscore 的 compose 函数的实现：
 
 ```js
@@ -79,8 +80,11 @@ const compose = (...funcs) => {
 };
 ```
 
-现在的 compose 函数已经可以支持多个函数了，然而有了这个又有什么用呢？
 
+
+### 2、使用
+
+现在的 compose 函数已经可以支持多个函数了，然而有了这个又有什么用呢？
 
 在React中的应用：
 
@@ -118,7 +122,9 @@ const withUserLog = compose(printLog, getUser);
 const I = withUserLog(myqpp);
 ```
 
-在此之前，我们先了解一个概念叫做 pointfree。
+<br>
+
+还有什么用？我们再了解一个概念叫做 pointfree。
 
 <br>
 
