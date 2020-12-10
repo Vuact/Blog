@@ -70,7 +70,53 @@ function compose() {
 };
 ```
 
+用ES6实现 compose：
+```js
+const compose = (...funcs) => {
+  return (component) => {
+    return funcs.reduce((a, b) => b(a), component);
+  };
+};
+```
+
 现在的 compose 函数已经可以支持多个函数了，然而有了这个又有什么用呢？
+
+
+在React中的应用：
+
+比如我们想为myapp组件添加 获取用户信息 和 打印日志 两个功能，那我们可以这么写：
+```js
+const compose = (...funcs) => {
+  return (component) => {
+    return funcs.reduce((a, b) => b(a), component);
+  };
+};
+
+//myapp组件
+const myapp = (props) => {
+  return (<div>123</div>)
+};
+
+//打印log功能
+const printLog = (component) => {
+  const C = component;
+  console.log('logged');
+  return (props) => <C ...props/>;
+};
+
+//获取用户信息功能
+const getUser = () => {
+  const C = component;
+  getUserMess(); 
+  return (props) => <C ...props/>;
+};
+
+//应用函数组合
+const withUserLog = compose(printLog, getUser);
+
+//I为包裹两个功能后的组件
+const I = withUserLog(myqpp);
+```
 
 在此之前，我们先了解一个概念叫做 pointfree。
 
