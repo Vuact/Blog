@@ -60,13 +60,11 @@ function foo() {
 不错，惰性函数就是解决每次都要进行判断的这个问题，解决原理很简单，重写函数。
 
 ```js
-var foo = function() {
-    var t = new Date();
-    foo = function() {
-        return t;
-    };
-    return foo();
-};
+function foo() {
+  let t = new Date();
+  foo = () => t;
+  return foo();
+}
 ```
 或者使用闭包的形式：
 ```js
