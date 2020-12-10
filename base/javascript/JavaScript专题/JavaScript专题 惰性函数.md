@@ -68,11 +68,9 @@ function foo() {
 ```
 或者使用闭包的形式：
 ```js
-var foo = (function() {
-  var t = new Date();
-  return function() {
-      return t;
-  };
+const foo = (() => {
+  let t = new Date()
+  return () => t;
 })();
 ```
 <br>
