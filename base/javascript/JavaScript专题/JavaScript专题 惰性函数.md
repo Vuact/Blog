@@ -8,7 +8,7 @@
 ## 解决一：普通方法
 
 ```js
-var t;
+let t;
 function foo() {
     if (t) return t;
     t = new Date()
@@ -25,13 +25,13 @@ function foo() {
 我们很容易想到用闭包避免污染全局变量。
 
 ```js
-var foo = (function() {
-    var t;
-    return function() {
-        if (t) return t;
-        t = new Date();
-        return t;
-    }
+const foo = (function() {
+  let t;
+  return () => {
+      if (t) return t;
+      t = new Date();
+      return t;
+  }
 })();
 ```
 
