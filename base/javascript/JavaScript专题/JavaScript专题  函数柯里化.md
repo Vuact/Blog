@@ -328,9 +328,32 @@ function sum(a) {
 //或者
 const sum = a => b => c => a + b + c;
 ```
+
+
 <br>
 
 ### 例2：
+用sum(1)(2)(3)...(n), 实现无限累加
+
+```js
+const sum = (a) => {
+  const fn = (n) => sum(n + a);
+  fn.valueOf = () => a;
+
+  return fn;
+};
+
+sum(1); // Function
++sum(1); // 1
++sum(1)(2); // 3
++sum(1)(2)(3); // 5
+```
+注: +sum(X)时，会自动调用valueOf方法。
+
+
+<br>
+
+### 例3：
 用sum(1)(2)(3)...(n)(), 实现无限累加
 
  答：如果想实现 sum(1)(2)(3)(4)(5)...(n)()就得嵌套n-1个匿名函数，
