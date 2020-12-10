@@ -354,6 +354,8 @@ const sum = function(a){
 
 sum(1)(2)(3)(4)() // 10
 ```
+参考：[https://juejin.cn/post/6844904061985112078](https://juejin.cn/post/6844904061985112078)
+
 #### 方法二 ：柯里化
 
 ```js
