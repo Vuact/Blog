@@ -69,6 +69,12 @@ function compose() {
         return result;
     };
 };
+
+//使用
+var toUpperCase = function(x) { return x.toUpperCase(); };
+var hello = function(x) { return 'HELLO, ' + x; };
+var greet = compose(hello, toUpperCase);
+greet('kevin'); //HELLO, KEVIN
 ```
 
 用ES6实现 compose：
