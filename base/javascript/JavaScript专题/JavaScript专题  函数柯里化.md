@@ -318,9 +318,9 @@ const sum = a => b => c => a + b + c;
 <br>
 
 ### 例2：
-根据例1，实现sum(1)(2)(3)(4)(5)...(n),无限累加
+用sum(1)(2)(3)...(n)(), 实现无限累加
 
- 答：如果想实现 sum(1)(2)(3)(4)(5)...(n)就得嵌套n-1个匿名函数，
+ 答：如果想实现 sum(1)(2)(3)(4)(5)...(n)()就得嵌套n-1个匿名函数，
 ```js
 function sum(a) {
   return function(b) {
@@ -333,6 +333,57 @@ function sum(a) {
 
 //或者
 const sum = a => b => c => d => ... => a+b+c+d+...+n
+```
+很明显，上面两种写法都不可取。
+
+#### 方法一
+
+```js
+const sum = function(a){
+  return function(b){
+      if(b){ // 这里可以过滤掉 b 是0的情况,换成if(b!==undefined)这样就可以接受0了
+          return sum(a+b)
+      }else{
+          return a
+      }
+  }
+}
+
+//或
+//const sum = a => b => { return b ? sum(a+b) : a }
+
+sum(1)(2)(3)(4)() // 10
+```
+#### 方法二 ：柯里化
+
+```js
+function add (...args) {//...args将arguments转为真数组
+  //求和
+  return args.reduce((a, b) => a + b)
+}
+
+function currying (fn) {
+  let args = []
+  return function temp (...newArgs) {
+      if (newArgs.length) {
+          args = [
+              ...args,
+              ...newArgs
+          ]
+          return temp
+      } else {
+          let val = fn.apply(this, args)
+          args = [] //保证再次调用时清空
+          return val
+      }
+  }
+}
+
+let addCurry = currying(add)
+// 注意调用方式的变化
+console.log(addCurry(1)(2)(3)(4, 5)())  //15
+console.log(addCurry(1)(2)(3, 4, 5)())  //15
+console.log(addCurry(1)(2, 3, 4, 5)())  //15
 ```
 
 
