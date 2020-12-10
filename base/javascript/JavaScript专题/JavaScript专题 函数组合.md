@@ -124,7 +124,7 @@ const I = withUserLog(myqpp);
 
 <br>
 
-还有什么用？我们再了解一个概念叫做 pointfree。
+compose还有什么用？我们再了解一个概念叫做 pointfree。
 
 <br>
 
