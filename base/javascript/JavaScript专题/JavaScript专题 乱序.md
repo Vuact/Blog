@@ -1,12 +1,8 @@
-
-
-## 乱序
-
 乱序的意思就是将数组打乱。
 
-嗯，没有了，直接看代码吧。
+<br>
 
-## Math.random
+# 一、Math.random
 
 一个经常会遇见的写法是使用 Math.random()：
 
@@ -56,7 +52,9 @@ console.log(times)
 
 是的！我很好奇！
 
-## 插入排序
+<br>
+
+# 二、插入排序
 
 如果要追究这个问题所在，就必须了解 sort 函数的原理，然而 ECMAScript 只规定了效果，没有规定实现的方式，所以不同浏览器实现的方式还不一样。
 
@@ -193,7 +191,9 @@ console.log(res)
 
 那么如何实现真正的乱序呢？而这就要提到经典的 Fisher–Yates 算法。
 
-## Fisher–Yates
+<br><br>
+
+# 三、Fisher–Yates
 
 为什么叫 Fisher–Yates 呢？ 因为这个算法是由 Ronald Fisher 和 Frank Yates 首次提出的。
 
