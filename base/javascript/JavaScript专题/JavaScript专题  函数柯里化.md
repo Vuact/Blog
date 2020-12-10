@@ -395,29 +395,28 @@ sum(1)(2)(3)(4)() // 10
 #### 方法二 ：柯里化
 
 ```js
-function add (...args) {//...args将arguments转为真数组
-  //求和
-  return args.reduce((a, b) => a + b)
-}
+//add功能：求和
+//...args将arguments转为真数组
+const add = (...args) => args.reduce((a, b) => a + b);
 
-function currying (fn) {
-  let args = []
-  return function temp (...newArgs) {
-      if (newArgs.length) {
-          args = [
-              ...args,
-              ...newArgs
-          ]
-          return temp
-      } else {
-          let val = fn.apply(this, args)
-          args = [] //保证再次调用时清空
-          return val
-      }
-  }
-}
+const curry = (fn) => {
+  let args = [];
+  const temp = (..._args) => {
+    if (_args.length) {
+      args = [...args, ..._args];
+      return temp;
+    } else {
+      const res = fn(...args);
+      args = [];
+      return res;
+    }
+  };
 
-let addCurry = currying(add)
+  return temp;
+};
+
+
+let addCurry = curry(add)
 // 注意调用方式的变化
 console.log(addCurry(1)(2)(3)(4, 5)())  //15
 console.log(addCurry(1)(2)(3, 4, 5)())  //15
