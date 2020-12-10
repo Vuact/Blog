@@ -35,6 +35,9 @@
 - JavaScript专题 惰性函数
 - JavaScript专题 函数组合
 - JavaScript专题 函数记忆
+- JavaScript专题 递归
+- JavaScript专题 乱序
+- JavaScript专题 解读v8排序源码
 
 ### 基础梳理
 - 前端模块化：AMD, CMD, CommonJS, ES6 Module
