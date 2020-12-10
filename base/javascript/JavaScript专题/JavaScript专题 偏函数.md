@@ -30,14 +30,10 @@ addOne(2) // 3
 
 如果看过上一篇文章《JavaScript专题 柯里化》，实际上你会发现这个例子和柯里化太像了，所以两者到底是有什么区别呢？
 
-其实也很明显：
+柯里化和偏函数都是用于将多个参数函数，转化为接受更少参数函数的方法。 
 
-- 柯里化：是将一个多参数函数转换成多个单参数函数，也就是将一个 n 元函数转换成 n 个一元函数。
-- 局部应用：则是固定一个函数的一个或者多个参数，也就是将一个 n 元函数转换成一个 n - x 元函数。
-
-如果说两者有什么关系的话，引用 [functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon#partial-application) 中的描述就是：
-
->  Curried functions are automatically partially applied.
+- 柯里化：是将函数转化为多个嵌套的一元函数，也就是每个函数只接受一个参数。
+- 偏函数：可以接受不只一个参数，它被固定了部分参数作为预设，并可以接受剩余的参数
 
 <br>
 
