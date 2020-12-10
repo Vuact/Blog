@@ -337,8 +337,8 @@ const sum = a => b => c => a + b + c;
 
 ```js
 const sum = (a) => {
-  const fn = (n) => sum(n + a);
-  fn.valueOf = () => a;
+  const fn = (n) => sum(n + a); //继续递归
+  fn.valueOf = () => a; //递归的界值
 
   return fn;
 };
