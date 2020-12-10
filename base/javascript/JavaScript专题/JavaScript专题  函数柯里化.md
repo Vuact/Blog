@@ -203,6 +203,17 @@ const curry = (fn, ...args) =>
   args.length >= fn.length
     ? fn(...args)
     : (..._args) => curry(fn, ...args, ..._args);
+    
+//而且这么写还新增了新功能。如下：
+var fn = curry(function (a, b, c) {
+  return [a, b, c];
+},1,2,3);
+var fn2 = curry(function (a, b, c) {
+  return [a, b, c];
+},1,2);
+
+console.log(fn);   //[1, 2, 3]
+console.log(fn2(3));//[1, 2, 3]
 ```
 是不是感觉到ES6的强大~
 
