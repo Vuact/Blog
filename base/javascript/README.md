@@ -39,5 +39,11 @@
 - JavaScript专题 乱序
 - JavaScript专题 解读v8排序源码
 
+### underscore 系列
+
+- underscore 系列 如何写自己的underscore
+- underscore 系列 链式调用
+
 ### 基础梳理
+
 - 前端模块化：AMD, CMD, CommonJS, ES6 Module
