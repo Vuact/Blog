@@ -1,6 +1,6 @@
 我们写了很多的功能函数，比如防抖、节流、去重、类型判断、扁平数组、深浅拷贝、查找数组元素、通用遍历、柯里化、函数组合、函数记忆、乱序等，可以我们该如何组织这些函数，形成自己的一个工具函数库呢？这个时候，我们就要借鉴 underscore 是怎么做的了。
 
-# 自己实现
+# 一、自己实现
 
 如果是我们自己去组织这些函数，我们该怎么做呢？我想我会这样做：
 
@@ -212,3 +212,265 @@ _().log(); // _(...).log is not a function
 ```
 
 确实有这个问题，所以我们还需要一个方法将 `_` 上的方法复制到 `_.prototype` 上，这个方法就是 `_.mixin`。
+
+
+<br>
+
+## 6、_.functions
+
+为了将 `_` 上的方法复制到原型上，首先我们要获得 `_` 上的方法，所以我们先写个 `_.functions` 方法。
+
+```js
+_.isFunction = function(obj) {
+    return type(obj) === "function";
+};
+
+_.functions = function(obj) {
+    var names = [];
+    for (var key in obj) {
+        if (_.isFunction(obj[key])) names.push(key);
+    }
+    return names.sort();
+};
+```
+
+<br>
+
+## 7、mixin
+
+现在我们可以写 mixin 方法了。
+
+```js
+var ArrayProto = Array.prototype;
+var push = ArrayProto.push;
+
+_.mixin = function(obj) {
+    _.each(_.functions(obj), function(name) {
+        var func = _[name] = obj[name];
+        _.prototype[name] = function() {
+            var args = [this._wrapped];
+            push.apply(args, arguments);
+            return func.apply(_, args);
+        };
+    });
+    return _;
+};
+
+_.mixin(_);
+```
+each 方法可以参考 《JavaScript专题 实现jQuery的each》
+
+值得注意的是：因为 `_[name] = obj[name]` 的缘故，我们可以给 underscore 拓展自定义的方法:
+
+```js
+_.mixin({
+  addOne: function(num) {
+    return num + 1;
+  }
+});
+
+_(2).addOne(); // 3
+```
+至此，我们算是实现了同时支持面向对象风格和函数风格。
+
+<br>
+
+## 8、导出
+
+终于到了讲最后一步 `root._ = _`，我们直接看源码
+
+```js
+if (typeof exports != 'undefined' && !exports.nodeType) {
+    if (typeof module != 'undefined' && !module.nodeType && module.exports) {
+        exports = module.exports = _;
+    }
+    exports._ = _;
+} else {
+    root._ = _;
+}
+```
+
+
+为了支持模块化，我们需要将 _ 在合适的环境中作为模块导出，但是 nodejs 模块的 API 曾经发生过改变，比如在早期版本中：
+
+```js
+// add.js
+exports.addOne = function(num) {
+  return num + 1
+}
+
+// index.js
+var add = require('./add');
+add.addOne(2);
+```
+
+在新版本中：
+
+```js
+// add.js
+module.exports = function(1){
+    return num + 1
+}
+
+// index.js
+var addOne = require('./add.js')
+addOne(2)
+```
+
+所以我们根据 `exports` 和 `module` 是否存在来选择不同的导出方式，那为什么在新版本中，我们还要使用 `exports = module.exports = _` 呢？
+
+这是因为在 nodejs 中，`exports` 是 `module.exports` 的一个引用，当你使用了 `module.exports = function(){}`，实际上覆盖了 `module.exports`，但是 `exports` 并未发生改变，为了避免后面再修改 `exports` 而导致不能正确输出，就写成这样，将两者保持统一。
+
+写个 demo 吧：
+
+```js
+// exports 是 module.exports 的一个引用
+module.exports.num = '1'
+
+console.log(exports.num) // 1
+
+exports.num = '2'
+
+console.log(module.exports.num) // 2
+```
+
+```js
+// addOne.js
+module.exports = function(num){
+    return num + 1
+}
+
+exports.num = '3'
+
+// result.js 中引入 addOne.js
+var addOne = require('./addOne.js');
+
+console.log(addOne(1)) // 2
+console.log(addOne.num) // undefined
+```
+
+
+```js
+// addOne.js
+exports = module.exports = function(num){
+    return num + 1
+}
+
+exports.num = '3'
+
+// result.js 中引入 addOne.js
+var addOne = require('./addOne.js');
+
+console.log(addOne(1)) // 2
+console.log(addOne.num) // 3
+```
+
+最后为什么要进行一个 exports.nodeType 判断呢？这是因为如果你在 HTML 页面中加入一个 id 为 exports 的元素，比如
+
+```html
+<div id="exports"></div>
+```
+
+就会生成一个 window.exports 全局变量，你可以直接在浏览器命令行中打印该变量。
+
+此时在浏览器中，`typeof exports != 'undefined'` 的判断就会生效，然后 `exports._ = _`，然而在浏览器中，我们需要将 `_` 挂载到全局变量上呐，所以在这里，我们还需要进行一个是否是 DOM 节点的判断。
+
+<br>
+
+# 源码
+
+最终的代码如下，有了这个基本结构，你可以自由添加你需要使用到的函数了：
+
+```js
+(function() {
+
+    var root = (typeof self == 'object' && self.self == self && self) ||
+        (typeof global == 'object' && global.global == global && global) ||
+        this || {};
+
+    var ArrayProto = Array.prototype;
+
+    var push = ArrayProto.push;
+
+    var _ = function(obj) {
+        if (obj instanceof _) return obj;
+        if (!(this instanceof _)) return new _(obj);
+        this._wrapped = obj;
+    };
+
+    if (typeof exports != 'undefined' && !exports.nodeType) {
+        if (typeof module != 'undefined' && !module.nodeType && module.exports) {
+            exports = module.exports = _;
+        }
+        exports._ = _;
+    } else {
+        root._ = _;
+    }
+
+    _.VERSION = '0.1';
+
+    var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+
+    var isArrayLike = function(collection) {
+        var length = collection.length;
+        return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
+    };
+
+    _.each = function(obj, callback) {
+        var length, i = 0;
+
+        if (isArrayLike(obj)) {
+            length = obj.length;
+            for (; i < length; i++) {
+                if (callback.call(obj[i], obj[i], i) === false) {
+                    break;
+                }
+            }
+        } else {
+            for (i in obj) {
+                if (callback.call(obj[i], obj[i], i) === false) {
+                    break;
+                }
+            }
+        }
+
+        return obj;
+    }
+
+    _.isFunction = function(obj) {
+        return typeof obj == 'function' || false;
+    };
+
+    _.functions = function(obj) {
+        var names = [];
+        for (var key in obj) {
+            if (_.isFunction(obj[key])) names.push(key);
+        }
+        return names.sort();
+    };
+
+    /**
+     * 在 _.mixin(_) 前添加自己定义的方法
+     */
+    _.reverse = function(string){
+        return string.split('').reverse().join('');
+    }
+
+    _.mixin = function(obj) {
+        _.each(_.functions(obj), function(name) {
+            var func = _[name] = obj[name];
+            _.prototype[name] = function() {
+                var args = [this._wrapped];
+
+                push.apply(args, arguments);
+
+                return func.apply(_, args);
+            };
+        });
+        return _;
+    };
+
+    _.mixin(_);
+
+})()
+```
