@@ -3,6 +3,7 @@
 - JavaScript专题 防抖
 - JavaScript专题 节流
 - JavaScript专题 类型判断
+- JavaScript专题 数组去重
 - JavaScript专题 数组扁平化
 - JavaScript专题 数组中查找元素
 - JavaScript专题 深浅拷贝
