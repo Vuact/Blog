@@ -28,11 +28,11 @@ Person.apply(obj, ['sam', 18]);
 我们再将其封装到函数里：型如objectFactory(构造函数, 构造函数的形参)
 ```javascript
 function objectFactory() {
-	var obj = {};
-	var cons = [].shift.call(arguments);//把arguments[0]抽出来
-	obj.__proto__ = cons.prototype;
-	cons.apply(obj, arguments);
-	return obj;
+  var obj = {};
+  var cons = [].shift.call(arguments); //把arguments[0]抽出来
+  obj.__proto__ = cons.prototype;
+  cons.apply(obj, arguments);
+  return obj;
 }
 
 //test
@@ -100,11 +100,11 @@ console.log(p4); // Person4 {name: "dd"}
 ### 模拟实现new第二版:
 ```javascript
 function objectFactory() {
-	var obj = {};
-	var cons = [].shift.call(arguments);//把arguments[0]抽出来
-	obj.__proto__ = cons.prototype;
-	var result = cons.apply(obj, arguments);
-	return typeof result === 'object' ? result || obj : obj;
+  var obj = {};
+  var cons = [].shift.call(arguments); //把arguments[0]抽出来
+  obj.__proto__ = cons.prototype;
+  var result = cons.apply(obj, arguments);
+  return typeof result === "object" ? result || obj : obj;
 }
 ```
 
