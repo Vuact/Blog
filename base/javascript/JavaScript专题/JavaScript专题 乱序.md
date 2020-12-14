@@ -6,6 +6,8 @@
 
 一个经常会遇见的写法是使用 Math.random()：
 
+>Math.random()是取 [0,1) 之间的随机数
+
 ```js
 var values = [1, 2, 3, 4, 5];
 
