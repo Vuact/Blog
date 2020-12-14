@@ -118,7 +118,7 @@ console.log(child); //{name: "sam2", age: 118}
 
 也可以用ES6实现：
 ```js
-function objectFactory(Func, ...args) {
+const objectFactory = (Func, ...args) => {
   const obj = {};
   obj.__proto__ = Func.prototype;
   const result = Func.apply(obj, args);
