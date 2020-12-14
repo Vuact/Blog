@@ -37,7 +37,7 @@ function objectFactory() {
 
 //test
 var child = objectFactory(Person, 'sam2', 118);
-console.log(child2);
+console.log(child);
 ```
 输出：Person {name: "sam2", age: 118}
 
