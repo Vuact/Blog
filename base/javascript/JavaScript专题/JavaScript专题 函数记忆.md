@@ -89,28 +89,28 @@ console.log(memoizedAdd({value: 2})) // 1
 两者都返回了 1，显然是有问题的，所以我们看看 underscore 的 memoize 函数是如何实现的：
 
 ```js
-// 第二版 (来自 underscore 的实现)
-var memorize = function(func, hasher) {
-    var memoize = function(key) {
-        var cache = memoize.cache;
-        var address = '' + (hasher ? hasher.apply(this, arguments) : key);  //使用 function 的第一个参数作为 key
-        if (!cache[address]) {
-            cache[address] = func.apply(this, arguments);
-        }
-        return cache[address];
-    };
-    memoize.cache = {};
-    return memoize;
+// 第二版
+var memorize = function (func, hasher) {
+  var resFunc = function (key) {
+    var cache = resFunc.cache;
+    var address = "" + (hasher ? hasher.apply(this, arguments) : key); //使用 function 的第一个参数作为 key
+    if (!cache[address]) {
+      cache[address] = func.apply(this, arguments);
+    }
+    return cache[address];
+  };
+  resFunc.cache = {};
+  return resFunc;
 };
 
-// 用 JSON.stringify 来作为 hasher函数
-var memoizedAdd = memorize(add, function(){
-    var args = Array.prototype.slice.call(arguments)
-    return JSON.stringify(args)
-})
+//使用
+const add = (a, b, c) => a + b + c;
+const memoizedAdd = memorize(add, (...args) => {
+  return JSON.stringify(args);
+});
 
-console.log(memoizedAdd(1, 2, 3)) // 6
-console.log(memoizedAdd(1, 2, 4)) // 7
+console.log(memoizedAdd(1, 2, 3)); // 6
+console.log(memoizedAdd(1, 2, 4)); // 7
 ```
 
 
