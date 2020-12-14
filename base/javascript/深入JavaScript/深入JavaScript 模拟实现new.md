@@ -106,8 +106,25 @@ function objectFactory() {
   var result = cons.apply(obj, arguments);
   return typeof result === "object" ? result || obj : obj;
 }
+
+//test
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+var child = objectFactory(Person, "sam2", 118);
+console.log(child); //{name: "sam2", age: 118}
 ```
 
+也可以用ES6实现：
+```js
+function objectFactory(Func, ...args) {
+  const obj = {};
+  obj.__proto__ = Func.prototype;
+  const result = Func.apply(obj, args);
+  return typeof result === "object" ? result || obj : obj;
+}
+```
 <br>
 
 # 小结
