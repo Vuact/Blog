@@ -120,6 +120,9 @@ console.log(memoizedAdd(1, 2, 4)); // 7
 
 我们以斐波那契数列为例：
 
+![](https://github.com/Vuact/document/blob/main/base/javascript/images/0A21725DFC5EB0540225CC991E19D8BF.jpg?raw=true)
+
+
 ```js
 var count = 0;
 var fibonacci = function(n){
