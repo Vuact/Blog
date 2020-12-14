@@ -30,7 +30,7 @@ console.log(factorial(5)) // 5 * 4 * 3 * 2 * 1 = 120
 
 ## 2、斐波那契数列
 
-
+![](https://github.com/Vuact/document/blob/main/base/javascript/images/0A21725DFC5EB0540225CC991E19D8BF.jpg?raw=true)
 
 在《JavaScript专题 函数记忆》中讲到过的斐波那契数列也使用了递归：
 
