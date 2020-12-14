@@ -120,7 +120,11 @@ console.log(memoizedAdd(1, 2, 4)); // 7
 
 我们以斐波那契数列为例：
 
-![](https://github.com/Vuact/document/blob/main/base/javascript/images/0A21725DFC5EB0540225CC991E19D8BF.jpg?raw=true)
+递归公式：
+
+- F(0) = 0
+- F(1) = 1
+- F(n) = F(n - 1) + F(n - 2)（n ≥ 2，n ∈ N*）
 
 
 ```js
