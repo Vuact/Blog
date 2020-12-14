@@ -200,14 +200,19 @@ sortedIndex 也完成了，现在我们尝试着去写一个 indexOf 和 lastInd
 // 第一版
 Array.prototype.createIndexOfFinder = function (dir) {
   dir = dir || 1;
+  
   return function (obj) {
     var arr = this;
-    var index = dir > 0 ? 0 : arr.length - 1;
-    var step = dir > 0 ? 1 : -1;
 
-    for (; index >= 0 && index < arr.length; index += step) {
-      if (obj === arr[index]) return index;
+    for (
+      var i = dir > 0 ? 0 : arr.length - 1, 
+      	  step = dir > 0 ? 1 : -1;
+      i >= 0 && i < arr.length;
+      i += step
+    ) {
+      if (obj === arr[i]) return i;
     }
+    
     return -1;
   };
 };
