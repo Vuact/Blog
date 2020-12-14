@@ -19,7 +19,7 @@ memoizedAdd(1, 2) // 相同的参数，第二次调用时，从缓存中取出�
 
 <br>
 
-# 第一版
+# 一、第一版
 
 我们来写一版：
 
@@ -71,7 +71,7 @@ console.timeEnd('not use memorize')
 
 <br>
 
-# 第二版
+# 二、第二版
 
 因为第一版使用了 join 方法，我们很容易想到当参数是对象的时候，就会自动调用 toString 方法转换成 `[Object object]`，再拼接字符串作为 key 值。我们写个 demo 验证一下这个问题：
 
@@ -93,7 +93,7 @@ console.log(memoizedAdd({value: 2})) // 1
 var memorize = function(func, hasher) {
     var memoize = function(key) {
         var cache = memoize.cache;
-        var address = '' + (hasher ? hasher.apply(this, arguments) : key);
+        var address = '' + (hasher ? hasher.apply(this, arguments) : key);  //使用 function 的第一个参数作为 key
         if (!cache[address]) {
             cache[address] = func.apply(this, arguments);
         }
@@ -102,24 +102,8 @@ var memorize = function(func, hasher) {
     memoize.cache = {};
     return memoize;
 };
-```
 
-从这个实现可以看出，underscore 默认使用 function 的第一个参数作为 key，所以如果直接使用
-
-```js
-var add = function(a, b, c) {
-  return a + b + c
-}
-
-var memoizedAdd = memorize(add)
-
-memoizedAdd(1, 2, 3) // 6
-memoizedAdd(1, 2, 4) // 6
-```
-
-肯定是有问题的，如果要支持多参数，我们就需要传入 hasher 函数，自定义存储的 key 值。所以我们考虑使用 JSON.stringify：
-
-```js
+// 用 JSON.stringify 来作为 hasher函数
 var memoizedAdd = memorize(add, function(){
     var args = Array.prototype.slice.call(arguments)
     return JSON.stringify(args)
@@ -129,9 +113,10 @@ console.log(memoizedAdd(1, 2, 3)) // 6
 console.log(memoizedAdd(1, 2, 4)) // 7
 ```
 
-如果使用 JSON.stringify，参数是对象的问题也可以得到解决，因为存储的是对象序列化后的字符串。
 
-## 适用场景
+<br>
+
+# 三、适用场景
 
 我们以斐波那契数列为例：
 
@@ -202,7 +187,9 @@ console.log(count) // 12
 
 所以我们还需要认真看下我们的写法，在我们的写法中，其实我们用生成的 fibonacci 函数覆盖了原本了 fibonacci 函数，当我们执行 fibonacci(0) 时，执行一次函数，cache 为 {0: 0}，但是当我们执行 fibonacci(2) 的时候，执行 fibonacci(1) + fibonacci(0)，因为 fibonacci(0) 的值为 0，`!cache[address]` 的结果为 true，又会执行一次 fibonacci 函数。原来，多出来的那一次是在这里！
 
-## 多说一句
+<br>
 
 也许你会觉得在日常开发中又用不到 fibonacci，这个例子感觉实用价值不高呐，其实，这个例子是用来表明一种使用的场景，也就是如果需要大量重复的计算，或者大量计算又依赖于之前的结果，便可以考虑使用函数记忆。而这种场景，当你遇到的时候，你就会知道的。
+
+其实比如我们要做搜索功能，经常会遇到搜索同样的内容场景，也可以用到函数记忆。
 
