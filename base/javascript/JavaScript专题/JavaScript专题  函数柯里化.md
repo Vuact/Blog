@@ -434,5 +434,27 @@ console.log(addCurry(1)(2)(3, 4, 5)())  //15
 console.log(addCurry(1)(2, 3, 4, 5)())  //15
 ```
 
+下面是自己写的一个dome
+```js
+const add = (...args) => args.reduce((a, b) => a + b);
 
+//sum(1)(2)(3)(4)(5)...(n)()
+
+const curry = (fn, ...oldArgs) => {
+    let tempArr = [...oldArgs];
+    return function temp(...args) {
+      if(args.length) {
+        tempArr = [...tempArr, ...args];
+        return temp;
+      }else {
+        const res = fn(...tempArr);
+        tempArr = [];
+        return res;
+      }
+    };
+};
+
+const sum = curry(add,1);
+console.log(sum(1)(2)(3)()); //7
+```
 <br>
