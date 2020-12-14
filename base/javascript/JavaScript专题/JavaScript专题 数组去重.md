@@ -1,13 +1,14 @@
-- 双层循环
-- indexOf() 或 includes()
+- 双层循环 或 indexOf() 或 includes()
 - 排序后去重
-- filter
+- filter((item, index, array) => {})
 - Object 键值对
 - ES6的set
 
 <br>
 
-# 一、双层循环
+# 一、双层循环 或 indexOf() 或 includes()
+
+### 1、双层循环
 
 也许我们首先想到的是使用 indexOf 来循环判断一遍，但在这个方法之前，让我们先看看最原始的方法：
 
@@ -38,9 +39,7 @@ console.log(unique(array)); // [1, "1"]
 
 看起来很简单吧，之所以要讲一讲这个方法，是因为——————兼容性好！
 
-<br>
-
-# 二、indexOf
+### 2、indexOf() 或 includes()
 
 我们可以用 indexOf 简化内层的循环：
 
@@ -63,7 +62,7 @@ console.log(unique(array));
 
 <br>
 
-# 三、排序后去重
+# 二、排序后去重
 
 试想我们先将要去重的数组使用 sort 方法排序后，相同的值就会被排在一起，然后我们就可以只判断当前元素与上一个元素是否相同，相同就说明重复，不相同就添加进 res，让我们写个 demo：
 
@@ -94,7 +93,7 @@ console.log(arr.unique());//["aa", "dad", "1", 1, 2, 3]
 
 <br>
 
-# 四、filter
+# 三、filter((item, index, array) => {})
 
 ES5 提供了 filter 方法，我们可以用来简化外层循环：
 
@@ -129,7 +128,7 @@ console.log(unique(array));
 
 <br>
 
-# 五、Object 键值对
+# 四、Object 键值对
 
 利用对象的属性不同的特点 进行去重。
 
@@ -181,7 +180,7 @@ console.log(unique(array)); // [{value: 1}, {value: 2}]
 
 <br>
 
-# 六、ES6的set
+# 五、ES6的set
 
 随着 ES6 的到来，去重的方法又有了进展，比如我们可以使用 Set 和 Map 数据结构，以 Set 为例，ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
 
