@@ -131,7 +131,7 @@ ECStack.pop();
 ```js
 function factorial(n, res) {
     if (n == 1) return res;
-    return factorial2(n - 1, n * res)
+    return factorial(n - 1, n * res)
 }
 
 console.log(factorial(4, 1)) // 24
