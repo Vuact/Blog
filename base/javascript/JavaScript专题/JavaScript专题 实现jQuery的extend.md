@@ -279,7 +279,7 @@ target[name] = extend(true, src, copy);
 
 * 如果待复制对象属性值类型为对象，目标属性值类型不为对象的话，目标属性值就设为 {}
 
-结合着[《JavaScript专题之类型判断(下)》](https://github.com/mqyqingfeng/Blog/issues/30)中的 isPlainObject 函数，我们可以对类型进行更细致的划分：
+结合着《JavaScript专题 类型判断》中的 isPlainObject 函数，我们可以对类型进行更细致的划分：
 
 ```js
 
