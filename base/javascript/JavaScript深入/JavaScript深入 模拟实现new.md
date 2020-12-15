@@ -13,7 +13,7 @@ var child = new Person('sam', 18);
 new Person()  过程种发生了什么：
 （1）创建了一个新对象 
 （2）这个新对象 的__proto__指向了Person的原型对象。
-不懂请看：《深入JavaScript 从原型到原型链》
+不懂请看：《JavaScript深入 从原型到原型链》
 （3）将构造函数的作用域赋给新对象（this就指向了这个新对象）
 
 <br>

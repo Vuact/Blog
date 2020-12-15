@@ -1,4 +1,4 @@
-在阅读前，请先阅读《深入JavaScript 共享传递》中的《二、从底层角度讲》，它能让你对JS参数传递的具体机理有一定了解。其实两者差别不大。
+在阅读前，请先阅读《JavaScript深入 共享传递》中的《二、从底层角度讲》，它能让你对JS参数传递的具体机理有一定了解。其实两者差别不大。
 
 也可以看看这篇文章，也不错[《可视化分析js的内存分配与回收》](https://juejin.im/post/597c5b71f265da3e3d122a3b)
 
@@ -37,7 +37,7 @@ console.log(c);   // {b: 1}
 <br>
 
 **例1.2**
-我们现在再分析《深入JavaScript 共享传递》中 按值传递 的例子。
+我们现在再分析《JavaScript深入 共享传递》中 按值传递 的例子。
 ```javascript
 var value = 1;
 function foo(v) {
@@ -59,7 +59,7 @@ function foo() {
 foo(value);
 console.log(value) // 1,value从始至终都未改变指向.
 ```
-《深入JavaScript 共享传递》中 共享传递 的例子同理。
+《JavaScript深入 共享传递》中 共享传递 的例子同理。
 
 <br>
 
@@ -80,7 +80,7 @@ console.log(c);   // {b: 2},// c也随着修改,从
 那么a,c从始至终都未改变指向,只是b改变了而已
 
 **例2.2**
-我们现在再分析[《深入JavaScript 共享传递》](https://blog.csdn.net/b954960630/article/details/84286555)中 按值传递 的例子。
+我们现在再分析[《JavaScript深入 共享传递》](https://blog.csdn.net/b954960630/article/details/84286555)中 按值传递 的例子。
 
 ```javascript
 var obj = {
