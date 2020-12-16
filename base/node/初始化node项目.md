@@ -64,7 +64,7 @@ node-server started at port http://localhost:8000
 
 <br>
 
-# 二 服务热启动
+# 二、服务热启动
 
 每次修改代码都要重启服务器才能生效很麻烦，使用nodemon来实现自动监测代码变化并重启。
 
