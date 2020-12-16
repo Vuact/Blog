@@ -79,18 +79,18 @@ node-server started at port http://localhost:8000
 ```
    |- /bin
       |- www.js
-   |- models
++  |- models
    |- node_modules
-   |- public
-   |- routes
-   |- views
-   |- controllers
-   |- tools
-   |- config
-   |- test
-   |- app.js
++  |- public
++  |- routes
++  |- views
++  |- controllers
++  |- tools
++  |- config
++  |- test
++  |- app.js
    |- package.json
-   |- README.md
++  |- README.md
 ```
 - bin：项目的启动文件，也可以放其他脚本。
 - node_modules：用来存放项目的依赖库。
