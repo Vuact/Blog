@@ -40,29 +40,34 @@ nvm uninstall <version>
 
 <br>
 
-# 三、安装node和npm
+# 三、安装node、npm或cnpm
 
-用nvm安装指定版本node,
+### 1、node
+用nvm安装指定版本node：
+```js
+nvm install node
+```
 
-例如安装并使用10.15.0版本的node：
+也可以指定某个版本的node进行安装，比如10.15.0
 ```js
 nvm install 10.15.0
 nvm use 10.15.0
 ```
 
-<br>
+### 2、npm 
+npm是基于nodejs的包管理器。
 
+npm是随着nodejs安装一并安装的，所以执行了`nvm install node`也就安装了npm。
 
-# 二、npm与cnpm
-
-### 1、npm
-
+#### 升级本地全局npm：
 ```js
-
+npm install npm -g
 ```
 
+如果你不能翻墙，那就用cnpm吧。
 
-### 2、cnpm
+### 3、cnpm
+
 国内使用 npm 速度很慢，你可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:
 
 ```js
@@ -79,6 +84,5 @@ cnpm install [name]
 
 
 
-<br>
 
 
