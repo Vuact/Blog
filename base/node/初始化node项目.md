@@ -8,18 +8,27 @@
 mkdir node-server
 cd node-server
 npm init -y
+
+npm install
 ```
+此时目录结构
+```
++  |- node_modules
++  |- package.json
+```
+
 
 ### 2、编写服务脚本
 
-在项目根目录下创建bin/www.js。
+在项目根目录下创建`bin/www.js`
 
 ```
 +  |- /bin
 +     |- www.js
    |- package.json
+   |- node_modules
 ```
-启动web服务需要使用nodejs的http模块，打开 bin/www.js 编写代码：
+启动web服务需要使用nodejs的http模块，打开 `bin/www.js` 编写代码：
 
 ```js
 const http = require('http')
@@ -41,7 +50,7 @@ console.log('node-server started at port http://localhost:' + PORT)
 配置入口文件，修改package.json
 
 ```js
-    "name": "node-server",
+      "name": "node-server",
       "version": "1.0.0",
       "description": "",
 M     "main": "./bin/www.js",
@@ -49,7 +58,6 @@ M     "main": "./bin/www.js",
         "test": "echo \"Error: no test specified\" && exit 1",
 +       "dev": "node ./bin/www.js"
       },
-
 ```
 
 回到我们的项目来，项目的主入口文件是`./bin/www.js`。
@@ -61,6 +69,30 @@ node-server started at port http://localhost:8000
 ```
 
 浏览器打开 `http://localhost:8000`，出现 "hello nodejs"
+
+
+### 3、目录结构建设
+这个比较灵活，这里说个通常的例子，
+
+创建models、public、routes 和 views文件夹，以及index.js文件
+
+```
+   |- /bin
+      |- www.js
+   |- models
+   |- public
+   |- routes
+   |- views
+   |- package.json
+   |- node_modules
+```
+
+- models 存放操作数据库的文件
+- public 存放静态文件，如 css、图片等
+- routes 存放路由文件
+- views 存放模板文件
+- index.js 程序主文件
+- package.json 存储项目的信息，比如项目名、描述、作者、依赖等
 
 <br>
 
