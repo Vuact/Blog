@@ -1,5 +1,9 @@
 >以下安装针对mac
 
+- 安装brew
+- 安装nvm
+- 安装node、npm或cnpm
+
 <br>
 
 # 一、安装brew
@@ -42,7 +46,7 @@ nvm uninstall <version>
 
 # 三、安装node、npm或cnpm
 
-### 1、node
+## 1、node
 用nvm安装指定版本node：
 ```js
 nvm install node
@@ -54,19 +58,19 @@ nvm install 10.15.0
 nvm use 10.15.0
 ```
 
-### 2、npm 
+## 2、npm 
 npm是基于nodejs的包管理器。
 
 npm是随着nodejs安装一并安装的，所以执行了`nvm install node`也就安装了npm。
 
-#### 升级本地全局npm：
+### 升级本地全局npm：
 ```js
 npm install npm -g
 ```
 
 如果你不能翻墙，那就用cnpm吧。
 
-### 3、cnpm
+## 3、cnpm
 
 国内使用 npm 速度很慢，你可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:
 
