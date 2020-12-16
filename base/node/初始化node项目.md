@@ -4,12 +4,12 @@
 
 找个喜欢的地方，新建并初始化项目，执行以下命令：
 
-```sh
+```js
 mkdir node-server
 cd node-server
-npm init -y
+npm init -y  //生成package.json
 
-npm install
+npm install  //生成 package-lock.json 和 node_modules
 ```
 此时目录结构
 ```
