@@ -52,12 +52,34 @@ M     "main": "./bin/www.js",
 
 ```
 
-回到我们的项目来，项目的主入口文件是./bin/www.js。
+回到我们的项目来，项目的主入口文件是`./bin/www.js`。
 
-现在，在项目根目录下执行npm run dev，就等同于执行node ./bin/www.js。 执行后，在控制台可以看到输出，说明服务已经正常启动：
+现在，在项目根目录下执行npm run dev，就等同于执行node `./bin/www.js` 。 执行后，在控制台可以看到输出，说明服务已经正常启动：
 
 ```
 node-server started at port http://localhost:8000
 ```
 
-浏览器打开http://localhost:8000，出现“hello nodejs”
+浏览器打开 `http://localhost:8000`，出现 "hello nodejs"
+
+<br>
+
+# 二 服务热启动
+
+每次修改代码都要重启服务器才能生效很麻烦，使用nodemon来实现自动监测代码变化并重启。
+
+另外，安装cross-env可以方便的跨平台设置环境变量（例如，windows用%ENV_VAR%，其他系统可能使用$ENV_VAR，不统一）
+
+```
+npm install nodemon cross-env --save-dev
+```
+
+修改package.json：
+```
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+M       "dev": "cross-env NODE_ENV=dev nodemon ./bin/www.js"
+    },
+```
+
+再次执行npm run dev的时候，如果代码有改动，web服务会自动重启，这样就方便多啦。
