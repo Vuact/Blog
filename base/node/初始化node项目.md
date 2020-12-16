@@ -13,8 +13,8 @@ npm install
 ```
 此时目录结构
 ```
-+  |- node_modules
 +  |- package.json
++  |- package-lock.json
 ```
 
 
@@ -26,6 +26,7 @@ npm install
 +  |- /bin
 +     |- www.js
    |- package.json
+   |- package-lock.json
    |- node_modules
 ```
 启动web服务需要使用nodejs的http模块，打开 `bin/www.js` 编写代码：
@@ -90,6 +91,7 @@ node-server started at port http://localhost:8000
 +  |- test
 +  |- app.js
    |- package.json
+   |- package-lock.json
 +  |- README.md
 ```
 - bin：项目的启动文件，也可以放其他脚本。
