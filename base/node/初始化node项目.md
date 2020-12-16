@@ -74,25 +74,37 @@ node-server started at port http://localhost:8000
 ### 3、目录结构建设
 这个比较灵活，这里说个通常的例子，
 
-创建models、public、routes 和 views文件夹，以及index.js文件
+创建models、public、routes 和 views等文件夹，以及app.js、README.md文件
 
 ```
    |- /bin
       |- www.js
    |- models
+   |- node_modules
    |- public
    |- routes
    |- views
+   |- controllers
+   |- tools
+   |- config
+   |- test
+   |- app.js
    |- package.json
-   |- node_modules
+   |- README.md
 ```
-
-- models 存放操作数据库的文件
-- public 存放静态文件，如 css、图片等
-- routes 存放路由文件
-- views 存放模板文件
-- index.js 程序主文件
-- package.json 存储项目的信息，比如项目名、描述、作者、依赖等
+- bin：项目的启动文件，也可以放其他脚本。
+- node_modules：用来存放项目的依赖库。
+- public：存放静态文件(css,js,img等)
+- routes：存放路由文件
+- models：存放操作数据库的文件(相当于MVC中的M)
+- views：视图目录(相当于MVC中的V)
+- controllers：控制器,对请求的操作(相当于MVC中的C)
+- tools：工具库
+- config：配置目录
+- test：测试目录
+- README.md：项目说明文件
+- app.js：项目入口及程序启动文件
+- package.json：存储项目的信息，比如项目名、描述、作者、依赖等
 
 <br>
 
