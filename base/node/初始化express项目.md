@@ -15,7 +15,7 @@ mkdir app
 cd app
 
 express -e    // 生成项目文件，express 默认使用ajs模板，加上 -e 指定更友好的ejs模板
-npm install    // 安装依赖
+npm install   // 安装依赖
 npm start     // 启动项目
 ```
 然后浏览器访问localhost:3000，最简单的服务器就ok了。
