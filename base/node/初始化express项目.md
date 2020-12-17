@@ -19,3 +19,6 @@ npm install   // 安装依赖
 npm start     // 启动项目
 ```
 然后浏览器访问`http://localhost:3000/`，最简单的服务器就ok了。
+
+
+https://segmentfault.com/a/1190000015170332
