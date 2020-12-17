@@ -106,9 +106,10 @@ node-server started at port http://localhost:8000
 - package.json：存储项目的信息，比如项目名、描述、作者、依赖等
 
 
-https://blog.csdn.net/liudongdong19/article/details/79795369
+[1](https://blog.csdn.net/liudongdong19/article/details/79795369)
+[2](https://juejin.cn/post/6844904133464424456)
 
-https://juejin.cn/post/6844904133464424456
+
 <br>
 
 # 二、服务热启动
@@ -125,7 +126,7 @@ npm install nodemon cross-env --save-dev
 ```
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-M       "dev": "cross-env NODE_ENV=dev nodemon ./bin/www.js"
+M       "dev": "cross-env NODE_ENV=dev nodemon app.js"
     },
 ```
 
