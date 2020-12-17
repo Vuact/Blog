@@ -21,16 +21,15 @@ npm install  //生成 package-lock.json 和 node_modules
 
 ### 2、编写服务脚本
 
-在项目根目录下创建`bin/www.js`
+在项目根目录下创建入口文件app.js
 
 ```
-+  |- /bin
-+     |- www.js
    |- node_modules
++  |- app.js
    |- package-lock.json
    |- package.json
 ```
-启动web服务需要使用nodejs的http模块，打开 `bin/www.js` 编写代码：
+app.js内容
 
 ```js
 const http = require('http')
@@ -55,16 +54,16 @@ console.log('node-server started at port http://localhost:' + PORT)
       "name": "node-server",
       "version": "1.0.0",
       "description": "",
-M     "main": "./bin/www.js",
+M     "main": "app.js",
       "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-+       "dev": "node ./bin/www.js"
++       "dev": "node app.js"
       },
 ```
 
-回到我们的项目来，项目的主入口文件是`./bin/www.js`。
+回到我们的项目来，项目的主入口文件是`app.js`。
 
-现在，在项目根目录下执行npm run dev，就等同于执行node `./bin/www.js` 。 执行后，在控制台可以看到输出，说明服务已经正常启动：
+现在，在项目根目录下执行npm run dev，就等同于执行`node app.js` 。 执行后，在控制台可以看到输出，说明服务已经正常启动：
 
 ```
 node-server started at port http://localhost:8000
