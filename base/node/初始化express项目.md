@@ -2,6 +2,8 @@
 
 1、安装express
 
+express 是基于 node 的开发框架
+
 ```js
 npm install express -g            // 全局安装express
 npm install express-generator -g  // 全局安装express脚手架,安装之后可以使用express命令
