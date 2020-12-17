@@ -73,26 +73,23 @@ node-server started at port http://localhost:8000
 
 
 ### 3、目录结构建设
-这个比较灵活，这里说个通常的例子，
-
-创建models、public、routes 和 views等文件夹，以及app.js、README.md文件
+这个比较灵活，这里就是举个例子，
 
 ```
-   |- /bin
-      |- www.js
-+  |- config
-+  |- controllers
-+  |- models
+   |- bin
+   |- config
+   |- controllers
+   |- models
    |- node_modules
-+  |- public
-+  |- routes
-+  |- test
-+  |- tools
-+  |- views
-+  |- app.js
+   |- public
+   |- routes
+   |- test
+   |- tools
+   |- views
+   |- app.js
    |- package-lock.json
    |- package.json
-+  |- README.md
+   |- README.md
 ```
 - bin：项目的启动文件，也可以放其他脚本。
 - node_modules：用来存放项目的依赖库。
