@@ -1,3 +1,9 @@
+- 初始化node项目
+- 服务热启动
+- dome
+
+<br>
+
 # 一、初始化node项目
 
 ### 1、创建项目目录
@@ -131,3 +137,7 @@ M       "dev": "cross-env NODE_ENV=dev nodemon app.js"
 ```
 
 再次执行npm run dev的时候，如果代码有改动，web服务会自动重启，这样就方便多啦。
+
+<br>
+
+# 三、dome
