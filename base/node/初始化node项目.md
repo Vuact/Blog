@@ -124,12 +124,11 @@ node-server started at port http://localhost:8000
 
 - 安装cross-env：cross-env可以方便的跨平台设置环境变量（例:windows用%ENV_VAR%，其他系统可能使用$ENV_VAR，不统一）
 
-[使用cross-env解决跨平台设置NODE_ENV的问题](https://segmentfault.com/a/1190000005811347)
-
 
 ```
 npm install nodemon cross-env --save-dev
 ```
+>[使用cross-env解决跨平台设置NODE_ENV的问题](https://segmentfault.com/a/1190000005811347)
 
 修改package.json：
 ```
