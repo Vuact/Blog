@@ -153,43 +153,42 @@ M       "dev": "cross-env NODE_ENV=dev nodemon app.js"
 接下来我们实现：接收GET请求，并把GET请求传递的数据再返回给浏览器。
 
 ```js
-const http = require('http');
-const querystring = require('querystring');
+const http = require("http");
+const querystring = require("querystring");
 
 const PORT = 8000;
 
 const server = http.createServer((req, res) => {
-	const { url, method } = { ...req };
+  const { url, method } = { ...req };
 
-	// 解析URL，把url中?后面的参数转换为对象
-	const params = querystring.parse(url.split('?')[1]);
+  // 解析URL，把url中?后面的参数转换为对象
+  const params = querystring.parse(url.split("?")[1]);
 
-	// 设置返回数据的Content-type为JSON
-	res.setHeader('Content-type', 'application/json')
+  // 设置返回数据的Content-type为JSON
+  res.setHeader("Content-type", "application/json");
 
-	if (method === 'GET') {
-		const resData = {
-			error: 0,
-			message: 'GET返回成功',
-			data: {
-				query: params
-			}
-		};
+  if (method === "GET") {
+    const resData = {
+      error: 0,
+      message: "GET返回成功",
+      data: {
+        query: params
+      }
+    };
 
-		// 返回的数据
-		res.end(JSON.stringify(resData));
-	}
+    // 返回的数据
+    res.end(JSON.stringify(resData));
+  }
 
-	// 如果没有匹配，则返回404页面
-	res.writeHead(200, { 'content-type': 'text/plain' });
-	res.write('404 Not Found\n')
-	res.end()
+  // 如果没有匹配，则返回404页面
+  res.writeHead(200, { "content-type": "text/plain" });
+  res.write("404 Not Found\n");
+  res.end();
 });
 
 server.listen(PORT);
 
-
-console.log('node-server started at port http://localhost:' + PORT)
+console.log("node-server started at port http://localhost:" + PORT);
 ```
 
 浏览器页面输出：
