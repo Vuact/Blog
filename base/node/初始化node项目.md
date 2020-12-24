@@ -130,6 +130,8 @@ npm install nodemon cross-env --save-dev
 ```
 >[使用cross-env解决跨平台设置NODE_ENV的问题](https://segmentfault.com/a/1190000005811347)
 
+<br>
+
 修改package.json：
 ```
     "scripts": {
