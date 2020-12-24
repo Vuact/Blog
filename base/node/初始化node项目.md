@@ -192,5 +192,10 @@ console.log("node-server started at port http://localhost:" + PORT);
 ```
 
 浏览器页面输出：
+`{"error":0,"message":"GET返回成功","data":{"query":{"id":"1","name":"demo"}}}`
+
+<br>
+
+### 例2
 
 https://juejin.im/post/6844903912596586509
