@@ -148,9 +148,12 @@ M       "dev": "cross-env NODE_ENV=dev nodemon app.js"
 
 ### 例1
 
-浏览器访问 `http://localhost:8000?id=1&name=demo`，相当于我们发送了一个GET请求，并且传递了两个变量和值。
+现在我们有三个页面：
+- 主页面：`http://localhost:8000?id=1&name=demo`，发送了一个GET请求，并且传递了两个变量和值。
+         功能：服务接收GET请求，并把GET请求传递的数据再返回给浏览器
+- about：`http://localhost:8000/about`
+- error：404页面，访问不存在页面兜底用
 
-接下来我们实现：接收GET请求，并把GET请求传递的数据再返回给浏览器。
 
 ```js
 const http = require("http");
@@ -158,32 +161,47 @@ const querystring = require("querystring");
 
 const PORT = 8000;
 
-const server = http.createServer((req, res) => {
-  const { url, method } = { ...req };
+const server = http.createServer((request, response) => {
+  const { url, method } = { ...request };
 
-  // 解析URL，把url中?后面的参数转换为对象
-  const params = querystring.parse(url.split("?")[1]);
-
-  // 设置返回数据的Content-type为JSON
-  res.setHeader("Content-type", "application/json");
-
-  if (method === "GET") {
-    const resData = {
-      error: 0,
-      message: "GET返回成功",
-      data: {
-        query: params
-      }
-    };
-
-    // 返回的数据
-    res.end(JSON.stringify(resData));
+  //防止因为favicon多走一遍下面逻辑
+  if (url.includes("/favicon.ico")) {
+    return;
   }
 
-  // 如果没有匹配，则返回404页面
-  res.writeHead(200, { "content-type": "text/plain" });
-  res.write("404 Not Found\n");
-  res.end();
+  const params = querystring.parse(url.split("?")[1]); // 解析URL，把url中?后面的参数转换为对象
+
+  const optionMap = {
+    // 主页
+    "/"() {
+      response.setHeader("Content-Type", "application/json"); // 设置返回数据的Content-Type为JSON
+      if (method === "GET") {
+        const resData = {
+          error: 0,
+          message: "GET返回成功",
+          data: {
+            query: params
+          }
+        };
+
+        response.end(JSON.stringify(resData)); // 返回的数据
+      }
+    },
+
+    // About页面
+    "/about"() {
+      response.writeHead(200, { "Content-Type": "text/html" });
+      response.end("Welcome to the about page!");
+    },
+
+    // 404错误
+    "/error"() {
+      response.writeHead(404, { "Content-Type": "text/plain" });
+      response.end("404 error! File not found.");
+    }
+  };
+
+  optionMap[url] ? optionMap[url]() : optionMap["/error"]();
 });
 
 server.listen(PORT);
