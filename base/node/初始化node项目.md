@@ -283,6 +283,8 @@ const optionMap = {
 
 ## 例3：处理POST请求：接收form-data数据
 
+继续对About页面进行改造，
+
 如果我们用 `例2` 的方式，接收到的数据是这样的：
 ![](https://github.com/Vuact/document/blob/main/base/node/images/95493B1EEF4239330D75B60E6D15D0D0.jpg?raw=true)
 
@@ -292,6 +294,7 @@ const optionMap = {
 npm install multiparty --save
 ```
 
+代码：
 ```js
 
 const multiparty = require('multiparty');
@@ -332,6 +335,9 @@ const optionMap = {
 
 ····
 ```
+现在我们再预览就是我们想要的样子了：
+
+![](https://github.com/Vuact/document/blob/main/base/node/images/382BA8DB2F68E6481615D780DED191D2.jpg?raw=true)
 
 <br>
 参考：[狠狠点我](https://juejin.im/post/6844903912596586509)
