@@ -210,10 +210,17 @@ server.listen(PORT);
 console.log("node-server started at port http://localhost:" + PORT);
 ```
 浏览器访问效果：
+
+- 访问主页：
 ![](https://github.com/Vuact/document/blob/main/base/node/images/CEF2AD7874ECE06D6CF90F1B0FF15E43.jpg?raw=true)
 ![](https://github.com/Vuact/document/blob/main/base/node/images/7F25C7673AE2E8C8F1B1E9D419421B96.jpg?raw=true)
+
+- 访问About页面：
+
 ![](https://github.com/Vuact/document/blob/main/base/node/images/A8C7BD8936CE34A1D86D0250D099CC29.jpg?raw=true)
 ![](https://github.com/Vuact/document/blob/main/base/node/images/E990373EBDD8D7ACA84BD87EE8FD01C7.jpg?raw=true)
+
+- 访问不存在页面：
 ![](https://github.com/Vuact/document/blob/main/base/node/images/BCF88599B9781D8327B86FB1413600AC.jpg?raw=true)
 
 <br>
