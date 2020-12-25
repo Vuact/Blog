@@ -281,7 +281,13 @@ const optionMap = {
 
 <br>
 
-## 例3：接收form-data数据
+## 例3：处理POST请求：接收form-data数据
+
+如果我们用 `例2` 的方式，接收到的数据是这样的：
+![](https://github.com/Vuact/document/blob/main/base/node/images/95493B1EEF4239330D75B60E6D15D0D0.jpg?raw=true)
+
+```js
+```
 
 <br>
 参考：[狠狠点我](https://juejin.im/post/6844903912596586509)
