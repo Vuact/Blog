@@ -231,5 +231,53 @@ console.log("node-server started at port http://localhost:" + PORT);
 
 ### 例2
 
+在上面例子的基础上，我们为About页面增加POST请求功能
+
+```js
+
+····
+
+const optionMap = {
+
+   ····
+   
+  // About页面
+  "/about"() {
+    const contentType = request.headers["content-type"];
+
+    if (method === "POST") {
+      if (contentType === "application/json") {
+        let postData = "";
+        request
+          .on("data", (chunk) => {
+            // chunk是原始二进制数据，需要转化成字符串
+            postData += chunk.toString();
+          })
+          .on("end", () => {
+            response.end(postData + "成功");
+          });
+
+        return; //必须加
+      }
+    }
+
+    //不是POST请求
+    response.writeHead(200, { "Content-Type": "text/html" });
+    response.end("Welcome to the about page!");
+  },
+  
+  ····
+};
+
+····
+
+```
+
+刷新浏览器页面`http://localhost:8000/about`，默认还是会用GET请求，页面内容还是会显示为： `Welcome to the about page!`
+
+要想模拟POST请求，需用postman软件：
+
+![](https://github.com/Vuact/document/blob/main/base/node/images/63724C802DFA229583565F0BC3BBC6DC.jpg?raw=true)
+
 参考：[狠狠点我](https://juejin.im/post/6844903912596586509)
 
