@@ -146,7 +146,7 @@ M       "dev": "cross-env NODE_ENV=dev nodemon app.js"
 
 # 三、Dome
 
-### 例1
+## 例1：处理GET请求
 
 现在我们有三个页面：
 - 主页面：`http://localhost:8000?id=1&name=demo`，发送了一个GET请求，并且传递了两个变量和值。
@@ -229,7 +229,7 @@ console.log("node-server started at port http://localhost:" + PORT);
 
 <br>
 
-### 例2
+## 例2：处理POST请求：接收application/json数据
 
 在上面例子的基础上，我们为About页面增加POST请求功能
 
@@ -279,5 +279,10 @@ const optionMap = {
 
 ![](https://github.com/Vuact/document/blob/main/base/node/images/63724C802DFA229583565F0BC3BBC6DC.jpg?raw=true)
 
+<br>
+
+## 例3：接收form-data数据
+
+<br>
 参考：[狠狠点我](https://juejin.im/post/6844903912596586509)
 
