@@ -170,6 +170,7 @@ const server = http.createServer((request, response) => {
   }
 
   const params = querystring.parse(url.split("?")[1]); // 解析URL，把url中?后面的参数转换为对象
+  const path = url.split('?')[0];
 
   const optionMap = {
     // 主页
@@ -201,7 +202,7 @@ const server = http.createServer((request, response) => {
     }
   };
 
-  optionMap[url] ? optionMap[url]() : optionMap["/error"]();
+  	optionMap[path] ? optionMap[path]() : optionMap['/error']();
 });
 
 server.listen(PORT);
