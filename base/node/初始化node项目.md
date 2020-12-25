@@ -275,7 +275,7 @@ const optionMap = {
 
 刷新浏览器页面`http://localhost:8000/about`，默认还是会用GET请求，页面内容还是会显示为： `Welcome to the about page!`
 
-要想模拟POST请求，需用postman软件：
+我们用postman来模拟POST请求，浏览输出效果：
 
 ![](https://github.com/Vuact/document/blob/main/base/node/images/63724C802DFA229583565F0BC3BBC6DC.jpg?raw=true)
 
