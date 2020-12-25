@@ -286,7 +286,51 @@ const optionMap = {
 如果我们用 `例2` 的方式，接收到的数据是这样的：
 ![](https://github.com/Vuact/document/blob/main/base/node/images/95493B1EEF4239330D75B60E6D15D0D0.jpg?raw=true)
 
+需要我们自行解析，比较麻烦。这里推荐安装multiparty插件。
+
+```
+npm install multiparty --save
+```
+
 ```js
+
+const multiparty = require('multiparty');
+
+····
+
+const optionMap = {
+
+   ····
+   
+  // About页面
+  "/about"() {
+    const contentType = request.headers["content-type"];
+
+    if (method === "POST") {
+      if (contentType === "application/json") {
+            ····
+      }else if (contentType.includes('multipart/form-data')) {
+         const form = new multiparty.Form();
+         form.parse(request, (err, fields, files) => {
+         
+            //console.log(fields, files);
+            //fields: { username: [ 'bty' ], password: [ '666666' ] }
+            //files: {}
+
+            response.end(JSON.stringify({ fields, files }));
+         });
+
+         return;
+      }
+    }
+
+     ·····
+  },
+  
+  ····
+};
+
+····
 ```
 
 <br>
