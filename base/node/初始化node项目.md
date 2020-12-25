@@ -253,15 +253,21 @@ const optionMap = {
 
     if (method === "POST") {
       if (contentType === "application/json") {
-        let postData = "";
+        let body = [];
         request
-          .on("data", (chunk) => {
-            // chunk是原始二进制数据，需要转化成字符串
-            postData += chunk.toString();
-          })
-          .on("end", () => {
-            response.end(postData + "成功");
-          });
+           .on("error", (err) => {
+             console.error(err);
+           })
+           .on("data", (chunk) => {
+             // chunk是原始二进制数据
+             body.push(chunk);
+           })
+           .on("end", () => {
+             //需要转化成字符串
+             body = Buffer.concat(body).toString();
+             response.end(body + "成功");
+           });
+
 
         return; //必须加
       }
