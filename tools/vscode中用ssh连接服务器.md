@@ -12,7 +12,7 @@
 - 选择 config 配置文件，如`/Users/baitianyu/.ssh/config`
 - 配置.ssh/config
 
-```js
+```sh
 Host myServer # 设置ssh host缩写
     Hostname 47.***.***.10 # 服务器ip
     User root # 服务器用户名
