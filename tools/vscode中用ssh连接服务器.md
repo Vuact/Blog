@@ -12,8 +12,6 @@
 - 选择 config 配置文件，如`/Users/baitianyu/.ssh/config`
 - 配置.ssh/config
 
-![]()
-
 ```js
 Host myServer # 设置ssh host缩写
     Hostname 47.***.***.10 # 服务器ip
@@ -21,4 +19,13 @@ Host myServer # 设置ssh host缩写
     Port 22 # 服务器端口
     IdentityFile ~/.ssh/id_rsa # 密钥
     # 注意：可以添加多个服务器
+```
+
+5、默认情况下，vscode 是不支持输入目标机密码的。可以通过在settings中配置，允许用户输入密码登录目标机。
+
+在settins.json文件的json中，新增如下两行即可。
+
+```json
+ "remote.SSH.showLoginTerminal": true,
+ "remote.SSH.useLocalServer": false,
 ```
