@@ -21,11 +21,23 @@ Host myServer # 设置ssh host缩写
     # 注意：可以添加多个服务器
 ```
 
+![](https://github.com/Vuact/document/blob/main/tools/images/QQ20201228-0.jpg?raw=true)
+
 5、默认情况下，vscode 是不支持输入目标机密码的。可以通过在settings中配置，允许用户输入密码登录目标机。
 
+![](https://github.com/Vuact/document/blob/main/tools/images/image007.png?raw=true)
 在settins.json文件的json中，新增如下两行即可。
 
 ```json
  "remote.SSH.showLoginTerminal": true,
  "remote.SSH.useLocalServer": false,
+```
+
+
+6、在vscode终端使用：
+
+```js
+sh XXXX
+
+exit //退出
 ```
