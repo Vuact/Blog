@@ -37,7 +37,9 @@ Host myServer # 设置ssh host缩写
 6、在vscode终端使用：
 
 ```js
-sh XXXX
+//连接机器
+sh [Host值，eg: myServer]
 
-exit //退出
+//退出机器
+exit
 ```
