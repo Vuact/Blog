@@ -26,6 +26,7 @@ Host myServer # 设置ssh host缩写
 5、默认情况下，vscode 是不支持输入目标机密码的。可以通过在settings中配置，允许用户输入密码登录目标机。
 
 ![](https://github.com/Vuact/document/blob/main/tools/images/image007.png?raw=true)
+
 在settins.json文件的json中，新增如下两行即可。
 
 ```json
