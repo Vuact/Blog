@@ -167,7 +167,9 @@ app.use('/users', userRouter)
 app.listen(3000)
 ```
 
-通过 `app.set` 设置模板引擎为 ejs 和存放模板的目录。在 myblog 下新建 views 文件夹，在 views 下新建 users.ejs，添加如下代码：
+通过 `app.set` 设置模板引擎为 ejs 和存放模板的目录。
+
+在 根目录 下新建 views 文件夹，在 views 下新建 users.ejs，添加如下代码：
 
 **views/users.ejs**
 
