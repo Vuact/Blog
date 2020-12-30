@@ -25,7 +25,7 @@ npm start     // 启动项目
 
 生成目录结构：
 
-![]()
+![](https://github.com/Vuact/document/blob/main/base/node/images/75F3EF67680BB83257A9BCD014ECD035.jpg?raw=true)
 
 <br>
 
