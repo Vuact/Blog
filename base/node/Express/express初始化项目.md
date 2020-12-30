@@ -175,6 +175,8 @@ module.exports.register = (app) => {
 
 # 三、创建controllers：路由处理器回调函数
 
+我们再将 路由的分发逻辑 和 路由的回调函数逻辑(即控制器) 进行分离。
+
 在根目录下创建空文件夹 controllers，在 controllers 目录下创建 index.js 和 users.js。并修改`routes/index.js`、`routes/users.js`，最后代码如下：
 
 **routes/index.js**
@@ -375,3 +377,11 @@ supplies: ['mop', 'broom', 'duster']
 > 2. 主模板结构清晰
 
 > 注意：要用 `<%- include('header') %>` 而不是 `<%= include('header') %>`
+
+<br>
+
+![](https://mdn.mozillademos.org/files/16453/Express_MVC.png)
+
+- 路由：把需要支持的请求（以及请求 URL 中包含的任何信息）转发到适当的控制器函数。
+- 控制器：从模型中获取请求的数据，创建一个 HTML 页面显示出数据，并将页面返回给用户，以便在浏览器中查看。
+- 视图（模板）：供控制器用来渲染数据。
