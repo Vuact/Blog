@@ -7,6 +7,7 @@
 
 ### Express
 
-- 初始化express项目
+- express-generator初始化项目
+- express初始化项目
 
 ### Koa
