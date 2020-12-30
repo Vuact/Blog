@@ -80,7 +80,7 @@ app.listen(3000)
 
 <br>
 
-### 2、express.Router
+### 2、升级：使用express.Router
 
 上面只是很简单的路由使用的例子（将所有路由控制函数都放到了 index.js），但在实际开发中通常有几十甚至上百的路由，都写在 index.js 既臃肿又不好维护，这时可以使用 express.Router 实现更优雅的路由解决方案。在 myblog 目录下创建空文件夹 routes，在 routes 目录下创建 index.js 和 users.js。最后代码如下：
 
