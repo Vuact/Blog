@@ -1,3 +1,10 @@
+- Hello, express
+- 路由routes
+- 创建controllers：路由处理器回调函数
+- 模板引擎
+
+<br>
+
 # 一、Hello, express
 
 ## 1、最简单的Dome
@@ -48,7 +55,7 @@ supervisor index.js
 
 <br>
 
-# 二、路由
+# 二、路由routes
 
 ## 1、最简单的使用
 前面我们只是挂载了根路径的路由控制器，现在修改 index.js 如下：
