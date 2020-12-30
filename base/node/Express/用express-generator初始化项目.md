@@ -9,6 +9,8 @@ npm install express-generator -g  // 全局安装express脚手架,安装之后�
 express --version                 // 检查express版本
 ```
 
+<br>
+
 # 2、生成项目文件
 
 ```js
