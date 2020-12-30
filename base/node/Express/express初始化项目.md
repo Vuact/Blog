@@ -132,6 +132,46 @@ module.exports = router;
 
 更多 express.Router 的用法见 [express 官方文档](http://expressjs.com/en/4x/api.html#router)。
 
+<br>
+
+## 3、再升级：更优雅的写法
+
+修改`index.js`文件，新增`routes/main.js`文件，其余文件不变。
+
+**index.js**
+
+```js
+const express = require('express');
+const routes = require('./routes/main');
+
+const app = express();
+
+routes.register(app);
+
+app.listen(3000);
+```
+
+**routes/main.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+
+const LIST = [
+	require('./index'),
+	require('./users')
+];
+
+const register = (app) => {
+	for (let router of LIST) {
+		app.use(router);
+	}
+};
+
+module.exports = {
+	register
+};
+```
 
 <br>
 
