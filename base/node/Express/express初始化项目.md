@@ -50,6 +50,7 @@ supervisor index.js
 
 # 二、路由
 
+### 1、最简单的使用
 前面我们只是挂载了根路径的路由控制器，现在修改 index.js 如下：
 
 ```js
@@ -77,7 +78,9 @@ app.listen(3000)
 - `req.params`: 解析 url 中的占位符，如 `/:name`，访问 /haha，req.params 的值为 `{name: 'haha'}`
 - `req.body`: 解析后请求体，需使用相关的模块，如 [body-parser](https://www.npmjs.com/package/body-parser)，请求体为 `{"name": "haha"}`，则 req.body 为 `{name: 'haha'}`
 
-## 3.2.1 express.Router
+<br>
+
+### 2、express.Router
 
 上面只是很简单的路由使用的例子（将所有路由控制函数都放到了 index.js），但在实际开发中通常有几十甚至上百的路由，都写在 index.js 既臃肿又不好维护，这时可以使用 express.Router 实现更优雅的路由解决方案。在 myblog 目录下创建空文件夹 routes，在 routes 目录下创建 index.js 和 users.js。最后代码如下：
 
