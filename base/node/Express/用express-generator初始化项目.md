@@ -53,7 +53,9 @@ bin文件夹用来`存放各种启动脚本`(eg: test，stop或restart等)，
 
 `./bin/www`文件就是个启动Web服务器的示例脚本。
 
->参考：[Express4.X中的bin/www是作什么用的？为什么没有后缀？](https://www.cnblogs.com/fhen/p/6378855.html)
+参考链接：[Express4.X中的bin/www是作什么用的？为什么没有后缀？](https://www.cnblogs.com/fhen/p/6378855.html)
+
+<br>
 
 ./bin/www
 
