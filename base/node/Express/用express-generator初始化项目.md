@@ -1,6 +1,4 @@
-# 一、环境配置
-
-1、安装express、express-generator
+# 1、安装express、express-generator
 
 - express 是基于 node 的开发框架。
 - express-generator: Express 应用程序生成器
@@ -11,7 +9,7 @@ npm install express-generator -g  // 全局安装express脚手架,安装之后�
 express --version                 // 检查express版本
 ```
 
-2、生成项目文件
+# 2、生成项目文件
 
 ```js
 mkdir app
@@ -29,7 +27,7 @@ npm start     // 启动项目
 
 <br>
 
-3、项目分析：
+# 3、项目分析：
 
 通过`package.json`可以看出, 我们通过`npm start`指令来执行  `启动脚本 ./bin/www`。
 ```json
