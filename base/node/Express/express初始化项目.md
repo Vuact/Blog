@@ -162,14 +162,10 @@ const LIST = [
    require('./users')
 ];
 
-const register = (app) => {
+module.exports.register = (app) => {
    for (let router of LIST) {
       app.use(router);
    }
-};
-
-module.exports = {
-   register
 };
 ```
 
@@ -179,7 +175,47 @@ module.exports = {
 
 # 三、创建controllers：路由处理器回调函数
 
+在根目录下创建空文件夹 controllers，在 controllers 目录下创建 index.js 和 users.js。并修改`routes/index.js`、`routes/users.js`，最后代码如下：
 
+**routes/index.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+const controller = require('../controllers/index');
+
+router.get('/', controller.hello);
+
+module.exports = router;
+```
+
+**controllers/index.js**
+
+```js
+module.exports.hello = (req, res) => {
+   res.send('hello, express');
+};
+```
+
+**routes/users.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+const controller = require('../controllers/users');
+
+router.get('/users/:name', controller.sayName);
+
+module.exports = router;
+```
+
+**controllers/users.js**
+
+```js
+module.exports.sayName = (req, res) => {
+   res.send(`hello, ${req.params.name}`);
+};
+```
 
 <br>
 
