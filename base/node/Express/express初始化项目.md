@@ -97,7 +97,7 @@ const indexRouter = require('./routes/index')
 const userRouter = require('./routes/users')
 
 app.use('/', indexRouter);
-app.use('/users', userRouter);
+app.use('/', userRouter);
 
 app.listen(3000);
 ```
@@ -121,7 +121,7 @@ module.exports = router;
 const express = require('express');
 const router = express.Router();
 
-router.get('/:name', (req, res) => {
+router.get('/users/:name', (req, res) => {
    res.send(`hello, ${req.params.name}`);
 });
 
