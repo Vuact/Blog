@@ -113,7 +113,7 @@ bin文件夹用来`存放各种启动脚本`(eg: test，stop或restart等)，
 
 <br>
 
-./bin/www
+**./bin/www**
 
 ```js
 var app = require('../app');
