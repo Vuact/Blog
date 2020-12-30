@@ -1,4 +1,4 @@
-# 一、搭建服务器
+# 一、环境配置
 
 1、安装express
 
@@ -25,4 +25,5 @@ npm start     // 启动项目
 
 
 https://segmentfault.com/a/1190000015170332
+
 https://www.jianshu.com/p/5357934b1dbf
