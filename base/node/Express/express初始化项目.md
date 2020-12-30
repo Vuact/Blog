@@ -68,7 +68,9 @@ app.get('/user/:name', (req, res) => {
 app.listen(3000);
 ```
 
-以上代码的意思是：当访问根路径时，依然返回 hello, express，当访问如 `localhost:3000/users/nswbmw` 路径时，返回 hello, nswbmw。路径中 `:name` 起了占位符的作用，这个占位符的名字是 name，可以通过 `req.params.name` 取到实际的值。
+以上代码的意思是：
+- 当访问根路径时`http://localhost:3000`，依然返回 `hello, express`
+- 当访问如 `http://localhost:3000/users/bty` 路径时，返回 `hello, bty`。路径中 `:name` 起了占位符的作用，这个占位符的名字是 name，可以通过 `req.params.name` 取到实际的值。
 
 > 小提示：express 使用了 [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) 模块实现的路由匹配。
 
@@ -84,46 +86,46 @@ app.listen(3000);
 
 上面只是很简单的路由使用的例子（将所有路由控制函数都放到了 index.js），但在实际开发中通常有几十甚至上百的路由，都写在 index.js 既臃肿又不好维护，这时可以使用 express.Router 实现更优雅的路由解决方案。
 
-在 myblog 目录下创建空文件夹 routes，在 routes 目录下创建 index.js 和 users.js。最后代码如下：
+在根目录下创建空文件夹 routes，在 routes 目录下创建 index.js 和 users.js。最后代码如下：
 
 **index.js**
 
 ```js
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const indexRouter = require('./routes/index')
 const userRouter = require('./routes/users')
 
-app.use('/', indexRouter)
-app.use('/users', userRouter)
+app.use('/', indexRouter);
+app.use('/users', userRouter);
 
-app.listen(3000)
+app.listen(3000);
 ```
 
 **routes/index.js**
 
 ```js
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-router.get('/', function (req, res) {
-  res.send('hello, express')
-})
+router.get('/', (req, res) => {
+	res.send('hello, express');
+});
 
-module.exports = router
+module.exports = router;
 ```
 
 **routes/users.js**
 
 ```js
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-router.get('/:name', function (req, res) {
-  res.send('hello, ' + req.params.name)
-})
+router.get('/:name', (req, res) => {
+	res.send(`hello, ${req.params.name}`);
+});
 
-module.exports = router
+module.exports = router;
 ```
 
 以上代码的意思是：我们将 `/` 和 `/users/:name` 的路由分别放到了 routes/index.js 和 routes/users.js 中，每个路由文件通过生成一个 express.Router 实例 router 并导出，通过 `app.use` 挂载到不同的路径。这两种代码实现了相同的功能，但在实际开发中推荐使用 express.Router 将不同的路由分离到不同的路由文件中。
