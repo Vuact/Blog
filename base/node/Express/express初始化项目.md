@@ -1,4 +1,4 @@
-# 一、hello, express
+# 一、Hello, express
 
 ```
 mkdir test
@@ -17,13 +17,13 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-	res.send('hello, express');
+	res.send('Hello, express');
 });
 
 app.listen(3000);
 ```
 
-以上代码的意思是：生成一个 express 实例 app，挂载了一个根路由控制器，然后监听 `3000` 端口并启动程序。运行 `node index`，打开浏览器访问 `http://localhost:3000/` 时，页面应显示 hello, express。
+以上代码的意思是：生成一个 express 实例 app，挂载了一个根路由控制器，然后监听 `3000` 端口并启动程序。运行 `node index`，打开浏览器访问 `http://localhost:3000/` 时，页面应显示 `Hello, express`。
 
 <br>
 
