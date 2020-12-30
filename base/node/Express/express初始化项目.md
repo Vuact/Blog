@@ -173,6 +173,8 @@ module.exports = {
 };
 ```
 
+这样我们再新增路由，只需在routes文件夹下新增js文件，并在`routes/main.js`里的 `LIST` 数组中新增元素即可。
+
 <br>
 
 # 三、模板引擎
