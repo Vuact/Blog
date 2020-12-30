@@ -1,5 +1,7 @@
 # 一、Hello, express
 
+### 1、最简单的Dome
+
 ```
 mkdir test
 cd test
@@ -27,7 +29,7 @@ app.listen(3000);
 
 <br>
 
-# 二、安装Supervisor
+### 2、安装Supervisor
 
 具体请参考《express-generator初始化项目》。
 
@@ -46,4 +48,4 @@ supervisor index.js
 
 <br>
 
-# 三、
+# 二、路由
