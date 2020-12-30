@@ -25,6 +25,14 @@ npm start     // 启动项目
 
 ![](https://github.com/Vuact/document/blob/main/base/node/images/75F3EF67680BB83257A9BCD014ECD035.jpg?raw=true)
 
+- bin: 用来`存放各种启动脚本`
+- public：存放静态文件(css,js,img等)
+- routes：存放路由文件 
+- views：视图目录
+- app.js：项目入口文件
+- package.json：存储项目的信息
+
+
 <br>
 
 # 3、项目分析：
@@ -88,8 +96,3 @@ function onListening() {
 ```
 
 `./bin/www`里面又引用了`app.js`文件，app.js里用来填写各种业务逻辑、路由、中间件等。
-
-
-https://segmentfault.com/a/1190000015170332
-
-https://www.jianshu.com/p/5357934b1dbf
