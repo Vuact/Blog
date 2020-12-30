@@ -19,7 +19,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-	res.send('Hello, express');
+   res.send('Hello, express');
 });
 
 app.listen(3000);
@@ -54,18 +54,18 @@ supervisor index.js
 前面我们只是挂载了根路径的路由控制器，现在修改 index.js 如下：
 
 ```js
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
-app.get('/', function (req, res) {
-  res.send('hello, express')
-})
+app.get('/', (req, res) => {
+   res.send('hello, express');
+});
 
-app.get('/users/:name', function (req, res) {
-  res.send('hello, ' + req.params.name)
-})
+app.get('/user/:name', (req, res) => {
+   res.send(`hello, ${req.params.name}`);
+});
 
-app.listen(3000)
+app.listen(3000);
 ```
 
 以上代码的意思是：当访问根路径时，依然返回 hello, express，当访问如 `localhost:3000/users/nswbmw` 路径时，返回 hello, nswbmw。路径中 `:name` 起了占位符的作用，这个占位符的名字是 name，可以通过 `req.params.name` 取到实际的值。
