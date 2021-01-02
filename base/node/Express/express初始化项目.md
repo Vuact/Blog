@@ -2,6 +2,8 @@
 - 路由routes
 - 创建controllers：路由处理器回调函数
 - 模板引擎
+- 中间件与next
+- 错误处理
 
 dome链接：[helloExpress](https://github.com/Vuact/dome/tree/master/express/helloExpress)
 
@@ -479,7 +481,7 @@ express 有成百上千的第三方中间件，在开发过程中我们首先应
 
 <br>
 
-# 错误处理
+# 六、错误处理
 
 上面的例子中，应用程序为我们自动返回了错误栈信息（express 内置了一个默认的错误处理器），假如我们想手动控制返回的错误内容，则需要加载一个自定义错误处理的中间件，修改 index.js 如下：
 
