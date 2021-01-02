@@ -1,9 +1,8 @@
 
 ### Node.js
 
-- 配置系统环境
+- 配置开发环境
 - 初始化node项目
-- require\module\exports
 
 ### Express
 
