@@ -186,6 +186,8 @@ module.exports.register = (app) => {
 
 我们再将 路由的分发逻辑 和 路由的回调函数逻辑(即控制器) 进行分离。
 
+即将`routes/index.js`和`routes/users.js`中的回调逻辑拆分出去，放到新创建的controllers文件夹下。
+
 在根目录下创建空文件夹 controllers，在 controllers 目录下创建 index.js 和 users.js。并修改`routes/index.js`、`routes/users.js`，最后代码如下：
 
 **routes/index.js**
