@@ -468,12 +468,8 @@ app.use(function (req, res, next) {
 app.listen(3000)
 ```
 
-此时访问 `localhost:3000`，终端会输出：
+此时访问 `localhost:3000`，终端会输出：`1 2`
 
-```
-1
-2
-```
 
 通过 `app.use` 加载中间件，在中间件中通过 next 将请求传递到下一个中间件，next 可接受一个参数接收错误信息，如果使用了 `next(error)`，则会返回错误而不会传递到下一个中间件，修改 index.js 如下：
 
@@ -496,13 +492,13 @@ app.use(function (req, res, next) {
 app.listen(3000)
 ```
 
-此时访问 `localhost:3000`，终端会输出错误信息：
+此时访问 `http://localhost:3000/`，终端会输出错误信息：
 
-![](./img/3.4.1.png)
+![](https://github.com/Vuact/Blog/blob/main/base/node/images/FA32578D0D381B72E47F254461EA9B0C.jpg?raw=true)
 
 浏览器会显示：
 
-![](./img/3.4.2.png)
+![](https://github.com/Vuact/Blog/blob/main/base/node/images/03176056D4BEA7EFA0BE94EE0D6C267D.jpg?raw=true)
 
 > 小提示：`app.use` 有非常灵活的使用方式，详情见 [官方文档](http://expressjs.com/en/4x/api.html#app.use)。
 
