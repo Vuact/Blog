@@ -66,6 +66,8 @@ MongoDB Compass 是 mongoDB 的可视化工具。
 
 下载地址：[Download](https://www.mongodb.com/try/download/compass)
 
+我们本地启动
+
 
 
 ------------
