@@ -87,6 +87,15 @@ $ sudo mongod --dbpath=/Users/XXXX/data
 
 ![](https://github.com/Vuact/Blog/blob/main/base/node/images/87498038A15699AB11718587DED63679.jpg?raw=true)
 
+<br>
+
+创建数据库:
+![](https://github.com/Vuact/Blog/blob/main/base/node/images/QQ20210105-0.png?raw=true)
+
+<br>
+
+插入数据:
+
 
 
 
