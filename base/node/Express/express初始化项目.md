@@ -319,10 +319,9 @@ module.exports.sayName = (req, res) => {
 };
 ```
 
-通过调用 `res.render` 函数渲染 ejs 模板，以users为例：
+以users为例：
 
-res.render：
-
+通过调用 `res.render` 函数渲染 ejs 模板，res.render：
 - 第一个参数：是模板的名字，这里是 users 则会匹配 views/users.ejs
 - 第二个参数：是传给模板的数据，这里传入 name，则在 ejs 模板中可使用 name。
 
