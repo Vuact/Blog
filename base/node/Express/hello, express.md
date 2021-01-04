@@ -1,3 +1,7 @@
+Express 是一个路由和中间件 Web 框架，其自身只具有最低程度的功能：Express 应用程序基本上是一系列中间件函数调用。
+
+# 目录：
+
 - Hello, express
 - 路由routes
 - 创建controllers：路由处理器回调函数
@@ -7,6 +11,10 @@
 - 提供静态文件
 
 项目源码链接：[狠狠戳我](https://github.com/Vuact/dome/tree/master/express/helloExpress)
+
+
+
+
 
 <br>
 
@@ -61,6 +69,10 @@ supervisor index.js
 <br>
 
 # 二、路由routes
+
+路由用于确定应用程序如何响应对特定端点的客户机请求，包含一个 URI（或路径）和一个特定的 HTTP 请求方法（GET、POST 等）。
+
+每个路由可以具有一个或多个处理程序函数，这些函数在路由匹配时执行。
 
 ## 1、最简单的使用
 前面我们只是挂载了根路径的路由控制器，现在修改 index.js 如下：
@@ -704,5 +716,7 @@ app.use('/static', express.static('public'));
 
 ·····
 ```
+
+<br>
 
 
