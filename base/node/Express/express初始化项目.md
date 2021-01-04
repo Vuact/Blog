@@ -578,6 +578,8 @@ app.listen(3000);
 
 # 六、错误处理
 
+## 1、简述
+
 上面 第五部分概念的第二个例子中，应用程序为我们自动返回了错误栈信息（express 内置了一个默认的错误处理器），假如我们想手动控制返回的错误内容，则需要加载一个自定义错误处理的中间件，修改 index.js 如下：
 
 **index.js**
@@ -612,3 +614,63 @@ app.listen(3000)
 
 > 小提示：关于 express 的错误处理，详情见 [官方文档](https://expressjs.com/zh-cn/guide/error-handling.html)。
 
+<br>
+
+## 2、接着上面的项目
+
+新建 `middleware/error.js`文件，改写index.js，如下：
+
+**middleware/error.js**
+
+```js
+module.exports = {
+  //将请求和错误信息写入 stderr
+  logErrors(err, req, res, next) {
+    console.error(err.stack);
+    next(err);
+  },
+
+  //错误会显式传递到下一项
+  clientErrorHandler(err, req, res, next) {
+    if (req.xhr) {
+      res.status(500).send({ error: "Something failed!" });
+    } else {
+      next(err);
+    }
+  },
+
+  errorHandler(err, req, res, next) {
+    if (res.headersSent) {
+      //委托给 Express 中的缺省错误处理机制处理
+      return next(err);
+    }
+
+    //自定义处理
+    res.status(500);
+    res.render("error", { error: err });
+  }
+};
+```
+
+**index.js**
+
+```js
+const express = require('express');
+const routes = require('./routes/main');
+const log = require('./middleware/log');
+const render = require('./middleware/render');
+const error = require('./middleware/error');
+
+const app = express();
+
+app.use(log());  //发日记
+app.use(render(app)); //渲染 
+
+routes.register(app);
+
+app.use(error.logErrors);//将请求和错误信息写入 stderr
+app.use(error.clientErrorHandler);//错误会显式传递到下一项
+app.use(error.errorHandler);
+
+app.listen(3000);
+```
