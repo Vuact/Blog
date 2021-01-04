@@ -521,8 +521,8 @@ express 有成百上千的第三方中间件，在开发过程中我们首先应
 
 我们接着上面的项目来添加中间件，需求：
 
-（1）将上面的ejs模板渲染抽象为 `渲染中间件`render.js
-（2）在每次启动程序时添加 `日记上报中间件`log.js
+- （1）将上面的ejs模板渲染抽象为 `渲染中间件`render.js
+- （2）在每次启动程序时添加 `日记上报中间件`log.js
 
 首先我们在根目录创建 `middleware` 文件，并在其中新建 render.js 和 log.js 文件，如下：
 
@@ -538,7 +538,7 @@ module.exports = (app) => {
       app.set('views', path.join(process.cwd(), '/views')); // 设置存放模板文件的目录 (process.cwd()获得当前执行node命令时候的文件夹目录名)
       app.set('view engine', 'ejs'); // 设置模板引擎为 ejs
       next();
-	};
+   };
 };
 ```
 
@@ -572,7 +572,7 @@ routes.register(app);
 
 app.listen(3000);
 ```
-
+从上面代码即：每次启动程序时，先日记上报，再配置模板引擎，最后注册路由。
 
 <br>
 
