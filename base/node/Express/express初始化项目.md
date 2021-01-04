@@ -276,14 +276,12 @@ app.listen(3000);
 <!DOCTYPE html>
 <html>
 <head></head>
-
 <body>
-	<h1>
-		<%= name.toUpperCase() %>
-	</h1>
-	<p>hello, <%= name %></p>
+   <h1>
+      <%= name.toUpperCase() %>
+   </h1>
+   <p>hello, <%= name %></p>
 </body>
-
 </html>
 ```
 
@@ -293,9 +291,9 @@ app.listen(3000);
 
 ```js
 module.exports.sayName = (req, res) => {
-	res.render('users', {
-		name: req.params.name
-	});
+   res.render('users', {
+      name: req.params.name
+   });
 };
 ```
 
