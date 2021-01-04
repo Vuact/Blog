@@ -268,7 +268,7 @@ app.listen(3000);
 
 通过 `app.set` 设置模板引擎为 ejs 和存放模板的目录。
 
-在 根目录 下新建 views 文件夹，在 views 下新建 `users.ejs`，添加如下代码：
+在 根目录 下新建 views 文件夹，在 views 下新建 `index.ejs`和`users.ejs`，添加如下代码：
 
 **views/users.ejs**
 
@@ -285,7 +285,29 @@ app.listen(3000);
 </html>
 ```
 
-修改 controllers/users.js 如下：
+**views/index.ejs**
+
+```html
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+   <h1>
+      hello, express
+   </h1>
+</body>
+</html>
+```
+
+修改 controllers/index.js 和 controllers/users.js 如下：
+
+**controllers/index.js**
+
+```js
+module.exports.sayName = (req, res) => {
+   res.render('index', {});
+};
+```
 
 **controllers/users.js**
 
@@ -297,9 +319,14 @@ module.exports.sayName = (req, res) => {
 };
 ```
 
-`views/index.ejs`和`controllers/index.js`文件同理。
+通过调用 `res.render` 函数渲染 ejs 模板，以users为例：
 
-通过调用 `res.render` 函数渲染 ejs 模板，res.render 第一个参数是模板的名字，这里是 users 则会匹配 views/users.ejs，第二个参数是传给模板的数据，这里传入 name，则在 ejs 模板中可使用 name。`res.render` 的作用就是将模板和数据结合生成 html，同时设置响应头中的 `Content-Type: text/html`，告诉浏览器我返回的是 html，不是纯文本，要按 html 展示。现在我们访问 `http://localhost:3000/users/bty`，如下图所示：
+res.render：
+
+- 第一个参数：是模板的名字，这里是 users 则会匹配 views/users.ejs
+- 第二个参数：是传给模板的数据，这里传入 name，则在 ejs 模板中可使用 name。
+
+`res.render` 的作用就是将模板和数据结合生成 html，同时设置响应头中的 `Content-Type: text/html`，告诉浏览器我返回的是 html，不是纯文本，要按 html 展示。现在我们访问 `http://localhost:3000/users/bty`，如下图所示：
 
 ![](https://github.com/Vuact/Blog/blob/main/base/node/images/4E7E6FA50374C291C4466779DCDB4B33.jpg?raw=true)
 
@@ -403,7 +430,7 @@ supplies: ['mop', 'broom', 'duster']
 此时我们的文件目录结构：
 ![](https://github.com/Vuact/Blog/blob/main/base/node/images/55BB6ED600A20526106AC2A25D3D8F37.jpg?raw=true)
 
-然后我们再看以上目录之间的关系
+然后我们再看以上目录之间的关系:
 
 <br>
 
