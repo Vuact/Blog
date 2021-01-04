@@ -17,8 +17,10 @@ AMD，`异步模块定义`（Asynchronous Module Definition），它是一个在
 
 
 **（1）定义模块： define()**
+
 `定义一个叫modelName的模块，且该模块的依赖为a,b,c。当加载完所有依赖(即加载完a,b,c)后，再执行回调函数，返回模块的输出值(即对外暴露的值)`。
-```
+
+```js
 define('modelName', ["a","b","c"], function(a,b,c){
 	//`````
 	return {};    //返回模块输出值（由向外暴露的变量 组成）
@@ -37,8 +39,10 @@ define('modelName', ["a","b","c"], function(a,b,c){
 > 相对的模块名从 "require" 书写和调用的模块解析
 
 **（2）加载模块： require()**
+
 require()函数在加载依赖的函数的时候是异步加载的，这样浏览器不会失去响应，它指定的回调函数，只有前面的模块都加载成功后，才会运行，解决了依赖性的问题。
-```
+
+```js
 require(["a", "b", "c"], function(z,x,d){}); 
 ```
 
@@ -51,7 +55,9 @@ require(["a", "b", "c"], function(z,x,d){});
 
 
 **例：**
+
 首先在创建一个index.html，内容如下：
+
 ```
 <!DOCTYPE html>  
 <html lang="en">  
@@ -65,7 +71,7 @@ require(["a", "b", "c"], function(z,x,d){});
 
 然后在index.html同级下创建一个文件夹js，跟着创建两个文件：math.js、main.js(用来加载math.js),代码如下：
 
-```
+```js
 /** 定义math.js模块 **/
 define(function(){ 
 	//没写模块名，所以默认为该模块所在的文件名称，即math
@@ -113,7 +119,7 @@ CMD，通用模块定义(Common Module Definition)，CMD规范是国内发展出
 
 CMD推崇依赖就近，实现了懒加载，即什么时候需要用什么模块，就require()加载什么模块 (按需加载)。
 
-```
+```js
 define(function(require, exports, module) {    
 	var a = require('./a'); //按需加载
 	//```
@@ -125,16 +131,11 @@ define(function(require, exports, module) {
  - module 是一个对象，上面存储了与当前模块相关联的一些属性和方法
 
 
-
-
-
-
-
-
 <br>
 
 
 **例：**
+
 首先在创建一个index.html，内容如下：
 
 ```
@@ -150,7 +151,7 @@ define(function(require, exports, module) {
 ```
 然后在index.html同级下创建一个scripts文件夹，跟着创建两个js文件：math.js、main.js，代码如下：
 
-```
+```js
 /** 定义模块 math.js **/
 define(function(require, exports, module) {
     var $ = require('jquery.js');//按需加载
@@ -177,7 +178,7 @@ seajs.use(['math.js'], function(math){
  - AMD用户体验好，因为没有延迟，依赖模块提前执行了; 
    CMD性能好，因为只有用户需要的时候才执行
 
-```
+```js
 /** AMD写法 **/
 define('modelName',["a", "b", "c", "d", "e", "f"], function(a, b, c, d, e, f) { 
      // 在最前面声明并初始化了要用到的所有模块（先下载再执行）
@@ -201,6 +202,7 @@ define(function(require, exports, module) {
     exports.x = x;
 });
 ```
+
 AMD依赖前置，js可以方便知道依赖模块是谁，立即加载，而CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块，这也是很多人诟病CMD的一点，牺牲性能来带来开发的便利性，实际上解析模块用的时间短到可以忽略为什么我们说两个的区别是依赖模块执行时机不同.
 
 AMD在加载模块完成后就会执行改模块，所有模块都加载执行完后会进入require的回调函数，执行主逻辑，这样的效果就是依赖模块的执行顺序和书写顺序不一定一致，看网络速度，哪个先下载下来，哪个先执行，但是主逻辑一定在所有依赖加载完成后才执行。
@@ -220,7 +222,7 @@ CMD`加载完某个依赖模块后并不执行`，`只是下载而已`，在所�
 
 
 
-```
+```js
 /** 定义模块 math.js **/
 var basicNum = 0;
 function add(a, b) {
@@ -253,7 +255,7 @@ ES6 Module主要由两个命令构成：export和import。
  - export命令：用于规定模块的对外接口
  - import命令：用于输入其他模块提供的功能。
 
-```
+```js
 /** 定义模块 math.js **/
 var basicNum = 0;
 var add = function (a, b) {
@@ -270,7 +272,7 @@ function test(ele) {
 ```
 如上例所示，使用import命令的时候，用户需要知道所要加载的变量名或函数名。其实ES6还提供了`export default`命令，`为模块指定默认输出，对应的import语句不需要使用大括号`。
 
-```
+```js
 /** 定义模块 math.js **/
 var basicNum = 0;
 var add = function (a, b) {
