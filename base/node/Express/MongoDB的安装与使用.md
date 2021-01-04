@@ -97,6 +97,7 @@ $ sudo mongod --dbpath=/Users/XXXX/data
 数据的增删改查:
 ![](https://github.com/Vuact/Blog/blob/main/base/node/images/418A2603765F94C583DD81AF2E04A8C7.jpg?raw=true)
 
+关于查找数据，假如我们查询 hostname字段值为 "baitianyudeMBP.lan" 的数据，则在FILTER中输入 `{hostname:"baitianyudeMBP.lan"}` 即可。
 
 
 
