@@ -1,3 +1,5 @@
+express-generator即express的脚手架，用来快速生成express项目。
+
 # 1、安装express、express-generator
 
 - express 是基于 node 的开发框架。
