@@ -66,11 +66,26 @@ MongoDB Compass 是 mongoDB 的可视化工具。
 
 下载地址：[Download](https://www.mongodb.com/try/download/compass)
 
-我们在本地启动了个server, 预览地址`http://localhost:3000/`, 其中mongodb的默认访问端口为27017。 
+我们在本地启动了个server, 预览地址`http://localhost:3000/`, 其中mongodb的默认访问端口为27017，接下来我们要使用这个例子的mongodb。
 
-New Connection：输入`mongodb://localhost:27017`，再点击 CONNECT 即可：
+## 1、启用
+
+（1）在终端执行：
+```sh
+$ sudo mongod --dbpath=/Users/XXXX/data
+```
+
+（2）New Connection：输入`mongodb://localhost:27017`，再点击 CONNECT 即可：
 
 ![](https://github.com/Vuact/Blog/blob/main/base/node/images/8C786D98F7E64A96D99003CADD265377.jpg?raw=true)
+
+进去之后，就可以看到相关的信息
+
+![](https://github.com/Vuact/Blog/blob/main/base/node/images/86D7151F-F4AF-441C-AB02-46F9C6D24286.png?raw=true)
+
+## 1、使用
+
+![](https://github.com/Vuact/Blog/blob/main/base/node/images/87498038A15699AB11718587DED63679.jpg?raw=true)
 
 
 
