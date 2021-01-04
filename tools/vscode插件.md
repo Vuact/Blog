@@ -26,4 +26,4 @@
 - [Browser Preview](https://marketplace.visualstudio.com/items?itemName=auchenberg.vscode-browser-preview) : 内置浏览器。config => browserpreview => start url
 - [Partial Diff](https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff): 文件比较是一个很常见的场景
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): 在vscode里书写Markdown，功能强大。提供了丰富的快捷键，可边写边看，轻松转化为html或pdf文件
-- [Polacode-2020](https://marketplace.visualstudio.com/items?itemName=jeff-hykin.polacode-2019): 代码转化成一张图片
+- [Polacode-2020](https://marketplace.visualstudio.com/items?itemName=jeff-hykin.polacode-2019): 代码转化成一张图片. 打开：command+p => >Polacode
