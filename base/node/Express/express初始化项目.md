@@ -252,19 +252,18 @@ npm i ejs --save
 **index.js**
 
 ```js
-const path = require('path')
-const express = require('express')
-const app = express()
-const indexRouter = require('./routes/index')
-const userRouter = require('./routes/users')
+const path = require('path');
+const express = require('express');
+const routes = require('./routes/main');
 
-app.set('views', path.join(__dirname, 'views'))// 设置存放模板文件的目录
-app.set('view engine', 'ejs')// 设置模板引擎为 ejs
+const app = express();
 
-app.use('/', indexRouter)
-app.use('/users', userRouter)
+app.set('views', path.join(__dirname, 'views')); // 设置存放模板文件的目录
+app.set('view engine', 'ejs'); // 设置模板引擎为 ejs
 
-app.listen(3000)
+routes.register(app);
+
+app.listen(3000);
 ```
 
 通过 `app.set` 设置模板引擎为 ejs 和存放模板的目录。
@@ -276,33 +275,28 @@ app.listen(3000)
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <style type="text/css">
-      body {padding: 50px;font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;}
-    </style>
-  </head>
-  <body>
-    <h1><%= name.toUpperCase() %></h1>
-    <p>hello, <%= name %></p>
-  </body>
+<head></head>
+
+<body>
+	<h1>
+		<%= name.toUpperCase() %>
+	</h1>
+	<p>hello, <%= name %></p>
+</body>
+
 </html>
 ```
 
-修改 routes/users.js 如下：
+修改 controllers/users.js 如下：
 
-**routes/users.js**
+**controllers/users.js**
 
 ```js
-const express = require('express')
-const router = express.Router()
-
-router.get('/:name', function (req, res) {
-  res.render('users', {
-    name: req.params.name
-  })
-})
-
-module.exports = router
+module.exports.sayName = (req, res) => {
+	res.render('users', {
+		name: req.params.name
+	});
+};
 ```
 
 通过调用 `res.render` 函数渲染 ejs 模板，res.render 第一个参数是模板的名字，这里是 users 则会匹配 views/users.ejs，第二个参数是传给模板的数据，这里传入 name，则在 ejs 模板中可使用 name。`res.render` 的作用就是将模板和数据结合生成 html，同时设置响应头中的 `Content-Type: text/html`，告诉浏览器我返回的是 html，不是纯文本，要按 html 展示。现在我们访问 `localhost:3000/users/haha`，如下图所示：
