@@ -6,7 +6,7 @@
 
 ### Express
 
-- express-generator初始化项目
-- express初始化项目
+- hello, express-generator
+- hello, express
 
 ### Koa
