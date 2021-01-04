@@ -62,6 +62,10 @@ $ sudo mongod --dbpath=/Users/XXXX/data
 
 # 二、MongoDB Compass
 
+MongoDB Compass 是 mongoDB 的可视化工具。
+
+下载地址：[Download](https://www.mongodb.com/try/download/compass)
+
 
 
 ------------
