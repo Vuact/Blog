@@ -426,7 +426,7 @@ supplies: ['mop', 'broom', 'duster']
 
 
 
-此时我们的文件目录结构：
+此时我们的项目目录结构：
 ![](https://github.com/Vuact/Blog/blob/main/base/node/images/55BB6ED600A20526106AC2A25D3D8F37.jpg?raw=true)
 
 然后我们再看以上目录之间的关系:
@@ -446,6 +446,8 @@ supplies: ['mop', 'broom', 'duster']
 # 五、中间件与next
 
 前面我们讲解了 express 中路由和模板引擎 ejs 的用法，但 express 的精髓并不在此，在于中间件的设计理念。
+
+## 1、概念讲解
 
 express 中的中间件（middleware）就是用来处理请求的，当一个中间件处理完，可以通过调用 `next()` 传递给下一个中间件，如果没有调用 `next()`，则请求不会往下传递，如内置的 `res.render` 其实就是渲染完 html 直接返回给客户端，没有调用 `next()`，从而没有传递给下一个中间件。看个小例子，修改 index.js 如下：
 
@@ -512,6 +514,65 @@ express 有成百上千的第三方中间件，在开发过程中我们首先应
 > 小提示：express@4 之前的版本基于 connect 这个模块实现的中间件的架构，express@4 及以上的版本则移除了对 connect 的依赖自己实现了，理论上基于 connect 的中间件（通常以 `connect-` 开头，如 `connect-mongo`）仍可结合 express 使用。
 
 > 注意：中间件的加载顺序很重要！比如：通常把日志中间件放到比较靠前的位置，后面将会介绍的 `connect-flash` 中间件是基于 session 的，所以需要在 `express-session` 后加载。
+
+<br>
+
+## 2、接着上面的项目
+
+我们接着上面的项目来添加中间件，需求：
+
+（1）将上面的ejs模板渲染抽象为 `渲染中间件`render.js
+（2）在每次启动程序时添加 `日记上报中间件`log.js
+
+首先我们在根目录创建 `middleware` 文件，并在其中新建 render.js 和 log.js 文件，如下：
+
+**middleware/render.js**
+
+```js
+//渲染中间件
+
+const path = require('path');
+
+module.exports = (app) => {
+   return (req, res, next) => {
+      app.set('views', path.join(process.cwd(), '/views')); // 设置存放模板文件的目录 (process.cwd()获得当前执行node命令时候的文件夹目录名)
+      app.set('view engine', 'ejs'); // 设置模板引擎为 ejs
+      next();
+	};
+};
+```
+
+**middleware/log.js**
+
+```js
+//日记上报中间件
+module.exports = () => {
+   return (req, res, next) => {
+      console.log('send log');
+      next();
+   };
+};
+```
+
+然后再修改index.js文件：
+
+**index.js**
+```js
+const express = require('express');
+const routes = require('./routes/main');
+const log = require('./middleware/log');
+const render = require('./middleware/render');
+
+const app = express();
+
+app.use(log());  //发日记
+app.use(render(app)); //渲染 
+
+routes.register(app);
+
+app.listen(3000);
+```
+
 
 <br>
 
