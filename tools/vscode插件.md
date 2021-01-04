@@ -7,18 +7,18 @@
 - [VS Color Picker](https://marketplace.visualstudio.com/items?itemName=lihui.vs-color-picker): 拾色器
 - [Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview): 鼠标悬浮在链接上可及时预览图片
 - [Npm Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense) : 可自动完成导入语句中的 npm 模块
-- Git History: 查看git历史记录
+- [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory): 查看git历史记录
 - [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh): 用ssh链接服务器
 - [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2) : 把成对的括号做颜色区分，并且提供一根连接线。方便我们审阅代码结构。
 - [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense): 自动提示文件路径，支持各种快速引入文件
-- JavaScript (ES6) code snippets: ES6 语法智能提示，以及快速输入
-- Vetur: VScode官方钦定 Vue 插件。内含语法高亮，智能提示，emmet，错误提示，格式化，自动补全，debugger等实用功能
+- [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets): ES6 语法智能提示，以及快速输入
+- [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur): VScode官方钦定 Vue 插件。内含语法高亮，智能提示，emmet，错误提示，格式化，自动补全，debugger等实用功能
 - [Codelf](https://marketplace.visualstudio.com/items?itemName=unbug.codelf)：变量名命名神器
 
 <br>
 
-- ESlint: 规范 js 代码书写规则，如果觉得太过严谨，可自定义规则
-- TSLint: ts 的书写规范
+- [ESlint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): 规范 js 代码书写规则，如果觉得太过严谨，可自定义规则
+- [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin): ts 的书写规范
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker): 是拼写检查程序，检查不常见的单词，如果单词拼写错误，会给出警告提示
 
 <br>
