@@ -1,12 +1,14 @@
-# 安装与启动 MongoDB
+# 一、安装与启动
 
 - Windows 用户向导：https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 - Linux 用户向导：https://docs.mongodb.com/manual/administration/install-on-linux/
 - Mac 用户向导：https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
 
-# Robomongo 和 Mongochef
+<br>
 
-## Robomongo
+# 二、Robomongo 和 Mongochef
+
+## 1、Robomongo
 
 [Robomongo](https://robomongo.org/) 是一个基于 Shell 的跨平台开源 MongoDB 可视化管理工具，支持 Windows、Linux 和 Mac，嵌入了 JavaScript 引擎和 MongoDB mongo，只要你会使用 mongo shell，你就会使用 Robomongo，它还提供了语法高亮、自动补全、差别视图等。
 
@@ -22,7 +24,7 @@
 ![](https://github.com/nswbmw/N-blog/blob/master/book/img/1.2.2.png)
 
 
-## MongoChef
+## 2、MongoChef
 
 [MongoChef](http://3t.io/mongochef/) 是另一款强大的 MongoDB 可视化管理工具，支持 Windows、Linux 和 Mac。
 
