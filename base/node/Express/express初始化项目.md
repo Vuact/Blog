@@ -375,6 +375,13 @@ supplies: ['mop', 'broom', 'duster']
   <p>hello, <%= name %></p>
 <%- include('footer') %>
 ```
+**views/index.ejs**
+
+```ejs
+<%- include('header') %>
+   <h1>hello, express</h1>
+<%- include('footer') %>
+```
 
 我们将原来的 users.ejs 拆成出了 header.ejs 和 footer.ejs，并在 users.ejs 通过 ejs 内置的 include 方法引入，从而实现了跟以前一个模板文件相同的功能。
 
@@ -385,15 +392,26 @@ supplies: ['mop', 'broom', 'duster']
 
 > 注意：要用 `<%- include('header') %>` 而不是 `<%= include('header') %>`
 
+
+
 <br>
 
 -----
 
+
+
+此时我们的文件目录结构：
+![](https://github.com/Vuact/Blog/blob/main/base/node/images/55BB6ED600A20526106AC2A25D3D8F37.jpg?raw=true)
+
+然后我们再看以上目录之间的关系
+
+<br>
+
 ![](https://mdn.mozillademos.org/files/16453/Express_MVC.png)
 
-- 路由：把需要支持的请求（以及请求 URL 中包含的任何信息）转发到适当的控制器函数。
-- 控制器：从模型中获取请求的数据，创建一个 HTML 页面显示出数据，并将页面返回给用户，以便在浏览器中查看。
-- 视图（模板）：供控制器用来渲染数据。
+- 路由routes：把需要支持的请求（以及请求 URL 中包含的任何信息）转发到适当的控制器函数。
+- 控制器controllers：从模型中获取请求的数据，创建一个 HTML 页面显示出数据，并将页面返回给用户，以便在浏览器中查看。
+- 视图（模板）views：供控制器用来渲染数据。
 
 -----
 
