@@ -94,7 +94,8 @@ $ sudo mongod --dbpath=/Users/XXXX/data
 
 <br>
 
-插入数据:
+数据的增删改查:
+![](https://github.com/Vuact/Blog/blob/main/base/node/images/418A2603765F94C583DD81AF2E04A8C7.jpg?raw=true)
 
 
 
