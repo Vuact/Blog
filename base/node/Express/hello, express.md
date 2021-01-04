@@ -4,6 +4,7 @@
 - 模板引擎
 - 中间件与next
 - 错误处理
+- 提供静态文件
 
 项目源码链接：[狠狠戳我](https://github.com/Vuact/dome/tree/master/express/helloExpress)
 
@@ -674,3 +675,29 @@ app.use(error.errorHandler);
 
 app.listen(3000);
 ```
+
+<br>
+
+# 七、提供静态文件
+
+再添加个功能：提供静态文件。
+
+首先我们在根目录下新建 public 文件夹，然后在里面新建 images 文件夹，在其中添加一个叫 1.jpg 的图片。(/public/images/1.jpg)
+
+然后我们通过 `http://localhost:3000/static/images/1.jpg`，来访问这个图片。
+
+仅修改index.js文件即可：
+
+**index.js**
+```js
+const express = require('express');
+······
+
+const app = express();
+
+app.use('/static', express.static('public'));
+
+·····
+```
+
+
