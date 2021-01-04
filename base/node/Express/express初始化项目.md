@@ -578,7 +578,7 @@ app.listen(3000);
 
 # 六、错误处理
 
-上面的例子中，应用程序为我们自动返回了错误栈信息（express 内置了一个默认的错误处理器），假如我们想手动控制返回的错误内容，则需要加载一个自定义错误处理的中间件，修改 index.js 如下：
+上面 第五部分概念的第二个例子中，应用程序为我们自动返回了错误栈信息（express 内置了一个默认的错误处理器），假如我们想手动控制返回的错误内容，则需要加载一个自定义错误处理的中间件，修改 index.js 如下：
 
 **index.js**
 
@@ -597,6 +597,7 @@ app.use(function (req, res, next) {
 })
 
 //错误处理
+//错误处理中间件函数的定义方式与其他中间件函数基本相同，差别在于错误处理函数有四个自变量而不是三个：(err, req, res, next)
 app.use(function (err, req, res, next) {
   console.error(err.stack)
   res.status(500).send('Something broke!')
@@ -607,5 +608,7 @@ app.listen(3000)
 
 此时访问 `localhost:3000`，浏览器会显示 `Something broke!`。
 
-> 小提示：关于 express 的错误处理，详情见 [官方文档](http://expressjs.com/en/guide/error-handling.html)。
+注意：`请在其他 app.use() 和路由调用之后，最后定义错误处理中间件`
+
+> 小提示：关于 express 的错误处理，详情见 [官方文档](https://expressjs.com/zh-cn/guide/error-handling.html)。
 
