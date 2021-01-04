@@ -6,9 +6,7 @@
 
 以mac为例，
 
-<br>
-
-## 1、安装mongodb
+## 1、安装
 
 由于mongodb不再开源，因而我们只能暂时使用社区版本，这里我们使用 `4.4`版本。
 
@@ -53,7 +51,7 @@ export PATH=$PATH:$MONGODB_HOME/bin  #注意这个路径就是mongodb安装包�
 $ source ~/.bash_profile
 ```
 
-## 3、启动mongodb
+## 3、启动
 
 ```sh
 $ sudo mongod --dbpath=/Users/XXXX/data
@@ -62,7 +60,11 @@ $ sudo mongod --dbpath=/Users/XXXX/data
 
 <br>
 
-# 二、Robomongo 和 Mongochef
+# 二、MongoDB Compass
+
+
+
+------------
 
 ## 1、Robomongo
 
