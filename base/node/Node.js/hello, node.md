@@ -111,11 +111,6 @@ node-server started at port http://localhost:8000
 - app.js：项目入口及程序启动文件
 - package.json：存储项目的信息，比如项目名、描述、作者、依赖等
 
-
-[1](https://blog.csdn.net/liudongdong19/article/details/79795369)
-[2](https://juejin.cn/post/6844904133464424456)
-
-
 <br>
 
 # 二、nodemon(服务热启动) + cross-env
