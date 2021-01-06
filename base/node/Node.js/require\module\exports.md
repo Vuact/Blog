@@ -5,7 +5,7 @@
 
 <br>
 
-# 模块
+Node里面的模块系统遵循的是CommonJS规范
 
 - require：引用exports或module导出的变量
 - module：导出(单个变量)  module.exports
@@ -13,7 +13,7 @@
 
 <br>
 
-## exports = module.exports = {...}
+# 一、exports = module.exports = {...}
 
 ![](https://segmentfault.com/img/bVRMVd?w=596&h=166)
 
@@ -51,6 +51,8 @@ console.log(a) // 打印为 {a : 200}
 
 
 <br>
+
+# 二、使用
 
 ## 1、exports
 
