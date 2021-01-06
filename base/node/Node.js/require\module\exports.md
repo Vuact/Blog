@@ -67,6 +67,14 @@ exports.hello = function () {
 exports.hello2 = function () {
   console.log(2);
 };
+
+//等价于：
+module.exports.hello = function () {
+   console.log(1);
+};
+module.exports.hello2 = function () {
+   console.log(2);
+};
 ```
 
 使用
