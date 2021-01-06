@@ -8,8 +8,7 @@
 Node里面的模块系统遵循的是CommonJS规范
 
 - require：引用exports或module导出的变量
-- module：导出(单个变量)  module.exports
-- exports：导出(多个变量)
+- module.exports、exports：导出变量
 
 <br>
 
@@ -56,10 +55,6 @@ console.log(a) // 打印为 {a : 200}
 
 ## 1、exports
 
-
-
-#### （1）导出多个变量
-
 ```javascript
 exports.hello = function () {
 	console.log(1);
@@ -92,32 +87,10 @@ hello2();
 
 输出：1 2
 
-#### （2）导出单个变量
-
-```javascript
-exports.hello = function () {
-	console.log(1);
-};
-```
-
-使用
-
-```javascript
-const obj = require('./test.js');
-obj.hello();
-
-//或者（解构赋值）
-const { hello } = require('./test.js');
-hello();
-```
-
-输出：1
 
 <br>
 
 ## 2、module
-
-
 
 ```javascript
 module.exports = function () {
@@ -142,8 +115,8 @@ test.js
 let i = 0;
 
 function count() {
-	i++;
-	console.log(i);
+   i++;
+   console.log(i);
 }
 
 exports.count = count;
@@ -151,7 +124,7 @@ exports.count = count;
 
 ```javascript
 const count1 = require('./test.js'),
-	count2 = require('./test.js');
+      count2 = require('./test.js');
 
 count1.count();
 count1.count();
