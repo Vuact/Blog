@@ -7,20 +7,47 @@
 
 # 模块
 
-
 - require：引用exports或module导出的变量
 - module：导出(单个变量)  module.exports
 - exports：导出(多个变量)
 
-注：exports = module.exports = {...}
+<br>
+
+## exports = module.exports = {...}
 
 ![](https://segmentfault.com/img/bVRMVd?w=596&h=166)
 
-1. require() 返回的是 module.exports 而不是 exports
+**test.js**
+```js
+let a = 100;
 
-2. module.exports 初始值为一个空对象 {}
+console.log(module.exports); //打印结果：{}
+console.log(exports); //打印结果：{}
 
-3. exports 是指向的 module.exports 的引用
+exports.a = 200; //这里帮 module.exports 的内容给改成 {a : 200}
+/* 
+   下面两句话等价：
+      exports.a = 200;
+      module.exports.a = 200;
+*/
+
+exports = '指向其他内存区'; //这里把exports的指向指走
+```
+**index.js**
+
+```js
+var a = require('/utils');
+console.log(a) // 打印为 {a : 200} 
+```
+
+>从上面可以看出，其实require导出的内容是module.exports的指向的内存块内容，并不是exports的。
+>简而言之，区分他们之间的区别就是 exports 只是 module.exports的引用，辅助后者添加内容用的。
+
+用白话讲就是，`exports`只辅助`module.exports`操作内存中的数据，辛辛苦苦各种操作数据完，累得要死，结果到最后真正被`require`出去的内容还是`module.exports`的，真是好苦逼啊。
+
+其实大家用内存块的概念去理解，就会很清楚了。
+
+为了避免糊涂，尽量都用 `module.exports` 导出，然后用`require`导入。
 
 
 <br>
