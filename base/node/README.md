@@ -3,6 +3,8 @@
 
 - 配置开发环境
 - hello, node
+- equire\module\exports
+
 
 ### Express
 
