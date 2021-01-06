@@ -72,9 +72,6 @@ module.exports.hello2 = function () {
    console.log(2);
 };
 ```
-
-使用
-
 **index.js**
 ```javascript
 const obj = require('./test.js');
