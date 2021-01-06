@@ -55,6 +55,7 @@ console.log(a) // 打印为 {a : 200}
 
 ## 1、exports
 
+**test.js**
 ```javascript
 exports.hello = function () {
 	console.log(1);
@@ -74,6 +75,7 @@ module.exports.hello2 = function () {
 
 使用
 
+**index.js**
 ```javascript
 const obj = require('./test.js');
 obj.hello();
@@ -92,11 +94,15 @@ hello2();
 
 ## 2、module
 
+**test.js**
 ```javascript
 module.exports = function () {
     console.log(1);
 };
+```
 
+**index.js**
+```js
 //引用
 const hello = require('./test.js');
 hello();
@@ -109,8 +115,7 @@ require在同一文件多次引用同一个模块，引用模块只初始化一�
 
 
 
-test.js
-
+**test.js**
 ```javascript
 let i = 0;
 
@@ -122,6 +127,7 @@ function count() {
 exports.count = count;
 ```
 
+**index.js**
 ```javascript
 const count1 = require('./test.js'),
       count2 = require('./test.js');
