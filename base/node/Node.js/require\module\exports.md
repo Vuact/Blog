@@ -14,6 +14,8 @@
 
 注：exports = module.exports = {...}
 
+![](https://segmentfault.com/img/bVRMVd?w=596&h=166)
+
 1. require() 返回的是 module.exports 而不是 exports
 
 2. module.exports 初始值为一个空对象 {}
