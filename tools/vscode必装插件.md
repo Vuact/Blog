@@ -14,7 +14,7 @@
 - [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets): ES6 语法智能提示，以及快速输入
 - [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur): VScode官方钦定 Vue 插件。内含语法高亮，智能提示，emmet，错误提示，格式化，自动补全，debugger等实用功能
 - [Codelf](https://marketplace.visualstudio.com/items?itemName=unbug.codelf)：变量名命名神器
-- [background](https://marketplace.visualstudio.com/items?itemName=shalldie.background)：修改VSCode背景图片
+- [background](https://marketplace.visualstudio.com/items?itemName=shalldie.background)：修改VSCode背景图片, [配置](https://blog.csdn.net/yukinoai/article/details/84564949)
 
 <br>
 
