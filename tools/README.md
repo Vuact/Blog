@@ -1,3 +1,7 @@
+# system
+
+- mac快捷键
+
 # vscode
 
 - vscode必装插件
