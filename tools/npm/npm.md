@@ -50,9 +50,9 @@ npm i XXXXX -D
 eg:
 
 ```
-npm install -g @vrfly/vrfly-dev --no-optional --unsafe-perm=true --registry=http://npm.gs.sogou-inc.com/
+npm install -g XXXXX --no-optional --unsafe-perm=true --registry=XXX
 
-npm i -g @vrfly/vrfly-dev@3.10.0 --no-optional --unsafe-perm=true --registry=http://npm.gs.sogou-inc.com/
+npm i -g XXXX --no-optional --unsafe-perm=true --registry=XXX
 ```
 
 
