@@ -52,7 +52,7 @@ eg:
 ```
 npm install -g XXXXX --no-optional --unsafe-perm=true --registry=XXX
 
-npm i -g XXXX --no-optional --unsafe-perm=true --registry=XXX
+npm i -g XXXXX --no-optional --unsafe-perm=true --registry=XXX
 ```
 
 
@@ -71,7 +71,7 @@ npm update <packageName>
 
 
 ```powershell
-npm set registry http://npm.gs.sogou-inc.com
+npm set registry XXXXX
 ```
 
 
