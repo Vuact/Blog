@@ -50,9 +50,9 @@ npm i XXXXX -D
 eg:
 
 ```
-npm install -g XXXXX --no-optional --unsafe-perm=true --registry=XXX
+npm install -g <soft name> --no-optional --unsafe-perm=true --registry=XXX
 
-npm i -g XXXXX --no-optional --unsafe-perm=true --registry=XXX
+npm i -g <soft name> --no-optional --unsafe-perm=true --registry=XXX
 ```
 
 
@@ -71,7 +71,7 @@ npm update <packageName>
 
 
 ```powershell
-npm set registry XXXXX
+npm set registry <address>
 ```
 
 
