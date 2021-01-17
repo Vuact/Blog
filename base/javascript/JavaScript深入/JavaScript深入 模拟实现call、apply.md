@@ -8,8 +8,8 @@ call()允许为不同的对象分配和调用属于另一个对象的函数/方�
 var value = 2;
 var foo = { value: 1 };
 function bar(name, age) {
-	console.log(this.value);
-	console.log(name, age);
+   console.log(this.value);
+   console.log(name, age);
 }
 
 bar.call(foo ,'bty', 18);  // 1   'bty'   18
@@ -17,10 +17,10 @@ bar.call(null, 'bty');     // 2   'bty'  undefined
 
 
 function bar2(name){
-	return {
-		value:this.value,
-		name:name
-	}
+   return {
+      value:this.value,
+      name:name
+   }
 }
 console.log(bar2.call(foo ,'bty')); //{value: 1, name: "bty"}
 ```
