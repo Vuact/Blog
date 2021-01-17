@@ -134,5 +134,5 @@ const objectFactory = (Func, ...args) => {
 ```
 ① var child = {}; 
 ② child.__proto__ = Person.prototype; 
-③ Person.call(child,value);
+③ Person.apply(child, [value]);
 ```
