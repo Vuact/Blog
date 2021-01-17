@@ -15,7 +15,6 @@ function bar(name, age) {
 bar.call(foo ,'bty', 18);  // 1   'bty'   18
 bar.call(null, 'bty');     // 2   'bty'  undefined
 
-
 function bar2(name){
    return {
       value:this.value,
@@ -39,7 +38,7 @@ console.log(bar2.call(foo ,'bty')); //{value: 1, name: "bty"}
 （1）改变this指向：我们将bar函数设为call的第一个参数的属性，即foo.fn = bar;
 
 ```javascript
-Function.prototype.myCall = function (context) {
+Function.prototype.call = function (context) {
     context.fn = this;    //（1）
 }
 ```
@@ -47,7 +46,7 @@ Function.prototype.myCall = function (context) {
 
 （3）执行bar函数，即执行foo.fn；为了不给foo添加多余的属性，执行完bar函数后，我们再删除foo的fn属性，即delete foo.fn
 ```javascript
-Function.prototype.myCall = function (context) {
+Function.prototype.call = function (context) {
     context.fn = this;    //（1）
     var args = [];	     //（2）
     for(var i = 1, len = arguments.length; i < len; i++) {     //2
@@ -67,7 +66,7 @@ Function.prototype.myCall = function (context) {
 **所以最终版：**
 
 ```javascript
-Function.prototype.myCall = function (context) {
+Function.prototype.call = function (context) {
     context = context || window; //（4）
     context.fn = this;    //（1）
     var args = [];	     //（2）
@@ -83,8 +82,6 @@ Function.prototype.myCall = function (context) {
 <br>
 
 ### 3、注意：不能用箭头函数调用call、apply，否则指向会不准
-
-
 
 
 ```javascript
@@ -112,7 +109,7 @@ bar.call(foo ,'bty', 18);  // 2   'bty'   18
 apply 的实现跟 call 类似，在这里直接给代码：
 
 ```javascript
-Function.prototype.myApply = function (context, arr) {
+Function.prototype.apply = function (context, arr) {
     context = context || window;
     context.fn = this;
 
