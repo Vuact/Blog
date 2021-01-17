@@ -79,6 +79,20 @@ Function.prototype.call = function (context) {
 }
 ```
 
+-----
+
+ES6写法：
+```js
+Function.prototype.call = function (context, ...args) {
+  context = context || window;
+  context.fn = this;
+  var result = context.fn(...args);
+  delete context.fn;
+  return result;
+};
+```
+----
+
 <br>
 
 ### 3、注意：不能用箭头函数调用call、apply，否则指向会不准
