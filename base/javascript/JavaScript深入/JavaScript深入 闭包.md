@@ -135,14 +135,14 @@ data[2]();
 
 ```javascript
 globalContext = {
-    VO: { data: [...],   i: 3 }
+   VO: { data: [...],   i: 3 }
 }
 ```
 当执行 data[0] 函数的时候，data[0] 函数的作用域链为：
 
 ```javascript
 data[0]Context = {
-    Scope: [AO, globalContext.VO]
+   Scope: [AO, globalContext.VO]
 }
 ```
 data[0]Context 的 AO 并没有 i 值，所以会从 globalContext.VO 中查找，i 为 3，所以打印的结果就是 3。
@@ -156,9 +156,9 @@ var data = [];
 
 for (var i = 0; i < 3; i++) {
   data[i] = (function (i) {
-        return function(){
-            console.log(i);
-        }
+     return function(){
+        console.log(i);
+     }
   })(i);
 }
 
@@ -170,7 +170,7 @@ data[2]();
 
 ```javascript
 globalContext = {
-    VO: { data: [...],   i: 3 }
+   VO: { data: [...],   i: 3 }
 }
 ```
 跟没改之前一模一样。
@@ -179,20 +179,20 @@ globalContext = {
 
 ```javascript
 data[0]Context = {
-    Scope: [AO, 匿名函数Context.AO，globalContext.VO]
+   Scope: [AO, 匿名函数Context.AO，globalContext.VO]
 }
 ```
 匿名函数执行上下文的 AO 为：
 
 ```javascript
 匿名函数Context = {
-    AO: {
-        arguments: {
-            0: 0,
-            length: 1
-        },
-        i: 0
-    }
+  AO: {
+    arguments: {
+      0: 0,
+      length: 1
+    },
+    i: 0
+  }
 }
 ```
 data[0]Context 的 AO 并没有 i 值，所以会沿着作用域链从`匿名函数Context.AO` 中查找，这时候就会找 i 为 0，找到了就不会往 globalContext.VO 中查找了，即使 globalContext.VO 也有 i 的值(值为3)，所以打印的结果就是 0。
@@ -224,16 +224,16 @@ ES6中加入了块级作用域。
 ```javascript
 var globals = 0;
 function test(parameter){
-    var outerVal = 0;
-    var outerVal2 = 0;
-    console.log('outerVal2:',++outerVal2);
-    return function(){
-        var innerVal = 0;
-        console.log('globals:',++globals);
-        console.log('outerVal:',++outerVal);
-        console.log('innerVal:',++innerVal);
-        console.log('parameter:',++parameter);
-    }
+   var outerVal = 0;
+   var outerVal2 = 0;
+   console.log('outerVal2:',++outerVal2);
+   return function(){
+      var innerVal = 0;
+      console.log('globals:',++globals);
+      console.log('outerVal:',++outerVal);
+      console.log('innerVal:',++innerVal);
+      console.log('parameter:',++parameter);
+   }
 }
 
 var a = test(0);
@@ -248,11 +248,11 @@ a();
 
 ```javascript
 globalContext = {
-    VO: { 
-    	globals: 0, 
-    	test：ƒ test(parameter)，
-    	a：ƒ() 
-    }
+   VO: { 
+     globals: 0, 
+     test：ƒ test(parameter)，
+     a：ƒ() 
+   }
 }
 ```
 而test函数执行上下文的 AO 为：
