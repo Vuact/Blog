@@ -1,5 +1,8 @@
 express-generator即express的脚手架，用来快速生成express项目。
 
+
+项目源码链接：[狠狠戳我](https://github.com/Vuact/demo/tree/master/express/helloExpressGenerator)
+
 <br>
 
 # 1、安装express、express-generator
