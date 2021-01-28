@@ -22,7 +22,7 @@ Express 是一个路由和中间件 Web 框架，其自身只具有最低程度�
 
 # 一、Hello, express
 
-## 1、最简单的Dome
+## 1、最简单的demo
 
 ```
 mkdir test
