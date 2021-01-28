@@ -12,7 +12,7 @@ Express 是一个路由和中间件 Web 框架，其自身只具有最低程度�
 - 错误处理
 - 提供静态文件
 
-项目源码链接：[狠狠戳我](https://github.com/Vuact/dome/tree/master/express/helloExpress)
+项目源码链接：[狠狠戳我](https://github.com/Vuact/demo/tree/master/express/helloExpress)
 
 
 
