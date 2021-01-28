@@ -1,6 +1,6 @@
 - 初始化node项目
 - 服务热启动
-- Dome
+- Demo
 
 <br>
 
@@ -139,7 +139,7 @@ M       "dev": "cross-env NODE_ENV=dev nodemon app.js"
 
 <br>
 
-# 三、Dome
+# 三、Demo
 
 - 处理GET请求
 - 处理POST请求：接收application/json数据
