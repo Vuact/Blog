@@ -566,11 +566,11 @@ module.exports = (app) => {
 
 ```js
 //日记上报中间件
-module.exports = () => {
-   return (req, res, next) => {
+module.exports = {
+   sendUserMessage(req, res, next) {
       console.log('send log');
       next();
-   };
+   }
 };
 ```
 
@@ -585,7 +585,7 @@ const render = require('./middleware/render');
 
 const app = express();
 
-app.use(log());  //发日记
+app.use(log.sendUserMessage);  //发用户信息日记
 app.use(render(app)); //渲染 
 
 routes.register(app);
