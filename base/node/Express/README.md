@@ -7,10 +7,10 @@
 
 # 文章阅读
 
-- ## hello, express-generator
-- hello, express
-- MongoDB的安装与使用
-- 搭个简单的博客（上）
+- ### hello, express-generator
+- ### hello, express
+- ### MongoDB的安装与使用
+- ### 搭个简单的博客（上）
 	- 准备工作
 		- 目录结构
 		- 安装依赖模块
@@ -33,7 +33,7 @@
 		- model: 用户模型设计
 		- views: 注册页
 		- 功能：注册与文件上传
-- 搭个简单的博客（中）
+- ### 搭个简单的博客（中）
 	- 登出与登录
 		- 登出
 		- 登录
@@ -48,7 +48,7 @@
 		- 发表与删除留言
 	- 404页面
 	- 错误页面
-- 搭个简单的博客（下）
+- ### 搭个简单的博客（下）
 	- 日志
 		- winston 和 express-winston
 		- .gitignore
