@@ -4,7 +4,9 @@
 
 
 请求报文: 请求行 + 请求头 + 请求体
+
 ![image](https://user-images.githubusercontent.com/74364990/109516257-f2d25400-7ae2-11eb-8e93-228895671bbb.png)
 
 响应报文: 状态行 + 响应头 + 响应体
+
 ![](https://img-blog.csdnimg.cn/20190216223421912.jpg)
