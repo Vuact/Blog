@@ -145,7 +145,7 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 然而这个时候如果有人不按套路出牌，在留言内容中丢进去一行” `<script>alert(“mdzz”)</script>`
 之后当浏览这条留言的时候，就会弹出如下信息框。
 
-![](https://img-blog.csdn.net/20171204010220432?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204010220432)
 
 ## 3、生效方式：蠕虫式
 
