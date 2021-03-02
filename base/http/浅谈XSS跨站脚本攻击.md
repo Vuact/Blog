@@ -205,7 +205,7 @@ localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
 ```
 实质就是改变了<script>的大小写，则结果如下图所示，我们又愉快的弹出了弹窗。
 
-![](https://img-blog.csdn.net/20171204120340135?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204120340135)
 
 <br>
 
@@ -223,11 +223,11 @@ localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
 
 如下图：将参数name值设为`<sCri<script>pt>alert("hey!")</scRi</script>pt>`
 
-![](https://img-blog.csdn.net/20171204120424536?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204120424536)
 
 ，输入后仍会出现弹窗
 
-![](https://img-blog.csdn.net/20171204120452945?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204120452945)
 
 
 ## 3、并不是只有script标签才可以插入代码！
@@ -241,7 +241,7 @@ localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
 我们利用如下方式在URL中输入：`http://localhost/test.php?name=<img src='w.123' onerror='alert("hey!")'>`  
 之后就可以再次愉快的弹窗。（因为我们指定的图片地址根本不存在也就是一定会发生错误，这时候onerror里面的代码自然就得到了执行。）
 
-![](https://img-blog.csdn.net/20171204120655037?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204120655037)
 
 以下列举几个常用的可插入代码的标签。
 `<div onmouseover='do something here'>` 当用户鼠标在这个块上面时即可运行（可以配合weight等参数将div覆盖页面，鼠标不划过都不行）
@@ -258,7 +258,7 @@ localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
 
 如下图执行后又会出现弹窗
 
-![](https://img-blog.csdn.net/20171204140331351?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204140331351)
 
 
 ## 5、组合各种方式
