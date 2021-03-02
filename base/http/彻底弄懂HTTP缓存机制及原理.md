@@ -148,8 +148,10 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 对于比较缓存，将缓存信息中的Etag和Last-Modified通过请求发送给服务器，由服务器校验，返回304状态码时，浏览器直接使用缓存。
 
 浏览器第一次请求：
+
 ![image](https://user-images.githubusercontent.com/74364990/109674638-0b5d6f80-7bb2-11eb-9de2-4e8f51f95fef.png)
 
 
 浏览器再次请求时：
+
 ![image](https://user-images.githubusercontent.com/74364990/109674663-10222380-7bb2-11eb-96b5-2ee041a9c658.png)
