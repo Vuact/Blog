@@ -99,10 +99,30 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 **第一次访问：**
 
+![image](https://user-images.githubusercontent.com/74364990/109673154-b3723900-7bb0-11eb-9d0c-1b8174465e75.png)
+
 **再次访问：**
 
-通过两图的对比，我们可以很清楚的发现，在`对比缓存`生效时，状态码为304，并且报文大小和请求时间大大减少。
+![image](https://user-images.githubusercontent.com/74364990/109673167-b79e5680-7bb0-11eb-9f57-df000f7957be.png)
+
+
+通过两图的对比，我们可以很清楚的发现，在`对比缓存`生效时，状态码为304，并且报文大小和请求时间大大减少。<br>
 原因是，服务端在进行标识比较后，只返回header部分，通过状态码通知客户端使用缓存，不再需要将报文主体部分返回给客户端。
 
-对于`对比缓存`来说，缓存标识的传递是我们着重需要理解的，它在请求header和响应header间进行传递，
+对于`对比缓存`来说，缓存标识的传递是我们着重需要理解的，它在请求header和响应header间进行传递，<br>
 一共分为两种标识传递，接下来，我们分开介绍。
+
+
+## Last-Modified  /  If-Modified-Since
+
+### Last-Modified：
+
+服务器在响应请求时，告诉浏览器资源的最后修改时间。
+
+![image](https://user-images.githubusercontent.com/74364990/109673291-d8ff4280-7bb0-11eb-8a92-e4c803cb590c.png)
+
+### If-Modified-Since：
+再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间。
+服务器收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对。
+若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码200；
+若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。
