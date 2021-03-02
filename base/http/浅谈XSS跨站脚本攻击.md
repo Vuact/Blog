@@ -119,7 +119,6 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 若未对XSS进行预防，
 
 在URL中输入红框中的值，搜索后则显示如下：
-
 ![](https://img-blog.csdn.net/20171204005150019)
 
 若已对XSS预防，
