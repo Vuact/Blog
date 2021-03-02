@@ -41,7 +41,11 @@
 
 （2）那么，在非正常情况下呢（即：把传递给name的参数值改为一段可执行的Javascript代码）？
 
-我们在url中输入：http://localhost/test.php?name=<script>alert("My name is Sam");</script>
+我们在url中输入：
+
+```
+http://localhost/test.php?name=<script>alert("My name is Sam");</script>
+```
 
 如果我们后台没有进行任何关于传入参数值的过滤，会显示如下图结果
 
