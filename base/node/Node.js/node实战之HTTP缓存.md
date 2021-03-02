@@ -1,6 +1,6 @@
 # 总结
 
-如果不了解`强缓存`与`对比缓存`，可阅读[]()
+如果不了解`强缓存`与`对比缓存`，可阅读[HTTP缓存机制及原理](https://github.com/Vuact/Blog/blob/main/base/http/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%8E%9F%E7%90%86.md)
 
 1、浏览器第一次发起一个http/https请求，读取服务器的资源
 
