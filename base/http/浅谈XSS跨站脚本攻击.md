@@ -7,13 +7,19 @@
 
 不同于大多数攻击（一般只涉及攻击者和受害者），XSS涉及到三方，即攻击者、客户端与网站。XSS的攻击目标是为了盗取客户端的cookie或者其他网站用于识别客户端身份的敏感信息。获取到合法用户的信息后，攻击者甚至可以假冒最终用户与网站进行交互。
 
+<br>
+
 ## 2、为什么简称XSS，而不是CSS
 
 跨站脚本攻击(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。
 
+<br>
+
 ## 3、XSS漏洞成因
 
  XSS漏洞成因是由于动态网页的Web应用对用户提交请求参数未做充分的检查过滤，允许用户在提交的数据中掺入代码，然后未加编码地输出到第三方用户的浏览器，这些攻击者恶意提交代码会被受害用户的浏览器解释执行。
+
+<br>
 
 ## 4、举个例子
 
@@ -31,7 +37,7 @@
 
 给参数name传一个值Sam，显示如下图
 
-![](https://img-blog.csdn.net/20171204000327320?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204000327320)
 
 （2）那么，在非正常情况下呢（即：把传递给name的参数值改为一段可执行的Javascript代码）？
 
@@ -39,7 +45,7 @@
 
 如果我们后台没有进行任何关于传入参数值的过滤，会显示如下图结果
 
-![](https://img-blog.csdn.net/20171204001027205?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204001027205)
 
 <br>
 
@@ -60,11 +66,11 @@ XSS攻击者通过构造URL的方式构造了一个有问题的页面；当其�
 
 一般来说，动态页面中会将url中的部分内容回写在页面中。以百度的搜索为例，输入网址：http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 
-![](https://img-blog.csdn.net/20171204003002692?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204003002692)
 
 搜索后会显示如下页面：
 
-![](https://img-blog.csdn.net/20171204003141185?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204003141185)
 
 
 因为参数<script>alert("wrong")<%2Fscript>是<script>alert("wrong")</script>转义后的结果，搜索结果页中，会在标题中中和搜索框中回写用户输入的内容。
@@ -75,7 +81,7 @@ XSS攻击者通过构造URL的方式构造了一个有问题的页面；当其�
 
 下面我们来通过下图，图解XSS
 
-![](https://img-blog.csdn.net/20171204003651462?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204003651462)
 
 
 
