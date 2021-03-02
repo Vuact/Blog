@@ -148,7 +148,7 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 
 <br>
 
-### 1.3 总结
+### 1.3 请求报文总结
 
 - 关于 请求报文的总结如下
 
@@ -159,7 +159,8 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MDY2NTNkZDhjN2RmMGU3LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
 
 
-<br>
+<br><br>
+
 
 ## 2、HTTP响应报文
 
@@ -176,3 +177,103 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 下面，将详细介绍每个组成部分
 
 <br>
+
+### 2.2 结构详细介绍
+
+#### 组成1：状态行
+
+- 作用：声明 协议版本，状态码，状态码描述
+
+- 组成: 状态行有协议版本、状态码 &状态信息组成
+
+>其中，空格不能省
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MzRlM2ExYjMxNmYyNjVjLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+- 具体介绍
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1iZDI3ZTczNjViMGIyODU1LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+- 状态行
+
+示例: `HTTP/1.1 202 Accepted`(接受)、`HTTP/1.1 404 Not Found`(找不到)
+
+<br>
+
+#### 组成2：响应头 
+
+- 作用：声明客户端、服务器 / 报文的部分信息
+
+- 使用方式：采用**`header（字段名）：value（值）`**的方式
+
+- 常用请求头
+
+**请求和响应报文的通用Header**
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yNTRlYjVhN2RiM2QzZmU1LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+**常见响应Header**
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1hOWYwYTIxMmM0ZWE3MmI5LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+<br>
+
+#### 组成3：响应体
+
+- 作用：存放需返回给客户端的数据信息
+
+- 使用方式：和请求体是一致的，同样分为：任意类型的数据交换格式、键值对形式和分部分形式
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS05ZTgyOWE5ZWRkYTljZWIwLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+<br>
+
+### 2.3 响应报文总结
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1jYzI0YTliOGVmZmNiZDQyLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+<br><br>
+
+
+## 3、总结
+
+下面，简单总结两种报文结构
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS01N2FlYzU5OWNmZWYzZjBmLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+<br>
+
+
+# 五、额外知识
+
+下面将讲解一些关于HTTP的额外知识：
+
+- `HTTP1.1` 与 `HTTP1.0` 的区别
+
+- `HTTP` 与 `HTTPS`的区别
+
+- `HTTP` 处理长连接的方式
+
+## 1、HTTP1.1 与 HTTP1.0的区别
+
+`Http1.1` 比 `Http1.0` 多了以下优点：
+
+- 引入持久连接，即 在同一个`TCP`的连接中可传送多个`HTTP`请求 & 响应
+
+- 多个请求 & 响应可同时进行、可重叠
+
+- 引入更加多的请求头 & 响应头
+
+>如 与身份认证、状态管理 & `Cache`缓存等机制相关的、`HTTP1.0`无host字段
+
+<br>
+
+## 2、HTTP 与HTTPS的区别
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MjBmOTU1YWZkNTcxODVmLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+<br>
+
+## 3、HTTP处理长连接的方式
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0xYWU4Yzk1YWNiYjFiMzY0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
