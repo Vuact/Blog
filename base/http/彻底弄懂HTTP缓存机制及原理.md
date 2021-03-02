@@ -15,7 +15,7 @@
 
 在客户端第一次请求数据时，此时缓存数据库中没有对应的缓存数据，需要请求服务器，服务器返回后，将数据存储至缓存数据库中。
 
-![]()
+![image](https://user-images.githubusercontent.com/74364990/109672112-a9036f80-7baf-11eb-8760-ebf796dcd536.png)
 
 HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，我将其分为两大类(`强制缓存`，`对比缓存`)
 
@@ -24,11 +24,12 @@ HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来�
 
 ### 已存在缓存数据时，仅基于`强制缓存`，请求数据的流程如下
 
-![]()
+![image](https://user-images.githubusercontent.com/74364990/109672155-b4ef3180-7baf-11eb-82eb-e2ff796885c1.png)
 
 ### 已存在缓存数据时，仅基于`对比缓存`，请求数据的流程如下
 
-![]()
+![image](https://user-images.githubusercontent.com/74364990/109672181-bc163f80-7baf-11eb-960b-48e7b6a3f6e1.png)
+
 
 对缓存机制不太了解的同学可能会问，基于`对比缓存`的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？
 
@@ -51,7 +52,8 @@ HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来�
 
 使用chrome的开发者工具，可以很明显的看到对于强制缓存生效时，网络请求的情况
 
-![]()
+![image](https://user-images.githubusercontent.com/74364990/109672213-c46e7a80-7baf-11eb-93b6-d17c05978920.png)
+
 
 <br>
 
@@ -66,20 +68,21 @@ Expires的值为服务端返回的到期时间，即下一次请求时，请求�
 
 Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。
 
-- private: 客户端可以缓存
+- `private`: 客户端可以缓存
 
-- public: 客户端和代理服务器都可缓存（前端的同学，可以认为public和private是一样的）
+- `public`: 客户端和代理服务器都可缓存（前端的同学，可以认为public和private是一样的）
 
-- max-age=xxx: 缓存的内容将在 xxx 秒后失效
+- `max-age=xxx`: 缓存的内容将在 xxx 秒后失效
 
-- no-cache: 需要使用对比缓存来验证缓存数据（后面介绍）
+- `no-cache`: 需要使用对比缓存来验证缓存数据（后面介绍）
 
-- no-store: 所有内容都不会缓存，强制缓存，对比缓存都不会触发（对于前端开发来说，缓存越多越好，so...基本上和它说886）
+- `no-store`: 所有内容都不会缓存，强制缓存，对比缓存都不会触发（对于前端开发来说，缓存越多越好，so...基本上和它说886）
 
 
 **举个板栗**
 
-![]()
+![image](https://user-images.githubusercontent.com/74364990/109672235-cc2e1f00-7baf-11eb-927a-203915c9747e.png)
+
 
 图中Cache-Control仅指定了max-age，所以默认为private，缓存时间为31536000秒（365天）
 
