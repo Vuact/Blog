@@ -1,0 +1,270 @@
+# 一、概述
+
+## 1、什么是跨站脚本攻击
+
+跨站脚本攻击(Cross Site Scripting)，简称XSS，  是指：由于网站程序对用户输入过滤不足，致使攻击者利用输入可以显示在页面上对其他用户造成影响的代码来盗取用户资料、利用用户身份进行某种动作或者对访问者进行病毒侵害的一种攻击方式。
+直白点：恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。
+
+不同于大多数攻击（一般只涉及攻击者和受害者），XSS涉及到三方，即攻击者、客户端与网站。XSS的攻击目标是为了盗取客户端的cookie或者其他网站用于识别客户端身份的敏感信息。获取到合法用户的信息后，攻击者甚至可以假冒最终用户与网站进行交互。
+
+## 2、为什么简称XSS，而不是CSS
+
+跨站脚本攻击(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。
+
+## 3、XSS漏洞成因
+
+ XSS漏洞成因是由于动态网页的Web应用对用户提交请求参数未做充分的检查过滤，允许用户在提交的数据中掺入代码，然后未加编码地输出到第三方用户的浏览器，这些攻击者恶意提交代码会被受害用户的浏览器解释执行。
+
+## 4、举个例子
+
+```
+<?php  
+     header("Content-Type: text/html; charset=utf-8");
+     $username = $_GET["name"];
+     echo "<p>Hi，".$username."！</p>";
+?>
+
+//这段PHP代码的主要作用是从URL获取用户输入的参数作为用户名，并在页面中显示“Hi，XXX”
+```
+
+（1）正常情况下：我们在url中输入：   http://localhost/test.php?name=Sam    
+
+给参数name传一个值Sam，显示如下图
+
+![](https://img-blog.csdn.net/20171204000327320?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+（2）那么，在非正常情况下呢（即：把传递给name的参数值改为一段可执行的Javascript代码）？
+
+我们在url中输入：http://localhost/test.php?name=<script>alert("My name is Sam");</script>
+
+如果我们后台没有进行任何关于传入参数值的过滤，会显示如下图结果
+
+![](https://img-blog.csdn.net/20171204001027205?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+<br>
+
+# 二、XSS生效方式
+
+XSS主要有三种生效方式：
+
+（1）构造URL   
+
+（2）发布内容式     
+
+（3）蠕虫式
+
+
+## 1、生效方式：构造URL
+
+XSS攻击者通过构造URL的方式构造了一个有问题的页面；当其他人点击了此页面后，会发现页面出错，或者被暗中执行了某些js脚本，这时，攻击行为才真正生效。
+
+一般来说，动态页面中会将url中的部分内容回写在页面中。以百度的搜索为例，输入网址：http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
+
+![](https://img-blog.csdn.net/20171204003002692?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+搜索后会显示如下页面：
+
+![](https://img-blog.csdn.net/20171204003141185?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+
+因为参数<script>alert("wrong")<%2Fscript>是<script>alert("wrong")</script>转义后的结果，搜索结果页中，会在标题中中和搜索框中回写用户输入的内容。
+
+如果这里没有经过转义处理，则页面中就嵌入了一段script，并执行该代码，并弹出对话框提示用户。如果是其他恶意代码，则可能造成破坏。然后攻击者将此URL广为传播——比如说，以报错的方式发给百度的管理员，管理员打开这个URL就中招了。
+
+
+
+下面我们来通过下图，图解XSS
+
+![](https://img-blog.csdn.net/20171204003651462?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+
+
+### 举例
+
+#### 例1、
+
+若未对XSS进行预防，
+
+我们在URL中正常输入如下，搜索结果会如下图显示：beijing  的相关词条
+
+
+
+如果在url中非正常输入如下的话，查看源码后input的value属性值会自动变为  <script>alert("xss test")</script>
+
+
+
+
+
+若已对XSS进行了预防，
+
+非正常输入后则会显示如下图：
+
+
+
+
+
+#### 例2、
+
+若未对XSS进行预防，
+
+在URL中输入红框中的值，搜索后则显示如下：
+
+
+
+若已对XSS预防，
+
+则搜索结果如下图：
+
+
+
+<br>
+
+## 2、生效方式：发布式内容
+
+构造URL攻击方式传播范围有限，被攻击者只要有基本的安全意识就可以避免，因此这种手段的危险性比较小。相比之下，通过发表内容构造的XSS的危害就大了很多。
+
+在可以发表内容的论坛、讨论区、吧、博客、微博等网站上，用户发表的内容会保存起来，允许其他用户浏览。这些保存的内容显示在页面上的时候，如果没有经过正确的处理，也会把攻击者精心构造的内容显示出来，访问该内容的用户就此中招。如果该页面流传广泛，则影响会更加深远。
+
+拿 留言板举例
+
+
+#### 例:
+
+留言板的任务是把用户留言的内容展示出来。正常情况下，用户的留言都是正常的语言文字，留言板显示的内容也就没毛病。
+
+然而这个时候如果有人不按套路出牌，在留言内容中丢进去一行”<script>alert(“mdzz”)</script>
+之后当浏览这条留言的时候，就会弹出如下信息框。
+
+
+## 3、生效方式：蠕虫式
+
+最暴力的方式是使用蠕虫——就是首先发一个有问题的文章，浏览者阅读时会被暗中执行恶意代码，发表一篇新的文章的，该文章也含有同样的恶意代码。这样有可能在最快时间内将攻击铺满整个网站。蠕虫式攻击将暗中偷偷摸摸的攻击行为变成了光明正大的攻城拔寨，极容易被发现和修复。
+
+Eg：早在2011年新浪就曾爆出过严重的xss漏洞，导致大量用户自动关注某个微博号并自动转发某条微博。(蠕虫式)
+它以吸引人眼球的方式，让当微博用户主动点击攻击链接。之后微博网友会立刻执行一段有害代码，造成三个结果：发布一条微博；成为攻击发起人的粉丝；向其他好友发送含同样链接地址的私信。新浪微博很快发现这个漏洞，删除了含攻击链接的微博内容，并将攻击发起人ID删除。
+
+
+注：上面我们只是为了方便以弹窗举例，但是XSS攻击方式绝不是弹窗这么简单
+
+<br>
+
+# 三、XSS攻击实例
+
+（1）XSS偷取用户信息
+
+（2）XSS盗取Cookie
+
+（3）XSS钓鱼网站
+
+（4）XSS蠕虫攻击
+
+<br>
+
+# 四、XSS的破坏方式
+
+（1）破坏页面结构：用户输入的内容包含了html的标签，与前面的标签等闭合，导致页面的DIV结构发生变化，页面错乱。
+
+（2）破坏显示内容：用户输入的内容包含了单引号或双引号，与前面的单引号或双引号匹配，导致后面的内容丢失，显示不出来。
+
+（3）破坏JS：用户产生的内容直接输出到js片断中，但仅转义少数字符不能保证排除攻击，所以容易导致JS被破坏
+
+<br>
+
+# 五、XSS攻击 绕过过滤的一些简单方法
+
+## 1、大小写绕过
+
+这个绕过方式的出现是因为网站仅仅只过滤了<script>标签，而没有考虑标签中的大小写并不影响浏览器的解释所致。
+
+#### 例：
+
+如果我们在URL中输入:  
+
+```
+localhost/test.php?name=<script>alert(''hey!")</script>     
+```
+由于网站对<script>标签进行了过滤，所以搜索后什么都不会发生。
+
+<br>
+
+而如果我们输入:  
+
+```
+localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
+```
+实质就是改变了<script>的大小写，则结果如下图所示，我们又愉快的弹出了弹窗。
+
+<br>
+
+## 2、利用过滤后返回语句再次构成攻击语句来绕过
+
+即我们输入一串原始值，网站将输入的原始值进行过滤，过滤后的值仍是一段可执行的代码。
+
+#### 例
+
+让过滤完script标签后的语句中还有script标签。
+      即：<sCri<script>pt>alert("hey!")</scRi</script>pt> 过滤后
+仍为可执行的JS代码<script>alert("hey!")</script>
+
+
+
+如下图：将参数name值设为<sCri<script>pt>alert("hey!")</scRi</script>pt>
+
+
+
+，输入后仍会出现弹窗
+
+
+
+
+
+
+## 3、并不是只有script标签才可以插入代码！
+
+当script标签已经被完全过滤后，前面两种方法就都不会成功。
+莫慌，能植入脚本代码的不止script标签。
+
+例如：我们用<img>标签做一个示范。
+我们利用如下方式在URL中输入：http://localhost/test.php?name=<img src='w.123' onerror='alert("hey!")'>  
+之后就可以再次愉快的弹窗。（因为我们指定的图片地址根本不存在也就是一定会发生错误，这时候onerror里面的代码自然就得到了执行。）
+
+
+
+
+以下列举几个常用的可插入代码的标签。
+<div onmouseover=‘do something here’> 当用户鼠标在这个块上面时即可运行（可以配合weight等参数将div覆盖页面，鼠标不划过都不行）
+类似的还有onclick，这个要点击后才能运行代码
+
+## 4、编码脚本代码绕过关键字过滤。
+有的时候，服务器往往会对代码中的关键字（如alert）进行过滤，这个时候我们可以尝试将关键字进行编码后再插入，不过直接显示编码是不能被浏览器执行的，我们可以用另一个语句eval（）来实现。【eval()会将编码过的语句解码后再执行】
+
+例
+
+alert(1)编码过后就是\u0061\u006c\u0065\u0072\u0074(1)，
+
+所以构建出来的攻击语句http://localhost/test.php?name=<script>eval(\u0061\u006c\u0065\u0072\u0074(1))</script>
+
+如下图执行后又会出现弹窗
+
+
+
+## 5、组合各种方式
+在实际运用中漏洞的利用可能不会这么直观，需要我们不断的尝试，甚至组合各种绕过方式来达到目的。
+
+
+
+## 6、等等等············
+
+<br>
+
+# 六、如何防范 XSS攻击
+
+（1）PHP里的htmlspecialchars()函数：把原生的html代码给变为符号实体
+
+（2）下载htmlpurifier插件：对内容过滤处理，直接能删除html标签
+
+具体请参考：如何全面防范网站的XSS攻击
+
+（3）HttpOnly：https://www.cnblogs.com/softidea/p/6040260.html
+
+（4）CSP
