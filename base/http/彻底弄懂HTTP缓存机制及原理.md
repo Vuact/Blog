@@ -56,14 +56,14 @@ HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来�
 ![image](https://user-images.githubusercontent.com/74364990/109672213-c46e7a80-7baf-11eb-93b6-d17c05978920.png)
 
 
-### Expires
+## Expires
 
 Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。
 不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。
 另一个问题是，到期时间是由服务端生成的，但是客户端时间可能跟服务端时间有误差，这就会导致缓存命中的误差。
 所以HTTP 1.1 的版本，使用`Cache-Control`替代。
 
-### Cache-Control
+## Cache-Control
 
 Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。
 
