@@ -68,7 +68,12 @@ XSS主要有三种生效方式：
 
 XSS攻击者通过构造URL的方式构造了一个有问题的页面；当其他人点击了此页面后，会发现页面出错，或者被暗中执行了某些js脚本，这时，攻击行为才真正生效。
 
-一般来说，动态页面中会将url中的部分内容回写在页面中。以百度的搜索为例，输入网址：http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
+一般来说，动态页面中会将url中的部分内容回写在页面中。
+
+以百度的搜索为例，输入网址：
+```
+http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
+```
 
 ![](https://img-blog.csdn.net/20171204003002692)
 
