@@ -102,20 +102,17 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 
 我们在URL中正常输入如下，搜索结果会如下图显示：beijing  的相关词条
 
-![](https://img-blog.csdn.net/20171204003948558?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204003948558)
 
 如果在url中非正常输入如下的话，查看源码后input的value属性值会自动变为  `<script>alert("xss test")</script>`
 
-
-![](https://img-blog.csdn.net/20171204003958546?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
-
+![](https://img-blog.csdn.net/20171204003958546)
 
 若已对XSS进行了预防，
 
 非正常输入后则会显示如下图：
 
-![](https://img-blog.csdn.net/20171204004007088?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
-
+![](https://img-blog.csdn.net/20171204004007088)
 
 #### 例2、
 
@@ -123,13 +120,13 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 
 在URL中输入红框中的值，搜索后则显示如下：
 
-![](https://img-blog.csdn.net/20171204005150019?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204005150019)
 
 若已对XSS预防，
 
 则搜索结果如下图：
 
-![](https://img-blog.csdn.net/20171204005158714?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+![](https://img-blog.csdn.net/20171204005158714)
 
 <br>
 
