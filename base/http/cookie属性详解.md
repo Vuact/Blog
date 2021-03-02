@@ -21,6 +21,8 @@
   顶级域名只能获取到domain设置为顶级域名的cookie，其他domain设置为二级域名的无法获取。
 
 
+<br>
+
 - Path字段为可以访问此cookie的页面路径。 比如domain是abc.com,path是/test，那么只有/test路径下的页面可以读取此cookie。
 
 - Expires/Max-Age 字段为此cookie超时时间。若设置其值为一个时间，那么当到达此时间后，此cookie失效。不设置的话默认值是Session，意思是cookie会和session一起失效。当浏览器关闭(不是浏览器标签页，而是整个浏览器) 后，此cookie失效。
