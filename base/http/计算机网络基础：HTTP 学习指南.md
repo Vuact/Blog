@@ -65,11 +65,11 @@
 
 >分别用于 发送请求 & 响应请求时
 
-<br>
-
 下面，将详细介绍这2种报文。
 
-## 1、请求报文
+<br>
+
+## 1、HTTP请求报文
 
 ### 1.1 报文结构
 
@@ -79,9 +79,11 @@
 
 - 下面，将详细介绍每个组成部分
 
+<br>
+
 ### 1.2 结构详细介绍
 
-#### 组成1：请求行
+#### 1.2.1 组成1：请求行
 
 - 作用: 声明 请求方法 、主机域名、资源路径 & 协议版本
 
@@ -107,4 +109,54 @@
 
 <br>
 
-#### 组成2：请求头
+#### 1.2.2 组成2：请求头
+
+- 作用：声明 客户端、服务器 / 报文的部分信息
+
+- 使用方式：采用 **`header（字段名）：value（值）`** 的方式
+
+- 常用请求头
+
+** 1）请求和响应报文的通用Header**
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yNTRlYjVhN2RiM2QzZmU1LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+
+** 2）常见请求Header**
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yMmYxMDdhZmQwODM5YzFhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+- 举例：
+
+(URL地址：http://www.tsinghua.edu.cn/chn/yxsz/index.htm）<br>
+Host：www.tsinghua.edu.cn (表示主机域名）<br>
+User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
+
+#### 1.2.3 组成3：请求体
+
+- 作用：存放 需发送给服务器的数据信息
+
+>可选部分，如 `GET请求` 就无请求数据
+
+- 使用方式：共3种
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS02YTM2MWNjNjk2MGViMTEzLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+至此，关于请求报文的请求行、请求头、请求体 均讲解完毕。
+
+<br>
+
+### 1.3 总结
+
+- 关于 请求报文的总结如下
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS02M2UzOTA0ODFlOTJhZWJlLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+- 请求报文示例
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MDY2NTNkZDhjN2RmMGU3LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+
+<br>
+
+## 2、HTTP响应报文
