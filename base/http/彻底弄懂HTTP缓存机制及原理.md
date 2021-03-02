@@ -50,7 +50,7 @@ HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来�
 ![image](https://user-images.githubusercontent.com/74364990/109672213-c46e7a80-7baf-11eb-93b6-d17c05978920.png)
 
 
-### Expires
+### Expires（已废弃）
 
 Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。<br>
 不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。<br>
