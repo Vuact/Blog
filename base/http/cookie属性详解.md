@@ -1,14 +1,16 @@
+在chrome控制台中的Application选项卡中可以看到cookie的信息:
+
 ![image](https://user-images.githubusercontent.com/74364990/109606809-256f6180-7b62-11eb-9711-7afbdd2087f6.png)
 
-在chrome控制台中的resources选项卡中可以看到cookie的信息。
+
 
 一个域名下面可能存在着很多个cookie对象。
 
-name字段为一个cookie的名称。
+- name字段为一个cookie的名称。
 
-value字段为一个cookie的值。
+- value字段为一个cookie的值。
 
-domain字段为可以访问此cookie的域名。
+- domain字段为可以访问此cookie的域名。
 
 非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其他二级域名的cookie，否则cookie无法生成。
 
