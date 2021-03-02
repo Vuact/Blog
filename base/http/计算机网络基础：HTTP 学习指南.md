@@ -162,3 +162,17 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 <br>
 
 ## 2、HTTP响应报文
+
+### 2.1 报文结构
+
+- `HTTP`的响应报文包括：状态行、响应头 & 响应体
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1lNzRlZjkxMTZhMWI1ZGY4LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+- 其中，响应头、响应体 与请求报文的请求头、请求体类似
+
+- 这2种报文最大的不同在于 状态行 & 请求行
+
+下面，将详细介绍每个组成部分
+
+<br>
