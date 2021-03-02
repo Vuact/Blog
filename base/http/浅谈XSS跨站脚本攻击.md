@@ -33,7 +33,7 @@
 //这段PHP代码的主要作用是从URL获取用户输入的参数作为用户名，并在页面中显示“Hi，XXX”
 ```
 
-（1）正常情况下：我们在url中输入：   http://localhost/test.php?name=Sam    
+（1）正常情况下：我们在url中输入：   `http://localhost/test.php?name=Sam`    
 
 给参数name传一个值Sam，显示如下图
 
@@ -82,7 +82,7 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 ![](https://img-blog.csdn.net/20171204003141185)
 
 
-因为参数<script>alert("wrong")<%2Fscript>是<script>alert("wrong")</script>转义后的结果，搜索结果页中，会在标题中中和搜索框中回写用户输入的内容。
+因为参数`<script>alert("wrong")<%2Fscript>是<script>alert("wrong")</script>`转义后的结果，搜索结果页中，会在标题中中和搜索框中回写用户输入的内容。
 
 如果这里没有经过转义处理，则页面中就嵌入了一段script，并执行该代码，并弹出对话框提示用户。如果是其他恶意代码，则可能造成破坏。然后攻击者将此URL广为传播——比如说，以报错的方式发给百度的管理员，管理员打开这个URL就中招了。
 
@@ -102,20 +102,19 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 
 我们在URL中正常输入如下，搜索结果会如下图显示：beijing  的相关词条
 
+![](https://img-blog.csdn.net/20171204003948558?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+如果在url中非正常输入如下的话，查看源码后input的value属性值会自动变为  `<script>alert("xss test")</script>`
 
 
-如果在url中非正常输入如下的话，查看源码后input的value属性值会自动变为  <script>alert("xss test")</script>
-
-
-
+![](https://img-blog.csdn.net/20171204003958546?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 
 若已对XSS进行了预防，
 
 非正常输入后则会显示如下图：
 
-
-
+![](https://img-blog.csdn.net/20171204004007088?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 
 #### 例2、
@@ -124,13 +123,13 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 
 在URL中输入红框中的值，搜索后则显示如下：
 
-
+![](https://img-blog.csdn.net/20171204005150019?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 若已对XSS预防，
 
 则搜索结果如下图：
 
-
+![](https://img-blog.csdn.net/20171204005158714?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 <br>
 
@@ -142,14 +141,14 @@ http://www.baidu.com/s?wd=<script>alert("wrong")<%2Fscript>
 
 拿 留言板举例
 
-
 #### 例:
 
 留言板的任务是把用户留言的内容展示出来。正常情况下，用户的留言都是正常的语言文字，留言板显示的内容也就没毛病。
 
-然而这个时候如果有人不按套路出牌，在留言内容中丢进去一行”<script>alert(“mdzz”)</script>
+然而这个时候如果有人不按套路出牌，在留言内容中丢进去一行” `<script>alert(“mdzz”)</script>`
 之后当浏览这条留言的时候，就会弹出如下信息框。
 
+![](https://img-blog.csdn.net/20171204010220432?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 ## 3、生效方式：蠕虫式
 
@@ -209,6 +208,8 @@ localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
 ```
 实质就是改变了<script>的大小写，则结果如下图所示，我们又愉快的弹出了弹窗。
 
+![](https://img-blog.csdn.net/20171204120340135?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
 <br>
 
 ## 2、利用过滤后返回语句再次构成攻击语句来绕过
@@ -223,15 +224,13 @@ localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
 
 
 
-如下图：将参数name值设为<sCri<script>pt>alert("hey!")</scRi</script>pt>
+如下图：将参数name值设为`<sCri<script>pt>alert("hey!")</scRi</script>pt>`
 
-
+![](https://img-blog.csdn.net/20171204120424536?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 ，输入后仍会出现弹窗
 
-
-
-
+![](https://img-blog.csdn.net/20171204120452945?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 
 ## 3、并不是只有script标签才可以插入代码！
@@ -239,28 +238,30 @@ localhost/test.php?name=<sCript>alert(''hey!")</scRipt>  
 当script标签已经被完全过滤后，前面两种方法就都不会成功。
 莫慌，能植入脚本代码的不止script标签。
 
-例如：我们用<img>标签做一个示范。
-我们利用如下方式在URL中输入：http://localhost/test.php?name=<img src='w.123' onerror='alert("hey!")'>  
+#### 例如：
+
+我们用<img>标签做一个示范。
+我们利用如下方式在URL中输入：`http://localhost/test.php?name=<img src='w.123' onerror='alert("hey!")'>`  
 之后就可以再次愉快的弹窗。（因为我们指定的图片地址根本不存在也就是一定会发生错误，这时候onerror里面的代码自然就得到了执行。）
 
-
-
+![](https://img-blog.csdn.net/20171204120655037?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 以下列举几个常用的可插入代码的标签。
-<div onmouseover=‘do something here’> 当用户鼠标在这个块上面时即可运行（可以配合weight等参数将div覆盖页面，鼠标不划过都不行）
+`<div onmouseover='do something here'>` 当用户鼠标在这个块上面时即可运行（可以配合weight等参数将div覆盖页面，鼠标不划过都不行）
 类似的还有onclick，这个要点击后才能运行代码
 
 ## 4、编码脚本代码绕过关键字过滤。
 有的时候，服务器往往会对代码中的关键字（如alert）进行过滤，这个时候我们可以尝试将关键字进行编码后再插入，不过直接显示编码是不能被浏览器执行的，我们可以用另一个语句eval（）来实现。【eval()会将编码过的语句解码后再执行】
 
-例
+#### 例
 
-alert(1)编码过后就是\u0061\u006c\u0065\u0072\u0074(1)，
+`alert(1)`编码过后就是`\u0061\u006c\u0065\u0072\u0074(1)`，
 
-所以构建出来的攻击语句http://localhost/test.php?name=<script>eval(\u0061\u006c\u0065\u0072\u0074(1))</script>
+所以构建出来的攻击语句`http://localhost/test.php?name=<script>eval(\u0061\u006c\u0065\u0072\u0074(1))</script>`
 
 如下图执行后又会出现弹窗
 
+![](https://img-blog.csdn.net/20171204140331351?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYjk1NDk2MDYzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 
 ## 5、组合各种方式
