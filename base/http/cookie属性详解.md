@@ -29,7 +29,7 @@
 
 - Size字段: 此cookie大小。
 
-- HttpOnly字段: cookie的HttpOnly属性。若此属性为true，则只有在http请求头中会带有此cookie的信息，而不能通过js脚本(如：document.cookie)来访问此cookie，可以防止XSS攻击
+- HttpOnly字段: cookie的HttpOnly属性。若此属性为true，则只有在http请求头中会带有此cookie的信息，而不能通过js脚本(如：document.cookie)来访问此cookie，可以防止XSS攻击。
   [HttpOnly作用](https://www.cnblogs.com/softidea/p/6040260.html)
 
 - Secure字段: 设置是否只能通过https来传递此条cookie
