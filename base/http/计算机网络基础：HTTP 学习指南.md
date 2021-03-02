@@ -117,12 +117,12 @@
 
 - 常用请求头
 
-** 1）请求和响应报文的通用Header**
+**1）请求和响应报文的通用Header**
 
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yNTRlYjVhN2RiM2QzZmU1LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
 
 
-** 2）常见请求Header**
+**2）常见请求Header**
 
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yMmYxMDdhZmQwODM5YzFhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
 
@@ -131,6 +131,8 @@
 (URL地址：http://www.tsinghua.edu.cn/chn/yxsz/index.htm）<br>
 Host：www.tsinghua.edu.cn (表示主机域名）<br>
 User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
+
+<br>
 
 #### 组成3：请求体
 
