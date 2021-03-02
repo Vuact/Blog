@@ -82,6 +82,7 @@ DNS（Domain Name System，域名系统）,它实质上就是个 域名 和 IP �
 
 ### 2、解析流程:
 ![这里写图片描述](https://img-blog.csdn.net/20180818194200475)
+
 假如客户端在浏览器的URL中输入y.abc.com，即想要解析获取y.abc.com的IP地址。（客户是第一次访问y.abc.com）
 
 **如果 本地域名服务器 采用迭代查询：（图a）**
