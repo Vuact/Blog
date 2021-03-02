@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/74364990/109606809-256f6180-7b62-11eb-9711-7afbdd2087f6.png)
+
 在chrome控制台中的resources选项卡中可以看到cookie的信息。
 
 一个域名下面可能存在着很多个cookie对象。
