@@ -21,7 +21,7 @@ HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来�
 
 <br>
 
-### <span style="color: rgba(151, 72, 6, 1)">已存在缓存数据时，仅基于`强制缓存`，请求数据的流程如下:<span>
+### <p style="color:red">已存在缓存数据时，仅基于`强制缓存`，请求数据的流程如下:<p>
 
 ![image](https://user-images.githubusercontent.com/74364990/109672155-b4ef3180-7baf-11eb-82eb-e2ff796885c1.png)
 
