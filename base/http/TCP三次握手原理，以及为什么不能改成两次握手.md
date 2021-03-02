@@ -22,17 +22,17 @@
 
 # 2、TCP三次握手 过程
 
-**（ 1 ）首先Client向Server发送连接：SYN = 1, seq=x；**
+###（ 1 ）首先Client向Server发送连接：SYN = 1, seq=x；
 
  - `因为`要`建立连接，所以SYN=1`；`又因为`TCP规定SYN=1时不能携带数据，但要消耗一个序号, `所以`Client随机选取一个`初始序号seq=x`。（因为并没有响应动作，所以这里没ACK什么事，我们就认为ACK=0吧）
  - 发送后Client进入syn_sent状态，表示客户端等待服务器的回复。
 
-**（2）Server收到请求后 再向Client发送确认：SYN=1, ACK=1, seq=y, ack=x+1；**
+###（2）Server收到请求后 再向Client发送确认：SYN=1, ACK=1, seq=y, ack=x+1；
 
  - `因为`Server建立连接后做出了`响应，所以SYN=1, ACK=1`。`因为`TCP规定SYN=1时不能携带数据，但要消耗一个序号, `所以`Server随机选取一个`初始序号seq=y`。`又因为`Server到 x为止的所有数据都已正确收到了，且Server告诉Client：我期待你下次给我发送包的初始序号(seq)是x+1，`所以ack=x+1`。
  - 发送后服务器进入syn_rcvd，表示服务器已经收到Client的连接请求，等待Client的确认。
 
-**（3）Client收到确认后还需再次发送确认，同时携带要发送给Server的数据：ACK=1, seq=x+1, ack= y+1；连接建立**
+###（3）Client收到确认后还需再次发送确认，同时携带要发送给Server的数据：ACK=1, seq=x+1, ack= y+1；连接建立
 
  - `因为`有 响应 动作，`所以ACK=1`(因为要携带发送的数据，所以这儿没SYN什么事)。`因为(2)`中Server 已经告诉了这次它想收到包的初始序列号是x+1，`所以初始序号为seq=x+1`。`又因为`Client到 y为止的所有数据都已正确收到了，准备接收序列号为y+1的包，`所以ack=y+1`。
  - Server收到后，这个TCP连接就进入Established状态，就可以发起http请求了。
