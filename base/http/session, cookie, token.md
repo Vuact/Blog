@@ -10,8 +10,8 @@ http是一个无状态协议。
 由于http的无状态性，为了使某个域名下的所有网页能够共享某些数据，session和cookie出现了。客户端访问服务器的流程如下
 
 - 首先，客户端会发送一个http请求到服务器端。<br>
-- 服务器端接受客户端请求后，建立一个session，并发送一个http响应到客户端，这个响应头，其中就包含Set-Cookie头部。该头部包含了sessionId。Set-Cookie格式如下，具体请看Cookie详解<br>
-- `Set-Cookie: value[; expires=date][; domain=domain][; path=path][; secure]`<br>
+- 服务器端接受客户端请求后，建立一个session，并发送一个http响应到客户端，这个响应头，其中就包含Set-Cookie头部。该头部包含了sessionId。Set-Cookie格式如下：<br>
+`Set-Cookie: value[; expires=date][; domain=domain][; path=path][; secure]` 具体请看[cookie属性详解](https://github.com/Vuact/Blog/blob/main/base/http/cookie%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3.md)<br>
 - 在客户端发起的第二次请求，假如服务器给了set-Cookie，浏览器会自动在请求头中添加cookie<br>
 - 服务器接收请求，分解cookie，验证信息，核对成功后返回response给客户端
 
