@@ -15,6 +15,7 @@ http是一个无状态协议。
   `Set-Cookie: value[; expires=date][; domain=domain][; path=path][; secure]` <br>
 - 在客户端发起的第二次请求，假如服务器给了`set-Cookie`，浏览器会自动在请求头中添加cookie<br>
 - 服务器接收请求，分解cookie，验证信息，核对成功后返回`response`给客户端
+- 一旦客户端清除cookid，则session在服务器端也会被销毁
 
 ![image](https://user-images.githubusercontent.com/74364990/109837335-07981e80-7c80-11eb-9be3-be5add3882b2.png)
 
