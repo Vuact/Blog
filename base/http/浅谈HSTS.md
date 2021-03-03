@@ -32,7 +32,11 @@ HSTS，`HTTP Strict Transport Security`，简单说就是强制客户端使用 H
 
 - 用户访问时，服务器种下这个头
 
+![image](https://user-images.githubusercontent.com/74364990/109834486-33fe6b80-7c7d-11eb-8041-9eae6f21acd6.png)
+
 - 下次如果使用 `http` 访问，只要 `max-age` 未过期，客户端会进行内部跳转，可以看到 `307 Redirect Internel` 的响应码
+
+![image](https://user-images.githubusercontent.com/74364990/109834644-627c4680-7c7d-11eb-8604-2ebb8d719a5e.png)
 
 - 变成 `https` 访问源服务器
 
