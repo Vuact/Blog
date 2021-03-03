@@ -167,3 +167,10 @@ Authorization: Bearer <token>
 
 （6）为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。
 
+
+<br>
+
+# 六、实战
+
+https://juejin.cn/post/6844903636871413774#comment
+
