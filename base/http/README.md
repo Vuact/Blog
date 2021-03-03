@@ -6,7 +6,7 @@
 - HTTP缓存机制及原理
 - TCP三次握手原理，以及为什么不能改成两次握手
 - DNS原理
-- [彻底弄懂session，cookie，token](https://segmentfault.com/a/1190000017831088)
+- session, cookie, token
 - cookie属性详解
 - 浅谈XSS跨站脚本攻击
 - 浅谈HSTS
