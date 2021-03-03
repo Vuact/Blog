@@ -69,7 +69,7 @@ token 的认证流程与cookie很相似，拿个应用场景说明：
 - 服务端：在服务器一般存于数据库中
 
 
-<br>
+<br><br><br>
 
 # token可以抵抗csrf，cookie+session不行
 
