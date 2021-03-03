@@ -10,6 +10,7 @@
 - cookie属性详解
 - [彻底弄懂session，cookie，token](https://segmentfault.com/a/1190000017831088)
 - 浅谈XSS跨站脚本攻击
+- [你所不知道的 HSTS](https://www.barretlee.com/blog/2015/10/22/hsts-intro/)
 - [高性能网站建设](https://github.com/Vuact/Blog/blob/main/base/http/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE.md)
 
 
