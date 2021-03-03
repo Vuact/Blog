@@ -5,7 +5,7 @@ http是一个无状态协议。
 
 <br>
 
-# cookie和session
+# 一、cookie和session
 
 由于http的无状态性，为了使某个域名下的所有网页能够共享某些数据，session和cookie出现了。客户端访问服务器的流程如下
 
@@ -35,7 +35,7 @@ http是一个无状态协议。
 
 <br>
 
-# token
+# 二、token
 
 token 也称作令牌，由uid+time+sign[+固定参数]<br>
 token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。
@@ -81,11 +81,11 @@ token 的认证流程与cookie很相似，拿个应用场景说明：
 
 我们已经知道session时有状态的，一般存于服务器内存或硬盘中，当服务器采用分布式或集群时，session就会面对负载均衡问题。
 
-- 负载均衡多服务器的情况，不好确认当前用户是否登录，因为多服务器不共享session。这个问题也可以将session存在一个服务器中来解决，但是就不能完全达到负载均衡的效果。当今的几种解决session负载均衡的方法。
+- 负载均衡多服务器的情况，不好确认当前用户是否登录，因为多服务器不共享session。这个问题也可以将session存在一个服务器中来解决，但是就不能完全达到负载均衡的效果。当今的几种[解决session负载均衡](https://blog.51cto.com/zhibeiwang/1965018)的方法。
 
 而token是无状态的，token字符串里就保存了所有的用户信息
 
-- 客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做JWT(Json Web Token)
+- 客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做[JWT(Json Web Token)](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
 
 <br>
 
@@ -95,3 +95,12 @@ token 的认证流程与cookie很相似，拿个应用场景说明：
 - cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。
 - token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。
 - jwt只是一个跨域认证的方案
+
+
+参考
+- [cookie,token验证的区别](https://www.jianshu.com/p/c33f5777c2eb)
+- [有了cookie为什么需要session](https://segmentfault.com/q/1010000016504003)
+- [CSRF Token的设计是否有其必要性](https://segmentfault.com/q/1010000000713614)
+- [cookie,token,session三者的问题和解决方案](https://junyiseo.com/php/757.html)
+- [负载均衡集群中的session解决方案](https://blog.51cto.com/zhibeiwang/1965018)
+- [Json Web Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
