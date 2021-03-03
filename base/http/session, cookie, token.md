@@ -21,6 +21,8 @@ http是一个无状态协议。
 >cookie只是实现session的其中一种方案。虽然是最常用的，但并不是唯一的方法。禁用cookie后还有其他方法存储，比如放在url中
 >现在大多都是Session + Cookie，但是只用session不用cookie，或是只用cookie，不用session在理论上都可以保持会话状态。可是实际中因为多种原因，一般不会单独使用
 
+<br>
+
 **Cookie和Session的区别：**
 
 - cookie数据存放在客户的浏览器上，session数据放在服务器上。
