@@ -70,7 +70,7 @@ Header.Payload.Signature
 
 Header 部分是一个 JSON 对象，描述 JWT 的元数据，通常是下面的样子。
 
-```
+```json
 {
   "alg": "HS256",
   "typ": "JWT"
@@ -99,7 +99,7 @@ jti (JWT ID)：编号
 
 除了官方字段，你还可以在这个部分定义私有字段，下面就是一个例子:
 
-```
+```json
 {
   "sub": "1234567890",
   "name": "John Doe",
@@ -119,7 +119,7 @@ Signature 部分是对前两部分的签名，防止数据篡改。
 
 首先，需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256），按照下面的公式产生签名。
 
-```
+```js
 HMACSHA256(
   base64UrlEncode(header) + "." +
   base64UrlEncode(payload),
