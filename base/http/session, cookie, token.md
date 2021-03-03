@@ -97,7 +97,8 @@ token 的认证流程与cookie很相似，拿个应用场景说明：
 - jwt只是一个跨域认证的方案
 
 
-参考
+# 参考
+
 - [cookie,token验证的区别](https://www.jianshu.com/p/c33f5777c2eb)
 - [有了cookie为什么需要session](https://segmentfault.com/q/1010000016504003)
 - [CSRF Token的设计是否有其必要性](https://segmentfault.com/q/1010000000713614)
