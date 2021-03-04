@@ -154,3 +154,10 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 浏览器再次请求时：
 
 ![image](https://user-images.githubusercontent.com/74364990/109674663-10222380-7bb2-11eb-96b5-2ee041a9c658.png)
+
+
+<br>
+
+# 五、实战
+
+https://github.com/Vuact/Blog/blob/main/base/node/Node.js/Node%E5%AE%9E%E6%88%98:%20HTTP%E7%BC%93%E5%AD%98.md
