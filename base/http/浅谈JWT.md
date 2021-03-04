@@ -140,9 +140,9 @@ JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 `ap
 
 # 四、JWT 的使用方式
 
-客户端收到服务器返回的 JWT，可以储存在 Cookie 里面，也可以储存在 `localStorage`(有XSS风险)。
+客户端收到服务器返回的 JWT，可以储存在 `localStorage`(有xss风险)，`Cookie`，或`sessionStorage` 里面。
 
-此后，客户端每次与服务器通信，都要带上这个 JWT。你可以把它放在 Cookie 里面自动发送，但是这样不能跨域，所以更好的做法是放在 HTTP 请求的头信息`Authorization`字段里面。
+此后，客户端每次与服务器通信，都要带上这个 JWT。你可以把它放在 HTTP 请求的头信息`Authorization`字段里面。
 
 ```
 Authorization: Bearer <token>
