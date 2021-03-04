@@ -57,7 +57,7 @@ Token不在服务器中保存会话数据，而是保存在客户端。每次请
 - 传统 Token 和 [JWT(Json Web Token)](https://github.com/Vuact/Blog/blob/main/base/http/%E6%B5%85%E8%B0%88JWT.md) 的区别：
   - 传统Token<br> 
     用户发起登录请求，登录成功之后返回Token，并且存于服务端(数据库)，用户访问资源的时候需要携带Token，服务端获取Token之后和数据库中的对比。
-  - JWT<br> 
+  - JWT（JWT只是一个跨域认证的方案）<br> 
     用户发起登录请求，登录成功之后返回Token，但是不存于服务端，用户访问资源的时候需要携带Token，服务端获取Token之后去校验Token的合法性。
 
 <br>
