@@ -85,13 +85,11 @@ Token不在服务器中保存会话数据，而是保存在客户端。每次请
 
 # 分布式情况下的session和token
 
-我们已经知道session时有状态的，一般存于服务器内存或硬盘中，当服务器采用分布式或集群时，session就会面对负载均衡问题。
+- 我们已经知道session时有状态的，一般存于服务器内存或硬盘中，当服务器采用分布式或集群时，session就会面对负载均衡问题。
+  - 负载均衡多服务器的情况，不好确认当前用户是否登录，因为多服务器不共享session。这个问题也可以将session存在一个服务器中来解决，但是就不能完全达到负载均衡的效果。当今的几种[解决session负载均衡](https://blog.51cto.com/zhibeiwang/1965018)的方法。
 
-- 负载均衡多服务器的情况，不好确认当前用户是否登录，因为多服务器不共享session。这个问题也可以将session存在一个服务器中来解决，但是就不能完全达到负载均衡的效果。当今的几种[解决session负载均衡](https://blog.51cto.com/zhibeiwang/1965018)的方法。
-
-而token是无状态的，即不用保存在服务端，因为token字符串里就保存了所有的用户信息
-
-- 客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做[JWT(Json Web Token)](https://github.com/Vuact/Blog/blob/main/base/http/%E6%B5%85%E8%B0%88JWT.md)
+- 而token是无状态的，即不用保存在服务端，因为token字符串里就保存了所有的用户信息
+  - 客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做[JWT(Json Web Token)](https://github.com/Vuact/Blog/blob/main/base/http/%E6%B5%85%E8%B0%88JWT.md)
 
 <br>
 
