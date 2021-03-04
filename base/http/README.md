@@ -4,11 +4,11 @@
 - [图解HTTP：第三章 HTTP报文](https://github.com/woai30231/http/tree/master/%E7%AC%AC%E4%B8%89%E7%AB%A0%20HTTP%E6%8A%A5%E6%96%87)
 - [图解HTTP：第四章 连接管理](https://github.com/woai30231/http/tree/master/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86)
 - HTTP缓存机制及原理
-- HTTP缓存位置[ing···]
+- HTTP缓存位置 [doing···]
 - DNS原理
 - TCP三次握手
-- 浅谈HTTP与HTTPS[ing···]
-- TCP四次挥手[ing···]
+- 浅谈HTTP与HTTPS [doing···]
+- TCP四次挥手 [doing···]
 - session, cookie, token
 - cookie属性详解
 - 浅谈JWT
