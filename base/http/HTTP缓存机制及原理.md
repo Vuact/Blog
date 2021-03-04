@@ -156,6 +156,26 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 ![image](https://user-images.githubusercontent.com/74364990/109674663-10222380-7bb2-11eb-96b5-2ee041a9c658.png)
 
 
+（1）浏览器第一次发起一个http/https请求，读取服务器的资源
+
+（2）服务端设置响应头（cache-control、Expires、last-modified、Etag）给浏览器
+
+- cache-control、Expires 属于强缓存<br>
+- last-modified、Etag属于对比缓存
+
+（3）浏览器不关闭tab、f5刷新页面（再次发起一个请求给服务器）
+
+- 如果cache-control的max-age 和 Expires 未超过缓存时间，所有资源除了index.html 都来自于内存缓存（from memory cache）加载。且状态码为200<br>
+- 如果cache-control的max-age缓存时间为5s， Expires的过期时间是超过5s，则cache-control会覆盖Expires
+- 如果强缓存失效，则下一步会走对比缓存。浏览器会从第二步的拿到的响应头，在刷新发起请求会设置
+	- if-modified-since值为响应的last-modified的值；
+	- if-none-match 值为响应的Etag的值;
+- 如果if-modified-since 和if-none-match都存在，则if-none-match的优先比if-modified-since高。直接对比第二步给浏览器的Etag的值，如果相等就直接返回一个状态为304不返回内容，如果不相等就返回一个状态码为200，并且会返回内容和cache-control 、Expires、last-modified、Etag等响应头；
+- 如果if-modified-since 存在， if-none-match不存在，步骤跟上述的3.4类似，只不过服务端对比的是if-modified-since 和第一次返回给浏览器last-modified的值
+
+（4）如果浏览器关闭tab。重新打开新tab，发起请求资源。步骤跟上述3类似，只不过在上述3.1中，左右资源除了index.html缓存（from disk cache）都从磁盘加载。
+
+
 <br>
 
 # 五、实战
