@@ -173,7 +173,7 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 - 如果if-modified-since 和if-none-match都存在，则if-none-match的优先比if-modified-since高。直接对比第二步给浏览器的Etag的值，如果相等就直接返回一个状态为304不返回内容，如果不相等就返回一个状态码为200，并且会返回内容和cache-control 、Expires、last-modified、Etag等响应头；
 - 如果if-modified-since 存在， if-none-match不存在，步骤跟上述的3.4类似，只不过服务端对比的是if-modified-since 和第一次返回给浏览器last-modified的值
 
-（4）如果浏览器关闭tab。重新打开新tab，发起请求资源。步骤跟上述3类似，只不过在上述3.1中，左右资源除了index.html缓存（from disk cache）都从磁盘加载。
+（4）如果浏览器关闭tab。重新打开新tab，发起请求资源。步骤跟上述（3）类似，只不过在上述3.1中，左右资源除了index.html缓存（from disk cache）都从磁盘加载。
 
 
 <br>
