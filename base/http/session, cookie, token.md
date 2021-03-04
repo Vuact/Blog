@@ -67,15 +67,12 @@ Token不在服务器中保存会话数据，而是保存在客户端。每次请
 与cookie很相似：
 
 - 用户登录，成功后服务器返回token给客户端。
-- 客户端收到数据后保存在客户端
-- 客户端再次访问服务器，将`token`放在 HTTP请求头中的`Authorization`字段中 或 `POST请求的数据体里`
+- 客户端收到数据后保存在客户端（一般存放于localStorage，cookie，或sessionStorage中）
+- 客户端再次访问服务器，将其`token`传给服务器，方式一般有两种：
+    - HTTP请求头中的`Authorization`字段中：`Authorization: Bearer <token>`
+    - `POST请求的数据体里`
 - 服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码
   
-<br>
-
-**存放:**
-
-token在客户端一般存放于localStorage，cookie，或sessionStorage中
 
 
 <br><br><br>
