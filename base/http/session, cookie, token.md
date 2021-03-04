@@ -104,6 +104,7 @@ Token不在服务器中保存会话数据，而是保存在客户端。每次请
 
 # 参考
 
+- [什么是token？](https://juejin.cn/post/6906009986149646343)
 - [cookie,token验证的区别](https://www.jianshu.com/p/c33f5777c2eb)
 - [有了cookie为什么需要session](https://segmentfault.com/q/1010000016504003)
 - [CSRF Token的设计是否有其必要性](https://segmentfault.com/q/1010000000713614)
