@@ -48,21 +48,21 @@ http是一个无状态协议。
   以前较为流行的是通过session去做身份认证，session是通过服务器中`保存会话数据`来做身份认证，这种方式会`导致在高并发中服务器压力过大`的情况，还有就是，如果是服务器集群，那么就需要这些服务器session共享。<br> 
 Token不在服务器中保存会话数据，而是保存在客户端。每次请求的headers中存入Token，在服务器中判断Token的有效性，是否可以访问资源。
 
-- 传统 Token 和 JWT(Json Web Token) 的区别：
-  - 传统Token<br> 
-    用户发起登录请求，登录成功之后返回Token，并且存于服务端(数据库)，用户访问资源的时候需要携带Token，服务端获取Token之后和数据库中的对比。
-  - JWT<br> 
-    用户发起登录请求，登录成功之后返回Token，但是不存于服务端，用户访问资源的时候需要携带Token，服务端获取Token之后去校验Token的合法性。
-
 - Token的组成：uid+time+sign[+固定参数]
   - uid: 用户唯一身份标识
   - time: 当前时间的时间戳
   - sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接
   - 固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库
 
+- 传统 Token 和 [JWT(Json Web Token)](https://github.com/Vuact/Blog/blob/main/base/http/%E6%B5%85%E8%B0%88JWT.md) 的区别：
+  - 传统Token<br> 
+    用户发起登录请求，登录成功之后返回Token，并且存于服务端(数据库)，用户访问资源的时候需要携带Token，服务端获取Token之后和数据库中的对比。
+  - JWT<br> 
+    用户发起登录请求，登录成功之后返回Token，但是不存于服务端，用户访问资源的时候需要携带Token，服务端获取Token之后去校验Token的合法性。
+
 <br>
 
-**token认证流程：** 
+**JWT(Json Web Token)认证流程：** 
 
 token 的认证流程与cookie很相似：
 
