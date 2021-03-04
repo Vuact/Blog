@@ -142,7 +142,7 @@ JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 `ap
 
 客户端收到服务器返回的 JWT，可以储存在 `localStorage`(有xss风险)，`Cookie`，或`sessionStorage` 里面。
 
-此后，客户端每次与服务器通信，都要带上这个 JWT。你可以把它放在 HTTP 请求的头信息`Authorization`字段里面。
+此后，客户端每次与服务器通信，都要带上这个 JWT。你可以把它放在 HTTP 请求头中的`Authorization`字段里面。
 
 ```
 Authorization: Bearer <token>
