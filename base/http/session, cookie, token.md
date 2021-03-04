@@ -87,7 +87,7 @@ token 的认证流程与cookie很相似，拿个应用场景说明：
 
 而token是无状态的，token字符串里就保存了所有的用户信息
 
-- 客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做[JWT(Json Web Token)](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
+- 客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做[JWT(Json Web Token)](https://github.com/Vuact/Blog/blob/main/base/http/%E6%B5%85%E8%B0%88JWT.md)
 
 <br>
 
@@ -107,4 +107,4 @@ token 的认证流程与cookie很相似，拿个应用场景说明：
 - [CSRF Token的设计是否有其必要性](https://segmentfault.com/q/1010000000713614)
 - [cookie,token,session三者的问题和解决方案](https://junyiseo.com/php/757.html)
 - [负载均衡集群中的session解决方案](https://blog.51cto.com/zhibeiwang/1965018)
-- [Json Web Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
+
