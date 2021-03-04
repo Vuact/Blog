@@ -9,8 +9,8 @@
 - TCP三次握手
 - 浅谈HTTP与HTTPS [doing···]
 - TCP四次挥手 [doing···]
-- session, cookie, token
 - cookie属性详解
+- 浅谈session, cookie, token
 - 浅谈JWT
 - 浅谈XSS跨站脚本攻击
 - 浅谈HSTS
