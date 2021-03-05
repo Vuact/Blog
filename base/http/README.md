@@ -5,7 +5,7 @@
 - [图解HTTP：第四章 连接管理](https://github.com/woai30231/http/tree/master/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86)
 - HTTP缓存机制及原理
 - HTTP缓存位置 
-- CDN原理
+- CDN原理 [doing···]
 - DNS原理
 - TCP三次握手
 - 浅谈HTTP与HTTPS
