@@ -7,7 +7,7 @@
 - HTTP缓存位置 
 - DNS原理
 - TCP三次握手
-- 浅谈HTTP与HTTPS [doing···]
+- 浅谈HTTP与HTTPS
 - TCP四次挥手 [doing···]
 - cookie属性详解
 - session, cookie, token
