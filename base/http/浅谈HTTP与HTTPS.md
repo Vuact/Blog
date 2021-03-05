@@ -4,6 +4,7 @@
 - HTTP协议中的数据是利用TCP协议传输的
 - HTTP是应用层协议，定义的是传输数据的内容的规范；
 
+<br>
 
 ## HTTP报文
 
@@ -15,6 +16,7 @@
 
 ![image](https://user-images.githubusercontent.com/74364990/110167294-8633be00-7e30-11eb-9580-6e1ae7b60684.png)
 
+<br>
 
 ## 浏览器输入URL后，依次涉及的协议
 
@@ -27,4 +29,4 @@
 ![image](https://user-images.githubusercontent.com/74364990/110167848-4c16ec00-7e31-11eb-9c91-c7a10a9dcfd7.png)
 
 
-
+<br>
