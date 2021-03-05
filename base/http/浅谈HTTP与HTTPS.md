@@ -8,11 +8,11 @@
 
 ## HTTP报文
 
-- 请求报文：
+- 请求报文：请求行 + 请求头 + 请求体
 
 ![image](https://user-images.githubusercontent.com/74364990/110167285-8207a080-7e30-11eb-8b0a-b18974d7fda6.png)
 
-- 响应报文：
+- 响应报文：响应行 + 响应头 + 响应体
 
 ![image](https://user-images.githubusercontent.com/74364990/110167294-8633be00-7e30-11eb-9580-6e1ae7b60684.png)
 
