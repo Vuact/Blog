@@ -1,6 +1,8 @@
 http请求做为影响前端性能极为重要的一环，因为请求受网络影响很大，如果网络很慢的情况下,页面很可能会空白很久。对于首次进入网站的用户可能要通过优化接口性能和接口数量来解决。但是，对于重复进入页面的用户，除了浏览器缓存，http缓存可以很大程度对已经加载过的页面进行优化。
 
-1、缓存位置
+<br>
+
+# 1、缓存位置
 
 ![image](https://user-images.githubusercontent.com/74364990/110163134-a2ccf780-7e2a-11eb-9144-88748879864e.png)
 
@@ -16,3 +18,14 @@ http请求做为影响前端性能极为重要的一环，因为请求受网络�
 绝大部分的缓存都来自Disk Cache，在HTTP 的协议头中设置。
 
 - **Push Cache**（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令。
+
+<br>
+
+# 2、用户操作对缓存的影响
+
+![image](https://user-images.githubusercontent.com/74364990/110166250-0bb66e80-7e2f-11eb-9726-d81644bb528d.png)
+
+![image](https://user-images.githubusercontent.com/74364990/110166262-107b2280-7e2f-11eb-803a-0a167c3a1bc1.png)
+
+![image](https://user-images.githubusercontent.com/74364990/110166349-2b4d9700-7e2f-11eb-9865-747269dc013c.png)
+
