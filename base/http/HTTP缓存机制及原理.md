@@ -158,14 +158,14 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 （1）浏览器第一次发起一个http/https请求，读取服务器的资源
 
-（2）服务端设置响应头（cache-control、Expires、last-modified、Etag）给浏览器
+（2）服务端设置响应头cache-control、Expires、last-modified、Etag 通常一起给浏览器
 
 - cache-control、Expires 属于强缓存<br>
 - last-modified、Etag属于对比缓存
 
 （3）浏览器不关闭tab、f5刷新页面（再次发起一个请求给服务器）
 
-- 如果cache-control的max-age 和 Expires 未超过缓存时间，所有资源除了index.html 都来自于内存缓存（from memory cache）加载。且状态码为200<br>
+- 如果cache-control的max-age 和 Expires 未超过缓存时间，所有资源除了XXX.html 都来自于内存缓存（from memory cache）加载。且状态码为200<br>
 - 如果cache-control的max-age缓存时间为5s， Expires的过期时间是超过5s，则cache-control会覆盖Expires
 - 如果强缓存失效，则下一步会走对比缓存。浏览器会从第二步的拿到的响应头，在刷新发起请求会设置
 	- if-modified-since值为响应的last-modified的值；
@@ -173,7 +173,31 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 - 如果if-modified-since 和if-none-match都存在，则if-none-match的优先比if-modified-since高。直接对比第二步给浏览器的Etag的值，如果相等就直接返回一个状态为304不返回内容，如果不相等就返回一个状态码为200，并且会返回内容和cache-control 、Expires、last-modified、Etag等响应头；
 - 如果if-modified-since 存在， if-none-match不存在，步骤跟上述的3.4类似，只不过服务端对比的是if-modified-since 和第一次返回给浏览器last-modified的值
 
-（4）如果浏览器关闭tab。重新打开新tab，发起请求资源。步骤跟上述（3）类似，只不过在上述3.1中，左右资源除了index.html缓存（from disk cache）都从磁盘加载。
+（4）如果浏览器关闭tab。重新打开新tab，发起请求资源。步骤跟上述（3）类似，只不过在上述3.1中，左右资源除了XXX.html缓存（from disk cache）都从磁盘加载。
+
+
+<br>
+
+如果还不是很懂，请阅读这篇文章：[http缓存详解，http缓存推荐方案](https://www.cnblogs.com/echolun/p/9419517.html)
+
+<br>
+### 缺陷：
+
+我们已经可以精确的对比服务器文件与本地缓存文件差异，但其实上面方案的演变都存在一个较大缺陷： `max-age或Expires不过期，浏览器无法主动感知服务器文件变化。`
+
+#### md5/hash缓存
+
+通过不缓存html，为静态文件添加MD5或者hash标识，解决浏览器无法跳过缓存过期时间主动感知文件变化的问题。
+
+为什么这么做？实现原理是什么？
+
+我们前面说的http缓存方案，服务器与浏览器的文件修改时间对比，文件内容标识对比，前提基础都是建立在两者文件路径完全相同的情况下。
+
+`module/js/a-hash1.js`与`module/js/a-hash2.js`是两个完全不同的文件，假想浏览器第一次加载页面，请求并缓存了`module/js/a-hash1.js`，第二次加载，文件指向变成了`module/js/a-hash2.js`，浏览器会直接重新请求`a-hash2.js`，因为这就是两个完全不同的文件，哪里还有什么http缓存文件对比，通过这种做法，我们就可以从根本上解决过期时间没到浏览器无法主动请求服务器的问题。因此我们只需要在项目每次发布迭代将修改过的静态文件添加不同的MD5或hash标识就好啦。
+
+>注意，这里不推荐缓存html文件。
+
+
 
 
 <br>
