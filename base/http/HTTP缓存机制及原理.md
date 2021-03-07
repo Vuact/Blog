@@ -181,6 +181,7 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 如果还不是很懂，请阅读这篇文章：[http缓存详解，http缓存推荐方案](https://www.cnblogs.com/echolun/p/9419517.html)
 
 <br>
+
 ### 缺陷：
 
 我们已经可以精确的对比服务器文件与本地缓存文件差异，但其实上面方案的演变都存在一个较大缺陷： `max-age或Expires不过期，浏览器无法主动感知服务器文件变化。`
