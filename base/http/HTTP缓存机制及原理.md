@@ -196,7 +196,7 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 `module/js/a-hash1.js`与`module/js/a-hash2.js`是两个完全不同的文件，假想浏览器第一次加载页面，请求并缓存了`module/js/a-hash1.js`，第二次加载，文件指向变成了`module/js/a-hash2.js`，浏览器会直接重新请求`a-hash2.js`，因为这就是两个完全不同的文件，哪里还有什么http缓存文件对比，通过这种做法，我们就可以从根本上解决过期时间没到浏览器无法主动请求服务器的问题。因此我们只需要在项目每次发布迭代将修改过的静态文件添加不同的MD5或hash标识就好啦。
 
->注意，这里我们不缓存html文件，缓存的都是css、js文件
+>注意，这里我们不缓存html文件，缓存的都是css、js文件（因为改变频率高）
 
 
 
