@@ -126,11 +126,9 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 ![image](https://user-images.githubusercontent.com/74364990/109673734-47440500-7bb1-11eb-890b-274494f40423.png)
 
-<br>
-
 #### 缺点：
 
-如果客户端在一秒内向服务端发送大量请求，且1秒内服务端上内容变化多次，此时用`Last-Modified / If-Modified-Since`就无法读取到最新数据；<br>
+如果客户端在一秒内向服务端发送大量请求，且1秒内服务端上内容变化多次，此时用`Last-Modified / If-Modified-Since`就无法读取到最新数据；
 所以`Etag / If-None-Match`优先级高于`Last-Modified / If-Modified-Since`。
 
 ## 2、Etag / If-None-Match（优先级高于Last-Modified / If-Modified-Since）
