@@ -1,8 +1,9 @@
 做过web性能优化的同学，对性能优化大杀器**gzip**应该不陌生。浏览器向服务器发起资源请求，比如下载一个js文件，服务器先对资源进行压缩，再返回给浏览器，以此节省流量，加快访问速度。
 
-浏览器通过HTTP请求头部里加上**Accept-Encoding**，告诉服务器，“你可以用gzip，或者defalte算法压缩资源”。
+浏览器通过HTTP请求头部里加上**Accept-Encoding**，告诉服务器，“你可以用gzip，或者defalte算法压缩资源等”：
 
->Accept-Encoding:gzip, deflate
+![image](https://user-images.githubusercontent.com/74364990/112713599-fb1a8500-8f10-11eb-9f86-338dc3891843.png)
+
 
 那么，在nodejs里，是如何对资源进行压缩的呢？答案就是**Zlib**模块。
 
