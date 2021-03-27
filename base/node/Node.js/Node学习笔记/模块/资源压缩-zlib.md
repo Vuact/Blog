@@ -32,7 +32,7 @@ pipeline(source, gzip, destination, (err) => {
 //或 source.pipe(gzip).pipe(destination);
 ```
 也可以 Promise 化，与上面代码作用一样；
-```
+```js
 const { createGzip } = require("zlib");
 const { createReadStream, createWriteStream } = require("fs");
 const { promisify } = require("util");
