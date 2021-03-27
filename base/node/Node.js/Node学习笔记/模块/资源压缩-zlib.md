@@ -82,7 +82,9 @@ pipeline(source, gunzip, destination, (err) => {
 //或 source.pipe(gunzip).pipe(destination);
 ```
 
-## 服务端gzip压缩
+<br>
+
+### 服务端gzip压缩
 
 代码超级简单。首先判断 是否包含 **accept-encoding** 首部，且值为**gzip**。
 
@@ -119,7 +121,9 @@ var server = http.createServer(function(req, res){
 server.listen('3000');
 ```
 
-## 服务端字符串gzip压缩
+<br>
+
+### 服务端字符串gzip压缩
 
 代码跟前面例子大同小异。这里采用了 **zlib.gzipSync(str)** 对字符串进行gzip压缩。
 
