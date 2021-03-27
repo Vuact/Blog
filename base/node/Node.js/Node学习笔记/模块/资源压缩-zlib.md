@@ -32,6 +32,8 @@ pipeline(source, gzip, destination, (err) => {
 //或 source.pipe(gzip).pipe(destination);
 ```
 
+- [stream.pipeline(source[, ...transforms], destination, callback)](http://nodejs.cn/api/stream.html#stream_stream_pipeline_source_transforms_destination_callback)
+
 ### 解压的例子
 
 同样非常简单，就是个反向操作。
