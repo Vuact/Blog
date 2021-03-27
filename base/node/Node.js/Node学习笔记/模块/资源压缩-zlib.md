@@ -58,6 +58,8 @@ doGzip("./static/test.txt", "./static/test.txt.gz")
 ```
 - [stream.pipeline(source[, ...transforms], destination, callback)](http://nodejs.cn/api/stream.html#stream_stream_pipeline_source_transforms_destination_callback)
 
+<br>
+
 ### 解压的例子
 
 同样非常简单，就是个反向操作。
