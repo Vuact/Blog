@@ -15,6 +15,7 @@
 非常简单的几行代码，就完成了本地文件的gzip压缩。
 
 ```javascript
+const { pipeline } = require("stream");
 const { createGzip } = require("zlib");
 const { createReadStream, createWriteStream } = require("fs");
 
@@ -22,7 +23,13 @@ const gzip = createGzip(),
   source = createReadStream("./static/test.txt"),
   destination = createWriteStream("./static/test.txt.gz");
 
-source.pipe(gzip).pipe(destination);
+pipeline(source, gzip, destination, (err) => {
+  if (err) {
+    console.error("发生错误", err);
+    process.exitCode = 1;
+  }
+});
+//或 source.pipe(gzip).pipe(destination);
 ```
 
 ### 解压的例子
