@@ -39,22 +39,19 @@ pipeline(source, gzip, destination, (err) => {
 同样非常简单，就是个反向操作。
 
 ```javascript
-const { pipeline } = require('stream');
-const { createGunzip } = require('zlib');
-const {
-	createReadStream,
-	createWriteStream
-} = require('fs');
+const { pipeline } = require("stream");
+const { createGunzip } = require("zlib");
+const { createReadStream, createWriteStream } = require("fs");
 
 const gunzip = createGunzip(),
-	source = createReadStream('./static/test.txt.gz'),
-	destination = createWriteStream('./static/test.txt');
+  source = createReadStream("./static/test.txt.gz"),
+  destination = createWriteStream("./static/test.txt");
 
 pipeline(source, gunzip, destination, (err) => {
-	if (err) {
-		console.error('发生错误', err);
-		process.exitCode = 1;
-	}
+  if (err) {
+    console.error("发生错误", err);
+    process.exitCode = 1;
+  }
 });
 //或 source.pipe(gunzip).pipe(destination);
 ```
