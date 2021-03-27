@@ -39,15 +39,24 @@ pipeline(source, gzip, destination, (err) => {
 同样非常简单，就是个反向操作。
 
 ```javascript
-var fs = require('fs');
-var zlib = require('zlib');
+const { pipeline } = require('stream');
+const { createGunzip } = require('zlib');
+const {
+	createReadStream,
+	createWriteStream
+} = require('fs');
 
-var gunzip = zlib.createGunzip();
+const gunzip = createGunzip(),
+	source = createReadStream('./static/test.txt.gz'),
+	destination = createWriteStream('./static/test.txt');
 
-var inFile = fs.createReadStream('./extra/fileForCompress.txt.gz');
-var outFile = fs.createWriteStream('./extra/fileForCompress1.txt');
-
-inFile.pipe(gunzip).pipe(outFile);
+pipeline(source, gunzip, destination, (err) => {
+	if (err) {
+		console.error('发生错误', err);
+		process.exitCode = 1;
+	}
+});
+//或 source.pipe(gunzip).pipe(destination);
 ```
 
 ## 服务端gzip压缩
