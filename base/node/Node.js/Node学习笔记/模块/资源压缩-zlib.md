@@ -31,7 +31,31 @@ pipeline(source, gzip, destination, (err) => {
 });
 //或 source.pipe(gzip).pipe(destination);
 ```
+也可以 Promise 化，与上面代码作用一样；
+```
+const { createGzip } = require("zlib");
+const { createReadStream, createWriteStream } = require("fs");
+const { promisify } = require("util");
+const { pipeline } = require("stream");
+const pipe = promisify(pipeline);
 
+async function doGzip(input, output) {
+  const gzip = createGzip(),
+    source = createReadStream(input),
+    destination = createWriteStream(output);
+
+  await pipe(source, gzip, destination);
+}
+
+doGzip("./static/test.txt", "./static/test.txt.gz")
+  .then(() => {
+    //do some thing
+  })
+  .catch((err) => {
+    console.error("发生错误", err);
+    process.exitCode = 1;
+  });
+```
 - [stream.pipeline(source[, ...transforms], destination, callback)](http://nodejs.cn/api/stream.html#stream_stream_pipeline_source_transforms_destination_callback)
 
 ### 解压的例子
