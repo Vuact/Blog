@@ -3,8 +3,6 @@
 - 客户端通过HTTP请求头里的 **Accept-Encoding** 告诉服务器：“你可以用gzip、br、或者defalte算法压缩资源”；
 - 服务器通过HTTP响应头里的 **Content-Encoding** 告诉客户端：使用的哪种压缩方式。
 
-![image](https://user-images.githubusercontent.com/74364990/112713599-fb1a8500-8f10-11eb-9f86-338dc3891843.png)
-
 ![image](https://user-images.githubusercontent.com/74364990/112879387-a5560080-90fb-11eb-9cd1-2baa78d77642.png)
 
 那么，在nodejs里，是如何对资源进行压缩的呢？答案就是**Zlib**模块。
