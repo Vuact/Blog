@@ -97,8 +97,6 @@ pipeline(source, gunzip, destination, (err) => {
 
 # 二、压缩 HTTP 的请求和响应
 
-服务端压缩，
-
 ### 服务端压缩
 
 代码超级简单。首先判断 是否包含 **accept-encoding** 首部，正则匹配看是否为采用哪种压缩（**deflate** 或 **gzip** 或 **br**）<br>
