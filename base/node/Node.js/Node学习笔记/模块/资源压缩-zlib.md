@@ -145,7 +145,7 @@ server.listen(PORT);
 console.log("node-server started at port http://localhost:" + PORT);
 ```
 
-`res.setHeader("Vary", "Accept-Encoding");`的含义：告诉代理服务器缓存两种版本的资源：压缩和非压缩，这有助于避免一些公共代理不能正确地检测Content-Encoding标头的问题。[具体请参我](http://www.webkaka.com/blog/archives/how-to-set-Vary-Accept-Encoding-header.html)
+>`res.setHeader("Vary", "Accept-Encoding");`的含义：告诉代理服务器缓存两种版本的资源：压缩和非压缩，这有助于避免一些公共代理不能正确地检测Content-Encoding标头的问题。[具体请狠狠戳我](http://www.webkaka.com/blog/archives/how-to-set-Vary-Accept-Encoding-header.html)
 
 
 <br>
