@@ -1,6 +1,6 @@
 # 文件读取
 
-### 普通读取
+### 1、普通读取
 
 - 同步读取
 
@@ -43,7 +43,7 @@ fs.readFile('./fileForRead.txt', 'utf8', function(err, data){
 文件内容: hello world
 ```
 
-### 通过文件流读取
+### 2、通过文件流读取
 
 适合读取大文件
 
