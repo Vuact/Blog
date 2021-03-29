@@ -11,7 +11,13 @@
 
 # 一、入门实例：简单的压缩/解压缩
 
-压缩有gzip、defalte、br等，这里只介绍 `gzip`。
+压缩/解压 有gzip、defalte、br等方式，API：
+
+- defalte：zlib.createDeflate() 和 zlib.createInflate()
+- gzip：zlib.createGzip() 和 zlib.createGunzip()
+- brzlib.createBrotliCompress() 和 zlib.createBrotliDecompress()
+
+这里只介绍 `gzip`。
 
 ## 压缩
 
