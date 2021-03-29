@@ -1,8 +1,8 @@
-## 文件读取
+# 文件读取
 
 ### 普通读取
 
-同步读取
+- 同步读取
 
 ```javascript
 var fs = require('fs');
@@ -23,7 +23,7 @@ try{
 文件内容: hello world
 ```
 
-异步读取
+- 异步读取
 
 ```javascript
 var fs = require('fs');
@@ -75,11 +75,13 @@ readStream
 已经关闭
 ``` 
 
-## 文件写入
+<br>
+
+# 文件写入
 
 备注：以下代码，如果文件不存在，则创建文件；如果文件存在，则覆盖文件内容；
 
-异步写入
+- 异步写入
 
 ```javascript
 var fs = require('fs');
@@ -90,7 +92,7 @@ fs.writeFile('./fileForWrite.txt', 'hello world', 'utf8', function(err){
 });
 ```
 
-同步写入
+- 同步写入
 
 ```javascript
 var fs = require('fs');
@@ -135,7 +137,9 @@ writeStream.end('');
 
 备注：`fs.write(fd, buffer, offset, length[, position], callback)`跟`fs.write(fd, data[, position[, encoding]], callback)`的区别在于：后面的只能把所有的data写入，而前面的可以写入指定的data子串？
 
-## 文件是否存在
+<br>
+
+# 文件是否存在
 
 `fs.exists()`已经是`deprecated`状态，现在可以通过下面代码判断文件是否存在。
 
@@ -157,9 +161,11 @@ fs.access('./fileForRead2.txt', function(err){
 
 备忘：`fs.constants.F_OK`等常量无法获取（node v6.1，mac 10.11.4下，`fs.constants`是`undefined`）
 
-## 创建目录
+<br>
 
-异步版本（如果目录已存在，会报错）
+# 创建目录
+
+- 异步版本（如果目录已存在，会报错）
 
 ```javascript
 var fs = require('fs');
@@ -170,7 +176,7 @@ fs.mkdir('./hello', function(err){
 });
 ```
 
-同步版本
+- 同步版本
 
 ```javascript
 var fs = require('fs');
@@ -178,7 +184,9 @@ var fs = require('fs');
 fs.mkdirSync('./hello');
 ```
 
-## 删除文件
+<br>
+
+# 删除文件
 
 ```javascript
 var fs = require('fs');
@@ -194,8 +202,9 @@ var fs = require('fs');
 
 fs.unlinkSync('./fileForUnlink.txt');
 ```
+<br>
 
-## 创建目录
+# 创建目录
 
 ```javascript
 // fs.mkdir(path[, mode], callback)
@@ -218,10 +227,11 @@ try{
     throw e;
 }
 ```
+<br>
 
-## 遍历目录
+# 遍历目录
 
-同步版本，注意：`fs.readdirSync()`只会读一层，所以需要判断文件类型是否目录，如果是，则进行递归遍历。
+- 同步版本，注意：`fs.readdirSync()`只会读一层，所以需要判断文件类型是否目录，如果是，则进行递归遍历。
 
 ```javascript
 // fs.readdirSync(path[, options])
@@ -254,13 +264,14 @@ var files = getFilesInDir('../');
 console.log(files);
 ```
 
-异步版本：（TODO）
+- 异步版本：（TODO）
 
 ```javascript
 
 ```
+<br>
 
-## 文件重命名
+# 文件重命名
 
 ```javascript
 // fs.rename(oldPath, newPath, callback)
@@ -279,7 +290,9 @@ var fs = require('fs');
 fs.renameSync('./world', './hello');
 ```
 
-## 监听文件修改
+<br>
+
+# 监听文件修改
 
 `fs.watch()`比`fs.watchFile()`高效很多（why）
 
@@ -388,7 +401,9 @@ fs.watch('../', options, function(event, filename){
 文件名是: .idea/workspace.xml___jb_old___
 ```
 
-## 修改所有者
+<br>
+
+# 修改所有者
 
 参考linux命令行，不举例子了。。。
 
@@ -397,7 +412,9 @@ fs.watch('../', options, function(event, filename){
 >fs.fchown(fd, uid, gid, callback)
 >fs.fchownSync(fd, uid, gid)
 
-## 修改权限
+<br>
+
+# 修改权限
 
 可以用`fs.chmod()`，也可以用`fs.fchmod()`。两者的区别在于，前面传的是文件路径，后面传的的文件句柄。
 
@@ -433,7 +450,9 @@ var fs = require('fs');
 fs.chmodSync('./fileForChown.txt', '777');
 ```
 
-## 获取文件状态
+<br>
+
+# 获取文件状态
 
 区别：
 
@@ -532,8 +551,9 @@ console.log('创建时间: ' + getTimeDesc(stats.birthtime));
 console.log('访问时间: ' + getTimeDesc(stats.atime));
 console.log('修改时间: ' + getTimeDesc(stats.mtime));
 ```
+<br>
 
-## 访问/权限检测
+# 访问/权限检测
 
 例子：
 
@@ -560,8 +580,9 @@ try{
     throw(e);
 }
 ```
+<br>
 
-## 文件打开/关闭
+# 文件打开/关闭
 
 比较底层的接口，实际需要用到的机会不多。需要用到的时候看下[文档](https://nodejs.org/api/fs.html#fs_fs_open_path_flags_mode_callback)就行。
 
@@ -573,7 +594,9 @@ try{
 >fs.close(fd, callback)
 >fs.closeSync(fd)
 
-## 文件读取（底层）
+<br>
+
+# 文件读取（底层）
 
 相对底层的读取接口，参数如下
 
@@ -587,8 +610,9 @@ try{
 
 >fs.read(fd, buffer, offset, length, position, callback)
 
+<br>
 
-## 追加文件内容
+# 追加文件内容
 
 >fs.appendFile(file, data[, options], callback)
 
@@ -613,7 +637,9 @@ fs.appendFile('./extra/fileForAppend.txt', 'hello', 'utf8', function(err){
 });
 ```
 
-## 文件内容截取
+<br>
+
+# 文件内容截取
 
 >fs.truncate(path, len, callback)
 >fs.truncateSync(path, len)
@@ -641,7 +667,10 @@ extended part reads as null bytes ('\0').
 
 > With ftruncate(), the file must be open for writing; with truncate(), the file must be writable.
 
-## 修改文件属性（时间）
+
+<br>
+
+# 修改文件属性（时间）
 
 * path/fd：文件路径/文件句柄
 * atime：Access Time。上一次访问文件数据的时间。
@@ -658,7 +687,9 @@ extended part reads as null bytes ('\0').
 * 通过`stat`查看文件的状态信息，包括了上面的atime、mtime。
 * 通过`touch`修改这几个时间。
 
-## 创建文件链接
+<br>
+
+# 创建文件链接
 
 >fs.symlink(target, path[, type], callback)
 >fs.symlinkSync(target, path[, type])
@@ -675,7 +706,9 @@ extended part reads as null bytes ('\0').
        
 参考[这里](http://man7.org/linux/man-pages/man2/link.2.html)。
 
-## 创建临时目录
+<br>
+
+# 创建临时目录
 
 >fs.mkdtemp(prefix, callback)
 >fs.mkdtempSync(prefix)
@@ -700,7 +733,9 @@ fs.mkdtemp('/tmp/', function(err, folder){
 创建临时目录: /tmp/Cxw51O
 ```
 
-## 找出软连接指向的真实路径
+<br>
+
+# 找出软连接指向的真实路径
 
 >fs.readlink(path[, options], callback)
 >fs.readlinkSync(path[, options])
@@ -728,7 +763,9 @@ fs.readlink(randomFileName, 'utf8', function(err, linkString){
 ./extra/fileForLink.txt
 ```
 
-## 真实路径
+<br>
+
+# 真实路径
 
 >fs.realpath(path[, options], callback)
 >fs.realpathSync(path[, options])
@@ -769,7 +806,9 @@ Error: ENOENT: no such file or directory, realpath './extra/inner/fileForRealPat
 Process finished with exit code 1
 ```
 
-## 删除目录
+<br>
+
+# 删除目录
 
 >fs.rmdir(path, callback)
 >fs.rmdirSync(path)
@@ -783,8 +822,9 @@ fs.rmdir('./dirForRemove', function(err){
     console.log('目录删除成功');
 });
 ```
+<br>
 
-## 不常用
+# 不常用
 
 ### 缓冲区内容写到磁盘
 
