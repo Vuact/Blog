@@ -72,9 +72,10 @@ const { pipeline } = require("stream");
 const { createGunzip } = require("zlib");
 const { createReadStream, createWriteStream } = require("fs");
 
+const filePath = "./static/test.txt";
 const gunzip = createGunzip(),
-  source = createReadStream("./static/test.txt.gz"),
-  destination = createWriteStream("./static/test.txt");
+  source = createReadStream(`${filePath}.gz`),
+  destination = createWriteStream(filePath);
 
 pipeline(source, gunzip, destination, (err) => {
   if (err) {
@@ -84,7 +85,7 @@ pipeline(source, gunzip, destination, (err) => {
 });
 //或 source.pipe(gunzip).pipe(destination);
 ```
-解压也同样可以Promise 化，这里就不写了。
+解压也同样可以 Promise 化，这里就不写了。
 
 <br>
 
