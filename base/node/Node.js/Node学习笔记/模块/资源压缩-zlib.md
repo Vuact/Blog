@@ -13,7 +13,7 @@
 
 压缩有gzip、defalte、br等，这里只介绍 `gzip`。
 
-### 压缩
+## 压缩
 
 非常简单的几行代码，就完成了本地文件的gzip压缩。
 
@@ -63,7 +63,7 @@ doGzip("./static/test.txt", "./static/test.txt.gz")
 ```
 - [stream.pipeline(source[, ...transforms], destination, callback)](http://nodejs.cn/api/stream.html#stream_stream_pipeline_source_transforms_destination_callback)
 
-### 解压
+## 解压
 
 同样非常简单，就是个反向操作。
 
