@@ -9,7 +9,10 @@
 
 <br>
 
-# 入门实例：简单的压缩/解压缩
+# 一、入门实例：简单的压缩/解压缩
+
+压缩有gzip、defalte、br等，这里只介绍 `gzip`。
+
 
 ### 压缩的例子
 
@@ -89,41 +92,60 @@ pipeline(source, gunzip, destination, (err) => {
 
 <br>
 
-### 服务端gzip压缩
+# 二、压缩 HTTP 的请求和响应
 
-代码超级简单。首先判断 是否包含 **accept-encoding** 首部，且值为**gzip**。
+### 服务端压缩
 
-* 否：返回未压缩的文件。
-* 是：返回gzip压缩后的文件。
+代码超级简单。首先判断 是否包含 **accept-encoding** 首部，正则匹配看是否为采用哪种压缩（**deflate** 或 **gzip** 或 **br**）<br>
+若匹配不到，则不压缩。
 
+**服务端代码**
 ```javascript
-var http = require('http');
-var zlib = require('zlib');
-var fs = require('fs');
-var filepath = './extra/fileForGzip.html';
+const http = require("http");
+const zlib = require("zlib");
+const fs = require("fs");
+const { pipeline } = require("stream");
 
-var server = http.createServer(function(req, res){
-    var acceptEncoding = req.headers['accept-encoding'];
-    var gzip;
-    
-    if(acceptEncoding.indexOf('gzip')!=-1){ // 判断是否需要gzip压缩
-        
-        gzip = zlib.createGzip();
-        
-        // 记得响应 Content-Encoding，告诉浏览器：文件被 gzip 压缩过
-        res.writeHead(200, {
-            'Content-Encoding': 'gzip'
-        });
-        fs.createReadStream(filepath).pipe(gzip).pipe(res);
-    
-    }else{
+const PORT = 8000;
 
-        fs.createReadStream(filepath).pipe(res);
+// 创建服务器
+const server = http.createServer((req, res) => {
+  const acceptEncoding = req.headers["accept-encoding"] || "";
+  const sourceFile = fs.createReadStream("./static/test.html");
+
+  // 存储资源的压缩版本和未压缩版本。
+  res.setHeader("Vary", "Accept-Encoding");
+
+  const onError = (err) => {
+    if (err) {
+      // 如果发生错误，则我们将会无能为力，
+      // 因为服务器已经发送了 200 响应码，
+      // 并且已经向客户端发送了一些数据。
+      // 我们能做的最好就是立即终止响应并记录错误。
+      response.end();
+      console.error("发生错误:", err);
     }
+  };
 
+  if (/\bdeflate\b/.test(acceptEncoding)) {
+    res.writeHead(200, { "Content-Encoding": "deflate" });
+    pipeline(sourceFile, zlib.createDeflate(), res, onError);
+  } else if (/\bgzip\b/.test(acceptEncoding)) {
+    res.writeHead(200, { "Content-Encoding": "gzip" });
+    pipeline(sourceFile, zlib.createGzip(), res, onError);
+  } else if (/\bbr\b/.test(acceptEncoding)) {
+    res.writeHead(200, { "Content-Encoding": "br" });
+    pipeline(sourceFile, zlib.createBrotliCompress(), res, onError);
+  } else {
+    res.writeHead(200, {});
+    pipeline(sourceFile, res, onError);
+  }
 });
 
-server.listen('3000');
+// 设置服务器端口
+server.listen(PORT);
+
+console.log("node-server started at port http://localhost:" + PORT);
 ```
 
 <br>
