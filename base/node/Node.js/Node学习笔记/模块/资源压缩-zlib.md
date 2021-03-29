@@ -1,6 +1,7 @@
 做过web性能优化的同学，对性能优化大杀器**gzip**应该不陌生。浏览器向服务器发起资源请求，比如下载一个js文件，服务器先对资源进行压缩，再返回给浏览器，以此节省流量，加快访问速度。
 
-浏览器通过HTTP请求头部里加上**Accept-Encoding**，告诉服务器，“你可以用gzip，或者defalte算法等压缩资源”
+- 客户端通过HTTP请求头里的 **Accept-Encoding** 告诉服务器：“你可以用gzip、br、或者defalte算法压缩资源”；
+- 服务器通过HTTP响应头里的 **Content-Encoding** 告诉客户端：使用的哪种压缩方式。
 
 ![image](https://user-images.githubusercontent.com/74364990/112713599-fb1a8500-8f10-11eb-9f86-338dc3891843.png)
 
