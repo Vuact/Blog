@@ -157,29 +157,5 @@ console.log("node-server started at port http://localhost:" + PORT);
 
 <br>
 
-### 服务端字符串gzip压缩
-
-代码跟前面例子大同小异。这里采用了 **zlib.gzipSync(str)** 对字符串进行gzip压缩。
-
-```javascript
-var http = require('http');
-var zlib = require('zlib');
-
-var responseText = 'hello world';
-
-var server = http.createServer(function(req, res){
-    var acceptEncoding = req.headers['accept-encoding'];
-    if(acceptEncoding.indexOf('gzip')!=-1){
-        res.writeHead(200, {
-            'content-encoding': 'gzip'
-        });
-        res.end( zlib.gzipSync(responseText) );
-    }else{
-        res.end(responseText);
-    }
-
-});
-
-server.listen('3000');
-```
+>zlib.gzipSync(str)可对字符串进行gzip压缩
 
