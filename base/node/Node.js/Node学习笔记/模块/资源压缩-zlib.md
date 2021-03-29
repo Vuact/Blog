@@ -99,7 +99,6 @@ pipeline(source, gunzip, destination, (err) => {
 代码超级简单。首先判断 是否包含 **accept-encoding** 首部，正则匹配看是否为采用哪种压缩（**deflate** 或 **gzip** 或 **br**）<br>
 若匹配不到，则不压缩。
 
-**服务端代码**
 ```javascript
 const http = require("http");
 const zlib = require("zlib");
@@ -111,7 +110,7 @@ const PORT = 8000;
 // 创建服务器
 const server = http.createServer((req, res) => {
   const acceptEncoding = req.headers["accept-encoding"] || "";
-  const sourceFile = fs.createReadStream("./static/test.html");
+  const sourceFile = fs.createReadStream("./index.html");
 
   // 存储资源的压缩版本和未压缩版本。
   res.setHeader("Vary", "Accept-Encoding");
@@ -145,6 +144,9 @@ server.listen(PORT);
 
 console.log("node-server started at port http://localhost:" + PORT);
 ```
+
+`res.setHeader("Vary", "Accept-Encoding");`的含义：告诉代理服务器缓存两种版本的资源：压缩和非压缩，这有助于避免一些公共代理不能正确地检测Content-Encoding标头的问题。[具体请参我](http://www.webkaka.com/blog/archives/how-to-set-Vary-Accept-Encoding-header.html)
+
 
 <br>
 
