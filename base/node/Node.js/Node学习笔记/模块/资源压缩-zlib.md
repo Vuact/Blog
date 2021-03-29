@@ -20,9 +20,10 @@ const { pipeline } = require("stream");
 const { createGzip } = require("zlib");
 const { createReadStream, createWriteStream } = require("fs");
 
+const filePath = "./static/test.txt";
 const gzip = createGzip(),
-  source = createReadStream("./static/test.txt"),
-  destination = createWriteStream("./static/test.txt.gz");
+  source = createReadStream(filePath),
+  destination = createWriteStream(`${filePath}.gz`);
 
 pipeline(source, gzip, destination, (err) => {
   if (err) {
@@ -41,6 +42,7 @@ const { pipeline } = require("stream");
 const pipe = promisify(pipeline);
 
 async function doGzip(input, output) {
+  output = output || `${input}.gz`; 
   const gzip = createGzip(),
     source = createReadStream(input),
     destination = createWriteStream(output);
