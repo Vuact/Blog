@@ -5,6 +5,7 @@
 
 ![image](https://user-images.githubusercontent.com/74364990/112713599-fb1a8500-8f10-11eb-9f86-338dc3891843.png)
 
+![image](https://user-images.githubusercontent.com/74364990/112879387-a5560080-90fb-11eb-9cd1-2baa78d77642.png)
 
 那么，在nodejs里，是如何对资源进行压缩的呢？答案就是**Zlib**模块。
 
