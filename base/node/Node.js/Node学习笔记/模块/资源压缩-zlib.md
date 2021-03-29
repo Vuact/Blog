@@ -82,6 +82,7 @@ pipeline(source, gunzip, destination, (err) => {
 });
 //或 source.pipe(gunzip).pipe(destination);
 ```
+解压也同样可以Promise 化，这里就不写了。
 
 <br>
 
