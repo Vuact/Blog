@@ -1,4 +1,4 @@
-做过web性能优化的同学，对性能优化大杀器**gzip**应该不陌生。浏览器向服务器发起资源请求，比如下载一个js文件，服务器先对资源进行压缩，再返回给浏览器，以此节省流量，加快访问速度。
+做过web性能优化的同学，对性能优化大杀器**gzip**应该不陌生。浏览器向服务器发起资源请求，比如下载一个js文件，`服务器先对资源进行压缩，再返回给客户端，客户端再解压使用`，以此节省流量，加快访问速度。
 
 - 客户端通过HTTP请求头里的 **Accept-Encoding** 告诉服务器：“你可以用gzip、br、或者defalte算法压缩资源”；
 - 服务器通过HTTP响应头里的 **Content-Encoding** 告诉客户端：使用的哪种压缩方式。
@@ -15,7 +15,7 @@
 
 - defalte：zlib.createDeflate() 和 zlib.createInflate()
 - gzip：zlib.createGzip() 和 zlib.createGunzip()
-- brzlib.createBrotliCompress() 和 zlib.createBrotliDecompress()
+- br：zlib.createBrotliCompress() 和 zlib.createBrotliDecompress()
 
 这里只介绍 `gzip`。
 
@@ -97,6 +97,8 @@ pipeline(source, gunzip, destination, (err) => {
 
 # 二、压缩 HTTP 的请求和响应
 
+服务端压缩，
+
 ### 服务端压缩
 
 代码超级简单。首先判断 是否包含 **accept-encoding** 首部，正则匹配看是否为采用哪种压缩（**deflate** 或 **gzip** 或 **br**）<br>
@@ -149,7 +151,7 @@ console.log("node-server started at port http://localhost:" + PORT);
 ```
 
 - `res.setHeader("Vary", "Accept-Encoding")`的含义：“告诉代理服务器缓存两种版本的资源：压缩和非压缩，这有助于避免一些公共代理不能正确地检测Content-Encoding标头的问题”。[具体请狠狠戳我](http://www.webkaka.com/blog/archives/how-to-set-Vary-Accept-Encoding-header.html)
-- 客户端代码请参见：[压缩 HTTP 的请求和响应](http://nodejs.cn/api/zlib/compressing_http_requests_and_responses.html)
+- 客户端解压代码请参见：[压缩 HTTP 的请求和响应](http://nodejs.cn/api/zlib/compressing_http_requests_and_responses.html)
 - 压缩完再发送请求，发现文件会变小（注：若文件本来就很小，压缩后会反而变大）
 
 ![image](https://user-images.githubusercontent.com/74364990/112877776-bef64880-90f9-11eb-82d0-70e314da2110.png)
@@ -183,6 +185,3 @@ var server = http.createServer(function(req, res){
 server.listen('3000');
 ```
 
-<br>
-
-deflate压缩的使用也差不多，这里就不赘述。更多详细用法可参考[官方文档](https://nodejs.org/api/zlib.html#zlib_class_options)。
