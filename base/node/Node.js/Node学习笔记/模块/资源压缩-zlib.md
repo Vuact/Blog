@@ -145,7 +145,11 @@ server.listen(PORT);
 console.log("node-server started at port http://localhost:" + PORT);
 ```
 
->`res.setHeader("Vary", "Accept-Encoding")`的含义：“告诉代理服务器缓存两种版本的资源：压缩和非压缩，这有助于避免一些公共代理不能正确地检测Content-Encoding标头的问题”。[具体请狠狠戳我](http://www.webkaka.com/blog/archives/how-to-set-Vary-Accept-Encoding-header.html)
+- `res.setHeader("Vary", "Accept-Encoding")`的含义：“告诉代理服务器缓存两种版本的资源：压缩和非压缩，这有助于避免一些公共代理不能正确地检测Content-Encoding标头的问题”。[具体请狠狠戳我](http://www.webkaka.com/blog/archives/how-to-set-Vary-Accept-Encoding-header.html)
+- 客户端代码请参见：[压缩 HTTP 的请求和响应](http://nodejs.cn/api/zlib/compressing_http_requests_and_responses.html)
+- 压缩完再发送请求，发现文件会变小（注：若文件本来就很小，压缩后会反而变大）
+
+![image](https://user-images.githubusercontent.com/74364990/112877776-bef64880-90f9-11eb-82d0-70e314da2110.png)
 
 
 <br>
