@@ -127,7 +127,7 @@ writeStream.end("");
 //已经关闭
 ```
 
-### 相对底层的接口
+### 3、相对底层的接口
 
 >- fs.write(fd, buffer, offset, length[, position], callback)
 >- fs.write(fd, data[, position[, encoding]], callback)
