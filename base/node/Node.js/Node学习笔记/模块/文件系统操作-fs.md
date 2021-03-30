@@ -21,17 +21,20 @@ try {
 #### 异步读取
 
 ```javascript
-var fs = require('fs');
+const fs = require("fs");
 
-fs.readFile('./fileForRead.txt', 'utf8', function(err, data){
-    if(err){
-        return console.error('读取文件出错: ' + err.message);
-    }
-    console.log('文件内容: ' + data);
+fs.readFile("./static/test.txt", "utf8", (err, data) => {
+  if (err) return console.error(`读取文件出错: ${err.message}`);
+  console.log(`文件内容: ${data}`);
 });
 
-//输出：
-//文件内容: hello world
+console.log(11);
+
+/*
+输出:
+	11
+	文件内容: 212121
+*/
 ```
 
 ### 2、通过文件流读取
