@@ -104,25 +104,27 @@ fs.writeFile("./static/test.html", "hello world", "utf8", (err) => {
 ### 2、通过文件流写入
 
 ```javascript
-var fs = require('fs');
-var writeStream = fs.createWriteStream('./fileForWrite1.txt', 'utf8');
+const fs = require("fs");
 
-writeStream
-    .on('close', function(){  // 已经关闭，不会再有事件抛出
-        console.log('已经关闭');
-    });
+const writeStream = fs.createWriteStream("./static/test.html", "utf8");
+writeStream.on("close", () => {
+  console.log("已经关闭");
+});
 
-writeStream.write('hello');
-writeStream.write('world');
-writeStream.end('');
+writeStream.write("hello");
+writeStream.write("world");
+writeStream.end("");
+
+//输出:
+//已经关闭
 ```
 
 ### 相对底层的接口
 
->fs.write(fd, buffer, offset, length[, position], callback)
->fs.write(fd, data[, position[, encoding]], callback)
->fs.writeSync(fd, buffer, offset, length[, position])
->fs.writeSync(fd, data[, position[, encoding]])
+- fs.write(fd, buffer, offset, length[, position], callback)
+- fs.write(fd, data[, position[, encoding]], callback)
+- fs.writeSync(fd, buffer, offset, length[, position])
+- fs.writeSync(fd, data[, position[, encoding]])
 
 * fd：写入的文件句柄。
 * buffer：写入的内容。
