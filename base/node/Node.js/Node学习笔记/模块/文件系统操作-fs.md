@@ -67,31 +67,39 @@ readStream
 
 # 文件写入
 
-备注：以下代码，如果文件不存在，则创建文件；如果文件存在，则覆盖文件内容；
+以下代码，如果文件不存在，则创建文件；如果文件存在，则覆盖文件内容；
 
-- 异步写入
-
-```javascript
-var fs = require('fs');
-
-fs.writeFile('./fileForWrite.txt', 'hello world', 'utf8', function(err){
-    if(err) throw err;
-    console.log('文件写入成功');
-});
-```
-
-- 同步写入
+#### 同步写入
 
 ```javascript
-var fs = require('fs');
+const fs = require("fs");
 
-try{
-    fs.writeFileSync('./fileForWrite1.txt', 'hello world', 'utf8');
-    console.log('文件写入成功');
-}catch(err){
-    throw err;
+try {
+  fs.writeFileSync("./static/test.html", "hello world", "utf8");
+  console.log("文件写入成功");
+} catch (err) {
+  console.error(`写入文件错误: ${err.message}`);
 }
+
+//输出:
+//文件写入成功
 ```
+
+#### 异步写入
+
+```javascript
+const fs = require("fs");
+
+fs.writeFile("./static/test.html", "hello world", "utf8", (err) => {
+  if (err) return console.error(`写入文件错误: ${err.message}`);
+  console.log("文件写入成功");
+});
+
+//输出:
+//文件写入成功
+```
+
+
 
 ### 通过文件流写入
 
