@@ -69,6 +69,8 @@ readStream
 
 以下代码，如果文件不存在，则创建文件；如果文件存在，则覆盖文件内容；
 
+### 1、普通写入
+
 #### 同步写入
 
 ```javascript
@@ -99,9 +101,7 @@ fs.writeFile("./static/test.html", "hello world", "utf8", (err) => {
 //文件写入成功
 ```
 
-
-
-### 通过文件流写入
+### 2、通过文件流写入
 
 ```javascript
 var fs = require('fs');
