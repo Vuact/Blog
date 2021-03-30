@@ -30,11 +30,9 @@ fs.readFile("./static/test.txt", "utf8", (err, data) => {
 
 console.log(11);
 
-/*
-输出:
-	11
-	文件内容: 212121
-*/
+//输出：
+//11
+//文件内容: hello world
 ```
 
 ### 2、通过文件流读取
