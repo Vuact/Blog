@@ -5,21 +5,19 @@
 - 同步读取
 
 ```javascript
-var fs = require('fs');
-var data;
+const fs = require("fs");
 
-try{
-    data = fs.readFileSync('./fileForRead.txt', 'utf8');
-    console.log('文件内容: ' + data);
-}catch(err){
-    console.error('读取文件出错: ' + err.message);
+try {
+  const data = fs.readFileSync("./static/test.html");
+  console.log(`文件内容: ${data}`);
+} catch (err) {
+  console.error(`读取文件出错: ${err.message}`);
 }
 ```
 
 输出如下：
 
 ```powershell
-/usr/local/bin/node readFileSync.js
 文件内容: hello world
 ```
 
