@@ -121,10 +121,10 @@ writeStream.end("");
 
 ### 相对底层的接口
 
-- fs.write(fd, buffer, offset, length[, position], callback)
-- fs.write(fd, data[, position[, encoding]], callback)
-- fs.writeSync(fd, buffer, offset, length[, position])
-- fs.writeSync(fd, data[, position[, encoding]])
+>- fs.write(fd, buffer, offset, length[, position], callback)
+>- fs.write(fd, data[, position[, encoding]], callback)
+>- fs.writeSync(fd, buffer, offset, length[, position])
+>- fs.writeSync(fd, data[, position[, encoding]])
 
 * fd：写入的文件句柄。
 * buffer：写入的内容。
