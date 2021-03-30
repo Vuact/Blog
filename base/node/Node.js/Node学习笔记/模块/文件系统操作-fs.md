@@ -2,7 +2,7 @@
 
 ### 1、普通读取
 
-- 同步读取
+#### 同步读取
 
 ```javascript
 const fs = require("fs");
@@ -15,13 +15,13 @@ try {
 }
 ```
 
-输出如下：
+输出：
 
 ```powershell
 文件内容: hello world
 ```
 
-- 异步读取
+#### 异步读取
 
 ```javascript
 var fs = require('fs');
@@ -34,7 +34,7 @@ fs.readFile('./fileForRead.txt', 'utf8', function(err, data){
 });
 ```
 
-输出如下
+输出
 
 ```powershell
 /usr/local/bin/node readFile.js
