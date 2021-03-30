@@ -13,12 +13,9 @@ try {
 } catch (err) {
   console.error(`读取文件出错: ${err.message}`);
 }
-```
 
-输出：
-
-```powershell
-文件内容: hello world
+//输出：
+//文件内容: hello world
 ```
 
 #### 异步读取
@@ -32,13 +29,9 @@ fs.readFile('./fileForRead.txt', 'utf8', function(err, data){
     }
     console.log('文件内容: ' + data);
 });
-```
 
-输出
-
-```powershell
-/usr/local/bin/node readFile.js
-文件内容: hello world
+//输出：
+//文件内容: hello world
 ```
 
 ### 2、通过文件流读取
