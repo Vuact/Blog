@@ -23,7 +23,7 @@ try {
 ```javascript
 const fs = require("fs");
 
-fs.readFile("./static/test.txt", "utf8", (err, data) => {
+fs.readFile("./static/test.html", "utf8", (err, data) => {
   if (err) return console.error(`读取文件出错: ${err.message}`);
   console.log(`文件内容: ${data}`);
 });
@@ -40,32 +40,28 @@ console.log(11);
 适合读取大文件
 
 ```javascript
-var fs = require('fs');
-var readStream = fs.createReadStream('./fileForRead.txt', 'utf8');
+const fs = require("fs");
+const readStream = fs.createReadStream("./static/test.html", "utf8");
 
 readStream
-    .on('data', function(chunk) {
-        console.log('读取数据: ' + chunk);
-    })
-    .on('error', function(err){
-        console.log('出错: ' + err.message);
-    })
-    .on('end', function(){  // 没有数据了
-        console.log('没有数据了');
-    })
-    .on('close', function(){  // 已经关闭，不会再有事件抛出
-        console.log('已经关闭');
-    });
+  .on("data", (chunk) => {
+    console.log(`读取数据：${chunk}`);
+  })
+  .on("error", (err) => {
+    console.log(`出错：${err.message}`);
+  })
+  .on("end", () => {
+    console.log("没有数据了");
+  })
+  .on("close", () => {
+    console.log("已经关闭");
+  });
+
+//输出:
+//读取数据：hello world
+//没有数据了
+//已经关闭
 ```
-
-输出如下
-
-```powershell
-/usr/local/bin/node createReadStream.js
-读取数据: hello world
-没有数据了
-已经关闭
-``` 
 
 <br>
 
