@@ -99,6 +99,7 @@
 |搜索：查找上一个匹配项|Enter|
 |搜索：查找下一个匹配项|Enter + ⇧|
 |删除一整行|⌘ + delete|
+
 [learn more >>](https://geek-docs.com/vscode/vscode-tutorials/vscode-code-debugger.html)
 
 
@@ -111,6 +112,7 @@
 |/search_text|检索文档，在文档后面的部分搜索 search_text|
 |n|移动到后一个检索结果|
 |N|移动到前一个检索结果|
+
 [learn more >>](https://linux.cn/article-8144-1.html)
 
 
