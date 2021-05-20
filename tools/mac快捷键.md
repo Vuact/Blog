@@ -102,6 +102,15 @@
 [learn more >>](https://geek-docs.com/vscode/vscode-tutorials/vscode-code-debugger.html)
 
 
-
+## Vim
+|操作|快捷键|
+|-----|-----|
+|$|移动光标至本行末尾|
+|G	|移动至文件末尾|
+|gg	|移动至文件开头|
+|/search_text|检索文档，在文档后面的部分搜索 search_text|
+|n|移动到后一个检索结果|
+|N|移动到前一个检索结果|
+[learn more >>](https://linux.cn/article-8144-1.html)
 
 
