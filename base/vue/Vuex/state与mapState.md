@@ -1,5 +1,5 @@
 **mapState**
-```vue
+```js
 import { mapState } from "vuex";
 
 const app = new Vue({
@@ -19,7 +19,7 @@ const app = new Vue({
 ```
 
 对象写法：
-```vue
+```js
 computed: {
   ...mapState({
     // 箭头函数可使代码更简练
@@ -37,7 +37,7 @@ computed: {
 ```
 
 数组写法：
-```vue
+```js
 computed: mapState([
   // 映射 this.count 为 store.state.count
   'count'
