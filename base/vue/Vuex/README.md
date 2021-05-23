@@ -9,3 +9,4 @@ vuex三大样：
 - [官方文档](https://vuex.vuejs.org/zh/)
 - 目录结构.md
 - state与mapState.md
+- getters与mapGetters.md
