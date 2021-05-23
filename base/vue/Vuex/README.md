@@ -10,6 +10,10 @@
 	|- state.js
 	|- modules
 		|- moduleA
+			|- action.js
+			|- getter.js
+			|- index.js
+			|- mutations.js
 		|- moduleB
 		·········
 		|- moduleN
@@ -43,3 +47,35 @@ export default new Vuex.Store({
 	modules
 });
 ```
+
+**/store/plugins.js**
+```js
+import createLogger from "@plugin/store-logger";
+
+const debug = process.env.NODE_ENV !== "production";
+
+export default debug ? [createLogger()] : [];
+```
+
+**state.js\getter.js\mutations.js\action.js**
+```js
+export default {};
+
+//或
+
+export const test = () => {};
+```
+
+**/store/modules/index.js**
+```js
+import moduleA from "./moduleA/index";
+import moduleB from "./moduleB/index";
+import moduleN from "./moduleN/index";
+
+export default {
+	moduleA,
+	moduleB,
+	moduleN
+};
+```
+
