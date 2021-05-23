@@ -5,15 +5,11 @@ import { mapState } from "vuex";
 const app = new Vue({
   el: "#app",
   store,
-  template: `
-    <div class="app">
-      <div>{{ count }}</div>
-    </div>
-  `,
+  template: `<div class="app">{{ count }}</div>`,
   data() {
     return {
-		localCount: 4
-	};
+	localCount: 4
+    };
   },
 });
 ```
