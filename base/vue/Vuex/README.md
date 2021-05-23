@@ -1,5 +1,6 @@
 # 目录结构
 
+```js
 - store
 	|- action.js
 	|- getter.js
@@ -13,6 +14,6 @@
 		·········
 		|- moduleN
 		|- index.js 
-
-/store/index.js：整个store的入口文件
-/store/modules/index.js：modules的入口文件
+```
+- /store/index.js：整个store的入口文件
+- /store/modules/index.js：modules的入口文件
