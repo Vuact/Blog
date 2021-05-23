@@ -1,4 +1,4 @@
-**mapState**
+# mapState
 ```js
 import { mapState } from "vuex";
 
@@ -18,7 +18,7 @@ const app = new Vue({
 });
 ```
 
-对象写法：
+### 对象写法：
 ```js
 computed: {
   ...mapState({
@@ -36,7 +36,7 @@ computed: {
 }
 ```
 
-数组写法：
+### 数组写法：
 ```js
 computed: mapState([
   // 映射 this.count 为 store.state.count
