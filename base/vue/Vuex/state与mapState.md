@@ -11,11 +11,12 @@ this.$store.store.moduleA.val;
 
 # mapState
 
+API: 
 ```js
 mapState(namespace?: string, map: Array<string> | Object<string | function>): Object
 ```
 
-
+例子：
 ```js
 import { mapState } from "vuex";
 
