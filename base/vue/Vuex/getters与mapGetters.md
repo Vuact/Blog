@@ -45,9 +45,18 @@ this.$store.getters.getTodoById(2)
 
 **对象写法：**
 ```js
-...mapGetters({
-  doneCount: 'doneTodosCount'  // `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
-})
+computed: {
+    ...mapGetters({
+      doneCount: 'doneTodosCount'  // `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
+    })
+}
+
+//访问moduleA下的getters
+computed: {
+    ...mapGetters("moduleA", {
+       ····
+    })
+}
 ```
 
 **数组写法：**
