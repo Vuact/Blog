@@ -2,9 +2,10 @@
 
 vue中使用：
 ```js
+//访问val
 this.$store.store.val;
 
-//模块下变量
+//访问moduleA下的val
 this.$store.store.moduleA.val;
 ```
 
