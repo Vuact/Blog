@@ -2,6 +2,8 @@
 - 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation
 - mutation 必须是同步函数
 
+<br>
+
 ## 1、mutation 需遵守 Vue 的响应规则
 既然 Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：
 
