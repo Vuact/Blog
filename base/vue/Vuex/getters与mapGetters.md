@@ -43,6 +43,10 @@ this.$store.getters.getTodoById(2)
 
 # mapGetters
 
+```js
+mapGetters(namespace(?), map: Array|Object)
+```
+
 **对象写法：**
 ```js
 computed: {
@@ -54,7 +58,7 @@ computed: {
 //访问moduleA下的getters
 computed: {
     ...mapGetters("moduleA", {
-       ····
+       //····
     })
 }
 ```
