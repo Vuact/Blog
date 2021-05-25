@@ -10,3 +10,4 @@ vuex三大样：
 - 目录结构.md
 - state与mapState.md
 - getters与mapGetters.md
+- mutation与mapMutations.md
