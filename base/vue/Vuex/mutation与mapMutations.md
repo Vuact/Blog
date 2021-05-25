@@ -33,3 +33,11 @@ this.$store.commit({
   amount: 10
 });
 ```
+
+## 3、mapMutations
+
+```js
+mapMutations(namespace?: string, map: Array<string> | Object<string | function>): Object
+```
+- 参数一：命名空间字符串（可选）
+- 参数二：数组或对象。对象形式下可以是一个函数。 `function(commit: function, ...args: any[])`
