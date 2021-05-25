@@ -1,3 +1,10 @@
+# store
+
+vue中使用：
+```js
+this.$store.count;
+```
+
 # mapState
 ```js
 import { mapState } from "vuex";
