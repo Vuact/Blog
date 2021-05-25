@@ -3,8 +3,10 @@
 
 ## 1、在vue中的调用：
 ```js
+//访问doThing方法
 this.$store.getters.doThing
 
+//访问moduleA下的doThing方法
 this.$store.getters["moduleA/doThing"]
 ```
 
