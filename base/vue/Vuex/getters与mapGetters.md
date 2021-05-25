@@ -41,6 +41,14 @@ this.$store.getters.getTodoById(2)
 
 # mapGetters
 
+**对象写法：**
+```js
+...mapGetters({
+  doneCount: 'doneTodosCount'  // `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
+})
+```
+
+**数组写法：**
 ```js
 import { mapGetters } from 'vuex'
 
