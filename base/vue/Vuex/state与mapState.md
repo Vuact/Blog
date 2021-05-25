@@ -25,7 +25,7 @@ const app = new Vue({
 });
 ```
 
-** 对象写法：**
+**对象写法：**
 ```js
 computed: {
   ...mapState({
@@ -43,7 +43,7 @@ computed: {
 }
 ```
 
-** 数组写法：**
+**数组写法：**
 ```js
 computed: {
    ...mapState([
