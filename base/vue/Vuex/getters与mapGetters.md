@@ -24,7 +24,7 @@ getters: {
 */
 ```
 
-外界传参
+高级用法：外界传参
 ```js
 //声明：
 getters: {
@@ -40,3 +40,18 @@ this.$store.getters.getTodoById(2)
 <br>
 
 # mapGetters
+
+```js
+import { mapGetters } from 'vuex'
+
+export default {
+  // ...
+  computed: {
+    ...mapGetters([
+      'doneTodosCount',
+      'anotherGetter',
+      // ...
+    ])
+  }
+}
+```
