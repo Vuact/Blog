@@ -10,5 +10,13 @@ this.$store.commit("doThing");
 this.$store.commit("moduleA/doThing");
 
 //传参
-this.$store.commit("doThing", 0);
+this.$store.commit("moduleA/doThing", {
+  amount: 10
+});
+
+//传参：更高级
+this.$store.commit({
+  type: 'moduleA/doThing',
+  amount: 10
+});
 ```
