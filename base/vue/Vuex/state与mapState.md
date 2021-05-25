@@ -1,4 +1,4 @@
-# store
+# state
 
 vue中使用：
 ```js
