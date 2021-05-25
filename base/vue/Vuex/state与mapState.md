@@ -35,7 +35,7 @@ computed: {
     // 更高级的写法（'count' 等同于 `state => state.count`）
     countAlias: "count",
 
-    // 为了能够使用 `this` 获取局部状态，必须使用常规函数
+    // 自定义函数
     countPlusLocalState(state) {
       return state.count + this.localCount;
     }
