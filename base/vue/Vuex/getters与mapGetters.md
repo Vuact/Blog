@@ -44,7 +44,7 @@ this.$store.getters.getTodoById(2)
 # mapGetters
 
 ```js
-mapState(namespace?: string, map: Array<string> | Object<string | function>): Object
+mapGetters(namespace?: string, map: Array<string> | Object<string>): Object
 ```
 
 **对象写法：**
