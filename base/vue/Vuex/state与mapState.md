@@ -2,7 +2,10 @@
 
 vue中使用：
 ```js
-this.$store.count;
+this.$store.store.val;
+
+//模块下变量
+this.$store.store.moduleA.val;
 ```
 
 # mapState
