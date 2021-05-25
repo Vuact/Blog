@@ -10,6 +10,12 @@ this.$store.store.moduleA.val;
 ```
 
 # mapState
+
+```js
+mapState(namespace?: string, map: Array<string> | Object<string | function>): Object
+```
+
+
 ```js
 import { mapState } from "vuex";
 
