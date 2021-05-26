@@ -72,3 +72,41 @@ mapActions(namespace?: string, map: Array<string> | Object<string | function>): 
 ```
 - 参数一：命名空间字符串（可选）
 - 参数二：数组或对象。对象形式下可以是一个函数。 `function(dispatch: function, ...args: any[])`
+
+```js
+import { mapActions } from 'vuex'
+
+export default {
+  methods: {
+    //数组形式：
+    ...mapActions([
+      'funcA',      //`this.funcA()` 映射为 `this.$store.dispatch('funcA')`
+      'funcB'       //`this.funcB(payload)` 映射为 `this.$store.dispatch('funcB', payload)` (载荷形式)
+    ]),
+    ...mapActions("moduleC", [
+      'funcC1',     //`this.funcC1()` 映射为 `this.$store.dispatch('moduleC/funcC1')`
+      'funcC2',     //`this.funcC2(payload)` 映射为 `this.$store.dispatch('moduleC/funcC2', payload)` (载荷形式)
+    ]),
+    
+    //对象形式：
+    ...mapActions({
+      dothings: 'funcA',            //`this.dothings()` 映射为 `this.$store.dispatch('funcA')`,
+      dothings2: 'funcB',           //`this.dothings2(payload)` 映射为 `this.$store.dispatch('funcB', payload)`  (载荷形式)
+      myFunc(dispatch, payload) {   //自定义函数形式 
+        dispatch("funcB", payload);           //执行`this.$store.dispatch('funcB', payload)`
+        dispatch("moduleC/funcC1", payload);  //执行`this.$store.dispatch('moduleC/funcC1', payload)`
+      }
+    }),
+    ...mapActions("moduleC", {
+      dothings3: 'funcC1',            //`this.dothings3()` 映射为 `this.$store.dispatch('moduleC/funcC1')`
+      dothings4: 'funcC2',            //`this.dothings4(payload)` 映射为 `this.$store.dispatch('moduleC/funcC2', payload)` (载荷形式)
+      myFunc2(dispatch, payload) {    //自定义函数形式 
+        dispatch("funcC1", payload);            //执行`this.$store.dispatch('moduleC/funcC1', payload)`
+        dispatch("moduleK/funcK", payload, {    //执行`this.$store.dispatch('moduleK/funcK', payload)`
+          root: true
+        });
+      }
+    })
+  }
+};
+```
