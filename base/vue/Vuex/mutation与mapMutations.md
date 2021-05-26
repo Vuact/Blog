@@ -51,19 +51,22 @@ export default {
   methods: {
     //数组形式：
     ...mapMutations([
-      'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
-      'incrementBy' //也支持载荷, 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+      'funcA',      //`this.funcA()` 映射为 `this.$store.commit('funcA')`
+      'funcB'       //`this.funcB(params)` 映射为 `this.$store.commit('funcB', params)` (载荷形式)
     ]),
-    ...mapMutations("moduleA", [
-      'dothings', // 将 `this.dothings()` 映射为 `this.$store.commit('moduleA/dothings')`
+    ...mapMutations("moduleC", [
+      'funcC',     //`this.funcC()` 映射为 `this.$store.commit('moduleC/funcC')`
+      'funcD',     //`this.funcD()` 映射为 `this.$store.commit('moduleC/funcD', params)` (载荷形式)
     ]),
     
     //对象形式：
     ...mapMutations({
-      add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+      dothings: 'funcA',     //`this.dothings()` 映射为 `this.$store.commit('funcA')`,
+      dothings2: 'funcB',    //`this.dothings2(params)` 映射为 `this.$store.commit('funcB', params)`  (载荷形式)
     }),
-    ...mapMutations("moduleB", [
-      'dothings2', // 将 `this.dothings2()` 映射为 `this.$store.commit('moduleB/dothings2')`
+    ...mapMutations("moduleC", [
+      dothings3: 'funcC',     //`this.dothings3()` 映射为 `this.$store.commit('moduleC/funcC')`
+      dothings4: 'funcD',     //`this.dothings4()` 映射为 `this.$store.commit('moduleC/funcD', params)` (载荷形式)
     ]),
   }
 };
