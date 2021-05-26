@@ -21,7 +21,7 @@ const store = new Vuex.Store({
     increment (context) {
       context.commit('addCount');
     },
-    increment2 ({state, getters, commit, dispatch}) {
+    doThing ({state, getters, commit, dispatch}) {
       commit('addCount');
       dispatch('increment');
     }
