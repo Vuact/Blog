@@ -1,6 +1,7 @@
-# state
+# 使用
 
-vue中使用：
+## 1、store.store
+
 ```js
 //访问val
 this.$store.store.val;
@@ -9,7 +10,7 @@ this.$store.store.val;
 this.$store.store.moduleA.val;
 ```
 
-# mapState
+## 2、mapState
 
 ```js
 mapState(namespace?: string, map: Array<string> | Object<string | function>): Object
