@@ -20,7 +20,7 @@ const store = new Vuex.Store({
 })；
   
 /*  
-  state,       // 如果在模块中定义则为模块的局部状态
+  state,       // 等同于 `store.state`, 如果在模块中定义则为模块的局部状态
   getters,     // 等同于 `store.getters`
   rootState    // 只存在于模块中: 等同于 `store.state`
   rootGetters  // 只存在于模块中: 等同于 `store.getters`
