@@ -5,17 +5,26 @@
 
 ## 1、在vue中的调用
 ```js
-//访问doThing方法
-this.$store.getters.doThing
+this.$store.getters.doThing              //访问doThing方法
+this.$store.getters["moduleA/doThing"]   //访问moduleA下的doThing方法
+```
+传参写法：
+```js
+//声明：
+getters: {
+  getTodoById: (state) => (id) => {
+    return ····;
+  }
+}
 
-//访问moduleA下的doThing方法
-this.$store.getters["moduleA/doThing"]
+//vue中使用：
+this.$store.getters.getTodoById(2)
 ```
 
-## 2、声明参数
+## 2、API
 ```js
 getters: {
-    doThing: (state, getters, rootState, rootGetters) => { 
+    doThing(state, getters, rootState, rootGetters) => { 
       return ·····;
     }
 }
@@ -26,19 +35,6 @@ getters: {
   rootState    // 等同于 store.state
   rootGetters  // 所有 getters
 */
-```
-
-高级用法：外界传参
-```js
-//声明：
-getters: {
-  getTodoById: (state) => (id) => {
-    return ····;
-  }
-}
-
-//使用
-this.$store.getters.getTodoById(2)
 ```
 
 <br>
