@@ -54,11 +54,17 @@ export default {
       'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
       'incrementBy' //也支持载荷, 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
     ]),
+    ...mapMutations("moduleA", [
+      'dothings', // 将moduleA模块下的 `this.dothings()` 映射为 `this.$store.commit('moduleA/dothings')`
+    ]),
     
     //对象形式：
     ...mapMutations({
       add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
-    })
+    }),
+    ...mapMutations("moduleB", [
+      'dothings2', // 将moduleB模块下的 `this.dothings2()` 映射为 `this.$store.commit('moduleB/dothings2')`
+    ]),
   }
 };
 ```
