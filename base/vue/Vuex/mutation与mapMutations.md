@@ -35,17 +35,17 @@ const store = new Vuex.Store({
 ## 1、store.commit
 
 ```js
-this.$store.commit("doThing");          //访问doThing方法
-this.$store.commit("moduleA/doThing");  //访问moduleA下的doThing方法
+this.$store.commit("doThing");          //执行doThing方法
+this.$store.commit("moduleA/doThing");  //执行moduleA下的doThing方法
 
 //载荷形式：写法一：
-this.$store.commit("moduleA/doThing", { //访问moduleA下的doThing方法，传参：`{amount: 10}`
+this.$store.commit("moduleA/doThing", { //执行moduleA下的doThing方法，传参：`{amount: 10}`
   amount: 10
 });
 
 //载荷形式：写法二：
 this.$store.commit({
-  type: 'moduleA/doThing',              //访问moduleA下的doThing方法，传参：`{amount: 10}`
+  type: 'moduleA/doThing',              //执行moduleA下的doThing方法，传参：`{amount: 10}`
   amount: 10
 });
 ```
