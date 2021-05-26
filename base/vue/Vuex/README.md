@@ -6,7 +6,7 @@ vuex三大样：
 - action：相当于vue里的methods(异步)，无返回值; action提交的是mutation，而不是直接变更状态，
 
 辅助函数放置位置：
-- mapGetters ：放在computed里
+- mapState、mapGetters ：放在computed里
 - mapMutations、mapActions：放在methods里
 
 <br>
