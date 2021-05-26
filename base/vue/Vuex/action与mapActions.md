@@ -47,4 +47,20 @@ const store = new Vuex.Store({
 
 ## 1、store.dispatch
 
+```js
+this.$store.dispatch("doThing");          //访问doThing方法
+this.$store.dispatch("moduleA/doThing");  //访问moduleA下的doThing方法
+
+//载荷形式：写法一：
+this.$store.dispatch("moduleA/doThing", { //访问moduleA下的doThing方法，传参：`{amount: 10}`
+  amount: 10
+});
+
+//载荷形式：写法二：
+this.$store.dispatch({                    //访问moduleA下的doThing方法，传参：`{amount: 10}`
+  type: 'moduleA/doThing',
+  amount: 10
+});
+```
+
 ## 2、mapActions
