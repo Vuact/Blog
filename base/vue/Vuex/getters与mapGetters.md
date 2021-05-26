@@ -5,12 +5,16 @@
 # 声明
 
 ```js
-//····
-getters: {
+const store = new Vuex.Store({
+  state: {
+    count: 1
+  },
+  getters: {
     doThing(state, getters, rootState, rootGetters) => { 
-      return ·····;
+       return ·····;
     }
-}
+  }
+})；
   
 /*  
   state,       // 如果在模块中定义则为模块的局部状态
