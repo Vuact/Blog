@@ -1,22 +1,37 @@
-# mutation
+**mutation**
 - 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation
-- mutation 必须是同步函数
+- mutation 必须是同步函数，且无返回值
+- mutation 需遵守 Vue 的响应规则：<br><br>
+既然 Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：<br><br>
+    当需要`在对象上添加新属性`时，你应该
+
+    - 使用 `Vue.set(obj, 'newProp', 123)`, 或者
+    - 以新对象替换老对象。例如，利用对象展开运算符：  `state.obj = { ...state.obj, newProp: 123 }`
+
+
+<br><br>
+
+# 声明
+
+```js
+const store = new Vuex.Store({
+  state: {
+    count: 1
+  },
+  mutations: {
+    increment (state, payload) {
+      state.count++;
+    }
+  }
+});
+```
 
 <br>
 
-## 1、mutation 需遵守 Vue 的响应规则
-既然 Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：
+# 调用
 
-当需要`在对象上添加新属性`时，你应该
+## 1、store.commit
 
-- 使用 Vue.set(obj, 'newProp', 123), 或者
-- 以新对象替换老对象。例如，利用对象展开运算符：
-```js
-state.obj = { ...state.obj, newProp: 123 }
-```
-
-
-## 2、在vue中的调用
 ```js
 this.$store.commit("doThing");          //访问doThing方法
 this.$store.commit("moduleA/doThing");  //访问moduleA下的doThing方法
@@ -33,7 +48,7 @@ this.$store.commit({
 });
 ```
 
-## 3、mapMutations
+## 2、mapMutations
 
 ```js
 mapMutations(namespace?: string, map: Array<string> | Object<string | function>): Object
