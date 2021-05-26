@@ -46,9 +46,9 @@ computed: {
    
    //对象写法：
    ...mapState({
-    countAlias: (state) => state.count,     //映射 this.countAlias 为 this.$store.state.count
-    countAlias: "count",                    //映射 this.countAlias 为 this.$store.state.count
-    countPlusLocalState(state) {            //自定义函数
+    countAlias: (state) => state.count,      //映射 this.countAlias 为 this.$store.state.count
+    countAlias2: "count",                    //映射 this.countAlias2 为 this.$store.state.count
+    countPlusLocalState(state) {             //自定义函数
       return state.count + this.localCount;
     }
   })
