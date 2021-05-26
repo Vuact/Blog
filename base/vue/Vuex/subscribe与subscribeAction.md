@@ -4,7 +4,12 @@
 
 <br>
 
+可在模块中应用，即在某个模块中全部的 `mutation/action完成调用前或后` 执行某项统一操作。
+
+<br>
+
 # subscribe
+
 
 ```js
 subscribe(handler: Function, options?: Object): Function
