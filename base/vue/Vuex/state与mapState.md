@@ -21,7 +21,6 @@ mapState(namespace?: string, map: Array<string> | Object<string | function>): Ob
 
 <br>
 
-例子：
 ```js
 import { mapState } from "vuex";
 
