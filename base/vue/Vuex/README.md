@@ -19,3 +19,4 @@ vuex三大样：
 - mutation与mapMutations.md
 - action与mapActions.md
 - module.md
+- subscribe与subscribeAction.md
