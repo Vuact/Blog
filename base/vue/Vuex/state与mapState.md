@@ -55,5 +55,3 @@ computed: {
 }
 ```
 
-- [参考请戳我](https://vuex.vuejs.org/zh/guide/state.html)
-
