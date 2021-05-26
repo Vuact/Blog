@@ -66,11 +66,11 @@ export default {
     
     //对象写法：
     ...mapGetters({
-      dothings: 'funcA'    // `this.doneCount` 映射为 `this.$store.getters.funcA`,
-      dothings2: 'funcB'   // `this.doneCount` 映射为 `this.$store.getters.funcB`
+      dothings: 'funcA'    // `this.dothings` 映射为 `this.$store.getters.funcA`,
+      dothings2: 'funcB'   // `this.dothings2` 映射为 `this.$store.getters.funcB`
     }),
     ...mapGetters("moduleC", {
-       dothings3: 'funcC'  // `this.funcC` 映射为 `this.$store.getters["moduleC.funcC"]`
+       dothings3: 'funcC'  // `this.dothings3` 映射为 `this.$store.getters["moduleC.funcC"]`
     })
   }
 }
