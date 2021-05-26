@@ -11,7 +11,7 @@ const store = new Vuex.Store({
   },
   getters: {
     doThing(state, getters, rootState, rootGetters) => { 
-       return ·····;
+       return state.count;
     }
   }
 })；
