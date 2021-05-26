@@ -1,9 +1,28 @@
-
-# getter
-
 就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
 
-## 1、在vue中的调用
+声明: 
+```js
+//····
+getters: {
+    doThing(state, getters, rootState, rootGetters) => { 
+      return ·····;
+    }
+}
+  
+/*  
+  state,       // 如果在模块中定义则为模块的局部状态
+  getters,     // 等同于 store.getters
+  rootState    // 等同于 store.state
+  rootGetters  // 所有 getters
+*/
+```
+
+<br>
+
+# 在vue中的使用
+
+## 1、store.getters
+
 ```js
 this.$store.getters.doThing              //访问doThing方法
 this.$store.getters["moduleA/doThing"]   //访问moduleA下的doThing方法
@@ -19,22 +38,6 @@ getters: {
 
 //vue中使用：
 this.$store.getters.getTodoById(2)
-```
-
-## 2、API
-```js
-getters: {
-    doThing(state, getters, rootState, rootGetters) => { 
-      return ·····;
-    }
-}
-  
-/*  
-  state,       // 如果在模块中定义则为模块的局部状态
-  getters,     // 等同于 store.getters
-  rootState    // 等同于 store.state
-  rootGetters  // 所有 getters
-*/
 ```
 
 <br>
