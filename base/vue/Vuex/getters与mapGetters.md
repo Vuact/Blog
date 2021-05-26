@@ -17,9 +17,9 @@ getters: {
 */
 ```
 
-<br>
+<br><br>
 
-# 在vue中的使用
+# 调用
 
 ## 1、store.getters
 
