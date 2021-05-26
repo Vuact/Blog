@@ -14,3 +14,4 @@ vuex三大样：
 - state与mapState.md
 - getters与mapGetters.md
 - mutation与mapMutations.md
+- action与mapActions.md
