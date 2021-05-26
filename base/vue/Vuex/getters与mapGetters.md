@@ -49,34 +49,29 @@ this.$store.getters.getTodoById(2)
 mapGetters(namespace?: string, map: Array<string> | Object<string>): Object
 ```
 
-**对象写法：**
-```js
-computed: {
-    ...mapGetters({
-      doneCount: 'doneTodosCount'  // `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
-    })
-}
-
-//访问moduleA下的getters
-computed: {
-    ...mapGetters("moduleA", {
-       //····
-    })
-}
-```
-
-**数组写法：**
+使用：
 ```js
 import { mapGetters } from 'vuex'
 
 export default {
-  // ...
   computed: {
+    //数组写法：
     ...mapGetters([
-      'doneTodosCount',
-      'anotherGetter',
-      // ...
-    ])
+      'funcA', // `this.funcA` 映射为 `this.$store.getters.funcA`
+      'funcB', // `this.funcB` 映射为 `this.$store.getters.funcB`
+    ]),
+    ...mapGetters("moduleC", [
+      'funcC' // `this.funcC` 映射为 `this.$store.getters["moduleC.funcC"]`
+    ]),
+    
+    //对象写法：
+    ...mapGetters({
+      dothings: 'funcA'    // `this.doneCount` 映射为 `this.$store.getters.funcA`,
+      dothings2: 'funcB'   // `this.doneCount` 映射为 `this.$store.getters.funcB`
+    }),
+    ...mapGetters("moduleC", {
+       dothings3: 'funcC'  // `this.funcC` 映射为 `this.$store.getters["moduleC.funcC"]`
+    })
   }
 }
 ```
