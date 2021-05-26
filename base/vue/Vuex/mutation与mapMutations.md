@@ -43,3 +43,21 @@ mapMutations(namespace?: string, map: Array<string> | Object<string | function>)
 ```
 - 参数一：命名空间字符串（可选）
 - 参数二：数组或对象。对象形式下可以是一个函数。 `function(commit: function, ...args: any[])`
+
+```js
+import { mapMutations } from 'vuex'
+
+export default {
+  methods: {
+    ...mapMutations([
+      'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+
+      // `mapMutations` 也支持载荷：
+      'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+    ]),
+    ...mapMutations({
+      add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+    })
+  }
+};
+```
