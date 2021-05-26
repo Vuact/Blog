@@ -37,30 +37,21 @@ const app = new Vue({
 });
 ```
 
-**对象写法：**
 ```js
 computed: {
-  ...mapState({
-    // 箭头函数可使代码更简练
-    count: (state) => state.count,
-
-    // 更高级的写法（'count' 等同于 `state => state.count`）
-    countAlias: "count",
-
-    // 自定义函数
-    countPlusLocalState(state) {
+   //数组写法：
+   ...mapState([
+       'count'  //映射 this.count 为 this.$store.state.count
+   ]),
+   
+   //对象写法：
+   ...mapState({
+    countAlias: (state) => state.count,     //映射 this.countAlias 为 this.$store.state.count
+    countAlias: "count",                    //映射 this.countAlias 为 this.$store.state.count
+    countPlusLocalState(state) {            //自定义函数
       return state.count + this.localCount;
     }
   })
-}
-```
-
-**数组写法：**
-```js
-computed: {
-   ...mapState([
-       'count'  // 映射 this.count 为 store.state.count
-   ])
 }
 ```
 
