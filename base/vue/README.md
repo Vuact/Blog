@@ -9,3 +9,4 @@
 - getters与mapGetters.md
 - mutation与mapMutations.md
 - action与mapActions.md
+- module.md
