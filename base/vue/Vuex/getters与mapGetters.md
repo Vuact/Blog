@@ -1,6 +1,7 @@
 就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
 
-声明: 
+# 声明
+
 ```js
 //····
 getters: {
@@ -71,6 +72,8 @@ export default {
     ...mapGetters("moduleC", {
        dothings3: 'funcC'  // `this.dothings3` 映射为 `this.$store.getters["moduleC.funcC"]`
     })
+    
+    //无自定义函数写法
   }
 }
 ```
