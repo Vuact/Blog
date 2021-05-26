@@ -1,3 +1,5 @@
+具体请参考：[https://vuex.vuejs.org/zh/guide/modules.html](https://vuex.vuejs.org/zh/guide/modules.html)
+
 # 命名空间
 
 - namespaced
