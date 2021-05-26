@@ -21,25 +21,25 @@ const store = new Vuex.Store({
     increment (context) {
       context.commit('addCount');
     },
+    
+    /* 
+      context 对象包含以下属性:
+
+      {
+        commit,     // 等同于 `store.commit`
+        dispatch,   // 等同于 `store.dispatch`  
+        state,      // 等同于 `store.state`，若在模块中则为局部状态
+        getters,    // 等同于 `store.getters`
+        rootState,  // 只存在于模块中: 等同于 `store.state`
+        rootGetters // 只存在于模块中: 等同于 `store.getters`
+      }
+    */
     doThing ({state, getters, commit, dispatch}) {
       commit('addCount');
       dispatch('increment');
     }
   }
 });
-
-/* 
-  context 对象包含以下属性:
-  
-  {
-    commit,     // 等同于 `store.commit`
-    dispatch,   // 等同于 `store.dispatch`  
-    state,      // 等同于 `store.state`，若在模块中则为局部状态
-    getters,    // 等同于 `store.getters`
-    rootState,  // 只存在于模块中: 等同于 `store.state`
-    rootGetters // 只存在于模块中: 等同于 `store.getters`
-  }
-*/
 ```
 
 <br>
