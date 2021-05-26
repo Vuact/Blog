@@ -19,7 +19,9 @@ const store = new Vuex.Store({
   },
   actions: {
     increment (context) {
-      context.commit('addCount');
+      setTimeout(() => {
+         context.commit('addCount');
+      }, 1000);
     },
     
     /* 
