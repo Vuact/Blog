@@ -13,16 +13,16 @@ const store = new Vuex.Store({
     count: 0
   },
   mutations: {
-    increment (state) {
+    addCount (state) {
       state.count++;
     }
   },
   actions: {
     increment (context) {
-      context.commit('increment');
+      context.commit('addCount');
     },
     increment2 ({state, getters, commit, dispatch}) {
-      commit('increment2');
+      commit('addCount');
       dispatch('increment');
     }
   }
