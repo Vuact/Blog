@@ -83,7 +83,7 @@ export default {
     }),
     ...mapMutations("moduleC", {
       dothings3: 'funcC1',         //`this.dothings3()` 映射为 `this.$store.commit('moduleC/funcC1')`
-      dothings4: 'funcC2',         //`this.dothings4()` 映射为 `this.$store.commit('moduleC/funcC2', params)` (载荷形式)
+      dothings4: 'funcC2',         //`this.dothings4()` 映射为 `this.$store.commit('moduleC/funcC2', payload)` (载荷形式)
       myFunc2(commit, payload) {    //自定义函数形式 
         commit("funcC1", payload);            //执行`this.$store.commit('moduleC/funcC1')`
         commit("moduleK/funcK", payload, {    //执行`this.$store.commit('moduleK/funcK')`
