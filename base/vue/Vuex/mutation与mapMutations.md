@@ -59,19 +59,25 @@ export default {
       'funcD',     //`this.funcD()` 映射为 `this.$store.commit('moduleC/funcD', params)` (载荷形式)
     ]),
     
+    
     //对象形式：
     ...mapMutations({
       dothings: 'funcA',         //`this.dothings()` 映射为 `this.$store.commit('funcA')`,
       dothings2: 'funcB',        //`this.dothings2(params)` 映射为 `this.$store.commit('funcB', params)`  (载荷形式)
       myFunc(commit, params) {   //自定义函数形式 
-        //····
-        commit("funcA");
-        commit("moduleC/funcC");
+        commit("funcB", params);         //执行`this.$store.commit('funcB', params)`
+        commit("moduleC/funcC", params); //执行`this.$store.commit('moduleC/funcC', params)`
       }
     }),
     ...mapMutations("moduleC", {
-      dothings3: 'funcC',     //`this.dothings3()` 映射为 `this.$store.commit('moduleC/funcC')`
-      dothings4: 'funcD',     //`this.dothings4()` 映射为 `this.$store.commit('moduleC/funcD', params)` (载荷形式)
+      dothings3: 'funcC',         //`this.dothings3()` 映射为 `this.$store.commit('moduleC/funcC')`
+      dothings4: 'funcD',         //`this.dothings4()` 映射为 `this.$store.commit('moduleC/funcD', params)` (载荷形式)
+      myFunc2(commit, params) {   //自定义函数形式 
+        commit("funcC", params);            //执行`this.$store.commit('moduleC/funcC')`
+        commit("moduleK/funcK", params, {   //执行`this.$store.commit('moduleK/funcK')`
+          root: true
+        });
+      }
     }),
   }
 };
