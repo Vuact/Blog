@@ -45,7 +45,7 @@ const store = new Vuex.Store({
 
 <br>
 
-# 使用
+# 调用
 
 ## 1、store.dispatch
 
