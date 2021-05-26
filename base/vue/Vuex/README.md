@@ -9,7 +9,7 @@ vuex三大样：
 
 <br>
 
-# Dome目录
+# 快速使用
 
 - 目录结构.md
 - state与mapState.md
