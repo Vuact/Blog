@@ -110,3 +110,50 @@ export default {
   }
 };
 ```
+
+## 3、组合 Action
+首先，你需要明白 store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise
+
+```js
+actions: {
+  actionA ({ commit }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        commit('someMutation')
+        resolve()
+      }, 1000)
+    })
+  }
+}
+```
+现在你可以：
+```js
+store.dispatch('actionA').then(() => {
+  // ...
+})
+```
+在另外一个 action 中也可以：
+```js
+actions: {
+  // ...
+  actionB ({ dispatch, commit }) {
+    return dispatch('actionA').then(() => {
+      commit('someOtherMutation')
+    })
+  }
+}
+```
+最后，如果我们利用 async / await (opens new window)，我们可以如下组合 action：
+```js
+// 假设 getData() 和 getOtherData() 返回的是 Promise
+
+actions: {
+  async actionA ({ commit }) {
+    commit('gotData', await getData())
+  },
+  async actionB ({ dispatch, commit }) {
+    await dispatch('actionA') // 等待 actionA 完成
+    commit('gotOtherData', await getOtherData())
+  }
+}
+```
