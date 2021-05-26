@@ -19,6 +19,8 @@ const store = new Vuex.Store({
     count: 1
   },
   mutations: {
+    //参数一： state（如果定义在模块中，则为模块的局部状态）
+    //参数二： payload 作为第二个参数（可选）
     increment (state, { myCount }) {
       state.count = state.count + myCount;
     }
