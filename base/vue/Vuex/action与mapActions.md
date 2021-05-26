@@ -49,16 +49,16 @@ const store = new Vuex.Store({
 
 ```js
 this.$store.dispatch("doThing");          //访问doThing方法
-this.$store.dispatch("moduleA/doThing");  //访问moduleA下的doThing方法
+this.$store.dispatch("moduleA/funcA");    //访问moduleA下的funcA方法
 
 //载荷形式：写法一：
-this.$store.dispatch("moduleA/doThing", { //访问moduleA下的doThing方法，传参：`{amount: 10}`
+this.$store.dispatch("moduleA/funcA", {   //访问moduleA下的funcA方法，传参：`{amount: 10}`
   amount: 10
 });
 
 //载荷形式：写法二：
-this.$store.dispatch({                    //访问moduleA下的doThing方法，传参：`{amount: 10}`
-  type: 'moduleA/doThing',
+this.$store.dispatch({                    //访问moduleA下的funcA方法，传参：`{amount: 10}`
+  type: 'moduleA/funcA',
   amount: 10
 });
 ```
