@@ -61,13 +61,18 @@ export default {
     
     //对象形式：
     ...mapMutations({
-      dothings: 'funcA',     //`this.dothings()` 映射为 `this.$store.commit('funcA')`,
-      dothings2: 'funcB',    //`this.dothings2(params)` 映射为 `this.$store.commit('funcB', params)`  (载荷形式)
+      dothings: 'funcA',         //`this.dothings()` 映射为 `this.$store.commit('funcA')`,
+      dothings2: 'funcB',        //`this.dothings2(params)` 映射为 `this.$store.commit('funcB', params)`  (载荷形式)
+      myFunc(commit, params) {   //自定义函数形式 
+        //····
+        commit("funcA");
+        commit("moduleC/funcC");
+      }
     }),
-    ...mapMutations("moduleC", [
+    ...mapMutations("moduleC", {
       dothings3: 'funcC',     //`this.dothings3()` 映射为 `this.$store.commit('moduleC/funcC')`
       dothings4: 'funcD',     //`this.dothings4()` 映射为 `this.$store.commit('moduleC/funcD', params)` (载荷形式)
-    ]),
+    }),
   }
 };
 ```
