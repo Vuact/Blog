@@ -25,17 +25,17 @@ const store = new Vuex.Store({
     },
     
     /* 
-      context 对象包含以下属性:
-        {
-          commit,     // 等同于 `store.commit`
-          dispatch,   // 等同于 `store.dispatch`  
-          state,      // 等同于 `store.state`，若在模块中则为局部状态
-          getters,    // 等同于 `store.getters`
-          rootState,  // 只存在于模块中: 等同于 `store.state`
-          rootGetters // 只存在于模块中: 等同于 `store.getters`
-        }
+       参数一： context 对象包含以下属性:
+            commit,     // 等同于 `store.commit`
+            dispatch,   // 等同于 `store.dispatch`  
+            state,      // 等同于 `store.state`，若在模块中则为局部状态
+            getters,    // 等同于 `store.getters`
+            rootState,  // 只存在于模块中: 等同于 `store.state`
+            rootGetters // 只存在于模块中: 等同于 `store.getters`
+            
+        参数二： payload 作为第二个参数（可选）
     */
-    doThing ({state, getters, commit, dispatch}) {
+    doThing ({state, getters, commit, dispatch}, payload) {
       commit('addCount');
       dispatch('increment');
     }
