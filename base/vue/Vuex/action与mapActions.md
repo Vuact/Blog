@@ -66,3 +66,9 @@ this.$store.dispatch({                    //访问moduleA下的funcA方法，传
 ```
 
 ## 2、mapActions
+
+```js
+mapActions(namespace?: string, map: Array<string> | Object<string | function>): Object
+```
+- 参数一：命名空间字符串（可选）
+- 参数二：数组或对象。对象形式下可以是一个函数。 `function(dispatch: function, ...args: any[])`
