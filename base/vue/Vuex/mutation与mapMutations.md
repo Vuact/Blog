@@ -66,18 +66,18 @@ export default {
     //数组形式：
     ...mapMutations([
       'funcA',      //`this.funcA()` 映射为 `this.$store.commit('funcA')`
-      'funcB'       //`this.funcB(params)` 映射为 `this.$store.commit('funcB', payload)` (载荷形式)
+      'funcB'       //`this.funcB(payload)` 映射为 `this.$store.commit('funcB', payload)` (载荷形式)
     ]),
     ...mapMutations("moduleC", [
       'funcC1',     //`this.funcC1()` 映射为 `this.$store.commit('moduleC/funcC1')`
-      'funcC2',     //`this.funcC2()` 映射为 `this.$store.commit('moduleC/funcC2', payload)` (载荷形式)
+      'funcC2',     //`this.funcC2(payload)` 映射为 `this.$store.commit('moduleC/funcC2', payload)` (载荷形式)
     ]),
     
     
     //对象形式：
     ...mapMutations({
       dothings: 'funcA',         //`this.dothings()` 映射为 `this.$store.commit('funcA')`,
-      dothings2: 'funcB',        //`this.dothings2(params)` 映射为 `this.$store.commit('funcB', payload)`  (载荷形式)
+      dothings2: 'funcB',        //`this.dothings2(payload)` 映射为 `this.$store.commit('funcB', payload)`  (载荷形式)
       myFunc(commit, payload) {   //自定义函数形式 
         commit("funcB", payload);         //执行`this.$store.commit('funcB', payload)`
         commit("moduleC/funcC1", payload); //执行`this.$store.commit('moduleC/funcC1', payload)`
@@ -85,7 +85,7 @@ export default {
     }),
     ...mapMutations("moduleC", {
       dothings3: 'funcC1',         //`this.dothings3()` 映射为 `this.$store.commit('moduleC/funcC1')`
-      dothings4: 'funcC2',         //`this.dothings4()` 映射为 `this.$store.commit('moduleC/funcC2', payload)` (载荷形式)
+      dothings4: 'funcC2',         //`this.dothings4(payload)` 映射为 `this.$store.commit('moduleC/funcC2', payload)` (载荷形式)
       myFunc2(commit, payload) {    //自定义函数形式 
         commit("funcC1", payload);            //执行`this.$store.commit('moduleC/funcC1')`
         commit("moduleK/funcK", payload, {    //执行`this.$store.commit('moduleK/funcK')`
