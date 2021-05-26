@@ -42,7 +42,7 @@ this.$store.getters.getTodoById(2)
 
 <br>
 
-# mapGetters
+## 2、mapGetters
 
 ```js
 mapGetters(namespace?: string, map: Array<string> | Object<string>): Object
