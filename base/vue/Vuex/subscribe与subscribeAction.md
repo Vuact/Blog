@@ -1,6 +1,10 @@
-# subscribe
+具体请参见：
+- https://vuex.vuejs.org/zh/api/#subscribe 
+- https://vuex.vuejs.org/zh/api/#subscribeaction
 
-https://vuex.vuejs.org/zh/api/#subscribe 
+<br>
+
+# subscribe
 
 ```js
 subscribe(handler: Function, options?: Object): Function
@@ -29,4 +33,4 @@ store.subscribe(handler, { prepend: true })
 subscribeAction(handler: Function, options?: Object): Function
 ```
 
-https://vuex.vuejs.org/zh/api/#subscribeaction
+
