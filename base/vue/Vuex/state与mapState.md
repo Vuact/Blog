@@ -40,16 +40,16 @@ const app = new Vue({
 computed: {
    //数组写法：
    ...mapState([
-       'count'  //映射 this.count 为 this.$store.state.count
+        'count'  //映射 this.count 为 this.$store.state.count
    ]),
    
    //对象写法：
    ...mapState({
-    countAlias: (state) => state.count,      //映射 this.countAlias 为 this.$store.state.count
-    countAlias2: "count",                    //映射 this.countAlias2 为 this.$store.state.count
-    countPlusLocalState(state) {             //自定义函数
-      return state.count + this.localCount;
-    }
+    	countAlias: (state) => state.count,      //映射 this.countAlias 为 this.$store.state.count
+    	countAlias2: "count",                    //映射 this.countAlias2 为 this.$store.state.count
+    	countPlusLocalState(state) {             //自定义函数
+     	  return state.count + this.localCount;
+    	}
   })
 }
 ```
