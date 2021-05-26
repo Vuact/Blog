@@ -8,7 +8,7 @@ vuex三大样：
 
 <br>
 
-# 快速使用
+# Vuex快速使用
 
 - 目录结构.md
 - state与mapState.md
