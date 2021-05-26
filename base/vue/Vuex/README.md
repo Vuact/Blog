@@ -3,7 +3,7 @@
 vuex三大样：
 - getter：相当于vue里的computed，获取state或处理后的值，有返回值
 - mutations：相当于vue里的methods(同步)，无返回值
-- action：相当于vue里的methods(异步)，无返回值; action提交的是mutation，而不是直接变更状态，
+- action：异步的mutations；`通过提交mutation来变更状态`
 
 辅助函数放置位置：
 - mapState、mapGetters ：放在computed里
