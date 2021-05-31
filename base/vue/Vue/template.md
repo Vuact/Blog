@@ -23,6 +23,10 @@ export default {
     },
   },
   data() {
+    //this.$store.store.a;
+    //this.$store.getters.doThing
+    //this.$store.dispatch("moduleA/funA", {a:1})
+    //this.$store.commit("moduleB/funB", {b:1}) 
     return {};
   },
   components: {},
