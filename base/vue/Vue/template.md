@@ -25,8 +25,8 @@ export default {
   data() {
     //this.$store.store.a;
     //this.$store.getters.doThing
-    //this.$store.dispatch("moduleA/funA", {a:1})
-    //this.$store.commit("moduleB/funB", {b:1}) 
+    //this.$store.dispatch("moduleB/funB", {a:1})
+    //this.$store.commit("moduleA/funA", {b:1}) 
     return {};
   },
   components: {},
@@ -36,12 +36,27 @@ export default {
   mounted() {},
   filters() {},
   computed() {
-	...mapState({}),
-	...mapGetters({})
+     ...mapState({
+     	my_a: "a",
+	do_a(state) {
+           return this.n + state.a
+	}
+     }),
+     ...mapGetters({
+     	do_thing: "doThing"
+     })
   },
   methods() {
-	...mapActions({}),
-	...mapMutations({}),
+     ...mapActions({
+     	funB(commit, payload) {
+	   commit("moduleB/funB", payload)
+	}
+     }),
+     ...mapMutations({
+        funA(dispatch, payload) {
+	   dispatch("moduleA/funA", payload)
+	}
+     }),
   },
   beforeUpdate() {},
   updated() {},
