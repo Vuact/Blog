@@ -34,8 +34,9 @@ export default {
   created() {},
   beforeMount() {},
   mounted() {},
-  filters() {},
-  computed() {
+  filters: {},
+  watch: {},
+  computed: {
      ...mapState({
      	my_a: "a",
 	do_a(state) {
@@ -46,7 +47,7 @@ export default {
      	do_thing: "doThing"
      })
   },
-  methods() {
+  methods: {
      ...mapActions("moduleB", {
         doB: "funB",
      	funB(commit, payload) {
