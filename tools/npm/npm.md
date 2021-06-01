@@ -30,6 +30,7 @@ npm i XXXXX -S
 npm install XXXXX --save-dev
 npm i XXXXX -D
 ```
+> 参考：[npm dependencies/devDependencies 详解](https://segmentfault.com/a/1190000022559498)
 
 > package.json 文件里面的 devDependencies 和 dependencies 对象的区别：devDependencies 里面的插件只用于开发环境，不用于生产环境，而 dependencies 是需要发布到生产环境的。
 
