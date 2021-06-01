@@ -40,8 +40,8 @@ npm i XXXXX -D
 | flag                          | description                                                  |
 | :---------------------------- | :----------------------------------------------------------- |
 | `--global`、`-g`              | 全局安装包，一般来说需要管理员权限                           |
-| `--save`、`-S`、`--save-prod` | 对应`dependencies`,  用于开发环境                            |
-| `--save-dev`、`-D`            | 对应`devDependencies`, 用于生产环境                          |
+| `--save`、`-S`、`--save-prod` | 对应`dependencies`,  放置项目中代码运行时需要用到的依赖                          |
+| `--save-dev`、`-D`            | 对应`devDependencies`, 放置本地开发过程中需要使用到的编译、打包、测试、格式化模块等    |
 | `--save-optional`、`-O`       | 对应`optionalDependencies`，在安装时可以通过指定`--no-optional`来忽略该模块下的依赖 |
 | `--no-save`                   | 不将依赖写进`package.json`                                   |
 | `--save-exact`、`-E`          | 安装精准的某个版本，在版本号处不会添加`^`之类的标识          |
