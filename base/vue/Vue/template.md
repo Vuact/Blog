@@ -31,7 +31,9 @@ export default {
     	user: {age: 123}
     };
   },
-  components: {},
+  components: {
+     "ui-load-state": () => import("../../components/UI/ui-load-state"),
+  },
   beforeCreate() {},
   created() {},
   beforeMount() {},
