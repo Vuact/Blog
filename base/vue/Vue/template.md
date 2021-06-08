@@ -50,17 +50,17 @@ export default {
   methods: {
      ...mapActions("moduleB", {
         doB: "funB",
-     	funB(commit, payload) {
-	   commit("funB", payload);
-	   commit("moduleK/funcK", payload, {  
-             root: true
-           });
+     	funB(dispatch, payload) {
+	   dispatch("moduleB/funB", payload)
 	}
      }),
      ...mapMutations({
         doA: "funA",
-        funA(dispatch, payload) {
-	   dispatch("moduleA/funA", payload)
+        funA(commit, payload) {
+	   commit("funA", payload);
+	   commit("moduleK/funcK", payload, {  
+             root: true
+           });
 	}
      }),
   },
