@@ -27,7 +27,9 @@ export default {
     //this.$store.getters.doThing
     //this.$store.dispatch("moduleB/funB", {a:1})
     //this.$store.commit("moduleA/funA", {b:1}) 
-    return {};
+    return {
+    	user: {age: 123}
+    };
   },
   components: {},
   beforeCreate() {},
@@ -35,7 +37,14 @@ export default {
   beforeMount() {},
   mounted() {},
   filters: {},
-  watch: {},
+  watch: {
+     a(val, oldVal) {},
+     b: {
+        handler(val, oldVal) {},
+	deep: true,
+     },
+     "user.age": function(val, oldVal) {}
+  },
   computed: {
      ...mapState({
      	my_a: "a",
