@@ -39,7 +39,7 @@ Host myServer # 设置ssh host缩写
 
 ```js
 //连接机器
-sh [Host值，eg: myServer]
+ssh [Host值，eg: myServer]
 
 //退出机器
 exit
