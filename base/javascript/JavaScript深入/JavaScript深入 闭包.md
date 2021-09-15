@@ -84,6 +84,7 @@ fContext = {
  JavaScript垃圾回收的机理：`垃圾收集器 会跟踪找出不再使用的变量，然后 每隔固定时间间隔 释放掉其内存。`
 
 再看上面例子：
+
 ① checkscope函数没被谁引用或使用着，说明它执行完后会被垃圾收集器销毁；checkscopeContext也没被谁引用或使用着，所以在checkscope函数执行完毕后，它也会被一同销毁。
 
 ② checkscope返回的f函数被foo所引用着，说明我们还会使用f函数，所以f函数不被销毁。且f函数执行上下文的[[scope]]属性（即 作用域链）还引用着 checkscopeContext.AO，说明我们还会使用 checkscopeContext.AO，所以不被销毁。
