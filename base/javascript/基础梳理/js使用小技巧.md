@@ -50,3 +50,12 @@ resultB[0] === resultB[1]; // => true
 ```
 由 Array.from 返回的 resultA 使用不同空对象实例进行初始化。之所以发生这种情况是因为每次调用时，mapFunction，即此处的 () => ({}) 都会返回一个新的对象。
 然后，fill() 方法创建的 resultB 使用相同的空对象实例进行初始化。
+
+### 4、数组去重
+```js
+function unique(array) {
+  return Array.from(new Set(array));
+}
+
+unique([1, 1, 2, 3, 3]); // => [1, 2, 3]
+```
