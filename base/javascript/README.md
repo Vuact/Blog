@@ -46,4 +46,6 @@
 
 ### 基础梳理
 
+- js使用小技巧
 - 前端模块化：AMD, CMD, CommonJS, ES6 Module
+
