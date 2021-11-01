@@ -1,8 +1,8 @@
 
 ### 1、将类数组对象转换成数组
 ```js
-function sumArguments() {
-    return Array.from(arguments).reduce((sum, num) => sum + num);
+function sumArguments(...args) {
+    return Array.from(args).reduce((sum, num) => sum + num);
 }
 
 sumArguments(1, 2, 3); // => 6
