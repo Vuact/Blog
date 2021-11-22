@@ -101,7 +101,7 @@ git stauts 查看一下当前版本库中文件状态
 
 ![image](https://user-images.githubusercontent.com/74364990/142859023-59214e91-0238-4d9e-bf14-a13205db6187.png)
 
-同样是回滚到了add button 之前的add label 提交。被修改的文件内容也没有丢失，但是修改的文件为红色了(未执行add 操作)。
+同样是回滚到了add button 之前的add label 提交即直接 撤回到了 git commit + git add 前的状态。
 
 将文件再次提交，同样取名add button ，继续进行`git reset --hard` 操作。
 
