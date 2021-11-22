@@ -1,12 +1,15 @@
 以下git操作十分常见：
 ```sh
-# 撤回commit提交
-git reset --soft HEAD^
-
 # 回滚已提交到本地仓库的记录
 git reset <要回滚到的commitID>           # 回滚提交记录，但本地代码不回滚
 git reset --hard <要回滚到的commitID>    # 回滚提交记录和本地代码
 git reset --hard HEAD^    # 是向前回退版本，其中HEAD后面跟几个^就是往回退几个版本，如果回退100个版本，可以写成 HEAD~100
+
+# 撤回commit提交
+git reset --soft HEAD^
+
+# 撤回git commit + git add前的状态
+git reset HEAD^
 ```
 
 实际，上面的操作涉及到了git reset的三种模式：soft、mixed、hard
