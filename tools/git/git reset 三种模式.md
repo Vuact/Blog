@@ -8,7 +8,7 @@ git reset --hard HEAD^    # 是向前回退版本，其中HEAD后面跟几个^�
 # 撤回commit提交
 git reset --soft HEAD^
 
-# 撤回git commit + git add前的状态
+# 撤回到 git commit + git add 前的状态
 git reset HEAD^
 ```
 
@@ -58,13 +58,13 @@ git reset --soft HEAD^
 git reset --hard <要回滚到的commitID>   
 ```
 
-#### 3、mixed(default）（恢复git add的操作，包含恢复git commit的操作）
+#### 3、mixed(default）（撤回到 git commit + git add 前的状态）
 
 --mixed是reset的默认参数，也就是当你不指定任何参数时的参数。它将重置HEAD到另外一个commit,并且重置index以便和HEAD相匹配
 
 ```sh
-# 本地仓库: 回滚提交记录，但本地代码不回滚
-git reset <要回滚到的commitID>
+# 撤回到 git commit + git add 前的状态
+git reset HEAD^
 ```
 
 # 三、实际操作
