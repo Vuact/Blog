@@ -4,3 +4,4 @@
 # 阅读链接
 
 - [git pull和git pull --rebase的使用](https://www.cnblogs.com/kevingrace/p/5896706.html)
+- [git revert 与 git reset](https://github.com/Vuact/Blog/blob/main/tools/git/git%20revert%20%E4%B8%8E%20git%20reset.md)
