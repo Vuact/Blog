@@ -10,11 +10,11 @@ git revert commit <要回滚到的commitID>   #（比如：fa042ce57ebbe5bb9c8db
 git revert是提交一个新的版本，将需要revert的版本的内容再反向修改回去，
 版本会递增，不影响之前提交的内容
 
-
-
------
+<br>
 
 Git代码回滚有两种方式：git reset 和 git revert
+
+<br>
 
 # 1、git reset
 
