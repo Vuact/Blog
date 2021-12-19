@@ -378,8 +378,8 @@ function debounce(func, wait = 1000, immediate = false) {
   if (typeof func !== 'function') return () => {};
 
   let timer = null;
-
-  const debounced = () => {
+    
+  const debounced = function () { // 这里不能用箭头函数；若用箭头函数，则arguments为[func, wait, immediate]
     const args = arguments;
 
     clearTimeout(timer);
