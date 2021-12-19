@@ -358,3 +358,51 @@ document.getElementById("button").addEventListener('click', function(){
 
 但是如果直接绑定onChange事件，用户的每个字符输入都会触发校验，可能会造成输入卡顿或者给用户抛出错误的校验失败信息，伤害用户体验。这时候如果我们给onChange绑定的是一个经过防抖处理的响应函数，便能很好的避免这种问题了。
 
+
+-----
+
+鄙人写的防抖函数：
+```js
+/**
+ * 防抖函数
+ * 	- immediate为false: 开始时不执行；疯狂触发时不执行；停止触发n秒后再执行；
+ *  - immediate为true: 开始时立刻执行；疯狂触发时不执行；停止触发n秒后也不执行
+ * @param {Function} func
+ * @param {Number} wait
+ * @param {Boolean} immediate {是否立刻执行函数，然后等到停止触发 n 秒后再触发}
+ * @returns {anys}
+ */
+function debounce(func, wait = 1000, immediate = false) {
+  if (typeof func !== 'function') return () => {};
+
+  let timer = null;
+
+  const debounced = () => {
+    const args = arguments;
+    let result = '';
+
+    clearTimeout(timer);
+    if (immediate) {
+      const executeFunc = !timer;
+      if (executeFunc) result = func.apply(this, args);
+
+      timer = setTimeout(() => {
+        timer = null;
+      }, wait);
+
+      return result;
+    } else {
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, wait);
+    }
+  };
+
+  debounced.cancel = () => {
+    clearTimeout(timer);
+    timer = null;
+  };
+
+  return debounced;
+}
+```
