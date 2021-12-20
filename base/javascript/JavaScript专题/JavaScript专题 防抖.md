@@ -363,6 +363,7 @@ document.getElementById("button").addEventListener('click', function(){
 
 -----
 
+
 鄙人写的防抖函数：
 ```js
 /**
@@ -379,24 +380,24 @@ function debounce(func, wait = 1000, immediate = false) {
 
   let timer = null;
     
-  const debounced = function () { // 这里不能用箭头函数；若用箭头函数，则arguments为[func, wait, immediate]
-    const args = arguments;
-
+  // 箭头函数没有自己的this，arguments，super或new.target
+  // 因而：debounced不能用箭头函数；若用箭头函数，则arguments为父级的arguments[func, wait, immediate]
+  const debounced = function () { 
     clearTimeout(timer);
     if (immediate) {
-      let result = '';
+      let funcResult = '';
        
       const executeFunc = !timer;
-      if (executeFunc) result = func.apply(this, args);
+      if (executeFunc) funcResult = func.apply(this, arguments);
 
       timer = setTimeout(() => {
         timer = null;
       }, wait);
 
-      return result;
+      return funcResult;
     } else {
       timer = setTimeout(() => {
-        func.apply(this, args);
+        func.apply(this, arguments);
       }, wait);
     }
   };
@@ -409,3 +410,4 @@ function debounce(func, wait = 1000, immediate = false) {
   return debounced;
 }
 ```
+> 箭头函数没有自己的this，arguments，super或new.target
