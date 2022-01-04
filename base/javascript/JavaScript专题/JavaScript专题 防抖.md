@@ -368,7 +368,7 @@ document.getElementById("button").addEventListener('click', function(){
 ```js
 /**
  * 防抖函数
- * 	- immediate为false: 开始时不执行；疯狂触发时不执行；停止触发n秒后再执行；
+ *  - immediate为false: 开始时不执行；疯狂触发时不执行；停止触发n秒后再执行；
  *  - immediate为true: 开始时立刻执行；疯狂触发时不执行；停止触发n秒后也不执行
  * @param {Function} func
  * @param {Number} [wait=800]
