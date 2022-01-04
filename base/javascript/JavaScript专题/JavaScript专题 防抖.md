@@ -376,7 +376,7 @@ document.getElementById("button").addEventListener('click', function(){
  * @returns {anys}
  */
 function debounce(func, wait = 800, immediate = false) {
-  if (typeof func !== 'function') return function () {};
+  if (typeof func !== 'function') throw "argument[0] must be the function";
 
   let timer = null;
 
