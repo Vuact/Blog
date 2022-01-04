@@ -412,3 +412,23 @@ function debounce(func, wait = 800, immediate = false) {
 }
 ```
 > 箭头函数没有自己的this，arguments，super或new.target
+
+使用：
+```js
+const container = document.getElementById('container');
+let count = 1;
+
+function getUserAction(a, b) {
+  console.log(a, b);              // param1 param2
+  container.innerHTML = count++;
+
+  return 'funcRes';
+}
+
+const actionFunc = debounce(getUserAction, 1000, true);
+container.onmousemove = () => {
+  const res = actionFunc('param1', 'param2'); 
+  console.log(res);                // 触发getUserAction时输出：funcRes ； 否则输出：undefined
+};
+```
+
