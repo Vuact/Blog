@@ -26,8 +26,8 @@ function throttle(func, wait) {
     const now = +new Date();
 
     if (now - previous > wait) {
-      func.apply(this, arguments);
       previous = now;
+      func.apply(this, arguments);
     }
   };
 }
