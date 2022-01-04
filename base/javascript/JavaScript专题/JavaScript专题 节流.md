@@ -57,20 +57,16 @@ container.onmousemove = throttle(getUserAction, 1000);
 ```js
 // 第二版
 function throttle(func, wait) {
-    var timeout;
-    var previous = 0;
+  let timer = null;
 
-    return function() {
-        context = this;
-        args = arguments;
-        if (!timeout) {
-            timeout = setTimeout(function(){
-                timeout = null;
-                func.apply(context, args)
-            }, wait)
-        }
+  return function () {
+    if (timer) return;
 
-    }
+    timer = setTimeout(() => {
+      timer = null;
+      func.apply(this, arguments);
+    }, wait);
+  };
 }
 ```
 
