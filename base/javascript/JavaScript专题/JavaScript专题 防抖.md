@@ -368,33 +368,34 @@ document.getElementById("button").addEventListener('click', function(){
 ```js
 /**
  * 防抖函数
- *  - immediate为false: 开始时不执行；疯狂触发时不执行；停止触发n秒后再执行；
+ * 	- immediate为false: 开始时不执行；疯狂触发时不执行；停止触发n秒后再执行；
  *  - immediate为true: 开始时立刻执行；疯狂触发时不执行；停止触发n秒后也不执行
  * @param {Function} func
- * @param {Number} wait
- * @param {Boolean} immediate {是否立刻执行函数，然后等到停止触发 n 秒后再触发}
+ * @param {Number} [wait=800]
+ * @param {Boolean} [immediate=false] - 是否立刻执行函数，然后等到停止触发 n 秒后再触发
  * @returns {anys}
  */
-function debounce(func, wait = 1000, immediate = false) {
-  if (typeof func !== 'function') return () => {};
+function debounce(func, wait = 800, immediate = false) {
+  if (typeof func !== 'function') return function () {};
 
   let timer = null;
-    
+
   // 箭头函数没有自己的this，arguments，super或new.target
   // 因而：debounced不能用箭头函数；若用箭头函数，则arguments为父级的arguments[func, wait, immediate]
-  const debounced = function () { 
+  const debounced = function () {
     clearTimeout(timer);
+
     if (immediate) {
-      let funcResult = '';
-       
-      const executeFunc = !timer;
-      if (executeFunc) funcResult = func.apply(this, arguments);
+      let result;
+
+      const doAction = !timer;
+      if (doAction) result = func.apply(this, arguments);
 
       timer = setTimeout(() => {
         timer = null;
       }, wait);
 
-      return funcResult;
+      return result;
     } else {
       timer = setTimeout(() => {
         func.apply(this, arguments);
@@ -402,7 +403,7 @@ function debounce(func, wait = 1000, immediate = false) {
     }
   };
 
-  debounced.cancel = () => {
+  debounced.cancel = function () {
     clearTimeout(timer);
     timer = null;
   };
