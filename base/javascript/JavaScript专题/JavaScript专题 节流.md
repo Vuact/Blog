@@ -147,10 +147,12 @@ function throttle(func, wait) {
 function throttle(func, wait, options) {
   let timer;
   let previous = 0;
+  
   if (!options) options = {};
 
   const throttled = function () {
     const now = new Date().getTime();
+    
     if (!previous && options.leading === false) previous = now;
 
     const remaining = wait - (now - previous);
@@ -160,6 +162,7 @@ function throttle(func, wait, options) {
         clearTimeout(timer);
         timer = null;
       }
+      
       previous = now;
       func.apply(this, arguments);
     } else if (!timer && options.trailing !== false) {
@@ -170,6 +173,7 @@ function throttle(func, wait, options) {
       }, remaining);
     }
   };
+  
   return throttled;
 }
 ```
