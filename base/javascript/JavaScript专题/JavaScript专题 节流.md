@@ -151,7 +151,8 @@ function throttle(func, wait, options) {
   if (!options) options = {};
 
   const throttled = function () {
-    const now = new Date().getTime();
+    const now = +new Date();
+    // 等价于 const now = new Date().getTime();
     
     if (!previous && options.leading === false) previous = now;
 
@@ -167,7 +168,7 @@ function throttle(func, wait, options) {
       func.apply(this, arguments);
     } else if (!timer && options.trailing !== false) {
       timer = setTimeout(() => {
-        previous = options.leading === false ? 0 : new Date().getTime();
+        previous = options.leading === false ? 0 : +new Date();
         timer = null;
         func.apply(this, arguments);
       }, remaining);
