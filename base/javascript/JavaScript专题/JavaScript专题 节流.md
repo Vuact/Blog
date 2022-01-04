@@ -24,11 +24,10 @@ function throttle(func, wait) {
 
   return function () {
     const now = +new Date();
-
-    if (now - previous > wait) {
-      previous = now;
-      func.apply(this, arguments);
-    }
+    if(now - previous < wait) return;
+  
+    previous = now;
+    func.apply(this, arguments);
   };
 }
 ```
@@ -61,7 +60,7 @@ function throttle(func, wait) {
 
   return function () {
     if (timer) return;
-
+    
     timer = setTimeout(() => {
       timer = null;
       func.apply(this, arguments);
