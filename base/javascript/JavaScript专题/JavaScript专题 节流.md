@@ -94,7 +94,7 @@ function throttle(func, wait) {
 ```js
 // 第三版
 function throttle(func, wait) {
-  let timer;
+  let timer = null;
   let previous = 0;
 
   const throttled = function () {
@@ -145,10 +145,11 @@ function throttle(func, wait) {
 ```js
 // 第四版
 function throttle(func, wait, options) {
-  let timer;
-  let previous = 0;
-  
+  if (typeof func !== 'function') throw "argument[0] must be the function";
   if (!options) options = {};
+  
+  let timer = null;
+  let previous = 0;
 
   const throttled = function () {
     const now = +new Date();
