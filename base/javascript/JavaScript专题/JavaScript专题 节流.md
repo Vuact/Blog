@@ -167,10 +167,10 @@ function throttle(func, wait = 800, options = {}) {
   if (typeof func !== 'function') throw "argument[0] must be the function";
    
   options = {
-		leading: true,
-		trailing: true,
-		...options
-	};
+     leading: true,
+     trailing: true,
+     ...options,
+  };
   
   let timer = null;
   let previous = 0;
