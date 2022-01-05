@@ -60,12 +60,12 @@ function throttle(func, wait) {
   let timer = null;
 
   return function () {
-    if (timer) return;
-    
-    timer = setTimeout(() => {
-      timer = null;
-      func.apply(this, arguments);
-    }, wait);
+    if(!timer) {
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(this, arguments);
+      }, wait);
+    }
   };
 }
 ```
