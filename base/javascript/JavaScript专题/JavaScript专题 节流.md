@@ -159,12 +159,18 @@ function throttle(func, wait = 800) {
  * @param {Function} func
  * @param {Number} [wait=800]
  * @param {Object} [options={}]
- * @param {Boolean} options.leading - 为false 表示禁用第一次执行
- * @param {Boolean} options.trailing - 为false 表示禁用停止触发的回调
+ * @param {Boolean} [options.leading=true] - 为false 表示禁用第一次执行
+ * @param {Boolean} [options.trailing=true] - 为false 表示禁用停止触发的回调
  * @return {Function}
  */
 function throttle(func, wait = 800, options = {}) {
   if (typeof func !== 'function') throw "argument[0] must be the function";
+   
+  options = {
+		leading: true,
+		trailing: true,
+		...options
+	};
   
   let timer = null;
   let previous = 0;
