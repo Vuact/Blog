@@ -93,7 +93,14 @@ function throttle(func, wait) {
 
 ```js
 // 第三版
-function throttle(func, wait) {
+
+/**
+ * 节流函数
+ * @param {Function} func
+ * @param {Number} [wait=800]
+ * @return {Function}
+ */
+function throttle(func, wait = 800) {
   if (typeof func !== 'function') throw "argument[0] must be the function";
 
   let timer = null;
@@ -146,6 +153,16 @@ function throttle(func, wait) {
 
 ```js
 // 第四版
+
+/**
+ * 节流函数
+ * @param {Function} func
+ * @param {Number} [wait=800]
+ * @param {Object} [options={}]
+ * @param {Boolean} options.leading - 为false 表示禁用第一次执行
+ * @param {Boolean} options.trailing - 为false 表示禁用停止触发的回调
+ * @return {Function}
+ */
 function throttle(func, wait = 800, options = {}) {
   if (typeof func !== 'function') throw "argument[0] must be the function";
   
