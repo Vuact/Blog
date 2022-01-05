@@ -94,6 +94,8 @@ function throttle(func, wait) {
 ```js
 // 第三版
 function throttle(func, wait) {
+  if (typeof func !== 'function') throw "argument[0] must be the function";
+
   let timer = null;
   let previous = 0;
 
@@ -144,9 +146,8 @@ function throttle(func, wait) {
 
 ```js
 // 第四版
-function throttle(func, wait, options) {
+function throttle(func, wait = 800, options = {}) {
   if (typeof func !== 'function') throw "argument[0] must be the function";
-  if (!options) options = {};
   
   let timer = null;
   let previous = 0;
