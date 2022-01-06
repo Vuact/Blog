@@ -52,9 +52,9 @@ console.log(new_arr) // [{old: 'new'}, ['new']]
 那如何深拷贝一个数组呢？这里介绍一个技巧，不仅适用于数组还适用于对象！那就是：
 
 ```js
-var arr = ['old', 1, true, ['old1', 'old2'], {old: 1}]
+const arr = ['old', 1, true, ['old1', 'old2'], {old: 1}]
 
-var new_arr = JSON.parse( JSON.stringify(arr) );
+const new_arr = JSON.parse( JSON.stringify(arr) );
 
 console.log(new_arr);
 ```
@@ -62,7 +62,7 @@ console.log(new_arr);
 是一个简单粗暴的好方法，就是有一个问题，不能拷贝函数，我们做个试验：
 
 ```js
-var arr = [function(){
+const arr = [function(){
     console.log(a)
 }, {
     b: function(){
@@ -70,7 +70,7 @@ var arr = [function(){
     }
 }]
 
-var new_arr = JSON.parse(JSON.stringify(arr));
+const new_arr = JSON.parse(JSON.stringify(arr));
 
 console.log(new_arr); //[null, Object]
 ```
@@ -91,17 +91,18 @@ console.log(new_arr); //[null, Object]
 嗯，就是这么简单，注意几个小点就可以了：
 
 ```js
-var shallowCopy = function(obj) {
+const shallowCopy = (obj) => {
     if (typeof obj !== 'object') return; // 只拷贝对象
     
-    var newObj = obj instanceof Array ? [] : {};  // 根据obj的类型判断是新建一个数组还是对象
+    const newObj = obj instanceof Array ? [] : {};  // 根据obj的类型判断是新建一个数组还是对象
     
     // 遍历obj，并且判断是obj的属性才拷贝
-    for (var key in obj) {
+    for (let key in obj) {
         if (obj.hasOwnProperty(key)) {
             newObj[key] = obj[key];
         }
     }
+    
     return newObj;
 }
 ```
@@ -113,15 +114,19 @@ var shallowCopy = function(obj) {
 那如何实现一个深拷贝呢？说起来也好简单，我们在拷贝的时候判断一下属性值的类型，如果是对象，我们递归调用深拷贝函数不就好了~
 
 ```js
-var deepCopy = function(obj) {
-    if (typeof obj !== 'object') return;
-    var newObj = obj instanceof Array ? [] : {};
-    for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
-        }
-    }
-    return newObj;
+const deepCopy = (obj) => {
+  if (typeof obj !== 'object') return;
+    
+  const newObj = obj instanceof Array ? [] : {};
+    
+  for (let key in obj) {
+     if (obj.hasOwnProperty(key)) {
+        const value = obj[key];
+        newObj[key] = typeof value === 'object' ? deepCopy(value) : value;
+     }
+  }
+    
+  return newObj;
 }
 ```
 <br>
