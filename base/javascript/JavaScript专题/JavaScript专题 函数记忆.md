@@ -24,27 +24,28 @@ memoizedAdd(1, 2) // 相同的参数，第二次调用时，从缓存中取出�
 我们来写一版：
 
 ```js
-// 第一版 (来自《JavaScript权威指南》)
-function memoize(f) {
-    var cache = {};
-    return function(){
-        var key = arguments.length + Array.prototype.join.call(arguments, ",");
-        if (key in cache) {
-            return cache[key]
-        }
-        else return cache[key] = f.apply(this, arguments)
+// 第一版
+function memoize(func) {
+  const cache = {};
+
+  return function () {
+    const key = arguments.length + Array.prototype.join.call(arguments, ',');
+
+    if (key in cache) {
+      return cache[key];
+    } else {
+      return (cache[key] = func.apply(this, arguments));
     }
+  };
 }
 ```
 
 我们来测试一下：
 
 ```js
-var add = function(a, b, c) {
-  return a + b + c
-}
+const add = (a, b, c) => a + b + c;
 
-var memoizedAdd = memorize(add)
+const memoizedAdd = memorize(add)
 
 console.time('use memorize')
 for(var i = 0; i < 100000; i++) {
@@ -76,11 +77,11 @@ console.timeEnd('not use memorize')
 因为第一版使用了 join 方法，我们很容易想到当参数是对象的时候，就会自动调用 toString 方法转换成 `[Object object]`，再拼接字符串作为 key 值。我们写个 demo 验证一下这个问题：
 
 ```js
-var propValue = function(obj){
+const propValue = function(obj){
     return obj.value
 }
 
-var memoizedAdd = memorize(propValue)
+const memoizedAdd = memorize(propValue)
 
 console.log(memoizedAdd({value: 1})) // 1
 console.log(memoizedAdd({value: 2})) // 1
@@ -90,16 +91,20 @@ console.log(memoizedAdd({value: 2})) // 1
 
 ```js
 // 第二版
-var memorize = function (func, hasher) {
-  var resFunc = function (key) {
-    var cache = resFunc.cache;
-    var address = "" + (hasher ? hasher.apply(this, arguments) : key); //使用 function 的第一个参数作为 key
+const memorize = function (func, hasher) {
+  const resFunc = function (key) {
+    const cache = resFunc.cache;
+    const address = "" + (hasher ? hasher.apply(this, arguments) : key); //使用 function 的第一个参数作为 key
+   
     if (!cache[address]) {
       cache[address] = func.apply(this, arguments);
     }
+    
     return cache[address];
   };
+  
   resFunc.cache = {};
+  
   return resFunc;
 };
 
@@ -128,11 +133,12 @@ console.log(memoizedAdd(1, 2, 4)); // 7
 
 
 ```js
-var count = 0;
-var fibonacci = function(n){
+let count = 0;
+let fibonacci = function(n){
     count++;
     return n < 2? n : fibonacci(n-1) + fibonacci(n-2);
 };
+
 for (var i = 0; i <= 10; i++){
     fibonacci(i)
 }
@@ -171,8 +177,8 @@ console.log(count) // 453
 如果我们使用函数记忆呢？
 
 ```js
-var count = 0;
-var fibonacci = function(n) {
+let count = 0;
+let fibonacci = function(n) {
     count++;
     return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
 };
