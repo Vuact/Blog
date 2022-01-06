@@ -91,19 +91,24 @@ console.log(new_arr); //[null, Object]
 嗯，就是这么简单，注意几个小点就可以了：
 
 ```js
-const shallowCopy = (obj) => {
-    if (typeof obj !== 'object') return; // 只拷贝对象
-    
-    const newObj = obj instanceof Array ? [] : {};  // 根据obj的类型判断是新建一个数组还是对象
-    
-    // 遍历obj，并且判断是obj的属性才拷贝
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            newObj[key] = obj[key];
-        }
+/**
+ * 浅拷贝函数
+ * @param {Array|Object} obj - 要拷贝对象
+ * @return {Array|Object}
+ */
+function shallowCopy(obj) {
+  if (typeof obj !== 'object') return; // 只拷贝对象
+
+  const newObj = obj instanceof Array ? [] : {}; // 根据obj的类型判断是新建一个数组还是对象
+
+  // 遍历obj，并且判断是obj的属性才拷贝
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] = obj[key];
     }
-    
-    return newObj;
+  }
+
+  return newObj;
 }
 ```
 
@@ -114,18 +119,23 @@ const shallowCopy = (obj) => {
 那如何实现一个深拷贝呢？说起来也好简单，我们在拷贝的时候判断一下属性值的类型，如果是对象，我们递归调用深拷贝函数不就好了~
 
 ```js
-const deepCopy = (obj) => {
+/**
+ * 深拷贝函数
+ * @param {Array|Object} obj - 要拷贝对象
+ * @return {Array|Object}
+ */
+function deepCopy(obj) {
   if (typeof obj !== 'object') return;
-    
-  const newObj = obj instanceof Array ? [] : {};
-    
+
+  const newObj = Array.isArray(obj) ? [] : {};
+
   for (let key in obj) {
-     if (obj.hasOwnProperty(key)) {
-        const value = obj[key];
-        newObj[key] = typeof value === 'object' ? deepCopy(value) : value;
-     }
+    if (obj.hasOwnProperty(key)) {
+      const value = obj[key];
+      newObj[key] = typeof value === 'object' ? deepCopy(value) : value;
+    }
   }
-    
+
   return newObj;
 }
 ```
