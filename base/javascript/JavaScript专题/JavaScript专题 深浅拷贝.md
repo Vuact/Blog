@@ -5,9 +5,10 @@
 比如：
 
 ```js
-var arr = ['old', 1, true, null, undefined];
+const arr = ['old', 1, true, null, undefined];
 
-var new_arr = arr.concat();
+const new_arr = arr.concat();
+// 或者 const new_arr = [...arr];
 
 new_arr[0] = 'new';
 
@@ -18,15 +19,15 @@ console.log(new_arr) // ["new", 1, true, null, undefined]
 用 slice 可以这样做：
 
 ```js
-var new_arr = arr.slice();
+const new_arr = arr.slice();
 ```
 
 但是如果数组嵌套了对象或者数组的话，比如：
 
 ```js
-var arr = [{old: 'old'}, ['old']];
+const arr = [{old: 'old'}, ['old']];
 
-var new_arr = arr.concat();
+const new_arr = arr.concat();
 
 arr[0].old = 'new';
 arr[1][0] = 'new';
