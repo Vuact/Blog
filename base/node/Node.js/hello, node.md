@@ -23,7 +23,14 @@ npm install  //生成 package-lock.json 和 node_modules
 +  |- package-lock.json
 +  |- package.json
 ```
+<br>
 
+>注：初始化package.json文件，
+>- npm init （需要填写信息）
+>- npm init --yes （偷懒免去一直按enter）
+>- npm init -y （偷懒免去一直按enter）
+
+<br>
 
 ### 2、编写服务脚本
 
