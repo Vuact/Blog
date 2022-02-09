@@ -26,7 +26,7 @@ npm install  //生成 package-lock.json 和 node_modules
 <br>
 
 >注：初始化package.json文件，
->- npm init （需要填写信息）
+>- npm init （需要填写信息，不停的按enter）
 >- npm init --yes （偷懒免去一直按enter）
 >- npm init -y （偷懒免去一直按enter）
 
@@ -144,6 +144,23 @@ M       "dev": "cross-env NODE_ENV=dev nodemon app.js"
 
 再次执行npm run dev的时候，如果代码有改动，web服务会自动重启，这样就方便多啦。
 
+-----
+
+顺便回顾下npm的安装指令：
+
+```sh
+# 全局安装
+npm install XXXXX -g
+npm i XXXXX -g
+
+# 写入到 package.json的dependencies 对象
+npm install XXXXX --save 
+npm i XXXXX -S
+
+# 写入到 package.json的devDependencies 对象
+npm install XXXXX --save-dev
+npm i XXXXX -D
+```
 <br>
 
 # 三、Demo
