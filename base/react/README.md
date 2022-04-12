@@ -1,5 +1,8 @@
-### 快速入门
+官方文档：https://zh-hans.reactjs.org/docs/hello-world.html
 
+<br>
+
+### 快速入门
 - [React学习：JSX](https://blog.csdn.net/b954960630/article/details/79670327)
 - [React学习：元素渲染](https://blog.csdn.net/b954960630/article/details/79809898)
 - [React学习：组件(Components)](https://blog.csdn.net/b954960630/article/details/79814331)
@@ -15,12 +18,7 @@
 - [React学习：Refs](https://blog.csdn.net/b954960630/article/details/80197173)
 - [React学习：片段(fragments) 与 插槽(Portals)](https://blog.csdn.net/b954960630/article/details/80200905)
 - [React学习：高阶组件](https://blog.csdn.net/b954960630/article/details/80180904)
-
-
-### Hooks
-
 - [理解 React Hooks](https://zhuanlan.zhihu.com/p/347136271)
-
 
 
 ### 待学习链接
