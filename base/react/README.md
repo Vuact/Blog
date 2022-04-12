@@ -11,6 +11,10 @@
 - [React学习：条件渲染](https://blog.csdn.net/b954960630/article/details/79946088)
 - [React学习：列表(Lists) 和 键(Keys)](https://blog.csdn.net/b954960630/article/details/79946242)
 - [React学习：表单(Forms)](https://blog.csdn.net/b954960630/article/details/79951209)
+- [React学习：组件的分类](https://blog.csdn.net/b954960630/article/details/80198894)
+- [React学习：Refs](https://blog.csdn.net/b954960630/article/details/80197173)
+- [React学习：片段(fragments) 与 插槽(Portals)](https://blog.csdn.net/b954960630/article/details/80200905)
+- [React学习：高阶组件](https://blog.csdn.net/b954960630/article/details/80180904)
 
 
 https://blog.csdn.net/b954960630/category_9277952.html?spm=1001.2014.3001.5482
