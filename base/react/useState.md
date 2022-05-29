@@ -1,5 +1,5 @@
 
-# 一、基本使用
+# 一、useState基本使用
 
 >为什么叫 useState 而不叫 createState?<br>
 >“Create” 可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，useState 返回给我们当前的 state。
@@ -33,8 +33,9 @@ setList(list => [...list, 'New Item']);
 const [dataObj, setDataObj] = useState({});
 setDataObj(dataObj => {...dataObj, {a: 1} });
  ```
- 
-## useState的坑
+<br>
+
+# 二、useState的坑
  
 ### 1、在使用useState() Hook 时，必须遵循 Hook 的规则
 
@@ -119,10 +120,46 @@ function DelayedCount() {
 现在 `etCount(count => count + 1)` 在 `delay()` 中正确更新计数状态。React 确保将最新状态值作为参数提供给更新状态函数，过时闭包的问题解决了。
 
 [打开演示](https://codesandbox.io/s/react-usestate-async-fixed-5y2o8)，快速单击按钮。 延迟过去后，`count` 能正确表示点击次数。
+
+### 3、useState的初始值，只在第一次有效
+  
+下面的例子是有问题的：
+  
+当点击按钮修改name的值的时候，你会发现在Child组件，是收到了，但是并没有通过useState赋值给name！原因就是：useState的初始值，只在第一次有效！！！
+  
+```js
+const Child = memo(({data}) =>{
+    console.log('child render...', data)
+    const [name, setName] = useState(data)
+    return (
+        <div>
+            <div>child</div>
+            <div>{name} --- {data}</div>
+        </div>
+    );
+})
+
+const Hook =()=>{
+    console.log('Hook render...')
+    const [count, setCount] = useState(0)
+    const [name, setName] = useState('rose')
+
+    return(
+        <div>
+            <div>
+                {count}
+            </div>
+            <button onClick={()=>setCount(count+1)}>update count </button>
+            <button onClick={()=>setName('jack')}>update name </button>
+            <Child data={name}/>
+        </div>
+    )
+}
+```
   
 <br>
 
-# 二、复杂状态管理（useReducer）
+# 三、复杂状态管理（useReducer）
  
 `useState()` 用于管理简单状态。对于复杂的状态管理，可以使用 `useReducer()`
  
