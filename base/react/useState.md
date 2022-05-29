@@ -34,7 +34,7 @@ const [dataObj, setDataObj] = useState({});
 setDataObj(dataObj => {...dataObj, {a: 1} });
  ```
  
- ## 复杂状态管理（useReducer）
+ # 复杂状态管理（useReducer）
  
 `useState()` 用于管理简单状态。对于复杂的状态管理，可以使用 `useReducer()`
  
