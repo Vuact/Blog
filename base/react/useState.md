@@ -1,6 +1,8 @@
 
 > [深究useState的原理](https://juejin.cn/post/6867077120691011591)
+> 
 > https://juejin.cn/post/6959885030063603743
+> 
 > https://juejin.cn/post/6844904072168865800
 
 
@@ -41,6 +43,12 @@ setDataObj(dataObj => {...dataObj, {a: 1} });
 <br>
 
 # 二、useState的坑
+
+说是useState的坑，其实都是我们不懂其原理导致的乱用，所以一定要读懂这篇文章：
+
+[《深究useState的原理》](https://juejin.cn/post/6867077120691011591)
+
+<br>
  
 ### 1、在使用useState() Hook 时，必须遵循 Hook 的规则
 
