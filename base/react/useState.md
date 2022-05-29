@@ -1,5 +1,5 @@
 
-# 基本使用
+# 一、基本使用
 
 >为什么叫 useState 而不叫 createState?<br>
 >“Create” 可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，useState 返回给我们当前的 state。
@@ -122,7 +122,7 @@ function DelayedCount() {
   
 <br>
 
-# 复杂状态管理（useReducer）
+# 二、复杂状态管理（useReducer）
  
 `useState()` 用于管理简单状态。对于复杂的状态管理，可以使用 `useReducer()`
  
