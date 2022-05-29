@@ -150,7 +150,7 @@ function FavoriteMovies() {
 ```
 [尝试演示](https://codesandbox.io/s/react-usestate-complex-state-5dplv)：添加和删除自己喜欢的电影。
 
- ![image](https://user-images.githubusercontent.com/74364990/170884100-aeb8dd82-1b6a-4972-bfc2-a8c1c7ea2ce5.png)
+![image]([https://user-images.githubusercontent.com/74364990/170884100-aeb8dd82-1b6a-4972-bfc2-a8c1c7ea2ce5.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/18/16e7bd30c8e49190~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp))
  
  状态列表需要几个操作:添加和删除电影，状态管理细节使组件混乱。
  
