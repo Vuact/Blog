@@ -92,7 +92,7 @@ function DelayedCount() {
   
 [打开演示](https://codesandbox.io/s/react-usestate-async-broken-uzzvg)，快速多次点击按钮。`count` 变量不能正确记录实际点击次数，有些点击被吃掉。
   
-![image](https://user-images.githubusercontent.com/74364990/170885992-12f79982-f17f-4f3f-aa95-53737c185aa5.png)
+<img width="163" alt="image" src="https://user-images.githubusercontent.com/74364990/170886312-8ed50cec-479b-4ba1-915d-cb2e122d4c21.png">
 
 原因：`delay()` 是一个过时的闭包，它从初始渲染（使用0初始化时）中捕获了过时的`count`变量。
   
@@ -150,7 +150,8 @@ function FavoriteMovies() {
 ```
 [尝试演示](https://codesandbox.io/s/react-usestate-complex-state-5dplv)：添加和删除自己喜欢的电影。
 
-![image]([https://user-images.githubusercontent.com/74364990/170884100-aeb8dd82-1b6a-4972-bfc2-a8c1c7ea2ce5.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/18/16e7bd30c8e49190~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp))
+<img width="269" alt="image" src="https://user-images.githubusercontent.com/74364990/170886245-c01d8065-1e7f-479c-9ef5-086cd0fa38b6.png">
+
  
  状态列表需要几个操作:添加和删除电影，状态管理细节使组件混乱。
  
