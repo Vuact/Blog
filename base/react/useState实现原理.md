@@ -161,4 +161,56 @@ ReactDOM.render(<App />, rootElement);
 
 # 四、4.0版本
 
+> [Object.is()](https://www.apiref.com/javascript-zh/Reference/Global_Objects/Object/is.htm)方法判断两个值是否是相同的值。
+
+再优化下，我们可以通过 Object.is() 比较算法来判断 `x[curIndex]` 是否需要更新：
+
+```js
+let x = [];
+let index = 0;
+
+const myUseState = initialState => {
+  let curIndex = index; 
+    
+  if (typeof initialState === "function") {
+    initialState = initialState();
+  }
+  
+  x[curIndex] = x[curIndex] === undefined ? initialState : x[curIndex];
+
+  const setState = newState => {
+    if (typeof newState === "function") {
+      newState = newState(x[curIndex]);
+    }
+    
+    // 使用Object.is来比较_state[curIndex]是否变化，若无，则跳过更新
+    if (Object.is(_state[curIndex], newState)) return; 
+    
+    x[curIndex] = newState;
+    ReactDOM.render(<App />, rootElement);
+    index = 0;
+  };
+
+  index += 1;
+  
+  return [x[curIndex], setState];
+}
+
+const App = () => {
+  const [n, setN] = myUseState(0);
+  const [m, setM] = myUseState(0);
+  return (
+     <div>
+         <p>n：{n}</p>
+         <button onClick={()=>setN(n+1)}>+1</button>
+         <p>m：{m}</p>
+         <button onClick={()=>setM(m+1)}>+1</button>
+     </div>
+  )
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
+
 # 五、每次创建的新值
