@@ -172,12 +172,14 @@ class Component extends React.Component {
 
 为什么会有同步执行和异步执行结果不同呢？这里就涉及到 react 的 batchUpdate 机制，合并更新。
 
-- 首先，为什么需要合并更新呢？<br>
-  如果没有合并更新，在每次执行 useState 的时候，组件都要重新 render 一次，会造成无效渲染，浪费时间（因为最后一次渲染会覆盖掉前面所有的渲染效果）。
+#### 1、首先，为什么需要合并更新呢？
+  
+如果没有合并更新，在每次执行 useState 的时候，组件都要重新 render 一次，会造成无效渲染，浪费时间（因为最后一次渲染会覆盖掉前面所有的渲染效果）。
 所以 react 会把一些可以一起更新的 useState/setState 放在一起，进行合并更新。
 
-- 怎么进行合并更新?<br>
-  这里 react 用到了事务机制
+#### 2、怎么进行合并更新?
+
+这里 react 用到了事务机制
   
 >React 中的 Batch Update 是通过「Transaction」实现的。在 React 源码关于 Transaction 的部分，用一大段文字及一幅字符画解释了 Transaction 的作用：
 
@@ -207,8 +209,9 @@ class Component extends React.Component {
 ```
 用大白话说就是在实际的 useState/setState 前后各加了段逻辑给包了起来。只要是在同一个事务中的 setState 会进行合并（注意，useState不会进行state的合并）处理。
 
-- 为什么 setTimeout 不能进行事务操作?<br>
-  由于 react 的事件委托机制，调用 onClick 执行的事件，是处于 react 的控制范围的。<br>
-  而 setTimeout 已经超出了 react 的控制范围，react 无法对 setTimeout 的代码前后加上事务逻辑（除非 react 重写 setTimeout）。<br>
-  所以当遇到 `setTimeout/setInterval/Promise.then(fn)/fetch 回调/xhr 网络回调`时，react 都是无法控制的。
+#### 3、为什么 setTimeout 不能进行事务操作?
+
+由于 react 的事件委托机制，调用 onClick 执行的事件，是处于 react 的控制范围的。<br>
+而 setTimeout 已经超出了 react 的控制范围，react 无法对 setTimeout 的代码前后加上事务逻辑（除非 react 重写 setTimeout）。<br>
+所以当遇到 `setTimeout/setInterval/Promise.then(fn)/fetch 回调/xhr 网络回调`时，react 都是无法控制的。
   
