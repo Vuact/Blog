@@ -24,22 +24,18 @@ ReactDOM.render(<App/>, document.querySelector('#root'));
 通过实际的效果，我们可以分析到 `setN` 一定会改变某个数据 `x` ，并且会触发页面再次渲染，否则我们就不能在页面上看到变化的 `n` 值，而 `useState` 一定会从 `x` 取到 `n` 的最新值，我们模拟 `useState` 函数创建一个 `myUseState` 函数，如下代码：
 
 ```js
-const rootElement = document.getElementById("root");
 let x;
 
-function myUseState(initialValue) {
-  x = x === undefined ? initialValue : x;
+function myUseState(initialState) {
+  x = x === undefined ? initialState : x;
   
   function setX(newState) {
     x = newState;
-    render();
+    ReactDOM.render(<App />, rootElement);;
   }
   
   return [x, setX];
 }
-
-// 模拟的render函数
-const render = () => ReactDOM.render(<App />, rootElement);
 
 const App = () => {
   const [n, setN] = myUseState(0);
@@ -53,6 +49,7 @@ const App = () => {
   );
 }
 
+const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
 
@@ -68,27 +65,23 @@ ReactDOM.render(<App />, rootElement);
 let x = [];
 let index = 0;
 
-const myUseState = initial => {
-    let currentIndex = index;
-    x[currentIndex] = x[currentIndex] === undefined ? initial : x[currentIndex];
-   
-    const setInitial = value => {
-      x[currentIndex] = value;
-      render();
-    }
-    
-    index += 1;
-    return [x[currentIndex],setInitial]
-}
+const myUseState = initialState => {
+  let curIndex = index; 
+  x[curIndex] = x[curIndex] === undefined ? initialState : x[curIndex];
 
-// 模拟的render函数
-const render = () => {
-  index = 0;  //将 index 重置
-  ReactDOM.render(<App/>,document.querySelector('#root'))
+  const setState = newState => {
+    x[curIndex] = newState;
+    ReactDOM.render(<App />, rootElement);
+    index = 0;  // 每更新一次都需要将index归零
+  };
+
+  index += 1;  // 下一个操作的索引
+  
+  return [x[curIndex], setState];
 }
 
 const App = () => {
-  const [n, setN] = myUseState(0)
+  const [n, setN] = myUseState(0);
   const [m, setM] = myUseState(0);
   return (
      <div>
@@ -99,6 +92,9 @@ const App = () => {
      </div>
   )
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
 ```
 
 这样做，即使我们要执行多次 useState，变量之间也不会相互干扰，从而达到了要求，但是仍然需要注意的是当使用数组方案的时候，就特别依赖调用顺序，因为如果首次渲染的时候 n 是第一个，m 是第二个，k 是第三个，那么在第二次渲染的时候必须保证顺序完全一致，因此在 React 中不允许出现下列代码，否则就会报错：
