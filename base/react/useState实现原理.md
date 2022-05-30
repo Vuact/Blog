@@ -19,7 +19,7 @@ ReactDOM.render(<App/>, document.querySelector('#root'));
 
 显然就是执行 `setN` 函数，同时我们可以在运行的时候看到页面上的 `n` 会随着每一次点击而变化，这说明 `setN` 函数会让页面再次渲染，也就是再次执行 App 函数，而再次执行应该仍然会经历`const [n, setN] = React.useState(0);`，可是 n 为什么没有回到原始值 `0` 呢？`useState()` 到底是怎样执行的？ `setN` 会怎么改变 `n`？
 
-# 一、1.0版本
+# 一、1.0版：创建一个state
 
 通过实际的效果，我们可以分析到 `setN` 一定会改变某个数据 `x` ，并且会触发页面再次渲染，否则我们就不能在页面上看到变化的 `n` 值，而 `useState` 一定会从 `x` 取到 `n` 的最新值，我们模拟 `useState` 函数创建一个 `myUseState` 函数，如下代码：
 
@@ -57,7 +57,7 @@ ReactDOM.render(<App />, rootElement);
 
 但是很显然上面的代码是有问题的，因为如果我们有多个变量的话，也就是使用多次 `myUseState` ，一个单一的 `x` 中间值并不能存放我们的多个变量，那怎么办呢？ 
 
-# 二、2.0版本
+# 二、2.0版：创建多个state
 
 很简单，一个单一的 `x` 值不能存放多个变量，那我们就把 `x` 变成一个对象，例如 `{n:0,m:0}`，聪明的你肯定很快会发现我们在使用 `useState(0)` 的时候并不能知道变量是叫 `n` 还是 `m`，所以使用对象是不行的，既然这样，那就只能使用数组了，通过调用的顺序来指明中间值 `x` 保存在哪里，而且事实上React 貌似也正是这样做的，如下代码所示：
 
@@ -108,9 +108,12 @@ ReactDOM.render(<App />, rootElement);
 
 <br>
 
-# 三、3.0版本
+# 三、3.0版：参数是函数时 与 是否更新
 
-如果 `setN` 的参数是个函数呢？我们来实现下：
+我们再优化下：
+
+- 优化点1：如果 `setN` 的参数是个函数呢？
+- 优化点2：通过 Object.is() 比较算法来判断 `x[curIndex]` 是否需要更新
 
 ```js
 let x = [];
@@ -128,57 +131,6 @@ const myUseState = initialState => {
 
   const setState = newState => {
     // 如果是个函数
-    if (typeof newState === "function") {
-      newState = newState(x[curIndex]);
-    }
-    
-    x[curIndex] = newState;
-    ReactDOM.render(<App />, rootElement);
-    index = 0;
-  };
-
-  index += 1;
-  
-  return [x[curIndex], setState];
-}
-
-const App = () => {
-  const [n, setN] = myUseState(0);
-  const [m, setM] = myUseState(0);
-  return (
-     <div>
-         <p>n：{n}</p>
-         <button onClick={()=>setN(n+1)}>+1</button>
-         <p>m：{m}</p>
-         <button onClick={()=>setM(m+1)}>+1</button>
-     </div>
-  )
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-```
-
-# 四、4.0版本
-
-> [Object.is()](https://www.apiref.com/javascript-zh/Reference/Global_Objects/Object/is.htm)方法判断两个值是否是相同的值。
-
-再优化下，我们可以通过 Object.is() 比较算法来判断 `x[curIndex]` 是否需要更新：
-
-```js
-let x = [];
-let index = 0;
-
-const myUseState = initialState => {
-  let curIndex = index; 
-    
-  if (typeof initialState === "function") {
-    initialState = initialState();
-  }
-  
-  x[curIndex] = x[curIndex] === undefined ? initialState : x[curIndex];
-
-  const setState = newState => {
     if (typeof newState === "function") {
       newState = newState(x[curIndex]);
     }
@@ -212,5 +164,8 @@ const App = () => {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
+> [Object.is()](https://www.apiref.com/javascript-zh/Reference/Global_Objects/Object/is.htm)方法判断两个值是否是相同的值。
 
-# 五、每次创建的新值
+
+
+# 四、每次创建的新值
