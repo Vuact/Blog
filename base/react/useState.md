@@ -1,11 +1,3 @@
-
-> [深究useState的原理](https://juejin.cn/post/6867077120691011591)
-> 
-> https://juejin.cn/post/6959885030063603743
-> 
-> https://juejin.cn/post/6844904072168865800
-
-
 # 一、useState基本使用
 
 >为什么叫 useState 而不叫 createState?<br>
@@ -46,7 +38,7 @@ setDataObj(dataObj => {...dataObj, {a: 1} });
 
 说是useState的坑，其实都是我们不懂其原理导致的乱用，所以一定要读懂这篇文章：
 
-[《深究useState的原理》](https://juejin.cn/post/6867077120691011591)
+[《useState模拟实现》]([https://juejin.cn/post/6867077120691011591](https://github.com/Vuact/Blog/blob/main/base/react/useState%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0.md))
 
 <br>
  
