@@ -19,6 +19,8 @@ ReactDOM.render(<App/>, document.querySelector('#root'));
 
 显然就是执行 `setN` 函数，同时我们可以在运行的时候看到页面上的 `n` 会随着每一次点击而变化，这说明 `setN` 函数会让页面再次渲染，也就是再次执行 App 函数，而再次执行应该仍然会经历`const [n, setN] = React.useState(0);`，可是 n 为什么没有回到原始值 `0` 呢？`useState()` 到底是怎样执行的？ `setN` 会怎么改变 `n`？
 
+下面我们来模拟实现下useState。
+
 # 一、1.0版：创建一个state
 
 通过实际的效果，我们可以分析到 `setN` 一定会改变某个数据 `x` ，并且会触发页面再次渲染，否则我们就不能在页面上看到变化的 `n` 值，而 `useState` 一定会从 `x` 取到 `n` 的最新值，我们模拟 `useState` 函数创建一个 `myUseState` 函数，如下代码：
@@ -166,6 +168,6 @@ ReactDOM.render(<App />, rootElement);
 ```
 > [Object.is()](https://www.apiref.com/javascript-zh/Reference/Global_Objects/Object/is.htm)方法判断两个值是否是相同的值。
 
-
+至此，我的模拟实现已结束。而实际上， React 并不是真的是这样实现的。上面提到的 `x` 其实对应 React 的 memoizedState ，而 `index` 实际上是利用了链表
 
 # 四、每次创建的新值
