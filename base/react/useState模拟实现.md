@@ -137,8 +137,8 @@ const myUseState = initialState => {
       newState = newState(x[curIndex]);
     }
     
-    // 使用Object.is来比较_state[curIndex]是否变化，若无，则跳过更新
-    if (Object.is(_state[curIndex], newState)) return; 
+    // 使用Object.is来比较x[curIndex]是否变化，若无，则跳过更新
+    if (Object.is(x[curIndex], newState)) return; 
     
     x[curIndex] = newState;
     ReactDOM.render(<App />, rootElement);
@@ -170,4 +170,29 @@ ReactDOM.render(<App />, rootElement);
 
 至此，我的模拟实现已结束。而实际上， React 并不是真的是这样实现的。上面提到的 `x` 其实对应 React 的 memoizedState ，而 `index` 实际上是利用了链表
 
-# 四、每次创建的新值
+<br>
+
+# 每次创建的新值
+
+现在我们继续探讨一下当执行 `setN` 的时候，会不会改变 `n` 的值，我们做一个实验：当点击 +1 按钮的时候，实现 `n` 的值 +1，当点击 `log` 按钮的时候，执行一个 setTimeout 函数，该函数会在三秒之后打印出 `n` 的值，代码如下：
+
+```js
+const App = () => {
+  const [n, setN] = React.useState(0);
+  const log = () => {
+    setTimeout(() => console.log(n), 3000);
+  };
+  return (
+    <>
+      <p>n:{n}</p>
+      <button onClick={() => setN(n + 1)}>+1</button>
+      <button onClick={log}>log</button>
+    </>
+  );
+};
+```
+如果先点击 +1 按钮再点击 `log` 按钮，会看到页面上的 `n` 和控制台打印的 `n` 是一样的;
+
+但是如果我们调换顺序，先点击 `log` 按钮再点击 +1 按钮，就会发现页面上的 `n` 和控制台打印的 `n` 并不是一样的，控制台打印的结果并不是 +1 之后的结果，也就是说当我们执行 `log` 函数的时候，尽管在这个期间已经改变了 `n` 值，但是在三秒钟之后打印的 n 值却不是 +1 之后的结果，由此可以说明 `setN` 并不会改变当前的值，而是每次创建的新值，这也正是 React 所认定的“数据不可变”思想。
+
+
