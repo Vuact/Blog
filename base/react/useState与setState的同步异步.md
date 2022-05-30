@@ -12,6 +12,8 @@
 
 <br>
 
+## 1、先看useState
+
 ### 同步和异步情况下，连续执行两个 useState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-4gxr2?file=/src/index.js)
 
 ```js
@@ -50,6 +52,7 @@ function Component() {
 - 当点击`同步执行`按钮时，只重新 render 了`一次`
 - 当点击`异步执行`按钮时，render 了`两次`
 
+
 ### 同步和异步情况下，连续执行两次同一个 useState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-btodx?file=/src/index.js)
 
 ```js
@@ -79,5 +82,86 @@ function Component() {
   );
 }
 ```
-- 当点击`同步执行`按钮时，两次 setA 都执行，但合并 render 了一次，打印 `3`
-- 当点击`异步执行`按钮时，两次 setA 各自 render 一次，分别打印 `2`，`3`
+- 当点击`同步执行`按钮时，两次 setA 都执行，但由于 render 的合并，所以只渲染了一次，打印: `3`
+- 当点击`异步执行`按钮时，两次 setA 各自 render 一次，分别打印: `2` `3`
+
+## 2、再看 setState
+
+### 同步和异步情况下，连续执行两个 setState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-uleks?file=/src/index.js)
+
+```js
+class Component extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      a: 1,
+      b: 'b',
+    };
+  }
+
+  handleClickWithPromise = () => {
+    Promise.resolve().then(() => {
+      this.setState({ ...this.state, a: 'aa' });
+      this.setState({ ...this.state, b: 'bb' });
+    });
+  };
+
+  handleClickWithoutPromise = () => {
+    this.setState({ ...this.state, a: 'aa' });
+    this.setState({ ...this.state, b: 'bb' });
+  };
+
+  render() {
+    console.log('render');
+    
+    return (
+      <>
+        <button onClick={this.handleClickWithPromise}>异步执行</button>
+        <button onClick={this.handleClickWithoutPromise}>同步执行</button>
+      </>
+    );
+  }
+}
+```
+#### 跟useState的结果一样
+
+- 当点击`同步执行`按钮时，只重新 render 了`一次`
+- 当点击`异步执行`按钮时，render 了`两次`
+
+### 同步和异步情况下，连续执行两次同一个 setState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-q3dhy?file=/src/index.js)
+
+```js
+class Component extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      a: 1,
+    };
+  }
+
+  handleClickWithPromise = () => {
+    Promise.resolve().then(() => {
+      this.setState({ a: this.state.a + 1 });
+      this.setState({ a: this.state.a + 1 });
+    });
+  };
+
+  handleClickWithoutPromise = () => {
+    this.setState({ a: this.state.a + 1 });
+    this.setState({ a: this.state.a + 1 });
+  };
+
+  render() {
+    console.log('a', this.state.a);
+
+    return (
+      <>
+        <button onClick={this.handleClickWithPromise}>异步执行</button>
+        <button onClick={this.handleClickWithoutPromise}>同步执行</button>
+      </>
+    );
+  }
+}
+```
+- 当点击`同步执行`按钮时，两次 setState 合并，只执行了最后一次，打印: `2`
+- 当点击`异步执行`按钮时，两次 setState 各自 render 一次，分别打印: `2` `3`
