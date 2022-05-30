@@ -1,4 +1,4 @@
-在 React 中，我们使用 useState 为函数组件设置内部数据，React.useState()接收一个参数作为变量的初始值，返回一个数组，数组的第一项用于变量的读，数组的第二项用于变量的写，如下代码：
+在 React 中，我们使用 useState 为函数组件设置内部数据，`React.useState()`接收一个参数作为变量的初始值，返回一个数组，数组的第一项用于变量的读，数组的第二项用于变量的写，如下代码：
 
 当点击按钮的时候，实现变量+1的操作
 
@@ -108,4 +108,57 @@ ReactDOM.render(<App />, rootElement);
 
 <br>
 
-# 三、每次创建的新值
+# 三、3.0版本
+
+如果 `setN` 的参数是个函数呢？我们来实现下：
+
+```js
+let x = [];
+let index = 0;
+
+const myUseState = initialState => {
+  let curIndex = index; 
+    
+  // 如果是个函数
+  if (typeof initialState === "function") {
+    initialState = initialState();
+  }
+  
+  x[curIndex] = x[curIndex] === undefined ? initialState : x[curIndex];
+
+  const setState = newState => {
+    // 如果是个函数
+    if (typeof newState === "function") {
+      newState = newState(x[curIndex]);
+    }
+    
+    x[curIndex] = newState;
+    ReactDOM.render(<App />, rootElement);
+    index = 0;
+  };
+
+  index += 1;
+  
+  return [x[curIndex], setState];
+}
+
+const App = () => {
+  const [n, setN] = myUseState(0);
+  const [m, setM] = myUseState(0);
+  return (
+     <div>
+         <p>n：{n}</p>
+         <button onClick={()=>setN(n+1)}>+1</button>
+         <p>m：{m}</p>
+         <button onClick={()=>setM(m+1)}>+1</button>
+     </div>
+  )
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
+
+# 四、4.0版本
+
+# 五、每次创建的新值
