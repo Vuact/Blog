@@ -19,6 +19,7 @@
 - [React学习：片段(fragments) 与 插槽(Portals)](https://blog.csdn.net/b954960630/article/details/80200905)
 - [React学习：高阶组件](https://blog.csdn.net/b954960630/article/details/80180904)
 - [理解 React Hooks](https://zhuanlan.zhihu.com/p/347136271)
+- [函数式组件与类组件有何不同](https://overreacted.io/zh-hans/how-are-function-components-different-from-classes/)
 
 ### Hook
 
