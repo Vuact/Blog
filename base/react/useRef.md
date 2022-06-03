@@ -1,4 +1,4 @@
-# 什么是useRef
+# 什么是useRef？
 
 ```js
 const refContainer = useRef(initialValue);
@@ -33,13 +33,14 @@ const TextInputWithFocusButton: React.FC = () => {
 
 export default TextInputWithFocusButton;
 ```
+<br>
 
-# 为什么使用useRef
+# 为什么使用useRef？
 
-**需求： 跨渲染取到状态值**
+需求： 跨渲染取到状态值
 
 
-### 只用useState实现:
+### 用useState实现:
 ```tsx
 import React, { useState } from "react";
 
@@ -67,7 +68,7 @@ export default LikeButton
 
 ![image](https://user-images.githubusercontent.com/74364990/171949864-6dee6497-7468-48bb-aa48-e7a3afed71a7.png)
 
-### 采用useRef实现:
+### 用useRef实现:
 
 ```jsx
 import React, { useRef } from "react";
