@@ -66,7 +66,8 @@ export default LikeButton
 ```
 现象： 在like为6的时候, 点击 alert , 再继续增加like到10, 弹出的值为 6, 而非 10.
 
-![image](https://user-images.githubusercontent.com/74364990/171949864-6dee6497-7468-48bb-aa48-e7a3afed71a7.png)
+![Jun-05-2022 02-57-37](https://user-images.githubusercontent.com/74364990/172021914-21fc3198-825b-47a5-b533-e759ca575fea.gif)
+
 
 ### 用useRef实现:
 
@@ -149,7 +150,8 @@ export default RefDifference;
 现象：
 点击按钮时，从控制台可以看到`refFromUseRef.current`一直为1(因为`refFromUseRef.current`已经存在该引用)，而`refFromCreateRef.current`却是`undefined`(因为`createRef` 每次渲染都会返回一个新的引用，所以`if`判断时为`true`，会被重新赋值，页面就会显示出新的值)
 
-![image](https://user-images.githubusercontent.com/74364990/172019539-397ad013-e4af-410f-b161-ac74ee7ec1ff.png)
+![Jun-05-2022 02-25-05](https://user-images.githubusercontent.com/74364990/172020828-657738da-974a-4717-86b2-f5d65cf7e743.gif)
+
 
 小结： `createRef` 每次渲染都会返回一个新的引用，而 `useRef` 每次都会返回相同的引用
 
