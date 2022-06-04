@@ -163,7 +163,9 @@ export default RefDifference;
 实现方式：通过useImperativeHandle，配合forwardRef完成
 
 >[useimperativehandle简介](https://zh-hans.reactjs.org/docs/hooks-reference.html#useimperativehandle)<br>
->[reactforwardref简介](https://zh-hans.reactjs.org/docs/react-api.html#reactforwardref)
+>[forwardref简介](https://zh-hans.reactjs.org/docs/react-api.html#reactforwardref)
+
+先了解下 forwardref 和 useimperativehandle
 
 ### forwardRef
 
@@ -172,5 +174,52 @@ export default RefDifference;
 ```js
 React.forwardRef((props, ref) => {})  
 ```
+
+```js
+const FancyButton = React.forwardRef((props, ref) => (  
+  <button ref={ref} className="FancyButton">    
+    {props.children}
+  </button>
+));
+
+// 可以直接获取到button的DOM节点
+const ref = React.useRef();
+<FancyButton ref={ref}>Click me!</FancyButton>;
+```
+
+### useImperativeHandle
+
+在函数式组件中，用于定义暴露给父组件的ref方法，用来限制子组件对外暴露的信息，只有useImperativeHandle第二个参数定义的属性跟方法才可以在父组件获取到。(useImperativeHandle 应当与 forwardRef 一起使用)
+
+>为什么 `useImperativeHandle` 与 `forwardRef` 要一起使用？<br>
+>如果单使用 `forwardRef` 来获取子组件DOM, 会导致子组件的DOM全部暴露给了父组件；<br>
+>而使用 `uesImperativeHandle` 可以仅将子组件的部分`DOM操作`暴露给父组件
+
+```js
+// 第一个参数暴露哪个ref; 第二个参数暴露什么信息
+useImperativeHandle(ref, createHandle, [deps]) 
+```
+
+```js
+import { forwardRef, useImperativeHandle } from 'react';
+
+const FancyInput = forwardRef((props, ref) => {
+  const inputRef = useRef();
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    },
+  }));
+
+  return <input ref={inputRef} ···/>;
+});
+
+// 渲染 <FancyInput ref={inputRef} /> 的父组件
+// 可以调用 inputRef.current.focus()
+```
+
+
+
 
 https://juejin.cn/post/6950464567847682056
