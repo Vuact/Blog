@@ -66,7 +66,7 @@ export default LikeButton
 ```
 现象： 在like为6的时候, 点击 alert , 再继续增加like到10, 弹出的值为 6, 而非 10.
 
-![Jun-05-2022 03-07-53](https://user-images.githubusercontent.com/74364990/172022211-21dc1348-3dfd-432e-931f-d508480a5e0e.gif)
+![Jun-05-2022 02-57-37](https://user-images.githubusercontent.com/74364990/172022306-da15ceb3-28e5-46b1-b0e4-5effed05e2e1.gif)
 
 
 ### 用useRef实现:
@@ -101,7 +101,8 @@ export default LikeButton;
 ```
 现象：在like为6的时候, 点击 alert , 再继续增加like到10, 弹出的值为10.跟上面使用全局变量现象一致
 
-![image](https://user-images.githubusercontent.com/74364990/171950399-19e9030f-d517-4b42-80ea-37e4570cbd72.png)
+![Jun-05-2022 03-07-53](https://user-images.githubusercontent.com/74364990/172022236-87f340fe-d824-46c4-a730-e314b7efc73e.gif)
+
 
 >小结：采用useRef,作为组件实例的变量，保证获取到的数据肯定是最新的。
 
