@@ -167,7 +167,7 @@ export default RefDifference;
 
 ### forwardRef
 
-`React.forwardRef` 会创建一个React组件，这个组件可以接受到其父级传递过来的ref属性，并挂到子组件的某个dom元素上；这样在父组件就可以通过ref就能获取到子组件DOM元素。
+`React.forwardRef` 会创建一个React组件，这个组件可以`接受其父组件传递过来的ref属性`，并挂到子组件的某个DOM元素上；这样在父组件就可以通过ref就能获取到子组件DOM元素。
 
 ```js
 React.forwardRef((props, ref) => {})  
