@@ -167,7 +167,7 @@ export default RefDifference;
 
 先了解下 forwardref 和 useimperativehandle
 
-### forwardRef
+## forwardRef
 
 `React.forwardRef` 会创建一个React组件，这个组件可以`接受其父组件传递过来的ref属性`，并挂到子组件的某个DOM元素上；这样在父组件就可以通过ref就能获取到子组件DOM元素。
 
@@ -187,7 +187,7 @@ const ref = React.useRef();
 <FancyButton ref={ref}>Click me!</FancyButton>;
 ```
 
-### useImperativeHandle
+## useImperativeHandle
 
 在函数式组件中，用于定义暴露给父组件的ref方法，用来限制子组件对外暴露的信息，只有useImperativeHandle第二个参数定义的属性跟方法才可以在父组件获取到。(useImperativeHandle 应当与 forwardRef 一起使用)
 
@@ -219,6 +219,7 @@ const FancyInput = forwardRef((props, ref) => {
 // 可以调用 inputRef.current.focus()
 ```
 
+## 实战
 ```tsx
 import React, {
     MutableRefObject,
@@ -278,6 +279,6 @@ const ParentCom: React.FC = (props: any) => {
 
 export default ParentCom;
 ```
+![Jun-05-2022 04-19-48](https://user-images.githubusercontent.com/74364990/172024411-e2e4701d-665d-4c6f-96c3-6790eebdbded.gif)
 
 
-https://juejin.cn/post/6950464567847682056
