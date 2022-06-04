@@ -1,4 +1,4 @@
-# 什么是useRef？
+# 一、什么是useRef？
 
 ```js
 const refContainer = useRef(initialValue);
@@ -35,7 +35,7 @@ export default TextInputWithFocusButton;
 ```
 <br>
 
-# 为什么使用useRef？
+# 二、为什么使用useRef？
 
 需求： 跨渲染取到状态值
 
@@ -108,7 +108,7 @@ export default LikeButton;
 
 <br>
 
-# useRef与createRef的区别
+# 三、useRef与createRef的区别
 
 ```tsx
 import React, { useState, useRef, createRef } from 'react';
@@ -156,4 +156,8 @@ export default RefDifference;
 
 小结： `createRef` 每次渲染都会返回一个新的引用，而 `useRef` 每次都会返回相同的引用
 
+<br>
 
+# 四、获取子组件的属性或方法
+
+https://juejin.cn/post/6950464567847682056
