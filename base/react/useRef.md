@@ -66,7 +66,7 @@ export default LikeButton
 ```
 现象： 在like为6的时候, 点击 alert , 再继续增加like到10, 弹出的值为 6, 而非 10.
 
-![Jun-05-2022 02-57-37](https://user-images.githubusercontent.com/74364990/172021914-21fc3198-825b-47a5-b533-e759ca575fea.gif)
+![Jun-05-2022 03-07-53](https://user-images.githubusercontent.com/74364990/172022211-21dc1348-3dfd-432e-931f-d508480a5e0e.gif)
 
 
 ### 用useRef实现:
