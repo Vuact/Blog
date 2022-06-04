@@ -160,4 +160,17 @@ export default RefDifference;
 
 # 四、获取子组件的属性或方法
 
+实现方式：通过useImperativeHandle，配合forwardRef完成
+
+>[useimperativehandle简介](https://zh-hans.reactjs.org/docs/hooks-reference.html#useimperativehandle)<br>
+>[reactforwardref简介](https://zh-hans.reactjs.org/docs/react-api.html#reactforwardref)
+
+### forwardRef
+
+`React.forwardRef` 会创建一个React组件，这个组件可以接受到其父级传递过来的ref属性，并挂到子组件的某个dom元素上；这样在父组件就可以通过ref就能获取到子组件DOM元素。
+
+```js
+React.forwardRef((props, ref) => {})  
+```
+
 https://juejin.cn/post/6950464567847682056
