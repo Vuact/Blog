@@ -7,7 +7,7 @@ const refContainer = useRef(initialValue);
 - 返回一个可变的 `ref对象`，该对象只有个 `current` 属性，初始值为传入的参数( initialValue )。
 - 返回的 `ref对象` 在组件的整个生命周期内保持不变
 - 当更新 `current` 值时并不会 re-render ，这是与 `useState` 不同的地方
-- 可以保存任何类型的值: dom、对象等任何可辨值
+- 可以保存任何类型的值: dom、对象等任何可变值
 - useRef 类似于类组件的 this
 
 ### Demo
