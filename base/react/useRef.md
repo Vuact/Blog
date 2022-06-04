@@ -10,7 +10,7 @@ const refContainer = useRef(initialValue);
 - 可以保存任何类型的值: dom、对象等任何可辨值
 - useRef 类似于类组件的 this
 
-### Dome
+### Demo
 
 通过useRef定义个inputEl变量，在input 元素上定义`ref={inputEl}`, 这样通过`inputEl.current`就可以获取到`input Dom` 元素
 ```tsx
@@ -103,3 +103,54 @@ export default LikeButton;
 ![image](https://user-images.githubusercontent.com/74364990/171950399-19e9030f-d517-4b42-80ea-37e4570cbd72.png)
 
 >小结：采用useRef,作为组件实例的变量，保证获取到的数据肯定是最新的。
+
+<br>
+
+# useRef与createRef的区别
+
+```tsx
+import React, { useState, useRef, createRef } from 'react';
+
+const RefDifference: React.FC = () => {
+    const [renderIndex, setRenderIndex] = useState(1);
+    
+    const refFromUseRef = useRef<number>();
+    const refFromCreateRef = createRef();
+    
+    console.info(refFromUseRef.current, 'refFromUseRef.current')
+    console.info(refFromCreateRef.current, 'refFromCreateRef.current')
+    
+    if (!refFromUseRef.current) {
+        refFromUseRef.current = renderIndex
+    }
+
+    if (!refFromCreateRef.current) {
+        refFromCreateRef.current = renderIndex
+    }
+    
+    return (
+        <>
+         <p>Current render index: {renderIndex}</p>
+         <p>
+            <b>refFromUseRef</b> value: {refFromUseRef.current}
+         </p>
+         <p>
+            <b>refFromCreateRef</b> value: {refFromCreateRef.current}
+         </p>
+         <button onClick={() => setRenderIndex((prev) => prev + 1)}>
+            Cause re-render
+         </button>
+        </>
+    );
+}
+
+export default RefDifference;
+```
+现象：
+点击按钮时，从控制台可以看到`refFromUseRef.current`一直为1(因为`refFromUseRef.current`已经存在该引用)，而`refFromCreateRef.current`却是`undefined`(因为`createRef` 每次渲染都会返回一个新的引用，所以`if`判断时为`true`，会被重新赋值，页面就会显示出新的值)
+
+![image](https://user-images.githubusercontent.com/74364990/172019539-397ad013-e4af-410f-b161-ac74ee7ec1ff.png)
+
+小结： `createRef` 每次渲染都会返回一个新的引用，而 `useRef` 每次都会返回相同的引用
+
+
