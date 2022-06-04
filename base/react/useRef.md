@@ -238,13 +238,6 @@ const ChildInput = forwardRef((props: IProps, ref: any) => {
   const { label } = props;
   const [value, setValue] = useState('');
   
-  // 作用: 减少父组件获取的DOM元素属性,只暴露给父组件需要用到的DOM方法
-  // 参数1: 父组件传递的ref属性
-  // 参数2: 返回一个对象,父组件通过ref.current调用对象中方法
-  useImperativeHandle(ref, () => ({
-    getValue,
-  }));
-  
   const handleChange = (e: any) => {
     const value = e.target.value;
     setValue(value);
@@ -253,6 +246,13 @@ const ChildInput = forwardRef((props: IProps, ref: any) => {
   const getValue = useCallback(() => {
     return value;
   }, [value]);
+  
+  // 作用: 减少父组件获取的DOM元素属性,只暴露给父组件需要用到的DOM方法
+  // 参数1: 父组件传递的ref属性
+  // 参数2: 返回一个对象,父组件通过ref.current调用对象中方法
+  useImperativeHandle(ref, () => ({
+    getValue,
+  }));
   
   return (
     <div>
