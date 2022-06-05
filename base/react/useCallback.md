@@ -107,7 +107,7 @@ const getData = useRefCallback(() => {
 useCallback真正有助于性能改善的，有 2 种场景：
 
 - 函数定义时需要进行大量运算，这种场景极少
-- 需要比较引用的场景，又或者是配合`[React.Memo](https://zh-hans.reactjs.org/docs/react-api.html#reactmemo)`使用：
+- 需要比较引用的场景，又或者是配合[React.Memo](https://zh-hans.reactjs.org/docs/react-api.html#reactmemo)使用：
 
 ### `useCallback`配合`React.Memo`使用的场景：
 
