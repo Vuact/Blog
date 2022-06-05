@@ -95,7 +95,7 @@ useEffect(() => {
 ```
 现象： useEffect 会在第一次渲染以及每次更新渲染后都执行。
 
-![image](https://user-images.githubusercontent.com/74364990/172062595-eca58b0f-8695-464a-9548-5358d6f0af43.png)
+<img width="1298" alt="image" src="https://user-images.githubusercontent.com/74364990/172063647-527c0d52-4de8-42e3-be84-51bdcb10193f.png">
 
 原因： 第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect比较值（count）改变，useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件重新渲染，无限循环。
 
@@ -121,7 +121,7 @@ useEffect(() => {
 ```
 现象：useEffect 会在第一次渲染以及每次更新渲染后都执行。
 
-![image](https://user-images.githubusercontent.com/74364990/172062657-efd3c384-a6c6-4dd5-b55b-745c7a31ecfb.png)
+<img width="1294" alt="image" src="https://user-images.githubusercontent.com/74364990/172063658-433d471d-0978-423c-b950-fc28d2f8cba6.png">
 
 原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项arr发生变化，此处依赖数组执行`浅层比较`（`[...] === [...] 为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
 
