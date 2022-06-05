@@ -1,3 +1,12 @@
+
+
+> 推荐：<br>
+> - [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/#%E9%82%A3effect%E4%B8%AD%E7%9A%84%E6%B8%85%E7%90%86%E5%8F%88%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%E5%91%A2%EF%BC%9F)
+> - [从源码理清 UseEffect 第二个参数是怎么处理的](https://developer.51cto.com/article/705749.html)
+
+
+<br>
+
 简介
 
 ```js
@@ -5,6 +14,8 @@ type DependencyList = ReadonlyArray<any>;
 
 function useEffect(effect: EffectCallback, deps?: DependencyList): void;
 ```
+
+
 
 <br>
 
@@ -297,10 +308,4 @@ useEffect(() => {
 > 也会导致控制台报错：`"超过最大更新深度"`。
 
 <br>
-<br>
-<br>
 
-----
-
-> 推荐：<br>
-> - [从源码理清 UseEffect 第二个参数是怎么处理的](https://developer.51cto.com/article/705749.html)
