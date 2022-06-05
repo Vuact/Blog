@@ -227,7 +227,7 @@ useEffect(() => {
 // 打印log，执行一次
 第二个参数: 函数, 第 1 次执行
 ```
-若将上面 useCallback改为 `useCallback(() => { ···· }, [count])`，也会导致控制台报错：`"超过最大更新深度"`。
+> 注：若将上面 useCallback改为 `useCallback(() => { ···· }, [count])`，也会导致控制台报错：`"超过最大更新深度"`。
 
 
 ## 6、对象作为依赖
@@ -293,6 +293,9 @@ useEffect(() => {
 第二个参数: 对象, 第 1 次执行
 ```
 
+> 注：若将上面 useMemo 改为 `useMemo(() => (···), [count])`<br>
+> 也会导致控制台报错：`"超过最大更新深度"`。
+
 <br>
 <br>
 <br>
@@ -300,4 +303,4 @@ useEffect(() => {
 ----
 
 > 推荐：<br>
-> [从源码理清 UseEffect 第二个参数是怎么处理的](https://developer.51cto.com/article/705749.html)
+> - [从源码理清 UseEffect 第二个参数是怎么处理的](https://developer.51cto.com/article/705749.html)
