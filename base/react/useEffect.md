@@ -139,7 +139,7 @@ useEffect(() => {
     
 // 打印log报错，如下图
 ```
-![image](https://user-images.githubusercontent.com/74364990/172062752-83bd8f15-01e3-4451-b171-9e5c7f03cbd1.png)
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/74364990/172063721-c3831986-c45b-492f-b1bd-f31c5a7c274e.png">
 
 因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
 
@@ -204,7 +204,7 @@ useEffect(() => {
 
 // 打印log报错，如下图
 ```
-![image](https://user-images.githubusercontent.com/74364990/172063030-41afd276-a99b-4f62-8d66-1638cd1100fa.png)
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/74364990/172063721-c3831986-c45b-492f-b1bd-f31c5a7c274e.png">
 
 因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
 
@@ -267,7 +267,8 @@ useEffect(() => {
 
 // 打印log报错, 如下图
 ```
-![image](https://user-images.githubusercontent.com/74364990/172063217-b5692e84-0b00-43a7-a474-822c5b399795.png)
+
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/74364990/172063721-c3831986-c45b-492f-b1bd-f31c5a7c274e.png">
 
 因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
 
