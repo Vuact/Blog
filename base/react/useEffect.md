@@ -141,7 +141,7 @@ useEffect(() => {
 ```
 ![image](https://user-images.githubusercontent.com/74364990/172062752-83bd8f15-01e3-4451-b171-9e5c7f03cbd1.png)
 
-因为useEffect在短时间内疯狂调用setState，导致state不断改变，从而疯狂渲染，所以控制台报错：`"超过最大更新深度"`。
+因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
 
 ### 如何解决：使用useRef
 
@@ -160,26 +160,135 @@ useEffect(() => {
 第二个参数: 数组, 第 1 次执行
 ```
 
-## 5、
+## 5、函数作为依赖
 
 ```tsx
-```
+const [count, setCount] = useState(1);
 
-## 6、
+const consoleFunction = () => {
+  console.log('consoleFunction');
+};
+
+useEffect(() => {
+  setTimeout(() => {
+    setCount(count + 1);
+  }, 1000);
+  console.log(`第二个参数: 函数, 第 ${count} 次执行`);
+}, [consoleFunction]);
+
+// 打印log，无限循环
+第二个参数: 函数, 第 1 次执行
+第二个参数: 函数, 第 2 次执行
+第二个参数: 函数, 第 3 次执行
+第二个参数: 函数, 第 ... 次执行
+```
+现象：useEffect 会在第一次渲染以及每次更新渲染后都执行。
+
+![image](https://user-images.githubusercontent.com/74364990/172062979-3e17b104-1001-4e8a-af4e-ca71931e867c.png)
+
+原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项consoleFunction函数发生变化，此处依赖函数执行`浅层比较`（每次渲染都重新创建一个新的函数 `function(前) === function（后）为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
+
+### 上述函数作为依赖代码，去除setTimeout会出现什么情况？
 
 ```tsx
+const [count, setCount] = useState(1);
+
+const consoleFunction = () => {
+  console.log('consoleFunction');
+};
+
+useEffect(() => {
+  setCount(count + 1);
+  console.log(`第二个参数: 函数, 第 ${count} 次执行`);
+}, [consoleFunction]);
+
+// 打印log报错，如下图
+```
+![image](https://user-images.githubusercontent.com/74364990/172063030-41afd276-a99b-4f62-8d66-1638cd1100fa.png)
+
+因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
+
+### 如何解决：使用useCallback
+
+useCallback返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。
+
+```jsx
+const [count, setCount] = useState(1);
+
+const consoleFunction = useCallback(() => {
+  console.log('consoleFunction');
+}, []);
+
+useEffect(() => {
+  setCount(count + 1);
+  console.log(`第二个参数: 函数, 第 ${count} 次执行`);
+}, [consoleFunction]);
+
+// 打印log，执行一次
+第二个参数: 函数, 第 1 次执行
 ```
 
-## 7、
+## 6、对象作为依赖
 
 ```tsx
+const [count, setCount] = useState(1);
+
+const obj = { name: 'zhangsan' };
+
+useEffect(() => {
+  setTimeout(() => {
+    setCount(count + 1);
+  }, 1000);
+  console.log(`第二个参数: 对象, 第 ${count} 次执行`);
+}, [obj]);
+
+// 打印log，无限循环
+第二个参数: 对象, 第 1 次执行
+第二个参数: 对象, 第 2 次执行
+第二个参数: 对象, 第 3 次执行
+第二个参数: 对象, 第 ... 次执行
 ```
 
-## 8、
+现象：useEffect 会在第一次渲染以及每次更新渲染后都执行。
+
+![image](https://user-images.githubusercontent.com/74364990/172063142-62d444b3-c400-444f-9661-cf162cd9b84a.png)
+
+原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项obj发生变化，此处依赖对象执行`浅层比较`（ `{...}=== {...} 为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
+
+### 上述对象作为依赖代码，去除setTimeout会出现什么情况？
 
 ```tsx
-```
+const obj = { name: 'zhangsan' };
 
+useEffect(() => {
+  setCount(count + 1);
+  console.log(`第二个参数: 对象, 第 ${count} 次执行`);
+}, [obj]);
+
+// 打印log报错, 如下图
+```
+![image](https://user-images.githubusercontent.com/74364990/172063217-b5692e84-0b00-43a7-a474-822c5b399795.png)
+
+因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
+
+
+### 如何解决：使用useMemo
+
+useMemo该回调函数仅在某个依赖项改变时才会更新。此处使用[]依赖，组件重新渲染后对象不再重新定义。
+
+```jsx
+const [count, setCount] = useState(1);
+
+const obj = useMemo(() => ({ name: 'zhangsan' }), []);
+
+useEffect(() => {
+  setCount(count + 1);
+  console.log(`第二个参数: 对象, 第 ${count} 次执行`);
+}, [obj]);
+
+// 打印log
+第二个参数: 对象, 第 1 次执行
+```
 https://juejin.cn/post/7083308347331444750
 
 https://developer.51cto.com/article/705749.html
