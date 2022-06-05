@@ -23,6 +23,7 @@ useEffect(() => {
   };
 }, [count]);
 ```
+<br>
 
 # 参数二：deps
 
@@ -45,6 +46,138 @@ useEffect(() => {
 第二个参数: 不传值, 第 2 次执行
 第二个参数: 不传值, 第 3 次执行
 第二个参数: 不传值, 第 ... 次执行
+```
+现象： useEffect 会在第一次渲染以及每次更新渲染后都执行。
+
+![image](https://user-images.githubusercontent.com/74364990/172062495-1c36a39f-2b23-4e86-812d-e1d49d101e03.png)
+
+原因： 第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect没有比较值，useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件重新渲染，无限循环。
+
+## 2、空数组作为依赖
+
+```tsx
+const [count, setCount] = useState<number>(1);
+
+useEffect(() => {
+  setTimeout(() => {
+    setCount(count + 1);
+  }, 1000);
+  console.log(`第二个参数: 空数组, 第 ${count} 次执行`);
+}, []);
+
+// 打印log，执行一次
+第二个参数: 空数组, 第 1 次执行
+```
+现象： useEffect 会在第一次渲染后执行一次。
+
+![image](https://user-images.githubusercontent.com/74364990/172062562-e3d6dc49-5bbd-4e5d-afaa-60e78c1be917.png)
+
+原因： 第一次渲染后执行一次一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect中 [] 没有值，依赖没变，不触发useEffect，不执行回调函数, state 无更新，不触发组件重新渲染，至此结束。
+
+
+## 3、基本类型作为依赖
+
+```tsx
+const [count, setCount] = useState<number>(1); // 基本类型以number为例
+
+useEffect(() => {
+  setTimeout(() => {
+    setCount(count + 1);
+  }, 1000);
+  console.log(`第二个参数: 基本类型, 第 ${count} 次执行`);
+}, [count]);
+
+// 打印log，无限循环
+第二个参数: 基本类型, 第 1 次执行
+第二个参数: 基本类型, 第 2 次执行
+第二个参数: 基本类型, 第 3 次执行
+第二个参数: 基本类型, 第 ... 次执行
+```
+现象： useEffect 会在第一次渲染以及每次更新渲染后都执行。
+
+![image](https://user-images.githubusercontent.com/74364990/172062595-eca58b0f-8695-464a-9548-5358d6f0af43.png)
+
+原因： 第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect比较值（count）改变，useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件重新渲染，无限循环。
+
+
+## 4、数组作为依赖
+
+```tsx
+const [count, setCount] = useState(1);
+
+const newArr = [4, 5];
+useEffect(() => {
+  setTimeout(() => {
+    setCount(count + 1);
+  }, 1000);
+  console.log(`第二个参数: 数组, 第 ${count} 次执行`);
+}, [newArr]);
+
+// 打印log，无限循环
+第二个参数: 数组, 第 1 次执行
+第二个参数: 数组, 第 2 次执行
+第二个参数: 数组, 第 3 次执行
+第二个参数: 数组, 第 ... 次执行
+```
+现象：useEffect 会在第一次渲染以及每次更新渲染后都执行。
+
+![image](https://user-images.githubusercontent.com/74364990/172062657-efd3c384-a6c6-4dd5-b55b-745c7a31ecfb.png)
+
+原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项arr发生变化，此处依赖数组执行`浅层比较`（`[...] === [...] 为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
+
+
+### 上述数组作为依赖代码，去除setTimeout会出现什么情况？
+
+```tsx
+const [count, setCount] = useState(1);
+const newArr = [4,5];
+
+useEffect(() => {
+  setCount(count+1);
+  console.log(`第二个参数: 基本类型, 第 ${count} 次执行`);
+}, [newArr]);
+    
+// 打印log报错，如下图
+```
+![image](https://user-images.githubusercontent.com/74364990/172062752-83bd8f15-01e3-4451-b171-9e5c7f03cbd1.png)
+
+因为useEffect在短时间内疯狂调用setState，导致state不断改变，从而疯狂渲染，所以控制台报错：`"超过最大更新深度"`。
+
+### 如何解决：使用useRef
+
+useRef会在每次渲染时返回同一个ref对象，返回的ref在组件的整个生命周期内保持不变，且ref值改变不会导致重新渲染
+
+```tsx
+const [count, setCount] = useState(1);
+const refArr = useRef([4, 5, 6]);
+
+useEffect(() => {
+  setCount(count+1);
+  console.log(`第二个参数: 数组, 第 ${count} 次执行`);
+}, [refArr.current]);
+
+// 打印log，执行一次
+第二个参数: 数组, 第 1 次执行
+```
+
+## 5、
+
+```tsx
+```
+
+## 6、
+
+```tsx
+```
+
+## 7、
+
+```tsx
+```
+
+## 8、
+
+```tsx
 ```
 
 https://juejin.cn/post/7083308347331444750
