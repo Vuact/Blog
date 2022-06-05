@@ -184,7 +184,7 @@ useEffect(() => {
 ```
 现象：useEffect 会在第一次渲染以及每次更新渲染后都执行。
 
-![image](https://user-images.githubusercontent.com/74364990/172062979-3e17b104-1001-4e8a-af4e-ca71931e867c.png)
+<img width="1296" alt="image" src="https://user-images.githubusercontent.com/74364990/172063794-7f7d39b6-28b9-4f4c-812e-c8846a704c3f.png">
 
 原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项consoleFunction函数发生变化，此处依赖函数执行`浅层比较`（每次渲染都重新创建一个新的函数 `function(前) === function（后）为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
 
@@ -251,7 +251,7 @@ useEffect(() => {
 
 现象：useEffect 会在第一次渲染以及每次更新渲染后都执行。
 
-![image](https://user-images.githubusercontent.com/74364990/172063142-62d444b3-c400-444f-9661-cf162cd9b84a.png)
+<img width="1293" alt="image" src="https://user-images.githubusercontent.com/74364990/172063775-598c1e0b-0f55-44d0-80ce-647c080b4ac6.png">
 
 原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项obj发生变化，此处依赖对象执行`浅层比较`（ `{...}=== {...} 为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
 
