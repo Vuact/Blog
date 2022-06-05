@@ -1,1 +1,102 @@
 
+看下面一段代码：
+```js
+function App() {
+  const [val, setVal] = useState('');
+  
+  // getData 模拟发起网络请求
+  const getData = () => {
+    setTimeout(() => {
+      setVal('new data ' + count);
+      count++;
+    }, 500);
+  };
+
+  return <Child val={val} getData={getData} />;
+}
+
+function Child({ val, getData }) {
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
+  return <div>{val}</div>;
+}
+```
+上面是一段问题代码，是个死循环
+
+![Jun-06-2022 02-44-58](https://user-images.githubusercontent.com/74364990/172065765-54653267-dbd8-4c54-a349-2174a317f022.gif)
+
+
+先来分析下这段代码的用意，Child组件是一个纯展示型组件，其业务逻辑都是通过外部传进来的，这种场景在实际开发中很常见。
+
+再分析下代码的执行过程：
+
+- ① App渲染Child，将val和getData传进去
+- ② Child使用useEffect获取数据。因为对getData有依赖，于是将其加入依赖列表
+- ③ getData执行时，调用setVal，导致App重新渲染
+- ④ App重新渲染时生成新的getData方法，传给Child
+- ⑤ Child发现getData的引用变了，又会执行getData
+- ⑥ 3 -> 5 是一个死循环
+
+## 解决：使用useCallback
+
+只需要将上面getData改为如下写法即可：
+
+```js
+const getData = useCallback(() => {
+  setTimeout(() => {
+    setVal('new data ' + count);
+    count++;
+  }, 500);
+}, []);
+```
+
+## 新需求：useCallback需要依赖state
+
+假如在`getData`中需要用到`val`( useState 中的值)，就需要将其加入依赖列表，这样的话又会导致每次`getData`的引用都不一样，死循环又出现了...
+
+```js
+const getData = useCallback(() => {
+  console.log(val);
+  
+  setTimeout(() => {
+    setVal('new data ' + count);
+    count++;
+  }, 500);
+}, [val]);
+```
+
+如果我们希望无论val怎么变，getData的引用都保持不变，同时又能取到val最新的值，可以通过自定义 hook 实现。注意这里不能简单的把val从依赖列表中去掉，否则getData中的val永远都只会是初始值（闭包原理）。
+
+```js
+function useRefCallback(fn, dependencies) {
+  const ref = useRef(fn);
+
+  // 每次调用的时候，fn 都是一个全新的函数，函数中的变量有自己的作用域
+  // 当依赖改变的时候，传入的 fn 中的依赖值也会更新，这时更新 ref 的指向为新传入的 fn
+  useEffect(() => {
+    ref.current = fn;
+  }, [fn, ...dependencies]);
+
+  return useCallback(() => {
+    const fn = ref.current;
+    return fn();
+  }, [ref]);
+}
+```
+使用：
+
+```js
+const getData = useRefCallback(() => {
+  console.log(val);
+
+  setTimeout(() => {
+    setVal('new data ' + count);
+    count++;
+  }, 500);
+}, [val]);
+```
+完整代码可以看[这里](https://codesandbox.io/s/userefcallback-zi2ff)
+
+
