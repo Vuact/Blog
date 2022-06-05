@@ -1,3 +1,4 @@
+# 一、使用
 
 看下面一段代码：
 ```js
@@ -98,5 +99,79 @@ const getData = useRefCallback(() => {
 }, [val]);
 ```
 完整代码可以看[这里](https://codesandbox.io/s/userefcallback-zi2ff)
+
+<br><br>
+
+# 性能
+
+useCallback真正有助于性能改善的，有 2 种场景：
+
+- 函数定义时需要进行大量运算，这种场景极少
+- 需要比较引用的场景，又或者是配合`React.Memo`使用：
+
+### `useCallback`配合`React.Memo`使用的场景：
+
+**优化前：**
+```js
+const Child = React.memo(function ({ val, onChange }) {
+  console.log('render...');
+
+  return <input value={val} onChange={onChange} />;
+});
+
+function App() {
+  const [val1, setVal1] = useState('');
+  const [val2, setVal2] = useState('');
+
+  const onChange1 = (evt) => {
+    setVal1(evt.target.value);
+  };
+
+  const onChange2 = (evt) => {
+    setVal2(evt.target.value);
+  };
+
+  return (
+    <>
+      <Child val={val1} onChange={onChange1} />
+      <Child val={val2} onChange={onChange2} />
+    </>
+  );
+}
+```
+现象：任何一个输入框的变化都会导致另一个输入框重新渲染。
+
+**优化后：**
+```js
+const Child = React.memo(function({ val, onChange }) {
+  console.log("render...");
+
+  return <input value={val} onChange={onChange} />;
+});
+
+function App() {
+  const [val1, setVal1] = useState("");
+  const [val2, setVal2] = useState("");
+
+  const onChange1 = useCallback(evt => {
+    setVal1(evt.target.value);
+  }, []);
+
+  const onChange2 = useCallback(evt => {
+    setVal2(evt.target.value);
+  }, []);
+
+  return (
+    <>
+      <Child val={val1} onChange={onChange1} />
+      <Child val={val2} onChange={onChange2} />
+    </>
+  );
+}
+```
+
+现象：一个输入框的变化，不再会导致另一个输入框的重新渲染。代码在[这里](https://codesandbox.io/s/reactmemo-rmt1e?file=/src/index.js)
+
+
 
 
