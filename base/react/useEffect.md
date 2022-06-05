@@ -307,5 +307,61 @@ useEffect(() => {
 > 注：若将上面 useMemo 改为 `useMemo(() => (···), [count])`<br>
 > 也会导致控制台报错：`"超过最大更新深度"`。
 
-<br>
+<br><br><br>
+
+
+
+# 其他
+
+### 自定义Hook：初始不执行useEffect
+
+```js
+function useUpdate(fn, deps) {
+  const initRef = useRef();
+  
+  return useEffect(() => {
+    if (initRef.current) {
+      return fn();
+    } else {
+      initRef.current = true;
+    }
+  }, deps);
+}
+```
+
+### 练习
+写出输出结果：
+```js
+function Dong() {
+  const ref = useRef(1);
+  const [, setState] = useState();
+	
+  useEffect(() => {
+    console.log(111);
+  });
+
+  useEffect(() => {
+    console.log(222);
+  }, []);
+
+  useEffect(() => {
+    console.log(333);
+  }, [ref.current]);
+
+  useEffect(() => {
+    setInterval(() => {
+      setState([]);
+    }, 1000);
+
+    setTimeout(() => {
+      ref.current = 2;
+    }, 3000);
+  }, []);
+
+  return <div>dong</div>;
+}
+```
+
+![Jun-06-2022 02-22-51](https://user-images.githubusercontent.com/74364990/172064955-f3a211b6-99c4-4934-bca6-26a7d786e5e3.gif)
+
 
