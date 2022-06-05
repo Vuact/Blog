@@ -141,6 +141,8 @@ function App() {
 ```
 现象：任何一个输入框的变化都会导致另一个输入框重新渲染。
 
+![Jun-06-2022 03-20-01](https://user-images.githubusercontent.com/74364990/172067104-2ba8c80d-e17c-4326-b03c-3fa6f89cf4ed.gif)
+
 **优化后：**
 ```js
 const Child = React.memo(function({ val, onChange }) {
@@ -169,9 +171,9 @@ function App() {
   );
 }
 ```
-
 现象：一个输入框的变化，不再会导致另一个输入框的重新渲染。代码在[这里](https://codesandbox.io/s/reactmemo-rmt1e?file=/src/index.js)
 
+![Jun-06-2022 03-22-13](https://user-images.githubusercontent.com/74364990/172067155-a34e012a-cee3-4448-b625-47994dc424fe.gif)
 
 
 
