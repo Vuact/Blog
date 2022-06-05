@@ -49,7 +49,7 @@ useEffect(() => {
 ```
 现象： useEffect 会在第一次渲染以及每次更新渲染后都执行。
 
-![image](https://user-images.githubusercontent.com/74364990/172062495-1c36a39f-2b23-4e86-812d-e1d49d101e03.png)
+<img width="1294" alt="image" src="https://user-images.githubusercontent.com/74364990/172063594-c0c8c91c-0e4e-443c-b74c-e037d4cc9972.png">
 
 原因： 第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect没有比较值，useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件重新渲染，无限循环。
 
@@ -70,7 +70,7 @@ useEffect(() => {
 ```
 现象： useEffect 会在第一次渲染后执行一次。
 
-![image](https://user-images.githubusercontent.com/74364990/172062562-e3d6dc49-5bbd-4e5d-afaa-60e78c1be917.png)
+<img width="1290" alt="image" src="https://user-images.githubusercontent.com/74364990/172063602-4fc46c6a-56e1-41bd-b6a6-a74dd01f0b17.png">
 
 原因： 第一次渲染后执行一次一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect中 [] 没有值，依赖没变，不触发useEffect，不执行回调函数, state 无更新，不触发组件重新渲染，至此结束。
 
