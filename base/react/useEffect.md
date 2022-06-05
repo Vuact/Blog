@@ -290,5 +290,12 @@ useEffect(() => {
 // 打印log
 第二个参数: 对象, 第 1 次执行
 ```
+
+<br>
+<br>
+<br>
+
+----
+
 > 推荐：<br>
 > [从源码理清 UseEffect 第二个参数是怎么处理的](https://developer.51cto.com/article/705749.html)
