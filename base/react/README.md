@@ -21,6 +21,7 @@
 - [理解 React Hooks](https://zhuanlan.zhihu.com/p/347136271)
 - [函数式组件与类组件有何不同](https://overreacted.io/zh-hans/how-are-function-components-different-from-classes/)
 - [React Fiber 渐进式遍历详解](https://segmentfault.com/a/1190000018250127)
+- [你应该知道的requestIdleCallback](https://segmentfault.com/a/1190000014457824)
 
 ### Hook
 
