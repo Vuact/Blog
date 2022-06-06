@@ -20,6 +20,7 @@
 - [React学习：高阶组件](https://blog.csdn.net/b954960630/article/details/80180904)
 - [理解 React Hooks](https://zhuanlan.zhihu.com/p/347136271)
 - [函数式组件与类组件有何不同](https://overreacted.io/zh-hans/how-are-function-components-different-from-classes/)
+- [React Fiber 渐进式遍历详解](https://segmentfault.com/a/1190000018250127)
 
 ### Hook
 
