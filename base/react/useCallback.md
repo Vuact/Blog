@@ -1,4 +1,102 @@
-# 使用
+# 一、useCallback / useMemo / React.memo 简介
+
+主题虽然是`useCallback`，但顺面就把 `useMemo` 和 `React.memo` 也提一下吧。
+
+useCallback、useMemo、React.memo 设计的初衷都是用来做性能优化的。
+
+在Class Component中考虑以下的场景：
+
+```js
+class Foo extends Component {
+  handleClick() {
+    console.log('Click happened');
+  }
+  render() {
+    return <Button onClick={() => this.handleClick()}>Click Me</Button>;
+  }
+}
+```
+传给 Button 的 onClick 方法每次都是重新创建的，这会导致每次 Foo render 的时候，Button 也跟着 render。优化方法有 2 种，箭头函数和 bind。下面以 bind 为例子：
+
+```js
+class Foo extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    console.log('Click happened');
+  }
+  render() {
+    return <Button onClick={this.handleClick}>Click Me</Button>;
+  }
+}
+```
+同样的，`Function Component`也有这个问题：
+
+```js
+function Foo() {
+  const [count, setCount] = useState(0);
+
+  const handleClick() {
+    console.log(`Click happened with dependency: ${count}`)
+  }
+  return <Button onClick={handleClick}>Click Me</Button>;
+}
+```
+## useCallback
+
+以上问题， React 给出的方案是`useCallback` Hook。在依赖不变的情况下 (在我们的例子中是 count )，它会返回相同的引用，避免子组件进行无意义的重复渲染：
+
+```js
+function Foo() {
+  const [count, setCount] = useState(0);
+
+  const memoizedHandleClick = useCallback(
+    () => console.log(`Click happened with dependency: ${count}`), [count],
+  ); 
+  return <Button onClick={memoizedHandleClick}>Click Me</Button>;
+}
+```
+
+## useMemo
+
+`useCallback`缓存的是方法的引用，而`useMemo`缓存的则是方法的返回值。使用场景是减少不必要的子组件渲染：
+
+```js
+function Parent({ a, b }) {
+  // 当 a 改变时才会重新渲染
+  const child1 = useMemo(() => <Child1 a={a} />, [a]);
+  // 当 b 改变时才会重新渲染
+  const child2 = useMemo(() => <Child2 b={b} />, [b]);
+  return (
+    <>
+      {child1}
+      {child2}
+    </>
+  )
+}
+```
+## React.memo
+
+如果想实现`Class Component`的`shouldComponentUpdate`方法，可以使用`React.memo`方法，区别是它只能比较 props，不会比较 state：
+
+```js
+const Parent = React.memo(({ a, b }) => {
+  // 当 a 改变时才会重新渲染
+  const child1 = useMemo(() => <Child1 a={a} />, [a]);
+  // 当 b 改变时才会重新渲染
+  const child2 = useMemo(() => <Child2 b={b} />, [b]);
+  return (
+    <>
+      {child1}
+      {child2}
+    </>
+  )
+});
+```
+
+# 二、useCallback使用
 
 看下面一段代码：
 ```js
@@ -102,7 +200,7 @@ const getData = useRefCallback(() => {
 
 <br><br>
 
-# 性能
+# 三、用useCallback优化性能
 
 useCallback真正有助于性能改善的，有 2 种场景：
 
