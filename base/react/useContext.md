@@ -1,3 +1,5 @@
+引入Context的原因：考虑到组件有可能 `层层嵌套` ，在传 `props` 的过程中，如果书写大量的 `...props`,造成`props`数据混乱。
+
 在看本文前，请先将 `context API` 用法了然于胸：[链接](https://zh-hans.reactjs.org/docs/context.html)
 
 <br><br>
@@ -68,6 +70,12 @@ function ThemedButton(props) {
   }
 }
 ```
+函数组件中 `Context` 的使用步骤：
+- 首先要引入 React 内置的 React Context API 📦
+- 然后创建 provider
+- 最后创建 consumer 使用hook可以不用创建consumer
+
+<br>
 
 # 多个 context 
 
