@@ -2,7 +2,7 @@
 
 <br><br>
 
-# 简述
+# 演变
 - Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props
 - 当Context Provider的value发生变化是，他的所有子级消费者都会rerender
 
@@ -76,28 +76,35 @@ function ThemedButton(props) {
 #### `Function Component`版本
 
 ```js
+const CurrentUserContext = React.createContext({ name: 'bty' });
+const NotificationsContext = React.createContext([]);
+
 function HeaderBar() {
   return (
-    <CurrentUser.Consumer>
-      {user =>
-        <Notifications.Consumer>
-          {notifications =>
+    <CurrentUserContext.Consumer>
+      {user => (
+        <NotificationsContext.Consumer>
+          {notifications => (
             <header>
               Welcome back, {user.name}!
               You have {notifications.length} notifications.
             </header>
-          }
-      }
-    </CurrentUser.Consumer>
+          )}
+        </NotificationsContext.Consumer>
+      )}
+    </CurrentUserContext.Consumer>
   );
 }
 ```
 
 #### `Function Component Hook`版本
 ```js
+const CurrentUserContext = React.createContext({ name: 'bty' });
+const NotificationsContext = React.createContext([]);
+
 function HeaderBar() {
-  const user = useContext(CurrentUser);
-  const notifications = useContext(Notifications);
+  const user = useContext('CurrentUserContext');
+  const notifications = useContext('NotificationsContext');
 
   return (
     <header>
