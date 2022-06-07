@@ -82,12 +82,11 @@ const NotificationsContext = React.createContext([]);
 function HeaderBar() {
   return (
     <CurrentUserContext.Consumer>
-      {user => (
+      {(user) => (
         <NotificationsContext.Consumer>
-          {notifications => (
+          {(notifications) => (
             <header>
-              Welcome back, {user.name}!
-              You have {notifications.length} notifications.
+              Welcome back, {user.name}! You have {notifications.length} notifications.
             </header>
           )}
         </NotificationsContext.Consumer>
