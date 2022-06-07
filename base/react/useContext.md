@@ -5,6 +5,7 @@ Context 提供了一种在组件之间共享此类值的方式，而不必显式
 
 useContext可以很方便的去订阅 context 的改变，并在合适的时候重新渲染组件。我们先来熟悉下标准的 context API 用法：
 
+`Class Component`
 ```js
 const ThemeContext = React.createContext('light');
 
@@ -34,5 +35,17 @@ class ThemedButton extends React.Component {
   render() {
     return <Button theme={this.context} />;
   }
+}
+```
+除了定义静态属性的方式，还有另外一种针对`Function Component`的订阅方式：
+
+```js
+function ThemedButton() {
+  // 通过定义 Consumer 来订阅
+  return (
+    <ThemeContext.Consumer>
+      {value => <Button theme={value} />}
+    </ThemeContext.Consumer>
+  );
 }
 ```
