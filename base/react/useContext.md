@@ -36,7 +36,7 @@ function Toolbar(props) {
 ```
 
 
-### `Class Component`版本
+#### `Class Component`版本
 ```js
 class ThemedButton extends React.Component {
   // 第三步：通过定义静态属性 contextType 来订阅；使用共享 Context
@@ -47,7 +47,7 @@ class ThemedButton extends React.Component {
   }
 }
 ```
-### `Function Component`版本
+#### `Function Component`版本
 ```js
 function ThemedButton() {
   // 第三步：使通过定义 Consumer 来订阅，使用共享 Context
@@ -58,7 +58,7 @@ function ThemedButton() {
   );
 }
 ```
-### `Function Component Hook`版本
+#### `Function Component Hook`版本
 ```js
 function ThemedButton(props) {
   // 第三步：使用共享 Context
@@ -73,7 +73,7 @@ function ThemedButton(props) {
 
 在需要订阅多个 `context` 的时候，就更能体现出`useContext`的优势。传统的实现方式：
 
-### `Function Component`版本
+#### `Function Component`版本
 
 ```js
 function HeaderBar() {
@@ -93,7 +93,7 @@ function HeaderBar() {
 }
 ```
 
-### `Function Component Hook`版本
+#### `Function Component Hook`版本
 ```js
 function HeaderBar() {
   const user = useContext(CurrentUser);
