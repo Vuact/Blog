@@ -62,7 +62,7 @@ function ThemedButton() {
 ```js
 function ThemedButton(props) {
   // 第三步：使用共享 Context
-  const theme = useContext('ThemeContext');
+  const theme = useContext(ThemeContext);
   render() {
     return <Button theme={theme} />;
   }
@@ -103,8 +103,8 @@ const CurrentUserContext = React.createContext({ name: 'bty' });
 const NotificationsContext = React.createContext([]);
 
 function HeaderBar() {
-  const user = useContext('CurrentUserContext');
-  const notifications = useContext('NotificationsContext');
+  const user = useContext(CurrentUserContext);
+  const notifications = useContext(NotificationsContext);
 
   return (
     <header>
