@@ -8,7 +8,8 @@
 
 下面我们来看看同一个例子的3个版本：
 
-`Class Component`版本
+
+公共代码
 ```js
 // 第一步：创建需要共享的context
 const ThemeContext = React.createContext('light');
@@ -32,7 +33,11 @@ function Toolbar(props) {
     </div>
   );
 }
+```
 
+
+### `Class Component`版本
+```js
 class ThemedButton extends React.Component {
   // 第三步：通过定义静态属性 contextType 来订阅；使用共享 Context
   static contextType = ThemeContext;
@@ -42,34 +47,10 @@ class ThemedButton extends React.Component {
   }
 }
 ```
-`Function Component`版本
-
+### `Function Component`版本
 ```js
-// 第一步：创建需要共享的context
-const ThemeContext = React.createContext('light');
-
-class App extends React.Component {
-  render() {
-    // 第二步：使用 Provider 提供 ThemeContext 的值，Provider所包含的子树都可以直接访问ThemeContext的值
-    return (
-      <ThemeContext.Provider value="dark">
-        <Toolbar />
-      </ThemeContext.Provider>
-    );
-  }
-}
-
-// 中间层组件
-function Toolbar(props) {
-  return (
-    <div>
-      <ThemedButton />
-    </div>
-  );
-}
-
 function ThemedButton() {
-  // 第二步：使通过定义 Consumer 来订阅，使用共享 Context
+  // 第三步：使通过定义 Consumer 来订阅，使用共享 Context
   return (
     <ThemeContext.Consumer>
       {value => <Button theme={value} />}
@@ -77,30 +58,8 @@ function ThemedButton() {
   );
 }
 ```
-`Function Component Hook`版本
+### `Function Component Hook`版本
 ```js
-// 第一步：创建需要共享的context
-const ThemeContext = React.createContext('light');
-
-class App extends React.Component {
-  render() {
-    // 第二步：使用 Provider 提供 ThemeContext 的值，Provider所包含的子树都可以直接访问ThemeContext的值
-    return (
-      <ThemeContext.Provider value="dark">
-        <Toolbar />
-      </ThemeContext.Provider>
-    );
-  }
-}
-// Toolbar 组件并不需要透传 ThemeContext
-function Toolbar(props) {
-  return (
-    <div>
-      <ThemedButton />
-    </div>
-  );
-}
-
 function ThemedButton(props) {
   // 第三步：使用共享 Context
   const theme = useContext('ThemeContext');
