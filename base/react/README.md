@@ -31,6 +31,7 @@
 - useEffect
 - useRef
 - useCallback
+- useReducer
 
 ### 待学习链接
 
