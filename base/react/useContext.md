@@ -2,7 +2,7 @@
 
 <br><br>
 
-简述
+# 简述
 - Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props
 - 当Context Provider的value发生变化是，他的所有子级消费者都会rerender
 
@@ -66,5 +66,44 @@ function ThemedButton(props) {
   render() {
     return <Button theme={theme} />;
   }
+}
+```
+
+# 多个 context 
+
+在需要订阅多个 `context` 的时候，就更能体现出`useContext`的优势。传统的实现方式：
+
+### `Function Component`版本
+
+```js
+function HeaderBar() {
+  return (
+    <CurrentUser.Consumer>
+      {user =>
+        <Notifications.Consumer>
+          {notifications =>
+            <header>
+              Welcome back, {user.name}!
+              You have {notifications.length} notifications.
+            </header>
+          }
+      }
+    </CurrentUser.Consumer>
+  );
+}
+```
+
+### `Function Component Hook`版本
+```js
+function HeaderBar() {
+  const user = useContext(CurrentUser);
+  const notifications = useContext(Notifications);
+
+  return (
+    <header>
+      Welcome back, {user.name}!
+      You have {notifications.length} notifications.
+    </header>
+  );
 }
 ```
