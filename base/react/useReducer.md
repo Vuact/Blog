@@ -6,9 +6,58 @@
 
 其中 reducer 是一个函数`(state, action) => newState`：接收当前应用的state和触发的动作action，计算并返回最新的state。
 
-
 ```js
-import React, {} from 'react';
+import React, { useReducer } from 'react';
+
+interface ReducerStateProps {
+  name: string;
+  age: number;
+}
+
+const personReducer = (state: ReducerStateProps, action: string) => {
+  switch (action) {
+    case 'increment':
+      return {
+        ...state,
+        age: state.age + 1,
+      };
+    case 'decrement':
+      return {
+        ...state,
+        age: state.age - 1,
+      };
+    case 'reset':
+      return {
+        ...state,
+        age: 12,
+      };
+    default:
+      return state;
+  }
+};
+
+function PersonAge() {
+  const [personObj, dispatch] = useReducer(personReducer, {
+    name: 'bty',
+    age: 12,
+  });
+
+  return (
+    <div>
+      <div>Hello, {personObj.name}</div>
+      <div>age: {personObj.age}</div>
+      <button key="increment" onClick={() => dispatch('increment')}>
+        Increment
+      </button>
+      <button key="decrement" onClick={() => dispatch('decrement')}>
+        Decrement
+      </button>
+      <button key="reset" onClick={() => dispatch('reset')}>
+        Reset
+      </button>
+    </div>
+  );
+}
 ```
 
 
