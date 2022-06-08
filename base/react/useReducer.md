@@ -14,8 +14,12 @@ interface ReducerStateProps {
   age: number;
 }
 
-const personReducer = (state: ReducerStateProps, action: string) => {
-  switch (action) {
+interface ReducerActionProps {
+  type: string;
+}
+
+const personReducer = (state: ReducerStateProps, action: ReducerActionProps) => {
+  switch (action.type) {
     case 'increment':
       return {
         ...state,
@@ -46,13 +50,13 @@ function PersonAge() {
     <div>
       <div>Hello, {personObj.name}</div>
       <div>age: {personObj.age}</div>
-      <button key="increment" onClick={() => dispatch('increment')}>
+      <button key="increment" onClick={() => dispatch({ type: 'increment' })}>
         Increment
       </button>
-      <button key="decrement" onClick={() => dispatch('decrement')}>
+      <button key="decrement" onClick={() => dispatch({ type: 'decrement' })}>
         Decrement
       </button>
-      <button key="reset" onClick={() => dispatch('reset')}>
+      <button key="reset" onClick={() => dispatch({ type: 'reset' })}>
         Reset
       </button>
     </div>
