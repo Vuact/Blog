@@ -17,24 +17,26 @@ interface ReducerStateProps {
 
 interface ReducerActionProps {
   type: string;
+  value: number;
 }
 
+// 步骤一：声明reducer函数
 const personReducer = (state: ReducerStateProps, action: ReducerActionProps) => {
   switch (action.type) {
     case 'increment':
       return {
         ...state,
-        age: state.age + 1,
+        age: state.age + action.value,
       };
     case 'decrement':
       return {
         ...state,
-        age: state.age - 1,
+        age: state.age - action.value,
       };
     case 'reset':
       return {
         ...state,
-        age: 12,
+        age: action.value,
       };
     default:
       return state;
@@ -42,22 +44,30 @@ const personReducer = (state: ReducerStateProps, action: ReducerActionProps) => 
 };
 
 function PersonAge() {
+  // 步骤二：使用useReducer
   const [personObj, dispatch] = useReducer(personReducer, {
     name: 'bty',
     age: 12,
   });
 
+  // 步骤三：调用dispatch
   return (
     <div>
       <div>Hello, {personObj.name}</div>
       <div>age: {personObj.age}</div>
-      <button key="increment" onClick={() => dispatch({ type: 'increment' })}>
-        Increment
+      <button key="increment" onClick={() => dispatch({ type: 'increment', value: 1 })}>
+        Increment 1
       </button>
-      <button key="decrement" onClick={() => dispatch({ type: 'decrement' })}>
-        Decrement
+      <button key="decrement" onClick={() => dispatch({ type: 'decrement', value: 1 })}>
+        Decrement 1
       </button>
-      <button key="reset" onClick={() => dispatch({ type: 'reset' })}>
+      <button key="increment5" onClick={() => dispatch({ type: 'increment', value: 5 })}>
+        Increment 5
+      </button>
+      <button key="decrement5" onClick={() => dispatch({ type: 'decrement', value: 5 })}>
+        Decrement 5
+      </button>
+      <button key="reset" onClick={() => dispatch({ type: 'reset', value: 12 })}>
         Reset
       </button>
     </div>
