@@ -6,7 +6,8 @@
 
 其中 reducer 是一个函数`(state, action) => newState`：接收当前应用的state和触发的动作action，计算并返回最新的state。
 
-```js
+来个🌰：
+```jsx
 import React, { useReducer } from 'react';
 
 interface ReducerStateProps {
