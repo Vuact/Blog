@@ -1,6 +1,6 @@
 - useReducer 用于复杂的状态管理
 - useContext 解决层级较深的组件内的通信
-- 用`Reducer`改变state数据，再用`Context`来传递state数据，从而实现了被包裹组件的状态管理
+- 用`Reducer`改变state数据，再用`Context`来传递`state`数据和`dispatch`操作，从而实现了被包裹组件的状态管理
 - useReducer + useContext：替代redux，来进行组件状态管理，无论层级深浅
 
 
@@ -106,7 +106,7 @@ export default OptionArea;
 
 核心组件。
 
-用`Reducer`改变state数据，再用`Context`来传递state数据，从而达到了 useContext+useReducer 替代redux的目的。
+用`Reducer`改变state数据，再用`Context`来传递`state`数据和`dispatch`操作，从而达到了 useContext+useReducer 替代redux的目的。
 
 ```js
 import React, { createContext, useReducer } from 'react';
