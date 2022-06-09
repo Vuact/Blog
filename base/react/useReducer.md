@@ -1,3 +1,5 @@
+# 一、简介
+
 `useState()` 用于管理简单状态。对于复杂的状态管理，可以使用 `useReducer()`。
 
 <br>
@@ -77,6 +79,22 @@ function PersonAge() {
 
 ![Jun-08-2022 22-39-21](https://user-images.githubusercontent.com/74364990/172645097-a985f901-0c6f-49c5-b566-cc30f3211c6b.gif)
 
+# 二、
+
+注意上面的例子都是返回一个`新的state object`：
+```js
+····
+
+switch (action.type) {
+  case 'increment':
+    return {
+      ...state,
+      age: state.age + action.value,
+    };
+    
+   ····
+}
+```
 
 https://juejin.cn/post/6844903854807482382#comment
 
