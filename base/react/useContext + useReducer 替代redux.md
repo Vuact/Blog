@@ -11,7 +11,7 @@
 ![Jun-09-2022 22-06-01](https://user-images.githubusercontent.com/74364990/172867025-b2ca137c-141d-499b-991d-c1bd47704b0d.gif)
 
 
-**index.js**
+### index.js
 ```js
 import React from "react";
 import ReactDOM from "react-dom";
@@ -34,7 +34,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
 
-**showArea.js**
+### showArea.js
 
 展示区组件，直接通过 `Context` 取reducer里的数据(themeObj)或操作函数(dispatch)
 
@@ -50,7 +50,7 @@ const ShowArea = (props) => {
 export default ShowArea;
 ```
 
-**optionArea.js**
+### optionArea.js
 
 操作区组件，直接通过 `Context` 取reducer里的数据(themeObj)或操作函数(dispatch)
 
@@ -98,7 +98,7 @@ const OptionArea = (props) => {
 export default OptionArea;
 ```
 
-**themeBox.js**
+### themeBox.js
 
 核心组件
 
