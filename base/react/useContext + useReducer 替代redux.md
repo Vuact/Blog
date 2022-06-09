@@ -12,6 +12,8 @@
 
 
 ### index.js
+主文件，通过核心组件`ThemeBox`的包裹, 来实现将所需的变量传递给 `ShowArea` 和 `OptionArea`
+
 ```js
 import React from "react";
 import ReactDOM from "react-dom";
