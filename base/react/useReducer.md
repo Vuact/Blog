@@ -79,7 +79,7 @@ function PersonAge() {
 
 ![Jun-08-2022 22-39-21](https://user-images.githubusercontent.com/74364990/172645097-a985f901-0c6f-49c5-b566-cc30f3211c6b.gif)
 
-# 二、
+# 二、返回一个新的state object
 
 注意上面的例子都是返回一个`新的state object`：
 ```js
@@ -119,6 +119,4 @@ function bookReducer(state, action) {
 
 对于这种复杂state的场景推荐使用`immer.js`等immutable库解决。
 
-https://juejin.cn/post/6844903854807482382#comment
-
-https://juejin.cn/post/6844903869437181960
+导读：[immer.js 实战讲解文档](https://segmentfault.com/a/1190000017270785)
