@@ -8,6 +8,9 @@
 
 实现一个换肤功能
 
+![Jun-09-2022 22-06-01](https://user-images.githubusercontent.com/74364990/172867025-b2ca137c-141d-499b-991d-c1bd47704b0d.gif)
+
+
 **index.js**
 ```js
 import React from "react";
@@ -32,6 +35,9 @@ ReactDOM.render(<App />, rootElement);
 ```
 
 **showArea.js**
+
+展示区组件，直接通过 `Context` 取reducer里的数据(themeObj)或操作函数(dispatch)
+
 ```js
 import React, { useContext } from 'react';
 import { ThemeBoxContext } from './themeBox';
@@ -45,6 +51,9 @@ export default ShowArea;
 ```
 
 **optionArea.js**
+
+操作区组件，直接通过 `Context` 取reducer里的数据(themeObj)或操作函数(dispatch)
+
 ```js
 import React, { useContext } from 'react';
 import { ThemeBoxContext, UPDATE_COLOR, UPDATE_BACKGROUND_COLOR } from './themeBox';
@@ -90,6 +99,9 @@ export default OptionArea;
 ```
 
 **themeBox.js**
+
+核心组件
+
 ```js
 import React, { createContext, useReducer } from 'react';
 
