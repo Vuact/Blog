@@ -95,6 +95,29 @@ switch (action.type) {
    ····
 }
 ```
+我们是使用ES6中的解构赋值方式去创建一个新对象，看上去很完美，但如果我们的state是多层嵌套，解构赋值实现就非常复杂：
+
+```js
+function bookReducer(state, action) {
+  switch(action.type) {
+    // 添加一本书
+    case 'addBook':
+      return {
+        ...state,
+        books: {
+            ...state.books,
+            [bookId]: book,
+        }
+      };
+    case 'sub':
+        // ....
+    default: 
+        return state;
+  }
+}
+```
+
+对于这种复杂state的场景推荐使用`immer.js`等immutable库解决。
 
 https://juejin.cn/post/6844903854807482382#comment
 
