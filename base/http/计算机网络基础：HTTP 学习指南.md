@@ -303,11 +303,20 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 
 长连接描述的是：如果对同ip、同端口的发起多个http事务连接，那么可以在前一个事务处理完成之后不要关闭tcp连接，以此来减小建立tcp、tcp慢启动所带来的时延。
 
+![image](https://user-images.githubusercontent.com/74364990/173563201-cebc6100-589e-45d4-a56e-ce419da6c931.png)
+
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0xYWU4Yzk1YWNiYjFiMzY0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
 
 ### 管道化连接
 
-HTTP/1.1允许在持久连接上可选地使用请求管道。这是在`keep-alive`连接上的进一步性能优化。在响应到达之前，可以将多条请求放入队列。当第一条请求通过网络流向地球另一端的服务器时，第二条和第三条请求也可以开始发送了。在高时延网络条件下，这样做可以降低网络的环回时间，提高性能。
+在`长连接的基础上`，HTTP1.1进一步地支持在持久连接上`使用管道化（pipelining）特性`，这是`相对于keep-alive连接的又一性能优化`。在相应到达之前，可以将多条请求放入队列，当第一条请求发往服务器的时候，第二第三条请求也可以开始发送了，不用等到第一条请求响应回来，在高延时网络条件下，这样做可以降低网络的环回时间，提高性能。
+
+
+**非管道化与管道化的区别示意：**
+
+![image](https://user-images.githubusercontent.com/74364990/173564080-fa6c7a7b-1226-49e7-97bc-2f4e9d074ac7.png)
+
+
 
 - 管道连接的限制
 	- 如果不是持久连接就不要使用管道连接
@@ -315,8 +324,6 @@ HTTP/1.1允许在持久连接上可选地使用请求管道。这是在`keep-ali
 	- 发送端应该做好数据没有发送完连接就关闭的准备并开始重新发送数据。
 	- HTTP客户端不应该用管道化的方式发送会产生副作用的请求（比如POST）。
 
-
-![image](https://user-images.githubusercontent.com/74364990/173563201-cebc6100-589e-45d4-a56e-ce419da6c931.png)
 
 
 <br>
