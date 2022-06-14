@@ -301,8 +301,9 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 
 ### 长连接
 
-长连接描述的是：如果对同ip、同端口的发起多个http事务连接，那么可以在前一个事务处理完成之后不要关闭tcp连接，以此来减小建立tcp、tcp慢启动所带来的时延。相关概念不再赘述！
+长连接描述的是：如果对同ip、同端口的发起多个http事务连接，那么可以在前一个事务处理完成之后不要关闭tcp连接，以此来减小建立tcp、tcp慢启动所带来的时延。
 
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0xYWU4Yzk1YWNiYjFiMzY0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
 
 ### 管道化连接
 
@@ -314,9 +315,10 @@ HTTP/1.1允许在持久连接上可选地使用请求管道。这是在`keep-ali
 	- 发送端应该做好数据没有发送完连接就关闭的准备并开始重新发送数据。
 	- HTTP客户端不应该用管道化的方式发送会产生副作用的请求（比如POST）。
 
+
+![image](https://user-images.githubusercontent.com/74364990/173563201-cebc6100-589e-45d4-a56e-ce419da6c931.png)
+
+
 <br>
 
-## 4、HTTP处理长连接的方式
-
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0xYWU4Yzk1YWNiYjFiMzY0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
 
