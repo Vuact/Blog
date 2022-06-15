@@ -178,6 +178,8 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 # 四、总结 和 缺陷
 
+## 1、总结
+
 对于强制缓存，服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行对比缓存策略。<br>
 对于对比缓存，将缓存信息中的Etag和Last-Modified通过请求发送给服务器，由服务器校验，返回304状态码时，浏览器直接使用缓存。
 
@@ -210,6 +212,8 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 （4）如果浏览器关闭tab。重新打开新tab，发起请求资源。步骤跟上述（3）类似，只不过在上述3.1中，左右资源除了XXX.html缓存（from disk cache）都从磁盘加载。
 
+<br>
+
 ### 这里再将上面过程简单概括下：
 1、先判断资源是否命中强缓存，命中则直接从disk里拿到资源；
 
@@ -223,9 +227,15 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 如果还不是很懂，请阅读这篇文章：[http缓存详解，http缓存推荐方案](https://www.cnblogs.com/echolun/p/9419517.html)
 
+
+### 涉及的请求头和响应头
+
+![image](https://user-images.githubusercontent.com/74364990/173895220-1d50d3d2-a1b1-477e-aa57-5f0dc359b6ba.png)
+
+
 <br>
 
-### 缺陷：
+## 2、缺陷
 
 我们已经可以精确的对比服务器文件与本地缓存文件差异，但其实上面方案的演变都存在一个较大缺陷： `max-age或Expires不过期，浏览器无法主动感知服务器文件变化。`
 
@@ -240,8 +250,6 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 `module/js/a-hash1.js`与`module/js/a-hash2.js`是两个完全不同的文件，假想浏览器第一次加载页面，请求并缓存了`module/js/a-hash1.js`，第二次加载，文件指向变成了`module/js/a-hash2.js`，浏览器会直接重新请求`a-hash2.js`，因为这就是两个完全不同的文件，哪里还有什么http缓存文件对比，通过这种做法，我们就可以从根本上解决过期时间没到浏览器无法主动请求服务器的问题。因此我们只需要在项目每次发布迭代将修改过的静态文件添加不同的MD5或hash标识就好啦。
 
 >注意，这里我们不缓存html文件，缓存的都是css、js文件（因为改变频率高）
-
-
 
 
 <br>
