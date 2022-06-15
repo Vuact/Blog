@@ -54,6 +54,7 @@ HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来�
 
 ![image](https://user-images.githubusercontent.com/74364990/109672213-c46e7a80-7baf-11eb-93b6-d17c05978920.png)
 
+## 1、Expires与Cache-Control
 
 ### Expires（作用基本忽略）
 
@@ -85,6 +86,7 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 图中Cache-Control仅指定了max-age，所以默认为private，缓存时间为31536000秒（365天）<br>
 也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。
 
+## 2、一些细节
 
 ### 请求头 与 响应头 的 Cache-Control 区别
 
@@ -95,6 +97,18 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 具体请务必详细阅读：
 [https://juejin.cn/post/7062150108590112804](https://juejin.cn/post/6960988505816186894)
+
+<br>
+
+### max-age和Expires的区别
+
+在用fiddler抓包的时候，发现不少网站同时设置了max-age和Expires，为毛要设置两个，功能不都差不多吗，两者区别是啥？
+
+- max-age是http1.1的属性，Expires是http1.0的属性，为了做到向下兼容，一般写两个。但如在1.1环境下，max-age优先级比Expires高。
+- max-age是相对过期时间，Expires是绝对过期时间。max-age在浏览器成功缓存文件后，只需相对请求成功之后的多长时间不再发起请求就好了，而Expires总是需要服务器返回一个精准的GMT格式的日期，并以这个日期为标准来判断缓存是否过期，相对就比较麻烦，所以才有了max-age这样的存在来代替它。
+
+同理，no-cache和 Pargma也是这样的存在，一个是1.1的属性，一个是1.0，向下兼容，同时写了两个。
+
 
 <br>
 
