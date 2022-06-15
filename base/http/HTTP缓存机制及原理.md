@@ -85,6 +85,17 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 图中Cache-Control仅指定了max-age，所以默认为private，缓存时间为31536000秒（365天）<br>
 也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。
 
+
+### 请求头 与 响应头 的 Cache-Control 区别
+
+`Response Header`与 `Request Header`里都有 `Cache-Control`，但实质是有区别的。
+
+- `Response Header`的 Cache-Control: 它是告诉浏览器当前这次是这样存储的。影响的是当前这一次请求。
+- `Request Header`的 Cache-Control: 它是告诉浏览器每次都是这样存储的。影响的是每一次请求。 
+
+具体请务必详细阅读：
+[https://juejin.cn/post/7062150108590112804](https://juejin.cn/post/6960988505816186894)
+
 <br>
 
 # 三、对比缓存
