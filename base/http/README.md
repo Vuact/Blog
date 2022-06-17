@@ -1,6 +1,7 @@
 # 阅读顺序
 
 - [计算机网络基础：HTTP 学习指南](https://github.com/Vuact/Blog/blob/main/base/http/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%EF%BC%9AHTTP%20%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97.md)
+- [HTTP1.0、1.1、2.0 的区别]()
 - [如何理解OSI七层模型](https://github.com/Vuact/Blog/blob/main/base/http/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B.md)
 - [图解HTTP：第三章 HTTP报文](https://github.com/woai30231/http/tree/master/%E7%AC%AC%E4%B8%89%E7%AB%A0%20HTTP%E6%8A%A5%E6%96%87)
 - [图解HTTP：第四章 连接管理](https://github.com/woai30231/http/tree/master/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86)
