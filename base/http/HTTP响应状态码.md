@@ -108,7 +108,7 @@ HTTP请求Proxy再到Origin Server过程：
 <img width="2463" alt="image" src="https://user-images.githubusercontent.com/74364990/173828718-df1d9afc-ffdd-477d-b3c8-1f2237b881f1.png">
 
 #### 必读
-
+- [当302遇到跨域请求](https://zhuanlan.zhihu.com/p/383548535)
 - [有关重定向的一些细节](https://blog.lishunyang.com/2020/06/redirect.html)
 - [http状态码301和302详解及区别——辛酸的探索之路](https://blog.csdn.net/grandPang/article/details/47448395)
 
