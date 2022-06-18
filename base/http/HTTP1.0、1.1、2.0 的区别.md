@@ -10,6 +10,17 @@
 
 # 二、HTTP1.1
 
+HTTP 1.1 新增：
+
+- 并行连接
+- 长连接
+- 管道化连接
+- 新增了一些请求头和响应头（If-Unmodified-Since, If-Match, If-None-Match、range等）
+- 新增了一些请求方法（put、delete、options）
+
+
+<br>
+
 ## 1、并行连接
 
 `HTTP 1.1`新增并行连接，即：通过多条TCP连接发起`并发的HTTP连接`。
@@ -34,13 +45,16 @@ HTTP 1.1中，默认支持长连接（`Connection: keep-alive`），即在一个
 
 >务必读完：[HTTP详解长短连接，管道化，队头阻塞及它们之间的关系](https://blog.csdn.net/fesfsefgs/article/details/108294050)
 
-
 **非管道化与管道化的区别示意：**
 
 ![image](https://user-images.githubusercontent.com/74364990/173564080-fa6c7a7b-1226-49e7-97bc-2f4e9d074ac7.png)
 
 
 <br>
+
+
+
+
 
 
 # 三、HTTP2.0
