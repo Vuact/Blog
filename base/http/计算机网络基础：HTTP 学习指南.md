@@ -251,108 +251,10 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 
 # 五、额外知识
 
-下面将讲解一些关于HTTP的额外知识：
 
-- `HTTP1.1` 与 `HTTP1.0` 的区别
 
-- `HTTP` 与 `HTTPS`的区别
-
-- `HTTP` 连接的处理
-
-- `HTTP` 处理长连接的方式
-
-## 1、HTTP1.1 与 HTTP1.0的区别
-
-`Http1.1` 比 `Http1.0` 多了以下优点：
-
-- 引入长连接，即 在同一个`TCP`的连接中可传送多个`HTTP`请求 & 响应
-
-- 多个请求 & 响应可同时进行、可重叠
-
-- 引入更加多的请求头 & 响应头
-
->如 与身份认证、状态管理 & `Cache`缓存等机制相关的、`HTTP1.0`无host字段
-
-<br>
-
-## 2、HTTP 与HTTPS的区别
+## HTTP 与HTTPS的区别
 
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MjBmOTU1YWZkNTcxODVmLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
 
-<br>
-
-## 3、HTTP连接的处理
-
-串行处理事务时延: 
-
-- 此种机制描述了http事务一个一个接着发起，不能同时下载更多的资源，使得界面上用户看不到东西，体验不够好。串行连接没有很好的利用tcp/ip连接的慢启动机制！
-
-- 优化方法主要有：
-	- 并行连接：通过多条TCP连接发起并发的HTTP连接
-	- 长连接：重用TCP连接，以消除连接及关闭时延
-	- 管道化连接：通过共享的TCP连接发起并发的HTTP请求
-
-<br>
-
-### 并行连接
-
-浏览同时发起多个http事务，因为是并行的，所以时延也并行的，这样总时延较小，页面呈现更快，体验较好。但也不是总是这样，因为如果在网络速度很慢的时候，多个连接会去竞争本来不多的带宽，那么就谈不上加快速度了。还有就是并行连接也是需要付出代价的，比如增加系统内训消耗、服务器负载，比如有一个100客户端同时对服务发起100tcp并行连接的话，那么服务器就得负责10000个处理请求，很快的你的服务器就会爆掉。当然了，并行连接确实能带来视觉上的速度提升，因为相比于串行连接慢慢地显示数据而并行一下子能全部显示完信息，视觉上并行连接会给人速度更快的感觉！
-
-
-### 长连接
-
-长连接描述的是：如果对同ip、同端口的发起多个http事务连接，那么可以在前一个事务处理完成之后不要关闭tcp连接，以此来减小建立tcp、tcp慢启动所带来的时延。也叫持久链接。
-
-![image](https://user-images.githubusercontent.com/74364990/173563201-cebc6100-589e-45d4-a56e-ce419da6c931.png)
-
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0xYWU4Yzk1YWNiYjFiMzY0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
-
-### 管道化连接
-
-在`长连接的基础上`，HTTP1.1进一步地支持在持久连接上`使用管道化（pipelining）特性`，这是`相对于keep-alive连接的又一性能优化`。在相应到达之前，可以将多条请求放入队列，当第一条请求发往服务器的时候，第二第三条请求也可以开始发送了，不用等到第一条请求响应回来，在高延时网络条件下，这样做可以降低网络的环回时间，提高性能。
-
->务必读完：[HTTP详解长短连接，管道化，队头阻塞及它们之间的关系](https://blog.csdn.net/fesfsefgs/article/details/108294050)
-
-
-**非管道化与管道化的区别示意：**
-
-![image](https://user-images.githubusercontent.com/74364990/173564080-fa6c7a7b-1226-49e7-97bc-2f4e9d074ac7.png)
-
-
-<br>
-
-## 4、http2中的多路复用和http1.1中的keep-alive有什么区别？
-
-![image](https://user-images.githubusercontent.com/74364990/173565509-34493d2e-d5e7-4153-ba96-3fc919cd8a5b.png)
-
-#### 共同点：
-
-都可以复用同一条TCP通道
-
-#### 不同点：
-
-**1、http1.1中的keep-alive**
-
-有顺序，有阻塞的请求
-
-① 请求 a.html<br>
-② 响应 a.html<br>
-③ 请求 b.css<br>
-④ 响应 b.css
-
-
-**2、https多路复用**
-
-并发请求，非阻塞的
-
-详细描述：
-
-keep-alive虽然可以复用同一条TCP通道，但必须等到服务端响应了前一次请求，才能发起第二次请求 -> 阻塞。 按顺序发送请求，按顺序接收请求，这样接收端才不会乱掉。从HTTP/1.1起，默认都开启了Keep-Alive，保持连接特性，简单地说，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接，Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间
-
-```
-Connection: Keep-Alive
-Keep-Alive: max=5, timeout=120
-```
-
-http2 的多路复用可以在一条TCP通道同时发送多个请求，不一定要按照顺序，非阻塞的，先响应先回来，响应式时也不用等上一个请求先响应，这些请求都有唯一标识，所以可以无序。
 
