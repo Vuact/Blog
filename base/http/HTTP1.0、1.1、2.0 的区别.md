@@ -18,13 +18,19 @@
 
 ## 2、长连接
 
-`HTTP 1.1`新增长连接（也叫`持久链接`），即：重用TCP连接，以消除连接及关闭时延。
+长连接，也叫`持久链接`。
+
+HTTP 1.1中，默认支持长连接（`Connection: keep-alive`），即在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟
 
 长连接描述的是：如果对`同ip、同端口`的发起多个http事务连接，那么可以在前一个事务处理完成之后不要关闭tcp连接，以此来减小建立tcp、tcp慢启动所带来的时延。
 
+![image](https://user-images.githubusercontent.com/74364990/174446055-b244c179-08bf-4fe0-a88f-267e34e252c3.png)
+
+![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0xYWU4Yzk1YWNiYjFiMzY0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
 ## 3、管道化连接
 
-在`长连接的基础上`，HTTP1.1进一步地支持在持久连接上`使用管道化（pipelining）特性`，这是`相对于keep-alive连接的又一性能优化`。在相应到达之前，可以将多条请求放入队列，当第一条请求发往服务器的时候，第二第三条请求也可以开始发送了，不用等到第一条请求响应回来，在高延时网络条件下，这样做可以降低网络的环回时间，提高性能。
+在`长连接的基础上`，`HTTP 1.1`进一步地支持在持久连接上`使用管道化（pipelining）特性`，这是`相对于keep-alive连接的又一性能优化`。在相应到达之前，可以将多条请求放入队列，当第一条请求发往服务器的时候，第二第三条请求也可以开始发送了，不用等到第一条请求响应回来，在高延时网络条件下，这样做可以降低网络的环回时间，提高性能。
 
 >务必读完：[HTTP详解长短连接，管道化，队头阻塞及它们之间的关系](https://blog.csdn.net/fesfsefgs/article/details/108294050)
 
