@@ -50,7 +50,8 @@ HTTP 1.1中，默认支持长连接（`Connection: keep-alive`），即在一个
 ![image](https://user-images.githubusercontent.com/74364990/173564080-fa6c7a7b-1226-49e7-97bc-2f4e9d074ac7.png)
 
 
-总结下：HTTP1.0的串行链接 与 
+#### 总结下：串行链接（HTTP1.0）、长链接（HTTP1.1）、管道化连接（HTTP1.1）
+
 ![image](https://user-images.githubusercontent.com/74364990/173563201-cebc6100-589e-45d4-a56e-ce419da6c931.png)
 
 <br>
