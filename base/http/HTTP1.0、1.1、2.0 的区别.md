@@ -50,11 +50,19 @@ HTTP 1.1中，默认支持长连接（`Connection: keep-alive`），即在一个
 ![image](https://user-images.githubusercontent.com/74364990/173564080-fa6c7a7b-1226-49e7-97bc-2f4e9d074ac7.png)
 
 
+总结下：HTTP1.0的串行链接 与 
+![image](https://user-images.githubusercontent.com/74364990/173563201-cebc6100-589e-45d4-a56e-ce419da6c931.png)
+
 <br>
 
 
-
-
-
-
 # 三、HTTP2.0
+
+而`HTTP 2.0`在相比之前版本，性能上有很大的提升，如添加了一个特性：
+
+- 多路复用
+- 二进制分帧
+- 首部压缩
+- 服务器推送
+
+
