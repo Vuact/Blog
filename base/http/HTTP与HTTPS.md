@@ -21,6 +21,8 @@ HTTP传输的数据并不是计算机底层中的二进制包，而是完整的�
 
 ![image](https://user-images.githubusercontent.com/74364990/174455143-86ee142d-59fa-4b1f-bfb3-8e6fbe24bd26.png)
 
+https://segmentfault.com/a/1190000023936425
+
 
 
 # HTTP 与HTTPS的区别
