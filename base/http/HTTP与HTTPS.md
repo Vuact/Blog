@@ -1,6 +1,4 @@
-# 简介
-
-## HTTP
+# 一、HTTP
 
 HTTP (HyperText Transfer Protocol)，即超文本运输协议，是实现网络通信的一种规范。
 
@@ -11,7 +9,7 @@ HTTP传输的数据并不是计算机底层中的二进制包，而是完整的�
 - 通信使用明文（不加密），内容可能被窃听
 - 不验证通信方的身份，因此有可能遭遇伪装
 
-## HTTPS
+# 二、HTTPS
 
 `HTTPS`的出现正是解决上面`HTTP`的那些问题，`HTTPS`是建立在`SSL`之上，其安全性由`SSL`来保证
 
@@ -25,6 +23,6 @@ https://segmentfault.com/a/1190000023936425
 
 
 
-# HTTP 与HTTPS的区别
+# 三、HTTP 与 HTTPS的区别
 
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MjBmOTU1YWZkNTcxODVmLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+![image](https://user-images.githubusercontent.com/74364990/174846397-f86ca6c8-cf54-474e-9c71-2b6319a1ad7a.png)
