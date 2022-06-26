@@ -72,9 +72,10 @@ HTTP 协议使用起来确实非常的方便，但是它存在一个致命的缺
 
 # 二、HTTPS
 
-`HTTPS`的出现正是解决上面`HTTP`的那些问题，`HTTPS`是建立在`SSL`之上，其安全性由`SSL`来保证
+`HTTPS`的出现正是解决上面`HTTP`的那些问题。
 
-在采用`SSL`后，`HTTP`就拥有了`HTTPS`的加密、证书和完整性保护这些功能。
+在HTTP的基础上再加一层TLS（传输层安全性协议）或者SSL（安全套接层），就构成了HTTPS协议。其安全性由`SSL`或`TLS`来保证。
+
 
 <image src="https://user-images.githubusercontent.com/74364990/174455143-86ee142d-59fa-4b1f-bfb3-8e6fbe24bd26.png" width="350px" height="200px"/>
 
