@@ -49,7 +49,7 @@ HTTP 协议使用起来确实非常的方便，但是它存在一个致命的缺
 
 <br>
 
-## 3、防止中间人攻击：对称加密 + 非对称加密
+## 3、防止中间人攻击：对称加密 + 非对称加密 （HTTPS采用这种方式）
 
 在约定加密方式的时候由服务器生成一对`公私钥`，服务器将`公钥`返回给客户端，客户端本地随机生成一串秘钥(`AES_KEY`)用于`对称加密`，并通过服务器发送的`公钥`进行加密得到(`AES_KEY_SECRET`)，之后返回给服务端，服务端通过`私钥`将客户端发送的`AES_KEY_SECRET`进行解密得到`AEK_KEY`,最后客户端和服务器通过`AEK_KEY`进行报文的加密通讯，改造如下：
 
@@ -78,16 +78,8 @@ HTTP 协议使用起来确实非常的方便，但是它存在一个致命的缺
 
 >SSL(Secure Sockets Layer 安全套接字协议),及其继任者传输层安全（Transport Layer Security，TLS）是为网络通信提供安全及数据完整性的一种安全协议
 
-![image](https://user-images.githubusercontent.com/74364990/174455143-86ee142d-59fa-4b1f-bfb3-8e6fbe24bd26.png)
 
-
-其实`SSL`协议大致就和上一节`非对称加密`的性质一样，握手的过程中主要也是为了交换秘钥，然后再通讯过程中使用`对称加密`进行通讯，大概流程如下：
-
-![image](https://user-images.githubusercontent.com/74364990/174849505-6c6a23ba-a75e-4597-a218-181576c0d7c5.png)
-
-这里我只是画了个示意图，其实真正的 SSL 握手会比这个复杂的多，但是性质还是差不多，而且我们这里需要关注的重点在于 HTTPS 是如何防止中间人攻击的。
-
-通过上图可以观察到，服务器是通过 SSL 证书来传递`公钥`，客户端会对 `SSL` 证书进行验证，其中证书认证体系就是确保SSL安全的关键
+<image src="https://user-images.githubusercontent.com/74364990/174455143-86ee142d-59fa-4b1f-bfb3-8e6fbe24bd26.png" width="350px" height="200px"/>
 
 
 
