@@ -89,7 +89,8 @@
 
 >注：空格不能省
 
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1lZTIzYjE1M2Y2ZDY1NGM2LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+<image src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1lZTIzYjE1M2Y2ZDY1NGM2LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" width="600px" height="100px"/>
+
 
 - 组成介绍
 
@@ -117,18 +118,17 @@
 
 **请求和响应报文的通用Header**
 
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yNTRlYjVhN2RiM2QzZmU1LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+<image src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yNTRlYjVhN2RiM2QzZmU1LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" width="500px" height="350px"/>
 
 
 **常见请求Header**
 
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yMmYxMDdhZmQwODM5YzFhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+<image src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yMmYxMDdhZmQwODM5YzFhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" width="590px" height="350px"/>
 
-- 举例：
 
-(URL地址：http://www.tsinghua.edu.cn/chn/yxsz/index.htm）<br>
-Host：www.tsinghua.edu.cn (表示主机域名）<br>
-User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
+举例：URL地址：http://www.tsinghua.edu.cn/chn/yxsz/index.htm 
+- Host：www.tsinghua.edu.cn (表示主机域名）
+- User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）
 
 <br>
 
@@ -186,7 +186,9 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 
 >其中，空格不能省
 
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MzRlM2ExYjMxNmYyNjVjLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+
+<image src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS04MzRlM2ExYjMxNmYyNjVjLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" width="600px" height="100px"/>
+
 
 - 具体介绍
 
@@ -208,11 +210,15 @@ User - Agent：Mozilla/5.0 (表示用户代理是使用Netscape浏览器）<br>
 
 **请求和响应报文的通用Header**
 
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yNTRlYjVhN2RiM2QzZmU1LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+<image src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS0yMmYxMDdhZmQwODM5YzFhLnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" width="590px" height="350px"/>
+
+
 
 **常见响应Header**
 
-![](https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1hOWYwYTIxMmM0ZWE3MmI5LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA)
+<image src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzk0NDM2NS1hOWYwYTIxMmM0ZWE3MmI5LnBuZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50L3N0cmlwJTdDaW1hZ2VWaWV3Mi8yL3cvMTI0MA" width="600px" height="350px"/>
+
+
 
 <br>
 
