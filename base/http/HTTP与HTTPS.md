@@ -154,8 +154,8 @@ HTTPS 默认工作在 TCP 协议443端口，它的工作流程一般如以下方
 - （4）SSL 安全加密隧道协商完成
 - （5）网页以加密的方式传输，用协商的对称加密算法和密钥加密，保证数据机密性；用协商的hash算法进行数据完整性保护，保证数据不被篡改。
 
-![image](https://user-images.githubusercontent.com/74364990/175811715-d71ea4b6-2301-4933-9f42-ef4c8a9561d5.png)
 
+<image src="https://user-images.githubusercontent.com/74364990/175811715-d71ea4b6-2301-4933-9f42-ef4c8a9561d5.png" width="370px" height="500px"/>
 
 - 客户端向服务端发送 `Client Hello` 消息，其中携带客户端支持的协议版本、加密算法、压缩算法以及客户端生成的随机数；
 - 服务端收到客户端支持的协议版本、加密算法等信息后；
