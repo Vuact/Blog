@@ -126,4 +126,7 @@ CONNECT 方法可以开启一个客户端与所请求资源之间的双向沟通
 
 ## GET 和 POST 的区别
 
+- GET是获取数据、POST是提交或创建数据
+- 
+
 参考：https://github.com/febobo/web-interview/issues/145
