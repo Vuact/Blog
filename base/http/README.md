@@ -20,9 +20,4 @@
 - [高性能网站建设](https://github.com/Vuact/Blog/blob/main/base/http/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE.md)
 
 
-- [图解HTTP：第三章 HTTP报文](https://github.com/woai30231/http/tree/master/%E7%AC%AC%E4%B8%89%E7%AB%A0%20HTTP%E6%8A%A5%E6%96%87)
-- [图解HTTP：第四章 连接管理](https://github.com/woai30231/http/tree/master/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86)
-
-
-
 
