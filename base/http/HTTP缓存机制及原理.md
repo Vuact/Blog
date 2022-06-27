@@ -86,6 +86,8 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 图中Cache-Control仅指定了max-age，所以默认为private，缓存时间为31536000秒（365天）<br>
 也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。
 
+若Cache-Control指定了 `max-age=0`,则强缓存失效，走对比缓存。
+
 ## 2、一些细节
 
 ### 请求头 与 响应头 的 Cache-Control 区别
