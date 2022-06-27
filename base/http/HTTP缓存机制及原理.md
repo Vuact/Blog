@@ -260,11 +260,11 @@ Cache-Control 是最重要的规则。常见的取值有private、public、no-ca
 
 2、不走两个缓存的操作：
 
-- 硬性重新加载、控制台 `勾选Disable cache后点刷新`
-会跳过缓存判断，发起真实的请求，从服务端拿资源。但本地的缓存资源(如disk里的缓存)并没有删除。
+- 硬性重新加载、控制台 `勾选Disable cache后点刷新`<br>
+以上操作会跳过缓存判断，发起真实的请求，从服务端拿资源。但本地的缓存资源(如disk里的缓存)并没有删除。
 这种方式会在Request Header里添加Cache-Control:no-cache和Pragma: no-cache
 
-- 清空缓存并硬性重新加载
+- 清空缓存并硬性重新加载<br>
 这种方式，相当于先删除缓存（如disk里的缓存），再执行硬性重新加载
 
 <br>
