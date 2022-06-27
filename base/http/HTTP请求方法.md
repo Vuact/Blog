@@ -2,6 +2,8 @@ HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD 方法。
 
 HTTP1.1 新增了六种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法。
 
+<br>
+
 # 一、请求方法
 
 ## HEAD 方法
@@ -107,4 +109,6 @@ Content-Length: 0
 
 CONNECT 方法可以开启一个客户端与所请求资源之间的双向沟通的通道。它可以用来创建隧道（tunnel）。
 
+<br>
 
+# 二、考点
