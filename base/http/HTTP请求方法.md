@@ -2,7 +2,9 @@ HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD 方法。
 
 HTTP1.1 新增了六种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法。
 
-# HEAD 方法
+# 一、请求方法
+
+## HEAD 方法
 
 与 GET 方法一样，都是向服务器发出指定资源的请求，只不过服务器将不传回资源的本文部分，只返回头部消息。
 它的好处在于，使用这个方法可以在不必传输全部内容的情况下，就可以获取其中“关于该资源的信息”，对资源的首部进行检查，比如：
@@ -18,7 +20,7 @@ HTTP1.1 新增了六种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和
 
 <br>
 
-# POST 方法
+## POST 方法
 
 POST 方法用于向指定资源提交数据，请求服务器进行处理（例如提交表单或者上传文件），数据被包含在请求本文中。
 
@@ -26,7 +28,7 @@ POST 请求可能会创建新的资源或修改现有资源，或二者皆有
 
 <br>
 
-# PUT 方法
+## PUT 方法
 
 PUT 方法用于将数据发送到服务器来创建/更新资源。
 
@@ -38,7 +40,7 @@ PUT 与 POST 方法的区别在于，PUT 方法是幂等的：调用一次与连
 
 <br>
 
-# DELETE 方法
+## DELETE 方法
 
 DELETE 方法就是请求服务器删除指定 URL 所对应的资源。但是，客户端无法保证删除操作一定会被执行，因为 HTTP 规范允许服务器在不通知客户端的情况下撤销请求。
 
@@ -52,7 +54,7 @@ DELETE 方法就是请求服务器删除指定 URL 所对应的资源。但是�
 
 <br>
 
-# TRACE 方法
+## TRACE 方法
 
 TRACE 方法实现沿通向目标资源的路径的消息“回环”（loop-back）测试 ，提供了一种实用的 debug 机制。
 
@@ -62,6 +64,47 @@ TRACE 方法实现沿通向目标资源的路径的消息“回环”（loop-bac
 
 <br>
 
-# PATCH 方法
+## PATCH 方法
 
-https://juejin.cn/post/6992146726500958239
+在HTTP协议中，请求方法 PATCH 用于对资源进行部分修改。
+
+在HTTP协议中， PUT 方法已经被用来表示对资源进行整体覆盖， 而 POST 方法则没有对标准的补丁格式的提供支持。不同于 PUT 方法，而与 POST 方法类似，PATCH 方法是非幂等的，这就意味着连续多个的相同请求会产生不同的效果。
+
+要判断一台服务器是否支持 PATCH  方法，那么就看它是否将其添加到了响应首部 Allow 或者 Access-Control-Allow-Methods （在跨域访问的场合，CORS）的方法列表中 。
+
+另外一个支持 PATCH 方法的隐含迹象是 Accept-Patch 首部的出现，这个首部明确了服务器端可以接受的补丁文件的格式。
+
+#### 响应
+
+204 状态码表示这是一个操作成功的响应，因为响应中不带有消息主体。
+
+<br>
+
+## OPTIONS 方法
+
+OPTIONS 方法用于获取目的资源所支持的通信选项。
+
+客户端可以对特定的 URL 使用 OPTIONS 方法，也可以对整站（通过将 URL 设置为“*”）使用该方法。
+
+若请求成功，则它会在 HTTP 头中包含一个名为 “Allow” 的头，值是所支持的方法，如 “GET, POST”。
+
+#### 使用示例
+
+可以使用 OPTIONS 方法对服务器发起请求，以检测服务器支持哪些 HTTP 方法，响应报文包含一个 Allow 首部字段，该字段的值表明了服务器支持的所有 HTTP 方法：
+
+```js
+HTTP/1.1 200 OK
+Allow: OPTIONS, GET, HEAD, POST
+Cache-Control: max-age=604800
+Date: Thu, 13 Oct 2016 11:45:00 GMT
+Expires: Thu, 20 Oct 2016 11:45:00 GMT
+Server: EOS (lax004/2813)
+x-ec-custom-error: 1
+Content-Length: 0
+```
+
+## CONNECT 方法
+
+CONNECT 方法可以开启一个客户端与所请求资源之间的双向沟通的通道。它可以用来创建隧道（tunnel）。
+
+
