@@ -129,6 +129,8 @@ HTTP请求Proxy再到Origin Server过程：
 
 应用场景：协商缓存，告诉客户端有缓存，直接使用缓存中的数据，返回页面的只有头部信息，是没有内容部分
 
+涉及请求头：If-Match,If-Modified-Since，If-None-March，If-Range，If-Unmodified-Since等
+
 简介：https://juejin.cn/post/6844903512946507790
 
 与 协商缓存 相关，具体请参见：https://github.com/Vuact/Blog/blob/main/base/http/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%8E%9F%E7%90%86.md
@@ -199,7 +201,10 @@ HTTP请求Proxy再到Origin Server过程：
 
 服务器目前无法使用（由于超载或停机维护）
 
+如果事先得知服务器恢复正常的时间，最好写入Retry-After首部字段再返回给客户端。
+
 应用场景：服务器停机维护时，主动用503响应请求或 nginx 设置限速，超过限速，会返回503
+
 
 ## 504 Gateway Timeout（网关超时）
 
