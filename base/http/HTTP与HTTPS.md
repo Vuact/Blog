@@ -144,6 +144,8 @@ Alice 向 Bob 发送消息时，是通过 Bob 提供的公钥加密后的数据�
 
 至此，一套比较完善的数据传输方案就完成了。HTTPS（SSL/TLS）就是在这样一套流程基础之上建立起来的。
 
+**这有个更生动形象的举例，一定要看：https://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html**
+
 
 ## 4、完整流程
 HTTPS 默认工作在 TCP 协议443端口，它的工作流程一般如以下方式：
