@@ -6,6 +6,7 @@
 - [HTTP缓存机制及原理](https://github.com/Vuact/Blog/blob/main/base/http/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%8E%9F%E7%90%86.md)
 - [HTTP缓存位置](https://github.com/Vuact/Blog/blob/main/base/http/HTTP%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE.md) 
 - [HTTP响应状态码](https://github.com/Vuact/Blog/blob/main/base/http/HTTP%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81.md)
+- [HTTP请求方法](https://github.com/Vuact/Blog/blob/main/base/http/HTTP%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.md)
 - [HTTP与HTTPS](https://github.com/Vuact/Blog/blob/main/base/http/HTTP%E4%B8%8EHTTPS.md)
 - [DNS原理](https://github.com/Vuact/Blog/blob/main/base/http/DNS%E5%8E%9F%E7%90%86.md)
 - [CDN原理](https://github.com/Vuact/Blog/blob/main/base/http/CDN%E5%8E%9F%E7%90%86.md)
