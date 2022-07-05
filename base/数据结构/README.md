@@ -55,7 +55,7 @@
 - [什么是图](http://data.biancheng.net/view/200.html)
 - [连通图](http://data.biancheng.net/view/201.html)
 - [生成树](http://data.biancheng.net/view/202.html)
-- [图：顺序存储结构](http://data.biancheng.net/view/37.html)
+- [图：顺序存储结构(邻接矩阵)](http://data.biancheng.net/view/37.html)
 - [图：链表存储结构(邻接表法)](http://data.biancheng.net/view/203.html)
 - [图：链表存储结构(十字链表法)](http://data.biancheng.net/view/204.html)
 - [图：链表存储结构(邻接多重表)](http://data.biancheng.net/view/205.html)
