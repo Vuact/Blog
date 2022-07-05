@@ -59,5 +59,5 @@
 - [图：链表存储结构(十字链表法)](http://data.biancheng.net/view/204.html)
 - [图：链表存储结构(邻接多重表)](http://data.biancheng.net/view/205.html)
 - [图：深度优先搜索 与 广度优先搜索](http://data.biancheng.net/view/39.html)
-- [生成树](http://data.biancheng.net/view/202.html)
+- [什么是生成树](http://data.biancheng.net/view/202.html)
 - [深度优先生成树 与 广度优先生成树](http://data.biancheng.net/view/45.html)
