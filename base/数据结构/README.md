@@ -15,3 +15,5 @@
 - [串：定长顺序存储](http://data.biancheng.net/view/176.html)
 - [串：堆分配存储](http://data.biancheng.net/view/177.html)
 - [串：块链存储](http://data.biancheng.net/view/178.html)
+- [字符串匹配：BF算法](http://data.biancheng.net/view/179.html)
+- [字符串匹配：KMP算法](https://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)
