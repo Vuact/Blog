@@ -46,4 +46,4 @@
 - [普通树：双亲表示法](http://data.biancheng.net/view/196.html)
 - [普通树：孩子表示法](http://data.biancheng.net/view/197.html)
 - [普通树：孩子兄弟表示法](http://data.biancheng.net/view/198.html)
-- [森林转化为二叉树]()
+- [森林与二叉树的转化](https://blog.csdn.net/linraise/article/details/11745559)
