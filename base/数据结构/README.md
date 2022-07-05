@@ -7,6 +7,7 @@
 - [顺序表 与 链表：使用场景](http://data.biancheng.net/view/162.html)
 - [静态链表](http://data.biancheng.net/view/163.html)
 - [静态链表基本操作](http://data.biancheng.net/view/164.html)
+- [静态链表和动态链表](http://data.biancheng.net/view/165.html)
 
 ### 队列
 - [什么是队列](http://data.biancheng.net/view/172.html)
