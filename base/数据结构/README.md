@@ -68,7 +68,7 @@
 - [二分查找法](http://data.biancheng.net/view/55.html)
 - [二叉查找树(二叉排序树)](http://data.biancheng.net/view/58.html)
 - [平衡二叉树](http://data.biancheng.net/view/59.html)
-- [B-树](https://blog.csdn.net/sinat_36118365/article/details/103648782)
+- [B树](https://blog.csdn.net/sinat_36118365/article/details/103648782)
 - [B+树](https://zhuanlan.zhihu.com/p/54102723)
 - [什么是HashMap](https://zhuanlan.zhihu.com/p/31610616)、[哈希表及冲突处理](http://data.biancheng.net/view/63.html)
 
