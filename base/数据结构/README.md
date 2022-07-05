@@ -43,6 +43,7 @@
 - [二叉树：顺序存储结构](http://data.biancheng.net/view/193.html)
 - [二叉树：链式存储结构](http://data.biancheng.net/view/194.html)
 - [二叉树：4种遍历算法](http://data.biancheng.net/view/195.html)
+- [线索二叉树](http://data.biancheng.net/view/28.html)、[轻松搞定线索二叉树](https://zhuanlan.zhihu.com/p/134184036)
 - [普通树：双亲表示法](http://data.biancheng.net/view/196.html)
 - [普通树：孩子表示法](http://data.biancheng.net/view/197.html)
 - [普通树：孩子兄弟表示法](http://data.biancheng.net/view/198.html)
