@@ -1,5 +1,10 @@
 - [时间复杂度与空间复杂度](https://zhuanlan.zhihu.com/p/50479555)
 
+### 线性表
+- [什么是线性表](http://data.biancheng.net/view/157.html)
+- [顺序表](http://data.biancheng.net/view/159.html)
+- [链表](http://data.biancheng.net/view/161.html)
+
 ### 队列
 - [什么是队列](http://data.biancheng.net/view/172.html)
 - [顺序队列与循环队列](http://data.biancheng.net/view/173.html)
