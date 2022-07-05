@@ -67,3 +67,4 @@
 ### 查找
 - [二分查找法](http://data.biancheng.net/view/55.html)
 - [二叉查找树(二叉排序树)](http://data.biancheng.net/view/58.html)
+- [平衡二叉树](http://data.biancheng.net/view/59.html)
