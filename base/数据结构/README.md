@@ -9,3 +9,9 @@
 - [什么是栈](http://data.biancheng.net/view/169.html)
 - [顺序栈](http://data.biancheng.net/view/170.html)
 - [链式栈](http://data.biancheng.net/view/171.html)
+
+### 串
+- [什么是串](http://data.biancheng.net/view/175.html)
+- [串：定长顺序存储](http://data.biancheng.net/view/176.html)
+- [串：堆分配存储](http://data.biancheng.net/view/177.html)
+- [串：块链存储](http://data.biancheng.net/view/178.html)
