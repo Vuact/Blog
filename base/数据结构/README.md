@@ -3,6 +3,7 @@
 ### 栈
 - [什么是栈](http://data.biancheng.net/view/169.html)
 - [顺序栈](http://data.biancheng.net/view/170.html)
+- [链式栈](http://data.biancheng.net/view/171.html)
 
 ### 队列
 - [什么是队列](http://data.biancheng.net/view/172.html)
