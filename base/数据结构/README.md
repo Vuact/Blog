@@ -18,6 +18,7 @@
 - [静态链表](http://data.biancheng.net/view/163.html)
 - [静态链表基本操作](http://data.biancheng.net/view/164.html)
 - [静态链表和动态链表](http://data.biancheng.net/view/165.html)
+- [循环链表](http://data.biancheng.net/view/7.html)
 - [双向链表](http://data.biancheng.net/view/166.html)
 - [双向链表基本操作](http://data.biancheng.net/view/167.html)
 
