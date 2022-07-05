@@ -47,3 +47,4 @@
 - [普通树：孩子表示法](http://data.biancheng.net/view/197.html)
 - [普通树：孩子兄弟表示法](http://data.biancheng.net/view/198.html)
 - [森林与二叉树的转化](https://blog.csdn.net/linraise/article/details/11745559)
+- [最优二叉树(哈夫曼树)](http://data.biancheng.net/view/33.html)
