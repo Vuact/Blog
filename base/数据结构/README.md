@@ -61,3 +61,5 @@
 - [图：深度优先搜索 与 广度优先搜索](http://data.biancheng.net/view/39.html)
 - [什么是生成树](http://data.biancheng.net/view/202.html)
 - [深度优先生成树 与 广度优先生成树](http://data.biancheng.net/view/45.html)
+- [求最小生成树：Prim算法](http://data.biancheng.net/view/40.html)
+- [求最小生成树：Kruskal算法](http://data.biancheng.net/view/41.html)
