@@ -4,6 +4,7 @@
 - [什么是线性表](http://data.biancheng.net/view/157.html)
 - [顺序表](http://data.biancheng.net/view/159.html)
 - [链表](http://data.biancheng.net/view/161.html)
+- [顺序表和链表的比较](http://data.biancheng.net/view/162.html)
 - [静态链表](http://data.biancheng.net/view/163.html)
 - [静态链表基本操作](http://data.biancheng.net/view/164.html)
 
