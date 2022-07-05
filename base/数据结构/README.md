@@ -63,3 +63,7 @@
 - [深度优先生成树 与 广度优先生成树](http://data.biancheng.net/view/45.html)
 - [求最小生成树：普里姆(Prim)算法](http://data.biancheng.net/view/40.html)
 - [求最小生成树：克鲁斯卡尔(Kruskal)算法](http://data.biancheng.net/view/41.html)
+
+### 查找
+- [二分查找法](http://data.biancheng.net/view/55.html)
+- [二叉查找树(二叉排序树)](http://data.biancheng.net/view/58.html)
