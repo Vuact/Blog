@@ -32,3 +32,6 @@
 
 ### 数组和广义表
 - [什么是数组](http://data.biancheng.net/view/181.html)
+- [什么是广义表](http://data.biancheng.net/view/189.html)
+- [广义表的存储结构](http://data.biancheng.net/view/190.html)
+- [广义表的深度和长度](http://data.biancheng.net/view/191.html)
