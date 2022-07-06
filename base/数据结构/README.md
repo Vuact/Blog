@@ -67,7 +67,7 @@
 ### 查找
 - [二分查找法](http://data.biancheng.net/view/55.html)
 - [二叉查找树(二叉排序树)](http://data.biancheng.net/view/58.html)
-- [平衡二叉树](http://data.biancheng.net/view/59.html)
+- [平衡二叉树(AVL树)](http://data.biancheng.net/view/59.html)
 - [红黑树](https://zhuanlan.zhihu.com/p/31805309)
 - [B树](https://blog.csdn.net/sinat_36118365/article/details/103648782)
 - [B+树](https://zhuanlan.zhihu.com/p/54102723)
