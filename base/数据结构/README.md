@@ -75,8 +75,8 @@
 
 ### 排序
 - [冒泡排序](http://data.biancheng.net/view/70.html)、[优化冒泡排序](https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653194666&idx=1&sn=69ce32870c0b981c40b1e124fbb6bba8&chksm=8c99fb70bbee72668cad223892ad362525d215e7f936458f99dd289eb82981099359310e9e54&scene=21#wechat_redirect)
+- [选择排序]([http://data.biancheng.net/view/72.html](https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653198991&idx=1&sn=7f98d59898a911e1425baa6cc180c598&chksm=8c99e855bbee61439086680ceefef33c56038c5d552ae64c1d6135abe467b617aa62f4934f36&scene=21#wechat_redirect))
 - [插入排序](http://data.biancheng.net/view/65.html)、[优化插入排序](https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653199343&idx=1&sn=a5491fa908e45e6117423d9ba5062611&chksm=8c99e935bbee60232aacb7c2b74961a24e7b86d44bf98357c597ad277a8eb15639c1de7034d9&scene=21#wechat_redirect)
-- [选择排序](http://data.biancheng.net/view/72.html)
 - [“排序算法” 大总结](https://zhuanlan.zhihu.com/p/99273811)
 
 > 漫画图解：[程序员小灰](https://www.zhihu.com/people/xiao-hui-68-47/posts?page=11)
