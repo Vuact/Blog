@@ -75,5 +75,6 @@
 
 ### 排序
 - [插入排序](http://data.biancheng.net/view/65.html)
+- [选择排序](http://data.biancheng.net/view/72.html)
 
 > 漫画图解：[程序员小灰](https://www.zhihu.com/people/xiao-hui-68-47/posts?page=11)
