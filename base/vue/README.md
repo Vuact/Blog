@@ -1,5 +1,6 @@
 # Vue
-- 异步组件Dome.md
+- 异步组件Dome
+- 自定义指令
 
 
 #  Vuex快速使用
