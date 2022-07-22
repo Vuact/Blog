@@ -10,6 +10,9 @@ git reset --soft HEAD^
 
 # 撤回到 git commit + git add 前的状态
 git reset HEAD^
+
+# 撤回到 git commit + git add + 文件修改 前的状态
+git reset --hard
 ```
 
 实际，上面的操作涉及到了git reset的三种模式：soft、mixed、hard
