@@ -112,7 +112,7 @@
 |/search_text|检索文档，在文档后面的部分搜索 search_text|
 |n|移动到后一个检索结果|
 |N|移动到前一个检索结果|
-|dd|删除一整行|
+|dd|Esc退出编辑后，dd删除一整行|
 
 [learn more >>](https://linux.cn/article-8144-1.html)
 
