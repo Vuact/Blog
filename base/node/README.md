@@ -3,6 +3,7 @@
 ## Node.js
 
 - 配置开发环境
+- nvm切换node默认版本失败
 - hello, node
 - require\module\exports
 - Node实战: HTTP缓存
