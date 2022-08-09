@@ -1,5 +1,5 @@
 # 问题
-本地装了nvm，nvm的default版本为14.15.0，但每次打开新终端窗口，仍是旧的node版本v8.9.0。
+终端bash，本地装了nvm，nvm的default版本为14.15.0，但每次打开新终端窗口，仍是旧的node版本v8.9.0。
 
 <img width="264" alt="image" src="https://user-images.githubusercontent.com/74364990/183333577-b141daa5-3460-4e07-8702-e3505bbc7ee9.png">
 
