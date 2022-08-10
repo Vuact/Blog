@@ -48,4 +48,5 @@
 
 - js使用小技巧
 - 前端模块化：AMD, CMD, CommonJS, ES6 Module
+- [JS代码注释](http://itmyhome.com/js/lei_xing_ding_yi.html)
 
