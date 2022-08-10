@@ -1,4 +1,7 @@
 
+常见顺序：
+name > components > mixins/provide/inject > props > data > computed > watch > beforeCreate > created > beforeMount > mounted > beforeUpdate > update > beforeDestroy > destroy > methods
+
 ```js
 <template>
   <div></div>
