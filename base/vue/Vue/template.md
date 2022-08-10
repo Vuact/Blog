@@ -1,6 +1,8 @@
 
 常见顺序：
-name > components > mixins/provide/inject > props > data > computed > watch > beforeCreate > created > beforeMount > mounted > beforeUpdate > update > beforeDestroy > destroy > methods
+el > name > parent > components > directives > filters > mixins/provide/inject > inheritAttrs > props > data > computed > watch > beforeCreate > created > beforeMount > mounted > beforeUpdate > updated > activated > deactivated > beforeDestroy > destroy > methods
+
+具体规则见：https://v2.vuejs.org/v2/style-guide/?redirect=true#Component-instance-options-order-recommended
 
 ```js
 <template>
@@ -12,6 +14,10 @@ import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 
 export default {
   name: "template name",
+  components: {
+    "ui-load-state": () => import("../../components/UI/ui-load-state"),
+  },
+  filters: {},
   inheritAttrs: false,
   props: {
     my_txt: {
@@ -34,22 +40,6 @@ export default {
     	user: {age: 123}
     };
   },
-  components: {
-     "ui-load-state": () => import("../../components/UI/ui-load-state"),
-  },
-  beforeCreate() {},
-  created() {},
-  beforeMount() {},
-  mounted() {},
-  filters: {},
-  watch: {
-     a(val, oldVal) {},
-     b: {
-        handler(val, oldVal) {},
-	deep: true,
-     },
-     "user.age": function(val, oldVal) {}
-  },
   computed: {
      ...mapState({
      	my_a: "a",
@@ -61,6 +51,24 @@ export default {
      	do_thing: "doThing"
      })
   },
+  watch: {
+     a(val, oldVal) {},
+     b: {
+        handler(val, oldVal) {},
+	deep: true,
+     },
+     "user.age": function(val, oldVal) {}
+  },
+  beforeCreate() {},
+  created() {},
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  activated() {},
+  deactivated() {},
+  beforeDestroy() {},
+  destroyed() {},
   methods: {
      ...mapActions("moduleB", {
         doB: "funB",
@@ -78,12 +86,6 @@ export default {
 	}
      }),
   },
-  beforeUpdate() {},
-  updated() {},
-  activated() {},
-  deactivated() {},
-  beforeDestroy() {},
-  destroyed() {},
 };
 </script>
 ```
