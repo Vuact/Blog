@@ -1,8 +1,13 @@
 
 常见顺序：
-el > name > parent > components > directives > filters > mixins/provide/inject > inheritAttrs > props > data > computed > watch > beforeCreate > created > beforeMount > mounted > beforeUpdate > updated > activated > deactivated > beforeDestroy > destroy > methods
+```
+el > name > parent > components > directives > filters > mixins/provide/inject > inheritAttrs 
+> props > data > computed > watch > beforeCreate > created > beforeMount > mounted 
+> beforeUpdate > updated > activated > deactivated > beforeDestroy > destroy > methods
+```
 
-具体规则见：https://v2.vuejs.org/v2/style-guide/?redirect=true#Component-instance-options-order-recommended
+- 具体规则见：https://v2.vuejs.org/v2/style-guide/?redirect=true#Component-instance-options-order-recommended
+- 规则配置见：https://eslint.vuejs.org/rules/order-in-components.html
 
 ```js
 <template>
