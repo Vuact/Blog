@@ -1,4 +1,7 @@
 ```shell
+# 更新某表中的某字段：将test表中，id等于123的项中的a字段值改为XX
+UPDATE `test` SET a="XX" where id=123;
+
 # 将Address表的test字段，长度改为500
 ALTER TABLE `Address` MODIFY COLUMN `test` VARCHAR(500);
 
