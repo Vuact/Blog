@@ -184,3 +184,5 @@ function promiseAll(iterable) {
   });
 }
 ```
+> 细节：<br>
+> Promise中的resolve、reject需要加return：https://juejin.cn/post/7054780299225333774
