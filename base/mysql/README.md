@@ -76,4 +76,14 @@ UPDATE table_name SET col1=value1, col2=value2, ... WHERE condition;
 UPDATE `test` SET a="XX" where id=123;
 ```
 
+### 删除表
+```mysql
+DROP TABLE table_name;
+```
 
+### 删除数据
+```mysql
+DELETE FROM table_name WHERE condition;  # 删除满足条件的数据
+
+ALTER TABLE table_name DROP col_name;  # 删除col_name字段
+```
