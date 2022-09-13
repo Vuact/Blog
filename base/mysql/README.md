@@ -40,9 +40,7 @@ ALTER TABLE table_name MODIFY col_name datatype AFTER another_col_name; # 把一
 ```
 
 #### 修改UNIQUE KEY约束
-分两步：
-- ① 清除原先的unique约束 
-- ② 添加新的unique约束
+分两步：① 清除原先的unique约束  ② 添加新的unique约束
 
 ```mysql
 ALTER TABLE table_name DROP INDEX uk_name;  # un_name是要清除的unique约束的名字
