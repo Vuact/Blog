@@ -59,7 +59,7 @@ Promise.all([p1, p2, p3])
 ```js
 function promiseAll(promises) {
   const promiseNum = promises.length;
-  const resolvedArr = new Array(promiseNum);
+  const resolvedArr = [];
 
   let resolvedNum = 0;
 
@@ -90,7 +90,7 @@ Promise.all 的参数是一个可迭代对象，如 Array 、 String、Map、Set
 function promiseAll(iterable) {
   const promises = Array.from(iterable);
   const promiseNum = promises.length;
-  const resolvedArr = new Array(promiseNum);
+  const resolvedArr = [];
 
   let resolvedNum = 0;
 
