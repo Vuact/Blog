@@ -190,3 +190,21 @@ function promiseAll(iterable) {
   });
 }
 ```
+
+# 三、延伸：Promise.race的实现
+
+```js
+const p = Promise.race([p1, p2, p3]);
+```
+只要 p1、p2、p3 之中有一个实例率先改变状态，p 的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给 p 的回调函数。
+
+仿照 Promise.all，可以实现:
+```js
+function promiseRace(iterable) {
+	return new Promise((resolve, reject) => {
+		Array.from(iterable).forEach(item => {
+			Promise.resolve(item).then(resolve, reject);
+		});
+	});
+}
+```
