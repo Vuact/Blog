@@ -10,13 +10,14 @@ const p2 = Promise.resolve(2);
 const p3 = Promise.resolve(3);
 
 Promise.all([p1, p2, p3]).then((results) => {
-  console.log(results); // [1, 2, 3]
+  console.log('success then', results); // success then [1, 2, 3]
 });
 ```
 
 ### 2、有任意一个为reject，调用`fail.then` 或 `catch`语句
 
-有任意一个为reject，且无`fail.then`时：调用`catch`语句
+（1）有任意一个为reject，且无`fail.then`时：调用`catch`语句
+
 ```js
 const p1 = Promise.resolve(1);
 const p2 = Promise.reject(2);
@@ -33,7 +34,7 @@ Promise.all([p1, p2, p3])
   });
 ```
 
-有任意一个为reject，且有`fail.then`时：调用`fail.then`语句，但不执行`catch`语句
+（2）有任意一个为reject，且有`fail.then`时：调用`fail.then`语句，但不执行`catch`语句
 ```js
 Promise.all([p1, p2, p3])
   .then(
@@ -52,9 +53,62 @@ Promise.all([p1, p2, p3])
   });
 ```
 
-### 3、总结 promise.all 的特点
+# 二、实现 Promise.all 方法
 
-- 1、接收一个 Promise 实例的数组或具有 Iterator 接口的对象，
-- 2、如果元素不是 Promise 对象，则使用 Promise.resolve 转成 Promise 对象
-- 3、全部变为resolve，调用`.then`
-- 4、只要有一个失败，状态就变为 rejected，返回值将直接传递给回调all() 的返回值也是新的 Promise 对象
+### 1、第一版
+```js
+function promiseAll(promises) {
+  const promiseNum = promises.length;
+  const resolvedArr = new Array(promiseNum);
+
+  let resolvedNum = 0;
+
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promiseNum; i++) {
+      Promise.resolve(promises[i])
+        .then((value) => {
+          resolvedNum++;
+          resolvedArr[i] = value;
+
+          if (resolvedNum == promiseNum) {
+            return resolve(resolvedArr);
+          }
+        })
+        .catch((reason) => {
+          return reject(reason);
+        });
+    }
+  });
+}
+```
+
+### 二、第二版
+
+Promise.all 的参数是一个可迭代对象，如 Array 、 String、Map、Set、包含length属性的对象等，所以应该兼容一下参数。
+
+```js
+function promiseAll(iterable) {
+  const promises = Array.from(iterable);
+  const promiseNum = promises.length;
+  const resolvedArr = new Array(promiseNum);
+
+  let resolvedNum = 0;
+
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promiseNum; i++) {
+      Promise.resolve(promises[i])
+        .then((value) => {
+          resolvedNum++;
+          resolvedArr[i] = value;
+
+          if (resolvedNum == promiseNum) {
+            return resolve(resolvedArr);
+          }
+        })
+        .catch((reason) => {
+          return reject(reason);
+        });
+    }
+  });
+}
+```
