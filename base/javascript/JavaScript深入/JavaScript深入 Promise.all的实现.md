@@ -9,7 +9,7 @@
 
 <br>
 
-### 1、p1,p2,p3 都变成`fullfilled`，生成的 p 也会变成`fullfilled`状态：将调用`success.then`
+### 1、p1,p2,p3 都变成`fullfilled`，生成的 p 也会变成`fullfilled`状态：将调用`success callback`
 
 ```js
 const p1 = Promise.resolve(1);
@@ -17,13 +17,13 @@ const p2 = Promise.resolve(2);
 const p3 = Promise.resolve(3);
 
 Promise.all([p1, p2, p3]).then((results) => {
-  console.log('success then', results); // success then [1, 2, 3]
+  console.log('success callback', results); // success callback [1, 2, 3]
 });
 ```
 
-### 2、p1,p2,p3 有任意一个变成`rejected`，生成的 p 也会变成`rejected`状态：将调用`fail.then` 或 `catch`语句
+### 2、p1,p2,p3 有任意一个变成`rejected`，生成的 p 也会变成`rejected`状态：将调用`fail callback` 或 `catch`语句
 
-（1）有任意一个为reject，且无`fail.then`时：调用`catch`语句
+（1）有任意一个为reject，且无`fail callback`时：调用`catch`语句
 
 ```js
 const p1 = Promise.resolve(1);
@@ -33,7 +33,7 @@ const p3 = Promise.resolve(3);
 Promise.all([p1, p2, p3])
   .then((results) => {
     // then方法不会被执行
-    console.log('success then', results);
+    console.log('success callback', results);
   })
   .catch((e) => {
     // catch方法将会被执行，输出结果为：catch 2
@@ -41,17 +41,17 @@ Promise.all([p1, p2, p3])
   });
 ```
 
-（2）有任意一个为reject，且有`fail.then`时：调用`fail.then`语句，但不执行`catch`语句
+（2）有任意一个为reject，且有`fail callback`时：调用`fail callback`语句，但不执行`catch`语句
 ```js
 Promise.all([p1, p2, p3])
   .then(
     (results) => {
       // then方法不会被执行
-      console.log('success then', results);
+      console.log('success callback', results);
     },
     (results) => {
-      // then方法将会被执行，输出结果为：fail then 2
-      console.log('fail then', results);
+      // then方法将会被执行，输出结果为：fail callback 2
+      console.log('fail callback', results);
     },
   )
   .catch((e) => {
