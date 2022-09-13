@@ -26,10 +26,13 @@ ALTER TABLE table_name CHANGE old_col_name new_col_name datatype;
 # datatype 为数据类型，VARCHAR等；datatype可以保持原来的，也可以改成新的
 ```
 
-#### 修改列的数据类型
+#### 修改列的数据类型或长度
 ```mysql
 ALTER TABLE table_name MODIFY COLUMN col_name datatype;
 # datatype 为数据类型
+
+# 修改数据长度，eg: 将col_name字段，长度改为500
+ALTER TABLE table_name MODIFY COLUMN col_name VARCHAR(500); 
 ```
 
 #### 修改列的位置
