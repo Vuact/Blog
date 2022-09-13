@@ -70,7 +70,7 @@ function promiseAll(promises) {
           resolvedNum++;
           resolvedArr[i] = value;
 
-          if (resolvedNum == promiseNum) {
+          if (resolvedNum === promiseNum) {
             return resolve(resolvedArr);
           }
         })
@@ -101,7 +101,7 @@ function promiseAll(iterable) {
           resolvedNum++;
           resolvedArr[i] = value;
 
-          if (resolvedNum == promiseNum) {
+          if (resolvedNum === promiseNum) {
             return resolve(resolvedArr);
           }
         })
