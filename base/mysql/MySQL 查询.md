@@ -45,4 +45,9 @@ SELECT col1, col2 FROM table_name LIMIT m, n; # 表示取m后的n条
 
 # 条件句中用到子句，子句中又用到条件句
 SELECT * FROM table_name1 WHERE id IN (SELECT id FROM table_name2 WHERE id....) 
+
+# 子查询
+SELECT * FROM table_name1 AS table1
+WHERE table1.salary >= (SELECT table2.salary FROM table_name2 AS table2 WHERE level = 1) 
+AND table1.salary < (SELECT table2.salary FROM table_name2 AS table2 WHERE table2.level = 4);
 ```
