@@ -79,6 +79,14 @@ function promiseAll(promises) {
   });
 }
 ```
+>知识点：`Promise.resolve()`方法是将现有参数转化为Promise对象<br>
+>- 如果该方法的参数是一个Promise，那么将不会做任何处理<br>
+>- 如果参数是个thenable，那么Promise.resolve()会将该对象转化为Promise对象，并且立即执行then方法<br>
+>- 如果参数是一个原始值，或者是一个不具备then方法的对象，则Promise.resolve()方法会返回一个新的Promise，状态为fullfilled,其参数作为then方法中resolve的参数<br>
+>- 如果Promise.resolve()不带任何参数，会直接返回一个fullfilled状态的Promise对象
+
+<br>
+
 第三步：统计到达`fullfilled`状态的个数：当全部为`fullfilled`时，生成的 Promise 对象 状态也为 `fullfilled`, 且返回一个数组
 
 ```js
