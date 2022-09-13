@@ -18,3 +18,4 @@
 - JavaScript深入 详解Object.create(null)
 - JavaScript深入 共享传递
 - JavaScript深入 赋值后的内存分布
+- JavaScript深入 promise.all的实现
