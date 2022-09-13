@@ -21,7 +21,7 @@ Promise.all([p1, p2, p3]).then((results) => {
 });
 ```
 
-### 2、p1,p2,p3 有任意一个变成`rejected`，生成的 p 也会变成`rejected`状态：将调用`fail callback` 或 `catch`语句
+### 2、p1,p2,p3 有任意一个变成`rejected`，生成的 p 也会变成`rejected`状态：将调用 `catch` 或 `fail callback` 语句
 
 （1）有任意一个为reject，且无`fail callback`时：调用`catch`语句
 
