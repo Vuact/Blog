@@ -1,4 +1,4 @@
-# 公式
+# 一、公式
 ```mysql
 SELECT [ALL|DISTINCT] <目标列表达式> [,<目标列表达式>]...
 FROM <表名或视图名> [,<表名或视图名> ...] [AS] <别名>
@@ -9,7 +9,7 @@ FROM <表名或视图名> [,<表名或视图名> ...] [AS] <别名>
 > `[XXX]`代表可能存在
 
 
-# 实践
+# 二、实践
 
 ```mysql
 # 查询
@@ -43,10 +43,15 @@ SELECT col1, col2 FROM table_name ORDER BY col_name1, col_name2 DESC; # 先col_n
 SELECT col1, col2 FROM table_name LIMIT 2; # 表示只取前两条
 SELECT col1, col2 FROM table_name LIMIT m, n; # 表示取m后的n条
 
-# 条件句中用到子句，子句中又用到条件句
-SELECT * FROM table_name1 WHERE id IN (SELECT id FROM table_name2 WHERE id....) 
+# GROUP BY 
+SELECT col1, COUNT(col2) FROM table_name GROUP BY col1;
+SELECT col1, col2 FROM table_name GROUP BY col1 HAVING COUNT(*)>3; # 先将col1分组，再用COUNT作用于每一组，筛选出数据条数大于3的组
+# HAVING给出了选择组的限制条件，相当于WHERE，只是HAVING仅作用于GROUP
 
-# 子查询
+# 嵌套查询：条件句中用到子句，子句中又用到条件句
+SELECT * FROM table_name1 WHERE id IN (SELECT id FROM table_name2 WHERE id....);
+
+# 多表查询
 SELECT * FROM table_name1 AS table1
 WHERE table1.salary >= (SELECT table2.salary FROM table_name2 AS table2 WHERE level = 1) 
 AND table1.salary < (SELECT table2.salary FROM table_name2 AS table2 WHERE table2.level = 4);
@@ -55,21 +60,21 @@ AND table1.salary < (SELECT table2.salary FROM table_name2 AS table2 WHERE table
 ### 查询函数
 ```mysql
 # COUNT(*): 查询个数
-SELECT COUNT(*) FROM table_name # 查询数据总条数
+SELECT COUNT(*) FROM table_name; # 查询展示：数据总条数
 
 # COUNT([ALL|DISTINCT] <列名>)：求某列中值的个数
-SELECT COUNT(column_name DISTINCT) FROM table_name # column_name去重后数据的条数
+SELECT col1, COUNT(col2 DISTINCT) FROM table_name;   # 查询展示：col1 和 col2去重后的数据条数
 
 # SUM([ALL|DISTINCT] <列名>)：求某列值的总和（此列必须为数值型）
-SELECT SUM(column_name) FROM table_name
+SELECT SUM(column_name) FROM table_name;
 
 # AVG([ALL|DISTINCT] <列名>)：求某列的平均值（此列必须为数值型）
-SELECT AVG(column_name) FROM table_name
+SELECT AVG(column_name) FROM table_name;
 
 # MAX([ALL|DISTINCT] <列名>)：求某列的最大值
-SELECT MAX(column_name) FROM table_name
+SELECT MAX(column_name) FROM table_name;
 
 # MIN([ALL|DISTINCT] <列名>)：求某列的最小值
-SELECT MIN(column_name) FROM table_name
+SELECT MIN(column_name) FROM table_name;
 ```
 
