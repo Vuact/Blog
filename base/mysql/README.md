@@ -1,14 +1,3 @@
-```mysql
-
-
-# 删除某表中的一项
-DELETE FROM `表名` WHERE 字段名=值;
-
-# 删除某个表
-DROP table `表名`;
-```
-
-
 ### 修改表名
 ```mysql
 ALTER TABLE old_table_name RENAME new_table_name;
@@ -83,7 +72,9 @@ DROP TABLE table_name;
 
 ### 删除数据
 ```mysql
-DELETE FROM table_name WHERE condition;  # 删除满足条件的数据
+# 删除满足条件的数据
+DELETE FROM table_name WHERE condition; 
 
-ALTER TABLE table_name DROP col_name;  # 删除col_name字段
+# 删除某列
+ALTER TABLE table_name DROP col_name; 
 ```
