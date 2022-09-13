@@ -12,14 +12,10 @@ FROM <表名或视图名> [,<表名或视图名> ...] [AS] <别名>
 # 实践
 
 ```mysql
-# 查询所有数据
-SELECT * FROM table_name; 
-
-# 查询多列数据
-SELECT column_name1, column_name2 FROM table_name;
-
-# 查询，并去除重复的数据
-SELECT DISTINCT column_name1, column_name2, ... FROM table_name;
+# 查询
+SELECT * FROM table_name; # 查询所有数据
+SELECT column_name1, column_name2 FROM table_name; # 查询多列数据
+SELECT DISTINCT column_name1, column_name2, ... FROM table_name; # 查询并去重
 
 # 查询，带算术表达式
 SELECT name, 2014-age FROM Student  # `2022-age`为算术表达式：用当前年份减去学生年龄
