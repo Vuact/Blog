@@ -188,10 +188,7 @@ function promiseAll(iterable) {
           if (resolvedNum === promiseNum) {
             return resolve(resolvedArr);
           }
-        })
-        .catch((reason) => {
-          return reject(reason);
-        });
+        }, reject);
     }
   });
 }
