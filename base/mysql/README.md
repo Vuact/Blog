@@ -42,6 +42,19 @@ ALTER TABLE table_name ADD UNIQUE KEY new_uk_name (col1, col2, ...);   # new_uk_
 ALTER TABLE table_name DROP PRIMARY KEY;
 ALTER TABLE table_name ADD PRIMARY KEY (col_name);
 ```
+
+### 修改外键
+```mysql
+ALTER TABLE table_name DROP FOREIGN KEY fk_name; 
+# 上一句只会删除外键约束，但是外键的索引没有删除，利用show create table table_name \G;发现外键的名称还在，但是约束没了
+
+ALTER TABLE table_name DROP INDEX|KEY fk_name;  # 此句是为了删除外键索引
+
+ALTER TABLE table1 ADD 
+CONSTRAINT fk_name foreign key (table1_col) 
+REFERENCES table2(table2_col); # 添加外键
+```
+
 ### 修改null和not null
 
 ```mysql
