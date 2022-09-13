@@ -26,9 +26,8 @@ ALTER TABLE table_name CHANGE old_col_name new_col_name datatype;
 ```mysql
 ALTER TABLE table_name MODIFY COLUMN col_name datatype;
 # datatype 为数据类型
-```
-修改数据长度，例: 将col_name字段，长度改为500
-```mysql
+
+# 修改数据长度，例: 将col_name字段，长度改为500
 ALTER TABLE table_name MODIFY COLUMN col_name VARCHAR(500); 
 ```
 
@@ -72,8 +71,9 @@ ALTER TABLE table_name ALTER col_name SET DEFAULT new_value; # 把某列的defau
 
 ```mysql
 UPDATE table_name SET col1=value1, col2=value2, ... WHERE condition;
-```
-例: 将test表中，id等于123的项中的a字段值改为XX
-```mysql
+
+# 例: 将test表中，id等于123的项中的a字段值改为XX
 UPDATE `test` SET a="XX" where id=123;
 ```
+
+
