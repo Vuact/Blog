@@ -1,15 +1,15 @@
 # 一、从使用看特点
 
-- `Promise.all()` 方法将多个Promise实例包装成一个Promise对象（p），接受一个数组（p1,p2,p3）作为参数，数组中不一定需要都是Promise对象，但是`一定具有Iterator接口`，如果不是的话，就会调用Promise.resolve将其转化为Promise对象之后再进行处理。
+- `Promise.all()` 方法将多个Promise实例包装成一个Promise对象（p），接受一个数组（p1,p2,p3）作为参数，数组中不一定需要都是Promise对象，但是`一定具有Iterator接口`，如果不是的话，就会调用`Promise.resolve`将其转化为Promise对象之后再进行处理。
 
-- 使用Promise.all()生成的Promise对象（p）的状态是由数组中的Promise对象（p1,p2,p3）决定的；
-  - 如果所有的Promise对象（p1,p2,p3）都变成fullfilled状态的话，生成的Promise对象（p）也会变成fullfilled状态，p1,p2,p3三个Promise对象产生的结果会组成一个数组返回给传递给p的回调函数；
-  - 如果p1,p2,p3中有一个Promise对象变为rejected状态的话，p也会变成rejected状态，第一个被rejected的对象的返回值会传递给p的回调函数。
-Promise.all()方法生成的Promise对象也会有一个catch方法来捕获错误处理，但是如果数组中的Promise对象变成rejected状态时，并且这个对象还定义了catch的方法，那么rejected的对象会执行自己的catch方法，并且返回一个状态为fullfilled的Promise对象，Promise.all()生成的对象会接受这个Promise对象，不会返回rejected状态。
+- 使用`Promise.all()`生成的Promise对象（p）的状态是由数组中的Promise对象（p1,p2,p3）决定的；
+  - 如果所有的Promise对象（p1,p2,p3）都变成`fullfilled`状态的话，生成的Promise对象（p）也会变成`fullfilled`状态，p1,p2,p3三个Promise对象产生的结果会组成一个数组返回给传递给p的回调函数；
+  - 如果p1,p2,p3中有一个Promise对象变为`rejected`状态的话，p也会变成`rejected`状态，第一个被`rejected`的对象的返回值会传递给p的回调函数。
+`Promise.all()`方法生成的Promise对象也会有一个catch方法来捕获错误处理，但是如果数组中的Promise对象变成`rejected`状态时，并且这个对象还定义了`catch`的方法，那么`rejected`的对象会执行自己的`catch`方法，并且返回一个状态为`fullfilled`的Promise对象，`Promise.all()`生成的对象会接受这个Promise对象，不会返回`rejected`状态。
 
 <br>
 
-### 1、全部变为resolve，调用`success.then`
+### 1、p1,p2,p3 都变成`fullfilled`，生成的 p 也会变成`fullfilled`状态：将调用`success.then`
 
 ```js
 const p1 = Promise.resolve(1);
@@ -21,7 +21,7 @@ Promise.all([p1, p2, p3]).then((results) => {
 });
 ```
 
-### 2、有任意一个为reject，调用`fail.then` 或 `catch`语句
+### 2、p1,p2,p3 有任意一个变成`rejected`，生成的 p 也会变成`rejected`状态：将调用`fail.then` 或 `catch`语句
 
 （1）有任意一个为reject，且无`fail.then`时：调用`catch`语句
 
