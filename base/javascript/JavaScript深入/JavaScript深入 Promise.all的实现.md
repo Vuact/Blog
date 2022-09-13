@@ -166,7 +166,7 @@ function promiseAll(iterable) {
 }
 ```
 
-###  最终版
+##  最终版
 
 对上述代码进行优化后的最终版：
 
