@@ -108,6 +108,10 @@ function promiseAll(promises) {
   });
 }
 ```
+> 细节：<br>
+> Promise中的resolve、reject需要加return：https://juejin.cn/post/7054780299225333774
+
+<br>
 
 第四步：当遍历的任意一项为`rejected`状态，则生成的 Promise 对象 状态也为`rejected`，且返回错误信息
 
@@ -192,5 +196,3 @@ function promiseAll(iterable) {
   });
 }
 ```
-> 细节：<br>
-> Promise中的resolve、reject需要加return：https://juejin.cn/post/7054780299225333774
