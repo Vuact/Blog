@@ -50,6 +50,7 @@ SELECT col1, col2 FROM table_name GROUP BY col1 HAVING COUNT(*)>3; # 先将col1�
 
 # 嵌套查询：条件句中用到子句，子句中又用到条件句
 SELECT * FROM table_name1 WHERE id IN (SELECT id FROM table_name2 WHERE id....);
+SELECT col1 FROM table_name1 WHERE col1 NOT IN (SELECT name FROM table_name2); # 展示出 table_name1的col1 和 table_name2的name 的差集 数据
 
 # 多表查询
 SELECT * FROM table_name1 AS table1
