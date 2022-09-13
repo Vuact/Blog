@@ -73,9 +73,9 @@ function promiseAll(promises) {
 ```js
 function promiseAll(promises) {
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promises.length; i++) {
-      Promise.resolve(promises[i]).then((value) => {});
-    }
+    promises.forEach((item) => {
+      Promise.resolve(item).then((data) => {});
+    });
   });
 }
 ```
@@ -91,20 +91,20 @@ function promiseAll(promises) {
 
 ```js
 function promiseAll(promises) {
-  const resolvedArr = [];
-  let resolvedNum = 0;
-
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promises.length; i++) {
-      Promise.resolve(promises[i]).then((value) => {
+    const resolvedArr = [];
+    let resolvedNum = 0;
+
+    promises.forEach((item, index) => {
+      Promise.resolve(item).then((data) => {
         resolvedNum++;
-        resolvedArr[i] = value;
+        resolvedArr[index] = data;
 
         if (resolvedNum === promises.length) {
           return resolve(resolvedArr);
         }
       });
-    }
+    });
   });
 }
 ```
@@ -117,24 +117,25 @@ function promiseAll(promises) {
 
 ```js
 function promiseAll(promises) {
-  const resolvedArr = [];
-  let resolvedNum = 0;
-
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promises.length; i++) {
-      Promise.resolve(promises[i])
-        .then((value) => {
+    const resolvedArr = [];
+    let resolvedNum = 0;
+  
+    promises.forEach((item, index) => {
+      Promise.resolve(item).then(
+        (data) => {
           resolvedNum++;
-          resolvedArr[i] = value;
+          resolvedArr[index] = data;
 
           if (resolvedNum === promises.length) {
             return resolve(resolvedArr);
           }
-        })
-        .catch((reason) => {
+        },
+        (reason) => {
           return reject(reason);
-        });
-    }
+        },
+      );
+    });
   });
 }
 ```
@@ -143,25 +144,25 @@ function promiseAll(promises) {
 
 ```js
 function promiseAll(iterable) {
-  const promises = Array.from(iterable);
-  const resolvedArr = [];
-  let resolvedNum = 0;
-
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promises.length; i++) {
-      Promise.resolve(promises[i])
-        .then((value) => {
+    const resolvedArr = [];
+    let resolvedNum = 0;
+  
+    Array.from(iterable).forEach((item, index) => {
+      Promise.resolve(item).then(
+        (data) => {
           resolvedNum++;
-          resolvedArr[i] = value;
+          resolvedArr[index] = data;
 
           if (resolvedNum === promises.length) {
             return resolve(resolvedArr);
           }
-        })
-        .catch((reason) => {
+        },
+        (reason) => {
           return reject(reason);
-        });
-    }
+        },
+      );
+    });
   });
 }
 ```
@@ -172,24 +173,20 @@ function promiseAll(iterable) {
 
 ```js
 function promiseAll(iterable) {
-  const promises = Array.from(iterable);
-  const promiseNum = promises.length;
-  const resolvedArr = [];
-
-  let resolvedNum = 0;
-
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promiseNum; i++) {
-      Promise.resolve(promises[i])
-        .then((value) => {
-          resolvedNum++;
-          resolvedArr[i] = value;
+    const resolvedArr = [];
+    let resolvedNum = 0;
 
-          if (resolvedNum === promiseNum) {
-            return resolve(resolvedArr);
-          }
-        }, reject);
-    }
+    Array.from(iterable).forEach((item, index) => {
+      Promise.resolve(item).then((data) => {
+        resolvedNum++;
+        resolvedArr[index] = data;
+
+        if (resolvedNum === promises.length) {
+          return resolve(resolvedArr);
+        }
+      }, reject);
+    });
   });
 }
 ```
