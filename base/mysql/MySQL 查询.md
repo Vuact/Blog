@@ -51,3 +51,25 @@ SELECT * FROM table_name1 AS table1
 WHERE table1.salary >= (SELECT table2.salary FROM table_name2 AS table2 WHERE level = 1) 
 AND table1.salary < (SELECT table2.salary FROM table_name2 AS table2 WHERE table2.level = 4);
 ```
+
+### 查询函数
+```mysql
+# COUNT(*): 查询个数
+SELECT COUNT(*) FROM table_name # 查询数据总条数
+
+# COUNT([ALL|DISTINCT] <列名>)：求某列中值的个数
+SELECT COUNT(column_name DISTINCT) FROM table_name # column_name去重后数据的条数
+
+# SUM([ALL|DISTINCT] <列名>)：求某列值的总和（此列必须为数值型）
+SELECT SUM(column_name) FROM table_name
+
+# AVG([ALL|DISTINCT] <列名>)：求某列的平均值（此列必须为数值型）
+SELECT AVG(column_name) FROM table_name
+
+# MAX([ALL|DISTINCT] <列名>)：求某列的最大值
+SELECT MAX(column_name) FROM table_name
+
+# MIN([ALL|DISTINCT] <列名>)：求某列的最小值
+SELECT MIN(column_name) FROM table_name
+```
+
