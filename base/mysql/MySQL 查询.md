@@ -35,6 +35,10 @@ SELECT col1, col2 FROM table_name WHERE name LIKE "_阳%";  # 把name中第二�
 SELECT col1, col2 FROM table_name WHERE name IS NULL;      # IS NULL：把name是空值的数据查出来
 SELECT col1, col2 FROM table_name WHERE name IS NOT NULL;  # IS NOT NULL：把name不是空值的数据查出来
 
+# 查询并排序：ASC升序(默认)、DESC降序
+SELECT col1, col2 FROM table_name ORDER BY col_name DESC;             # 按照col_name降序排列
+SELECT col1, col2 FROM table_name ORDER BY col_name1, col_name2 DESC; # 先col_name1按升序排列；遇到col_name1相同的数据，再按col_name2降序排列
+
 # 限制条数的查询
 SELECT col1, col2 FROM table_name LIMIT 2; # 表示只取前两条
 SELECT col1, col2 FROM table_name LIMIT m, n; # 表示取m后的n条
