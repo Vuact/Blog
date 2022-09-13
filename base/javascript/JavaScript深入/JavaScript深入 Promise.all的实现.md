@@ -201,10 +201,10 @@ const p = Promise.race([p1, p2, p3]);
 仿照 Promise.all，可以实现:
 ```js
 function promiseRace(iterable) {
-	return new Promise((resolve, reject) => {
-		Array.from(iterable).forEach(item => {
-			Promise.resolve(item).then(resolve, reject);
-		});
-	});
+  return new Promise((resolve, reject) => {
+    Array.from(iterable).forEach((item) => {
+      Promise.resolve(item).then(resolve, reject);
+    });
+  });
 }
 ```
