@@ -81,7 +81,7 @@ UPDATE `test` SET a="XX" where id=123;
 ### 备份并删除表
 ```mysql
 # 备份旧表
-create table new_table_name select * from old_table_name;
+CREATE TABLE new_table_name SELECT * FROM old_table_name;
 
 # 删除旧表
 DROP TABLE old_table_name;
