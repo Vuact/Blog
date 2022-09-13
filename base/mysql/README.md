@@ -1,4 +1,4 @@
-```shell
+```mysql
 # 更新某表中的某字段：将test表中，id等于123的项中的a字段值改为XX
 UPDATE `test` SET a="XX" where id=123;
 
@@ -11,3 +11,49 @@ DELETE FROM `表名` WHERE 字段名=值;
 # 删除某个表
 DROP table `表名`;
 ```
+
+
+#### 修改表名
+```mysql
+ALTER TABLE old_table_name RENAME new_table_name;
+RENAME TABLE old_table_name TO new_table_name;
+# 上面两句都可以修改表名字
+```
+
+#### 修改列名
+```mysql
+ALTER TABLE table_name CHANGE old_col_name new_col_name datatype; 
+# datatype 为数据类型，VARCHAR等；datatype可以保持原来的，也可以改成新的
+```
+
+#### 修改列的数据类型
+```mysql
+ALTER TABLE table_name MODIFY COLUMN col_name datatype;
+# datatype 为数据类型
+```
+
+#### 修改列的位置
+```mysql
+ALTER TABLE table_name MODIFY col_name datatype FIRST; # 把某一列调到第一列
+ALTER TABLE table_name MODIFY col_name datatype AFTER another_col_name; # 把一列调到另外一列的后边
+# 上面两句的datatype都可以保持原来的，或者改成新的
+```
+
+#### 修改UNIQUE KEY约束
+分两步：
+- ① 清除原先的unique约束 
+- ② 添加新的unique约束
+
+```mysql
+ALTER TABLE table_name DROP INDEX uk_name;  # un_name是要清除的unique约束的名字
+ALTER TABLE table_name ADD UNIQUE KEY new_uk_name (col1, col2, ...);   # new_uk_name是新的约束的名字；
+# new_uk_name和un_name可以一样
+```
+#### 修改主键
+分两步：先删除旧的主键，再添加新的主键
+
+```mysql
+ALTER TABLE table_name DROP PRIMARY KEY;
+ALTER TABLE table_name ADD PRIMARY KEY (col_name);
+```
+
