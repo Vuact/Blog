@@ -72,9 +72,9 @@ DROP TABLE table_name;
 
 ### 删除数据
 ```mysql
-# 删除满足条件的数据
+# 删除某条数据
 DELETE FROM table_name WHERE condition; 
 
-# 删除某列
+# 删除某列字段
 ALTER TABLE table_name DROP col_name; 
 ```
