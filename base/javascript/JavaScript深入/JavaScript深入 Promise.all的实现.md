@@ -62,22 +62,60 @@ Promise.all([p1, p2, p3])
 
 # 二、实现 Promise.all 方法
 
-### 1、第一版
+第一步：Promise.all 返回值为 Promise 对象
 ```js
 function promiseAll(promises) {
-  const promiseNum = promises.length;
-  const resolvedArr = [];
+  return new Promise((resolve, reject) => {});
+}
+```
+第二步：遍历promises：遍历的同时调用`Promise.resolve`将每一项转化为Promise对象，并执行
 
+```js
+function promiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      Promise.resolve(promises[i]).then((value) => {});
+    }
+  });
+}
+```
+第三步：统计到达`fullfilled`状态的个数：当全部为`fullfilled`时，生成的 Promise 对象 状态也为 `fullfilled`, 且返回一个数组
+
+```js
+function promiseAll(promises) {
+  const resolvedArr = [];
   let resolvedNum = 0;
 
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promiseNum; i++) {
+    for (let i = 0; i < promises.length; i++) {
+      Promise.resolve(promises[i]).then((value) => {
+        resolvedNum++;
+        resolvedArr[i] = value;
+
+        if (resolvedNum === promises.length) {
+          return resolve(resolvedArr);
+        }
+      });
+    }
+  });
+}
+```
+
+第四步：当遍历的任意一项为`rejected`状态，则生成的 Promise 对象 状态也为`rejected`，且返回错误信息
+
+```js
+function promiseAll(promises) {
+  const resolvedArr = [];
+  let resolvedNum = 0;
+
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
       Promise.resolve(promises[i])
         .then((value) => {
           resolvedNum++;
           resolvedArr[i] = value;
 
-          if (resolvedNum === promiseNum) {
+          if (resolvedNum === promises.length) {
             return resolve(resolvedArr);
           }
         })
@@ -89,9 +127,36 @@ function promiseAll(promises) {
 }
 ```
 
-### 二、第二版
+第五步：Promise.all 的参数可以是一个可迭代对象(如 Array、String、Map、Set、包含length属性的对象等)，所以用 `Array.from` 对参数进行容错
 
-Promise.all 的参数可以是一个可迭代对象，如 Array、String、Map、Set、包含length属性的对象等，所以应该兼容一下参数。
+```js
+function promiseAll(iterable) {
+	const promises = Array.from(iterable);
+  const resolvedArr = [];
+  let resolvedNum = 0;
+
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      Promise.resolve(promises[i])
+        .then((value) => {
+          resolvedNum++;
+          resolvedArr[i] = value;
+
+          if (resolvedNum === promises.length) {
+            return resolve(resolvedArr);
+          }
+        })
+        .catch((reason) => {
+          return reject(reason);
+        });
+    }
+  });
+}
+```
+
+###  最终版
+
+对上述代码进行优化后的最终版：
 
 ```js
 function promiseAll(iterable) {
