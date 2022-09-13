@@ -154,7 +154,7 @@ function promiseAll(iterable) {
           resolvedNum++;
           resolvedArr[index] = data;
 
-          if (resolvedNum === promises.length) {
+          if (resolvedNum === iterable.length) {
             return resolve(resolvedArr);
           }
         },
@@ -174,16 +174,16 @@ function promiseAll(iterable) {
 ```js
 function promiseAll(iterable) {
   return new Promise((resolve, reject) => {
-    const resolvedArr = [];
-    let resolvedNum = 0;
+    const arr = [];
+    let count = 0;
 
     Array.from(iterable).forEach((item, index) => {
       Promise.resolve(item).then((data) => {
-        resolvedNum++;
-        resolvedArr[index] = data;
+        count++;
+        arr[index] = data;
 
-        if (resolvedNum === promises.length) {
-          return resolve(resolvedArr);
+        if (count === iterable.length) {
+          return resolve(arr);
         }
       }, reject);
     });
