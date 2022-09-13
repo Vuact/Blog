@@ -54,4 +54,16 @@ ALTER TABLE table_name ADD UNIQUE KEY new_uk_name (col1, col2, ...);   # new_uk_
 ALTER TABLE table_name DROP PRIMARY KEY;
 ALTER TABLE table_name ADD PRIMARY KEY (col_name);
 ```
+#### 修改null和not null
 
+```mysql
+ALTER TABLE table_name MODIFY col_name datatype NOT NULL;  # 把原来NULL的修改为NOT NULL;
+ALTER TABLE table_name MODIFY col_name datatype NULL;  # 把原来NOT NULL的修改为NULL;
+# datatype 为数据类型
+```
+
+#### 修改默认值
+
+```mysql
+ALTER TABLE table_name ALTER col_name SET DEFAULT new_value; # 把某列的default值修改为new_value
+```
