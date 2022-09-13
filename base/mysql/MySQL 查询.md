@@ -47,6 +47,7 @@ SELECT col1, col2 FROM table_name LIMIT m, n; # 表示取m后的n条
 SELECT col1, COUNT(col2) FROM table_name GROUP BY col1;
 SELECT col1, col2 FROM table_name GROUP BY col1 HAVING COUNT(*)>3; # 先将col1分组，再用COUNT作用于每一组，最后筛选出数据条数大于3的组
 # HAVING给出了选择组的限制条件，相当于WHERE，只是HAVING仅作用于GROUP
+# 更多参考：http://c.biancheng.net/view/7408.html
 
 # 嵌套查询：条件句中用到子句，子句中又用到条件句
 SELECT * FROM table_name1 WHERE id IN (SELECT id FROM table_name2 WHERE id....);
