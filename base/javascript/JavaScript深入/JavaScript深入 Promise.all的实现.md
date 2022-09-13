@@ -131,7 +131,7 @@ function promiseAll(promises) {
 
 ```js
 function promiseAll(iterable) {
-	const promises = Array.from(iterable);
+  const promises = Array.from(iterable);
   const resolvedArr = [];
   let resolvedNum = 0;
 
