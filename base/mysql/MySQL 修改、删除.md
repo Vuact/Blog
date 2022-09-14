@@ -83,6 +83,10 @@ UPDATE `test` SET a="XX" where id=123;
 # 备份旧表
 CREATE TABLE new_table_name SELECT * FROM old_table_name;
 
+# 备份旧表(若报错则使用以下两句)
+CREATE TABLE new_table_name LIKE old_table_name;
+INSERT INTO new_table_name SELECT * FROM old_table_name;
+
 # 删除旧表
 DROP TABLE old_table_name;
 ```
