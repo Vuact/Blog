@@ -78,6 +78,12 @@ UPDATE table_name SET col1=value1, col2=value2, ... WHERE condition;
 UPDATE `test` SET a="XX" where id=123;
 ```
 
+### 插入数据
+
+```mysql
+NSERT INTO table_name (col1, col2, col3) VALUES('bty', 12, NOW());
+```
+
 ### 备份并删除表
 ```mysql
 # 备份旧表
