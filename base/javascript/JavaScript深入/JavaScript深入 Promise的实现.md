@@ -35,6 +35,15 @@ class Promise {
 }
 ```
 
+使用：
+```js
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+     resolve('hhh');
+  }, 1000);
+});
+```
+
 ## 第二步：Promise的三种状态；resolve表成功，reject表失败
 
 Promise的三种状态
