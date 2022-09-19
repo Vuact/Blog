@@ -85,11 +85,9 @@ class Promise {
   }
 }
 ```
-## 第三步：then方法以及两个参数
+## 第三步：then方法及其两个参数
 
-Promise有一个叫做then的方法，该方法有两个参数，第一个参数是成功之后执行的回调函数，第二个参数是失败之后执行的回调函数。
-
-then方法在resolve或者reject执行之后才会执行，并且then方法中的值是传给resolve或reject的参数
+Promise有一个叫做then的方法，该方法有两个参数，第一个参数是成功之后执行的回调函数，第二个参数是失败之后执行的回调函数。then方法在resolve或者reject执行之后才会执行，并且then方法中的值是传给resolve或reject的参数
 
 
 需要注意的是这句`then方法在resolve或者reject执行之后才会执行`，我们知道Promise是异步的，也就是说then传入的函数是不能立马执行，需要存储起来，在resolve函数执行之后才拿出来执行。
