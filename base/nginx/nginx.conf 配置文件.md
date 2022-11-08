@@ -5,9 +5,11 @@
 - MacOs：/usr/local/etc/nginx/nginx.conf
 - Linux：/usr/local/nginx/conf/nginx.conf
 
-----
 
-# 一、nginx.conf 的主体结构
+<br><br>
+[TOC]
+
+# nginx.conf 的主体结构
 
 我们将 nginx.conf 精简了下，内容如下：
 
@@ -128,3 +130,11 @@ http {
     #}
 }
 ```
+
+根据上述文件，我们可以很明显的将 nginx.conf 配置文件分为三部分：
+
+- 全局块
+- events 块
+- http 块
+
+# 一、全局块
