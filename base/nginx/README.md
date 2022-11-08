@@ -1,4 +1,4 @@
 - 反向代理与正向代理
 - 负载均衡与动静分离
-- Nginx安装
-- Nginx配置
+- nginx安装
+- nginx.conf配置文件
