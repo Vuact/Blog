@@ -4,7 +4,7 @@
 brew install nginx
 ```
 
-## 二、启动nginx
+## 二、启动Nginx
 
 ```shell
 # 进入对应版本的目录，这里我安装的是 1.19.4
@@ -14,7 +14,7 @@ cd /usr/local/Cellar/nginx/1.19.4/bin/
 ./nginx
 ```
 
-## 三、更便捷的启动nginx
+## 三、更便捷的启动Nginx
 
 ### 1、本地启动
 
