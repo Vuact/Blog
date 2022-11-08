@@ -12,9 +12,9 @@
 
 我们将 nginx.conf 精简了下，内容如下：
 
-```conf
+```nginx
 #user  nobody;
-worker_processes  1;
+worker_processes  4;
 
 #error_log  logs/error.log;
 #error_log  logs/error.log  notice;
@@ -143,8 +143,62 @@ http {
 主要包括配置运行 Nginx 服务器的用户（组）、允许生成的 worker process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。
 
 比如上面第一行配置的：
-```conf
-# 这是 Nginx 服务器并发处理服务的关键配置，worker_processes 值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约，这个后面会详细介绍。
-worker_processes  1;
+
+```nginx
+# 这是 Nginx 服务器并发处理服务的关键配置，worker_processes 值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约
+worker_processes  4;
 ```
+
+# 二、events 块
+
+events块：涉及的指令主要影响 Nginx 服务器与用户的网络连接
+
+常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 word process 可以同时支持的最大连接数等。
+
+比如上面的配置：
+
+```nginx
+# 表示每个 `worker_processes` 支持的最大连接数为 1024
+events {
+    worker_connections  1024;
+}
+```
+
+# 三、http 块
+
+```nginx
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+
+    sendfile        on;
+
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+```
+
+这算是 Nginx 服务器配置中最频繁的部分，`代理`、`缓存`和`日志定义`等绝大多数功能和第三方模块的配置都在这里。
+
+http 块也可以包括 ：
+- http全局块：包括文件引入、MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等
+- server 块：这块和虚拟主机有密切关系，虚拟主机从用户角度看，和一台独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本
+
+
+
 
