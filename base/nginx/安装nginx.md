@@ -48,7 +48,7 @@ nginx -s reload # 重新加载nginx
 
 由于我们可能有大量服务器，一个个去改环境变量不现实，为了方便统一管理，我们采用 `service` 命令 来启动 nginx
 
-service命令其实是去 `/etc/init.d` 目录下，去执行相关程序；`/etc/init.d` 目录下的脚本都需要我们自己编写，比如：
+service命令其实是去 `/etc/init.d` 目录下去执行对应脚本；这些脚本都需要我们自己编写，比如：
 
  ```shell
 # 重启nginx
@@ -60,4 +60,6 @@ service redis start
 # 开机自启动等
 update-rc.d redis defaults
  ```
+ 
+ >既然service命令就是去 `/etc/init.d` 目录下去执行对应脚本，所以我们只需新建一个service项目 批量统一复制到各个机器的对应目录下，就可实现统一管理
 
