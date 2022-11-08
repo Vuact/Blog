@@ -35,3 +35,9 @@ export PATH=$PATH:/usr/local/Cellar/nginx/1.19.4/bin
 source /etc/profile
 ```
 
+现在启动等nginx操作只需要：
+```shell
+nginx # 启动nginx
+nginx -s stop   # 停止nginx
+nginx -s reload # 重新加载nginx
+```
