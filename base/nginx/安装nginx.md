@@ -48,3 +48,16 @@ nginx -s reload # 重新加载nginx
 
 由于我们可能有大量服务器，一个个去改环境变量不现实，为了方便统一管理，我们采用 `service` 命令 来启动 nginx
 
+service命令其实是去 `/etc/init.d` 目录下，去执行相关程序；`/etc/init.d` 目录下的脚本都需要我们自己编写，比如：
+
+ ```shell
+# 重启nginx
+service nginx reload 
+
+# 启动redis脚本 (等价于执行：/etc/init.d/redis start)
+service redis start
+
+# 开机自启动等
+update-rc.d redis defaults
+ ```
+
