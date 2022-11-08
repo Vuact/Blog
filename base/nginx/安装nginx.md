@@ -1,10 +1,10 @@
 
-### 1、安装
+## 一、安装
 ```shell
 brew install nginx
 ```
 
-### 2、启动nginx
+## 二、启动nginx
 
 ```shell
 # 进入对应版本的目录，这里我安装的是 1.19.4
@@ -14,7 +14,9 @@ cd /usr/local/Cellar/nginx/1.19.4/bin/
 ./nginx
 ```
 
-### 3、更便捷的启动nginx
+## 三、更便捷的启动nginx
+
+### 1、本地启动
 
 现在nginx已经安装完成，但是每次启动nginx都要cd到 “/usr/local/Cellar/nginx/1.19.4/bin/” 不太友好，所以需要`配置环境变量`
 
@@ -41,3 +43,8 @@ nginx # 启动nginx
 nginx -s stop   # 停止nginx
 nginx -s reload # 重新加载nginx
 ```
+
+### 2、服务器启动
+
+由于我们可能有大量服务器，一个个去改环境变量不现实，为了方便统一管理，我们采用 `service` 命令 来启动 nginx
+
