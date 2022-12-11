@@ -38,7 +38,7 @@ class Foo extends Component {
 function Foo() {
   const [count, setCount] = useState(0);
 
-  const handleClick() {
+  const handleClick = () => {
     console.log(`Click happened with dependency: ${count}`)
   }
   return <Button onClick={handleClick}>Click Me</Button>;
