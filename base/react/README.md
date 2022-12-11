@@ -34,16 +34,10 @@
 - useContext
 - useReducer
 - useContext + useReducer 替代redux.md
+- [React Hooks 异步操作踩坑记](https://juejin.cn/post/6844903974647103496)
 
 ### 待学习链接
 
 - https://typescript.bootcss.com/tutorials/react-&-webpack.html
-
-
-
-
-
-https://juejin.cn/post/6844903974647103496
-
-> https://juejin.cn/post/6844904072168865800
+- https://juejin.cn/post/6844904072168865800
 
