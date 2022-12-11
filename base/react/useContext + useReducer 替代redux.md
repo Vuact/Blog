@@ -148,4 +148,13 @@ export const ThemeBox = (props) => {
 };
 ```
 
+# 二、Demo登陆
+
 https://juejin.cn/post/6844903869609148430
+
+
+# 三、总结
+
+- 如果你的页面state很简单，可以直接使用useState
+- 如果你的页面state比较复杂（state是一个对象或者state非常多散落在各处）请使用userReducer
+- 如果你的页面组件层级比较深，并且需要子组件触发state的变化，可以考虑useReducer + useContext
