@@ -6,7 +6,7 @@
 
 # 演变
 - Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props
-- 当Context Provider的value发生变化是，他的所有子级消费者都会rerender
+- 当 Context Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染
 
 下面我们来看看同一个例子的3个版本：
 
