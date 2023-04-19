@@ -41,6 +41,7 @@
 ### 调试
 - [React调试利器：React DevTools](https://juejin.cn/post/6877546408925200391)
 - [React 怎样发现重新渲染的组件](https://juejin.cn/post/7150569747837354014)
+- [如何检查您的组件是否重新渲染 - 以及为什么！](https://jsramblings.com/how-to-check-if-your-component-rerendered-and-why/)
 
 ### 待学习链接
 
