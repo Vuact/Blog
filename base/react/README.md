@@ -37,6 +37,11 @@
 - [React Hooks 异步操作踩坑记](https://juejin.cn/post/6844903974647103496)
 - [21 个 React 性能优化技巧](https://www.infoq.cn/article/KVE8xtRs-uPphptq5LUz)
 
+
+### 调试
+- https://juejin.cn/post/6877546408925200391
+- https://juejin.cn/post/7150569747837354014
+
 ### 待学习链接
 
 - https://typescript.bootcss.com/tutorials/react-&-webpack.html
