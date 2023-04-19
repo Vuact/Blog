@@ -39,8 +39,8 @@
 
 
 ### 调试
-- https://juejin.cn/post/6877546408925200391
-- https://juejin.cn/post/7150569747837354014
+- [React调试利器：React DevTools](https://juejin.cn/post/6877546408925200391)
+- [React 怎样发现重新渲染的组件](https://juejin.cn/post/7150569747837354014)
 
 ### 待学习链接
 
