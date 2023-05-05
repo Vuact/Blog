@@ -1,0 +1,2 @@
+- [https://learnprompting.org/zh-Hans/docs/basics/instructions](learnprompting)
+- [https://www.promptingguide.ai/zh/introduction/basics](promptingguide)
