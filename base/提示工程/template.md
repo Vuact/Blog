@@ -1,3 +1,6 @@
 - 确保你的答案完全正确。`965*590 等于几？`确保你的答案完全正确：
-- 多角度回答问题：XXXXXX，What are some alternative perspectives，用中文回答我
-  - 例如：我和你妈掉水里了你先救谁？What are some alternative perspectives
+- What are some alternative perspectives?（有哪些可以考虑的角度）
+  - 场景：用于多角度回答问题
+  - 模板：多角度回答问题：XXXXXX，What are some alternative perspectives，用中文回答我
+  - 例如：我和你妈掉水里了你先救谁？What are some alternative perspectives，用中文回答我
+- 
