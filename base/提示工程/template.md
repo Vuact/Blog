@@ -1,3 +1,3 @@
 - 确保你的答案完全正确。`965*590 等于几？`确保你的答案完全正确：
 - 多角度回答问题：XXXXXX，What are some alternative perspectives
-  - 例如：我和你妈掉水里了你先救谁？
+  - 例如：我和你妈掉水里了你先救谁？What are some alternative perspectives
