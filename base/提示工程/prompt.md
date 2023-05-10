@@ -10,5 +10,10 @@
   - 场景：用于`多角度回答`问题
   - 模板：XXXXXX，What are some alternative perspectives
   - 例如：我和你妈掉水里了你先救谁？What are some alternative perspectives
+- 【控制情感】temperature=数值
+  - 场景：控制GTP的语气 热情或冰冷
+  - 注意：温度参数值有效区间 [0,2]，温度值越高，思维越发散越有创意，如果作为文章输出，一般建议设为0.8，不会太冰冷也不会乱犯病
+  - 模板：XXXX，temperature=数值
+  - 例如：
 
 
