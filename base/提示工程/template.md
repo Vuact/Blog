@@ -3,4 +3,7 @@
   - 场景：用于多角度回答问题
   - 模板：多角度回答问题：XXXXXX，What are some alternative perspectives，用中文回答我
   - 例如：我和你妈掉水里了你先救谁？What are some alternative perspectives，用中文回答我
-- 
+- What question remain unanwsered? (有哪些问题还没有得到解答)
+  - 场景：引导你增加补充信息；当你提出一个模糊的需求但没有给出相关细节时使用
+  - 模板：XXXX，What question remain unanwsered?
+  - 例如：帮我出一个关于长了翅膀的香肠在天上飞的线上活动策划，What question remain unanwsered?
