@@ -116,7 +116,9 @@ const memoizedCallback = useCallback(() => {
 - 配合依赖项数组实现依赖变更时才更新函数
 
 
-useCallback相当于相机，包裹的函数相当于照片，仅有在 相机的依赖项改变时，才会更新照片(即包裹的函数)。
+useCallback`相当于相机，包裹的函数相当于照片，仅有在 相机的依赖项改变时，才会更新照片`(即包裹的函数)。
+
+举个例子：
 ```js
 const Chat = () => {
   const [text, setText] = useState('init');
@@ -135,6 +137,20 @@ const Chat = () => {
   );
 };
 ```
+
+![image](https://github.com/Vuact/Blog/assets/74364990/a0849c74-af47-4495-8629-9fa95b467aa6)
+
+先点击 "打印" button，控制台输出: 
+![image](https://github.com/Vuact/Blog/assets/74364990/b78ad20b-f609-415b-bb30-29cacc4e9b53)
+
+再点击 "修改值" button，控制台输出: 
+![image](https://github.com/Vuact/Blog/assets/74364990/5830e2dc-795e-4c41-b653-57e29c267a7b)
+
+再次点击 "打印" button，控制台仍输出:
+![image](https://github.com/Vuact/Blog/assets/74364990/b8608a71-fee6-4f29-affe-0c1e09694e31)
+
+
+上面的useCallback包裹的`匿名函数就是一张照片`，由于`依赖项为空`，所以`相片永远都不更新`，`因而 匿名函数 中 text 始终为 init`
 
 ## 2、实战
 看下面一段代码：
