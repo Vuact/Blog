@@ -352,6 +352,8 @@ function App() {
 ![Jun-06-2022 03-22-13](https://user-images.githubusercontent.com/74364990/172067155-a34e012a-cee3-4448-b625-47994dc424fe.gif)
 
 
+<br>
+
 # 四、使用useMemoizedFn取代useCallback
 
 下面例子：我们用useCallback，解决了点击button按钮，Button组件不更新的问题。
