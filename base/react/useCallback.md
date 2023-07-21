@@ -99,7 +99,7 @@ const Parent = React.memo(({ a, b }) => {
 
 <br><br>
 
-# 二、useCallback详解
+# 二、useCallback
 
 看下面一段代码：
 ```js
