@@ -454,25 +454,25 @@ import React, { useState, memo } from 'react'
 import { useMemoizedFn } from 'ahooks'
 
 const Button = memo(({ handleClick }) => {
-	return (
-		<button onClick={handleClick}>Click!</button>
-	)
+    return (
+        <button onClick={handleClick}>Click!</button>
+    )
 })
 
 const Index = () => {
-	const [clickCount, increaseCount] = useState(0);
+     const [clickCount, increaseCount] = useState(0);
 	
-  // 使用 useMemoizedFn 进行持久化
-	const handleClick = useMemoizedFn(() => {
-		increaseCount(clickCount + 1);
-	});
+     // 使用 useMemoizedFn 进行持久化
+     const handleClick = useMemoizedFn(() => {
+ 	increaseCount(clickCount + 1);
+     });
 	
-	return (
-		<div>
-			<p>{clickCount}</p>
-			<Button handleClick={ handleClick } />
-		</div>
-	)
+     return (
+	<div>
+	   <p>{clickCount}</p>
+	   <Button handleClick={ handleClick } />
+	</div>
+     )
 }
 ```
 
