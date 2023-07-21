@@ -352,5 +352,114 @@ function App() {
 ![Jun-06-2022 03-22-13](https://user-images.githubusercontent.com/74364990/172067155-a34e012a-cee3-4448-b625-47994dc424fe.gif)
 
 
+# 四、使用useMemoizedFn取代useCallback
 
-# 四、useCallback缺陷
+下面例子：我们用useCallback，解决了点击button按钮，Button组件不更新的问题。
+
+```js
+import React, { useState, useCallback, memo } from 'react'
+
+const Button = memo(({ handleClick }) => {
+    return (
+        <button onClick={handleClick}>Click!</button>
+    )
+})
+
+const Index = () => {
+    const [clickCount, increaseCount] = useState(0);
+    
+    // 使用 useCallback 将 handleClick 缓存起来
+    const handleClick = useCallback(() => {
+        increaseCount(count => count + 1);
+    },[])
+
+    return (
+        <div>
+            <p>{clickCount}</p>
+            <Button handleClick={handleClick} />
+        </div>
+    )
+}
+```
+现在有特殊情况：如果 useCallback 的依赖是时刻变化的，那 useCallback 就无效了 上面的例子改一下写法就会产生这样的问题
+
+```js
+import React, { useState, useCallback, memo } from 'react'
+
+const Button = memo(({ handleClick }) => {
+    return (
+        <button onClick={handleClick}>Click!</button>
+    )
+});
+
+const Index = () => {
+    const [clickCount, increaseCount] = useState(0);
+    
+    // clickCount 作为依赖，每次点击都会改变 clickCount 的值
+    // 即 useCallback 都会返回最新的函数，无法缓存 Button 组件
+    const handleClick = useCallback(() => {
+        increaseCount(clickCount + 1);
+    }, [clickCount])
+
+    return (
+        <div>
+            <p>{clickCount}</p>
+            <Button handleClick={ handleClick } />
+        </div>
+    )
+}
+```
+**解决方案：使用ahooks的useMemoizedFn**
+
+```js
+import React, { useState, memo } from 'react'
+import { useMemoizedFn } from 'ahooks'
+
+const Button = memo(({ handleClick }) => {
+	return (
+		<button onClick={handleClick}>Click!</button>
+	)
+})
+
+const Index = () => {
+	const [clickCount, increaseCount] = useState(0);
+	
+  // 使用 useMemoizedFn 进行持久化
+	const handleClick = useMemoizedFn(() => {
+		increaseCount(clickCount + 1);
+	});
+	
+	return (
+		<div>
+			<p>{clickCount}</p>
+			<Button handleClick={ handleClick } />
+		</div>
+	)
+}
+```
+
+也一起来看看 useMemoizedFn 的源码看看它是怎么实现的：
+```js
+import { useMemo, useRef } from 'react';
+
+function useMemoizedFn(fn) {
+  const fnRef = useRef(fn);
+
+  // 这行代码确实是无意义的，但是可以避免在 devtool 模式下的异常行为
+  fnRef.current = useMemo(() => fn, [fn]);
+  
+  const memoizedFn = useRef();
+
+  // 仅第一次会赋值给 memoizedFn
+  if (!memoizedFn.current) {
+    memoizedFn.current = function (this, ...args) {
+      // 将 this 和 args 等传递给 fn
+      return fnRef.current.apply(this, args);
+    };
+  }
+  
+  return memoizedFn.current;
+}
+
+export default useMemoizedFn;
+```
