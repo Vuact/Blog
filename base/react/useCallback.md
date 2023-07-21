@@ -116,6 +116,26 @@ const memoizedCallback = useCallback(() => {
 - 配合依赖项数组实现依赖变更时才更新函数
 
 
+useCallback相当于相机，包裹的函数相当于照片，仅有在 相机的依赖项改变时，才会更新照片(即包裹的函数)。
+```js
+const Chat = () => {
+  const [text, setText] = useState('init');
+
+  console.log('updateComponent', text);
+
+  const onClick = useCallback(() => {
+    console.log('onClick', text);
+  }, []);
+
+  return (
+    <>
+      <button onClick={() => setText('update')}>修改值</button>
+      <button onClick={onClick}>打印</button>
+    </>
+  );
+};
+```
+
 ## 2、实战
 看下面一段代码：
 ```js
@@ -465,3 +485,4 @@ function useMemoizedFn(fn) {
 
 export default useMemoizedFn;
 ```
+内容参考：https://juejin.cn/post/7074938135544594463
