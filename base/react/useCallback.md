@@ -100,6 +100,8 @@ const Parent = React.memo(({ a, b }) => {
 
 看下面一段代码：
 ```js
+let count = 0;
+
 function App() {
   const [val, setVal] = useState('');
   
