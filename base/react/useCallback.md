@@ -211,50 +211,53 @@ useCallback真正有助于性能改善的，有 2 种场景：
 - 当函数的计算成本较高：如果一个函数在执行时需要进行大量的计算、数据处理、或涉及昂贵的计算操作，那么使用useCallback可以减少不必要的计算开销。
 - 当函数作为回调函数传递给子组件时：比较函数前后的引用，一般配合[React.Memo](https://zh-hans.reactjs.org/docs/react-api.html#reactmemo)使用。在React中，如果一个函数作为props传递给子组件，而该函数没有通过useCallback进行优化，每次父组件重新渲染时都会创建一个新的函数实例，导致子组件可能会重新渲染。使用useCallback可以确保相同的函数实例被传递给子组件，从而避免不必要的子组件渲染。
 
-### 函数定义时需要进行大量运算
+### 函数的计算成本较高
 
 **优化前：**
 
 ```js
-function App() {
-  const [data, setData] = useState([]);
+import React, { useState } from 'react';
 
-  // 需执行大量运算生成过滤条件
-  const filter = generateExpensiveFilter(data); 
+const App = () => {
+  const [count, setCount] = useState(0);
 
-  const filteredData = useMemo(() => {
-    return data.filter(filter);
-  }, [data, filter]);
+  // 大量运算的函数
+  const calculateExpensiveValue = (num) => {
+    console.log('Performing expensive calculation...');
+    // 假设这里有很复杂的计算逻辑
+    return num * 2;
+  };
 
-  return <DataView data={filteredData} />;
+  const handleIncrement = () => {
+    const newValue = calculateExpensiveValue(count + 1);
+    setCount(newValue);
+  };
 
-}
-
-// 生成过滤条件的逻辑
-function generateExpensiveFilter(data) {
-  // ...大量运算
-  return filter;
-}
+  return (
+    <div>
+      <button onClick={handleIncrement}>增加计数器</button>
+      <div>count：{count}</div>
+    </div>
+  );
+};
 ```
+在上述代码中，每次App重新渲染时，calculateExpensiveValue函数都会被重新创建，即使函数的逻辑和参数都没有变化。这可能会导致不必要的计算开销。
+
+![image](https://github.com/Vuact/Blog/assets/74364990/17493dc0-394b-41e9-b8da-627fc8c13537)
+
+
+现在，我们使用useCallback来优化calculateExpensiveValue函数的定义
 
 **优化后：**
-
+只需要修改calculateExpensiveValue即可：
 ```js
-function App() {
-  const [data, setData] = useState([]);
-
-  // 使用 useCallback 记忆
-  const filter = useCallback(() => {
-    return generateExpensiveFilter(data);
-  }, [data]);
-
-  const filteredData = useMemo(() => {
-    return data.filter(filter); 
-  }, [data, filter]);
-
-  return <DataView data={filteredData} />;
-}
+const calculateExpensiveValue = useCallback((num) => {
+  console.log('Performing expensive calculation...');
+  // 假设这里有很复杂的计算逻辑
+  return num * 2;
+}, []);
 ```
+现在，calculateExpensiveValue函数使用useCallback进行了优化，并通过空依赖项[]来指示该函数没有外部依赖。这样，每次ParentComponent重新渲染时，calculateExpensiveValue函数都将保留相同的引用，避免不必要的重新创建。
 
 
 ### `useCallback`配合`React.Memo`使用的场景：
