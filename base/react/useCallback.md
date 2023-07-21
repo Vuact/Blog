@@ -101,6 +101,22 @@ const Parent = React.memo(({ a, b }) => {
 
 # 二、useCallback
 
+## 1、介绍
+
+useCallback 接收一个内联回调函数以及一个依赖项数组作为参数。
+
+```js
+const memoizedCallback = useCallback(() => {
+  // 函数体
+}, [依赖项]) 
+```
+
+作用:
+- 缓存回调函数实例,避免每次渲染时重新创建函数
+- 配合依赖项数组实现依赖变更时才更新函数
+
+
+## 2、实战
 看下面一段代码：
 ```js
 let count = 0;
@@ -143,7 +159,7 @@ function Child({ val, getData }) {
 - ⑤ Child发现getData的引用变了，又会执行getData
 - ⑥ 3 -> 5 是一个死循环
 
-## 解决：使用useCallback
+#### 解决：使用useCallback
 
 只需要将上面getData改为如下写法即可：
 
@@ -156,7 +172,7 @@ const getData = useCallback(() => {
 }, []);
 ```
 
-## 新需求：useCallback需要依赖state
+#### 新需求：useCallback需要依赖state
 
 假如在`getData`中需要用到`val`( useState 中的值)，就需要将其加入依赖列表，这样的话又会导致每次`getData`的引用都不一样，死循环又出现了...
 
