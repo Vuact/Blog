@@ -240,6 +240,12 @@ function App() {
 }
 ```
 现象：任何一个输入框的变化都会导致另一个输入框重新渲染。
+具体分析:
+1. App 组件中的 onChange1 和 onChange2 在每次渲染时会作为新的函数被创建,所以它们的引用总是变化的。
+2. Child 组件使用 React.memo 进行了记忆化,只有当 props 变化时才会重新渲染。
+3. 每次 App 重新渲染,会将新的 onChange1 和 onChange2 函数引用传递给对应的 Child 组件。
+4. 因此每个 Child 组件接收到的 props.onChange 函数引用发生了变化,会触发重新渲染。
+5. 这样当一个输入框变化,整个 App 组件重新渲染,另一个 Child 组件由于接收到新的函数引用也会跟着重新渲染。
 
 ![Jun-06-2022 03-20-01](https://user-images.githubusercontent.com/74364990/172067104-2ba8c80d-e17c-4326-b03c-3fa6f89cf4ed.gif)
 
