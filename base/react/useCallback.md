@@ -207,6 +207,8 @@ const getData = useRefCallback(() => {
 
 # 三、useCallback应用
 
+注意： useCallback 的目的不是为了减少函数创建的次数，而是为了性能优化，所以不要滥用useCallback
+
 useCallback真正有助于性能改善的，有 2 种场景：
 
 - 当函数的计算成本较高：如果一个函数在执行时需要进行大量的计算、数据处理、或涉及昂贵的计算操作，那么使用useCallback可以减少不必要的计算开销。
@@ -335,3 +337,4 @@ function App() {
 
 
 
+# 四、useCallback缺陷
