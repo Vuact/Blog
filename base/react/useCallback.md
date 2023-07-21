@@ -96,6 +96,8 @@ const Parent = React.memo(({ a, b }) => {
 });
 ```
 
+<br><br>
+
 # 二、useCallback使用
 
 看下面一段代码：
@@ -206,8 +208,54 @@ const getData = useRefCallback(() => {
 
 useCallback真正有助于性能改善的，有 2 种场景：
 
-- 函数定义时需要进行大量运算，这种场景极少
+- 函数定义时需要进行大量运算，这种场景相对少见
 - 需要比较引用的场景，又或者是配合[React.Memo](https://zh-hans.reactjs.org/docs/react-api.html#reactmemo)使用：
+
+### 函数定义时需要进行大量运算
+
+**优化前：**
+
+```js
+function App() {
+  const [data, setData] = useState([]);
+
+  // 需执行大量运算生成过滤条件
+  const filter = generateExpensiveFilter(data); 
+
+  const filteredData = useMemo(() => {
+    return data.filter(filter);
+  }, [data, filter]);
+
+  return <DataView data={filteredData} />;
+
+}
+
+// 生成过滤条件的逻辑
+function generateExpensiveFilter(data) {
+  // ...大量运算
+  return filter;
+}
+```
+
+**优化后：**
+
+```js
+function App() {
+  const [data, setData] = useState([]);
+
+  // 使用 useCallback 记忆
+  const filter = useCallback(() => {
+    return generateExpensiveFilter(data);
+  }, [data]);
+
+  const filteredData = useMemo(() => {
+    return data.filter(filter); 
+  }, [data, filter]);
+
+  return <DataView data={filteredData} />;
+}
+```
+
 
 ### `useCallback`配合`React.Memo`使用的场景：
 
