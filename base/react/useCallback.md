@@ -1,4 +1,4 @@
-# 一、useCallback / useMemo / React.memo 简介
+# 一、简介
 
 主题虽然是`useCallback`，但顺面就把 `useMemo` 和 `React.memo` 也提一下吧。
 
