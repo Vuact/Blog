@@ -285,56 +285,47 @@ const getData = useRefCallback(() => {
 
 useCallback真正有助于性能改善的，有 2 种场景：
 
-- 当函数的计算成本较高：如果一个函数在执行时需要进行大量的计算、数据处理、或涉及昂贵的计算操作，那么使用useCallback可以减少不必要的计算开销。
+- 当函数的创建计算成本较高时，可以使用，但这种场景极少。
 - 当函数作为回调函数传递给子组件时：比较函数前后的引用，一般配合[React.Memo](https://zh-hans.reactjs.org/docs/react-api.html#reactmemo)使用。在React中，如果一个函数作为props传递给子组件，而该函数没有通过useCallback进行优化，每次父组件重新渲染时都会创建一个新的函数实例，导致子组件可能会重新渲染。使用useCallback可以确保相同的函数实例被传递给子组件，从而避免不必要的子组件渲染。
 
-### 函数的计算成本较高
-
-**优化前：**
+### 函数的创建计算成本较高时
 
 ```js
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
-const App = () => {
-  const [count, setCount] = useState(0);
+// 斐波那契函数
+const fibonacci = n => {
+  if (n <= 1) {
+    return 1;
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
 
-  // 大量运算的函数
-  const calculateExpensiveValue = (num) => {
-    console.log('Performing expensive calculation...');
-    // 假设这里有很复杂的计算逻辑
-    return num * 2;
-  };
+const MyApp = () => {
+  const [num, setNum] = useState(1);
 
-  const handleIncrement = () => {
-    const newValue = calculateExpensiveValue(count + 1);
-    setCount(newValue);
-  };
+  const fib = useCallback(() => {
+    return fibonacci(num);
+  }, [num]);
 
   return (
     <div>
-      <button onClick={handleIncrement}>增加计数器</button>
-      <div>count：{count}</div>
+      <h1>Fibonacci calculator</h1>
+      <p>Fibonacci number of {num} is {fib()}</p >
+      <button onClick={() => setNum(num + 1)}>Increase</button>
     </div>
   );
-};
+}
+
+export default MyApp;
 ```
-在上述代码中，每次App重新渲染时，calculateExpensiveValue函数都会被重新创建，即使函数的逻辑和参数都没有变化。这可能会导致不必要的计算开销。
+在这个例子中，当你点击按钮增加 num 的值时，useCallback 会捕获这个变化，并重新计算斐波那契数列。这样，只有当 num 变化时，昂贵的 fibonacci 函数才会重新计算，从而避免了不必要的计算开销。
 
-![image](https://github.com/Vuact/Blog/assets/74364990/17493dc0-394b-41e9-b8da-627fc8c13537)
+注意，斐波那契函数在大值上会非常慢，因此在真实的应用中，你可能想要找到一个更高效的算法或者用其他方式优化这个计算。
+
+此外，useCallback 并不会缓存计算的结果，如果你希望缓存函数的返回结果，应该使用 useMemo 而不是 useCallback。在上述示例中，只有在 num 改变时，函数 fib 的定义才会改变，每次渲染都会执行 fib() 这一步。如果希望避免每次渲染都重新计算结果，可以使用 useMemo。
 
 
-现在，我们使用useCallback来优化calculateExpensiveValue函数的定义
-
-**优化后：**
-只需要修改calculateExpensiveValue即可：
-```js
-const calculateExpensiveValue = useCallback((num) => {
-  console.log('Performing expensive calculation...');
-  // 假设这里有很复杂的计算逻辑
-  return num * 2;
-}, []);
-```
-现在，calculateExpensiveValue函数使用useCallback进行了优化，并通过空依赖项[]来指示该函数没有外部依赖。这样，每次ParentComponent重新渲染时，calculateExpensiveValue函数都将保留相同的引用，避免不必要的重新创建。
 
 
 ### `useCallback`配合`React.Memo`使用的场景：
