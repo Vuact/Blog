@@ -400,7 +400,7 @@ function App() {
 
 <br>
 
-# 四、useMemoizedFn解决useCallback的缺陷
+# 四、useMemoizedFn与useCallback
 
 ```js
 import React, { useState } from 'react'
@@ -488,7 +488,7 @@ const Index = () => {
     )
 }
 ```
-**解决方案：使用ahooks的useMemoizedFn**
+## 解决方案：使用ahooks的useMemoizedFn
 
 useMemoizedFn 的目的是返回一个稳定的函数引用，即使这个函数的依赖项发生变化，它也不会改变。这是为了避免因为函数引用的改变而引起的不必要的重渲染。
 
@@ -550,9 +550,9 @@ function Example() {
 
 在这个例子中，`callback` 是一个用 `useMemoizedFn` 创建的函数。即使 `count` 改变，`callback` 的引用也不会改变，因此不会引发不必要的重渲染。然而，当你点击 "Log count" 按钮时，`callback` 能正确地打印出当前的 `count` 值，这是因为 `useMemoizedFn` 保证了函数的内部逻辑是最新的。
 
-### 源码
+也一起来看看 useMemoizedFn 的 源码看看它是怎么实现的，
 
-也一起来看看 useMemoizedFn 的源码看看它是怎么实现的：
+**源码：**
 ```js
 import { useMemo, useRef } from 'react';
 
@@ -577,4 +577,21 @@ function useMemoizedFn(fn) {
 
 export default useMemoizedFn;
 ```
+
+<br>
+
+## useMemoizedFn 还是 useCallback？
+
+`useMemoizedFn` 和 `useCallback` 都是为了优化 React 组件的性能，具体使用哪个，取决于具体的场景。
+
+- 如果你的回调函数中有依赖于外部作用域的变量，且你希望在每次这些依赖变化时都获得一个新的回调函数实例，那么 `useCallback` 是更好的选择。因为 `useCallback` 可以接受一个依赖数组，只有当依赖变化时，才会返回一个新的函数实例。
+
+- 另一方面，如果你的`回调函数没有外部依赖` 或者 你希望`无论依赖是否变化，都返回同一个函数实例`，那么 `useMemoizedFn` 可能是更好的选择。`useMemoizedFn` 会始终返回同一个函数实例。
+  
+请注意，不是所有场景都需要优化。在大多数情况下，函数创建的开销是可以忽略不计的，而且过度优化可能会使代码更难理解和维护。
+
+总的来说，`useMemoizedFn` 和 `useCallback` 都是工具，它们有各自的优点和使用场景。在决定使用哪一个之前，一定要了解你的需求，以及每个 hook 的行为。
+
+<br>
+
 内容参考：https://juejin.cn/post/7074938135544594463
