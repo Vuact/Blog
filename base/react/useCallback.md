@@ -288,7 +288,7 @@ useCallback真正有助于性能改善的，有 2 种场景：
 - 当函数创建本身的开销非常大时，尽管这种情况比较罕见。
 - 当函数作为回调函数传递给子组件时：比较函数前后的引用，一般配合[React.Memo](https://zh-hans.reactjs.org/docs/react-api.html#reactmemo)使用。在React中，如果一个函数作为props传递给子组件，而该函数没有通过useCallback进行优化，每次父组件重新渲染时都会创建一个新的函数实例，导致子组件可能会重新渲染。使用useCallback可以确保相同的函数实例被传递给子组件，从而避免不必要的子组件渲染。
 
-### 1、函数创建本身的开销非常大时（比较罕见）
+## 1、函数创建本身的开销非常大时（比较罕见）
 
 ```js
 const expensiveFunctionFactory = () => {
@@ -325,7 +325,7 @@ const App = () => {
 此外，useCallback 并不会缓存计算的结果，如果你希望缓存函数的返回结果，应该使用 useMemo 而不是 useCallback。
 
 
-### 2、`useCallback`配合`React.Memo`使用的场景：
+## 2、`useCallback`配合`React.Memo`使用的场景：
 
 **优化前：**
 ```js
