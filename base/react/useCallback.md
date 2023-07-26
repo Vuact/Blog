@@ -400,7 +400,7 @@ function App() {
 
 <br>
 
-# 四、使用useMemoizedFn取代useCallback
+# 四、useMemoizedFn解决useCallback的缺陷
 
 ```js
 import React, { useState } from 'react'
@@ -490,6 +490,8 @@ const Index = () => {
 ```
 **解决方案：使用ahooks的useMemoizedFn**
 
+useMemoizedFn 的目的是返回一个稳定的函数引用，即使这个函数的依赖项发生变化，它也不会改变。这是为了避免因为函数引用的改变而引起的不必要的重渲染。
+
 ```js
 import React, { useState, memo } from 'react'
 import { useMemoizedFn } from 'ahooks'
@@ -516,6 +518,39 @@ const Index = () => {
      )
 }
 ```
+
+## useMemoizedFn 
+
+useMemoizedFn 的目的是返回一个稳定的函数引用，即使这个函数的依赖项发生变化，它也不会改变。这是为了避免因为函数引用的改变而引起的不必要的重渲染。
+
+此外，`useMemoizedFn` 还能确保函数的内部逻辑是最新的。也就是说，即使函数引用保持不变，函数内部也能正确地访问最新的 props、state 等。
+
+下面是一个例子：
+
+```jsx
+import { useState } from 'react';
+import { useMemoizedFn } from 'ahooks';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  const callback = useMemoizedFn(() => {
+    console.log(count);
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p >
+      <button onClick={callback}>Log count</button>
+      <button onClick={() => setCount(count + 1)}>Increase count</button>
+    </div>
+  );
+}
+```
+
+在这个例子中，`callback` 是一个用 `useMemoizedFn` 创建的函数。即使 `count` 改变，`callback` 的引用也不会改变，因此不会引发不必要的重渲染。然而，当你点击 "Log count" 按钮时，`callback` 能正确地打印出当前的 `count` 值，这是因为 `useMemoizedFn` 保证了函数的内部逻辑是最新的。
+
+### 源码
 
 也一起来看看 useMemoizedFn 的源码看看它是怎么实现的：
 ```js
