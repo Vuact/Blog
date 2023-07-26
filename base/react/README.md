@@ -25,6 +25,7 @@
 
 ### Hook
 
+- 为什么推荐使用函数式组件
 - useState
 - useState模拟实现
 - useState与setState的同步异步
