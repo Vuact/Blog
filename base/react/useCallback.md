@@ -120,19 +120,28 @@ useCallback`相当于相机，包裹的函数相当于照片，仅有在 相机�
 
 举个例子：
 ```js
+let count = 0;
+
 const Chat = () => {
   const [text, setText] = useState('init');
+  const countRef = useRef(0);
 
-  console.log('updateComponent', text);
-
-  const onClick = useCallback(() => {
+  const onConsole = useCallback(() => {
+    console.log('onClick', count);
+    console.log('onClick', countRef.current);
     console.log('onClick', text);
   }, []);
 
+  const onUpdate = () => {
+    setText('update');
+    count++;
+    countRef.current++;
+  };
+
   return (
     <>
-      <button onClick={() => setText('update')}>修改值</button>
-      <button onClick={onClick}>打印</button>
+      <button onClick={onUpdate}>修改值</button>
+      <button onClick={onConsole}>打印</button>
     </>
   );
 };
