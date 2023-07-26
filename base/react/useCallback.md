@@ -285,47 +285,44 @@ const getData = useRefCallback(() => {
 
 useCallback真正有助于性能改善的，有 2 种场景：
 
-- 当函数的创建计算成本较高时，可以使用，但这种场景极少。
+- 当函数创建本身的开销非常大时，尽管这种情况比较罕见。
 - 当函数作为回调函数传递给子组件时：比较函数前后的引用，一般配合[React.Memo](https://zh-hans.reactjs.org/docs/react-api.html#reactmemo)使用。在React中，如果一个函数作为props传递给子组件，而该函数没有通过useCallback进行优化，每次父组件重新渲染时都会创建一个新的函数实例，导致子组件可能会重新渲染。使用useCallback可以确保相同的函数实例被传递给子组件，从而避免不必要的子组件渲染。
 
-### 函数的创建计算成本较高时
+### 函数创建本身的开销非常大时
 
 ```js
-import React, { useState, useCallback } from 'react';
-
-// 斐波那契函数
-const fibonacci = n => {
-  if (n <= 1) {
-    return 1;
+const expensiveFunctionFactory = () => {
+  let value = 0;
+  for (let i = 0; i < 1000000000; i++) {
+    value += i;
   }
-  return fibonacci(n - 1) + fibonacci(n - 2);
+
+  return () => value;
 }
 
-const MyApp = () => {
-  const [num, setNum] = useState(1);
+const App = () => {
+  const [count, setCount] = useState(0);
 
-  const fib = useCallback(() => {
-    return fibonacci(num);
-  }, [num]);
+  // Without useCallback
+  // const expensiveFunction = expensiveFunctionFactory();
+
+  // With useCallback
+  const expensiveFunction = useCallback(expensiveFunctionFactory(), [count]);
 
   return (
     <div>
-      <h1>Fibonacci calculator</h1>
-      <p>Fibonacci number of {num} is {fib()}</p >
-      <button onClick={() => setNum(num + 1)}>Increase</button>
+      <p>Count: {count}</p >
+      <button onClick={() => setCount(count + 1)}>Increase count</button>
+      <p>Calculated value: {expensiveFunction()}</p >
     </div>
   );
 }
-
-export default MyApp;
 ```
-在这个例子中，当你点击按钮增加 num 的值时，useCallback 会捕获这个变化，并重新计算斐波那契数列。这样，只有当 num 变化时，昂贵的 fibonacci 函数才会重新计算，从而避免了不必要的计算开销。
+在这个例子中，每次 expensiveFunctionFactory 被调用时，它都会执行一个昂贵的计算过程。如果我们不使用 useCallback，那么这个函数每次渲染时都会被创建，从而导致大量的开销。如果我们使用 useCallback，只有当 count 变化时，才会重新创建这个函数。
 
-注意，斐波那契函数在大值上会非常慢，因此在真实的应用中，你可能想要找到一个更高效的算法或者用其他方式优化这个计算。
+然而，再次强调，这是一个极端的例子，并不代表常见的使用场景。在实际应用中，创建函数本身的开销几乎可以忽略不计，所以这不是 useCallback 常用的使用场景。在大多数情况下，useCallback 主要用于在依赖不变的情况下保持函数引用的稳定，从而优化React的渲染性能。
 
-此外，useCallback 并不会缓存计算的结果，如果你希望缓存函数的返回结果，应该使用 useMemo 而不是 useCallback。在上述示例中，只有在 num 改变时，函数 fib 的定义才会改变，每次渲染都会执行 fib() 这一步。如果希望避免每次渲染都重新计算结果，可以使用 useMemo。
-
-
+此外，useCallback 并不会缓存计算的结果，如果你希望缓存函数的返回结果，应该使用 useMemo 而不是 useCallback。
 
 
 ### `useCallback`配合`React.Memo`使用的场景：
