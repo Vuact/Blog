@@ -402,7 +402,36 @@ function App() {
 
 # 四、使用useMemoizedFn取代useCallback
 
-下面例子：我们用useCallback，解决了点击button按钮，Button组件不更新的问题。
+```js
+import React, { useState } from 'react'
+
+const Button = ({ handleClick }) => {
+    return <button onClick={handleClick}>Click!</button>;
+}
+
+const Index = () => {
+    const [clickCount, increaseCount] = useState(0);
+    
+    const handleClick = () => {
+        increaseCount(count => count + 1);
+    }
+
+    return (
+        <div>
+            <p>{clickCount}</p>
+            <Button handleClick={ handleClick } />
+        </div>
+    )
+}
+```
+上面的例子，我们会发现每次点击【Click!】按钮都会造成 Button 组件的重新渲染（但预期应该是Button组件不渲染）
+
+Button 组件的重新渲染原因如下：
+
+- Index组件state发生变化，导致组件重新渲染；
+- 进而导致子组件Button也重新渲染。
+
+我们使用 `memo` + `useCallback` 来解决这个问题，代码如下：
 
 ```js
 import React, { useState, useCallback, memo } from 'react'
@@ -429,6 +458,8 @@ const Index = () => {
     )
 }
 ```
+上面我们解决了点击button按钮，Button组件不更新的问题。
+
 现在有特殊情况：如果 useCallback 的依赖是时刻变化的，那 useCallback 就无效了 上面的例子改一下写法就会产生这样的问题
 
 ```js
