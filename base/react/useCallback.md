@@ -114,10 +114,11 @@ const memoizedCallback = useCallback(() => {
   // 函数体
 }, [依赖项]) 
 ```
+就会形成一个不销毁的作用域，一直存在内存中
 
-useCallback的返回值是一个函数，所以它包裹的函数是个典型的闭包（即：拥有了保存上一个状态的变量）
+useCallback的返回值是一个函数，所以它包裹的函数是一个典型的闭包（即：包裹函数内可以访问创建时的那些变量的值，可以理解为快照）
 
-`相当于相机，包裹的函数相当于照片，仅有在 相机的依赖项改变时，才会更新照片`(即包裹的函数)。
+即 `useCallback相当于相机`，`包裹的函数相当于照片(即闭包保存变量)`，仅有在 `相机的依赖项改变时，才会更新照片`。
 
 举个例子：
 ```js
@@ -162,7 +163,11 @@ const Chat = () => {
 <img width="327" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/8e1412fa-c3aa-4377-baf8-5f8a10d40b84">
 
 
-上面的useCallback包裹的`匿名函数就是一张照片`，由于`依赖项为空`，所以`相片永远都不更新`，`因而 匿名函数 中 text 始终为 init`
+上面的useCallback包裹的`匿名函数就是一张照片(闭包)`，由于`依赖项为空`，所以`相片永远都不更新`；因而点击 "修改值" button后：onConsole仍是一开始创建时的那个函数。
+
+然后按[【JavaScript深入 闭包】](https://github.com/Vuact/Blog/blob/main/base/javascript/JavaScript%E6%B7%B1%E5%85%A5/JavaScript%E6%B7%B1%E5%85%A5%20%E9%97%AD%E5%8C%85.md)的理论分析，
+count值为1；而countRef.current和text仍为一开始创建时的值，即text为init；但countRef.current
+
 
 ## 2、实战
 看下面一段代码：
