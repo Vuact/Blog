@@ -125,19 +125,22 @@ useCallback的返回值是一个函数，所以它包裹的函数是一个典型
 let count = 0;
 
 const Chat = () => {
-  const [text, setText] = useState('init');
+  const [text, setText] = useState("init");
+  const [textObj, setTextObj] = useState({ a: 1 });
   const countRef = useRef(0);
 
-  console.log('updateComponent', text, count, countRef.current);
+  console.log("updateComponent", text, textObj, count, countRef.current);
 
   const onConsole = useCallback(() => {
-    console.log('onClick', count);
-    console.log('onClick', countRef.current);
-    console.log('onClick', text);
+    console.log("onClick", count);
+    console.log("onClick", countRef.current);
+    console.log("onClick", text);
+    console.log("onClick", textObj);
   }, []);
 
   const onUpdate = () => {
-    setText('update');
+    setText("update");
+    setTextObj({ b: 1 });
     count++;
     countRef.current++;
   };
@@ -154,13 +157,13 @@ const Chat = () => {
 ![image](https://github.com/Vuact/Blog/assets/74364990/a0849c74-af47-4495-8629-9fa95b467aa6)
 
 先点击 "打印" button，控制台输出: 
-<img width="273" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/43952c5d-941f-4a1e-86a3-25d6594d4b78">
+<img width="205" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/291c917d-ad89-40e2-9bd7-484c31ed3672">
 
 再点击 "修改值" button，控制台输出: 
-<img width="297" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/eed4ce18-9fcd-44c2-b03a-e6c180674e51">
+<img width="338" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/8701bfa1-44f0-46dd-b66b-32b8b4ac43ee">
 
 再次点击 "打印" button，控制台输出:
-<img width="327" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/8e1412fa-c3aa-4377-baf8-5f8a10d40b84">
+<img width="329" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/7a994b6c-7439-4c0f-b1ec-7eb92908607f">
 
 
 上面的useCallback包裹的`匿名函数就是一张照片(闭包)`，由于`依赖项为空`，所以`相片永远都不更新`；因而点击 "修改值" button后：onConsole仍是一开始创建时的那个函数。
