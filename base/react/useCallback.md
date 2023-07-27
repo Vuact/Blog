@@ -114,11 +114,10 @@ const memoizedCallback = useCallback(() => {
   // 函数体
 }, [依赖项]) 
 ```
-就会形成一个不销毁的作用域，一直存在内存中
 
-useCallback的返回值是一个函数，所以它包裹的函数是一个典型的闭包（即：包裹函数内可以访问创建时的那些变量的值，可以理解为快照）
+`useCallback可以理解为相机`，其`包裹的函数相当于照片`；仅有在相机的`依赖的值变化时，才会更新照片`。
 
-即 `useCallback相当于相机`，`包裹的函数相当于照片(即闭包保存变量)`，仅有在 `相机的依赖项改变时，才会更新照片`。
+包裹的函数内的变量值(state、props)，均为生成或更新照片时的变量值。
 
 举个例子：
 ```js
@@ -166,12 +165,16 @@ const Chat = () => {
 <img width="329" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/7a994b6c-7439-4c0f-b1ec-7eb92908607f">
 
 
-上面的useCallback包裹的`匿名函数就是一张照片(闭包)`，由于`依赖项为空`，所以`相片永远都不更新`；因而点击 "修改值" button后，onConsole仍是一开始创建时的那个函数，接下来就涉及到闭包`保存变量`的功能。
+上面的useCallback包裹的`匿名函数就是一张照片`，由于`依赖项为空`，所以`相片永远都不更新`；
 
-然后按[【JavaScript深入 闭包】](https://github.com/Vuact/Blog/blob/main/base/javascript/JavaScript%E6%B7%B1%E5%85%A5/JavaScript%E6%B7%B1%E5%85%A5%20%E9%97%AD%E5%8C%85.md)的理论分析，
-count值为1；而这个不销毁的作用域保存的值（textObj、text、countRef.current）仍为创建匿名函数时的值，即text为`init`，textObj为 `{a:1}`
+因而点击 "修改值" button后，onConsole仍是一开始创建时的那个函数；那个函数保存的state或props的值，也均为创建时的值，故：text仍为`init`，textObj仍为 `{a:1}`，
 
-但由于countRef.current是引用地址，读取的永远是最新的值，故countRef.current值为1
+且countRef.current的值也是一开始创建时的值，但由于countRef.current是引用地址，读取的永远是最新的值，故countRef.current值为1；
+
+而count是因为脱离了useCallback对应的Chat组件的管理，所以不会保存count的值，故能读到最新的值
+
+>因为这里涉及到虚拟DOM、hook的原理，所以不能用常规js作用域链的方式来分析
+
 
 <br>
 
