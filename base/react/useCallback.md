@@ -173,6 +173,22 @@ count值为1；而这个不销毁的作用域保存的值（textObj、text、cou
 
 但由于countRef.current是引用地址，读取的永远是最新的值，故countRef.current值为1
 
+<br><br>
+
+**源码：**
+```js
+function useCallback(callback, deps) {
+  const ref = useRef(); // 定义ref存储callback
+
+  // 当依赖项变化时更新callback
+  useEffect(() => {
+    ref.current = callback;
+  }, [deps]) 
+  
+  return ref.current; // 返回callback的ref
+}
+```
+
 
 ## 2、实战
 看下面一段代码：
