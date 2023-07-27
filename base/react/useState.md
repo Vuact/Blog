@@ -73,6 +73,8 @@ function IncrementLoop() {
 function IncrementLoop() {
   const [count, setCount] = useState(0);
 
+  console.log("render");
+
   const handleClick = () => {
     for (let i = 0; i < 5; i++) {
       console.log("count", count);
@@ -93,7 +95,7 @@ function IncrementLoop() {
 ```
 点击后控制台输出：
 
-<img width="205" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/40b45033-9322-4818-afd1-2e82283fd38f">
+<img width="200" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/95da99ff-466e-414e-b1d0-6ed9337dd0be">
 
 点击后UI界面：
 <img width="169" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b8ebc388-00fd-44fd-aad1-a5c83ec69059">
