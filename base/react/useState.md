@@ -3,8 +3,12 @@
 >为什么叫 useState 而不叫 createState?<br>
 >“Create” 可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，useState 返回给我们当前的 state。
 
-- 用值更新状态
-- 使用回调更新状态
+`setState` 函数提供了两种方式来更新 state：
+
+1. 直接传递一个新的 state 值：`setCount(count + 1)`；场景：
+2. 传递一个函数，该函数接受当前 state 作为参数并返回新的 state：`setCount(prevCount => prevCount + 1)`
+
+两种方式有着不同的使用场景。直接传递新的 state 值适用于新的 state 不依赖于前一个 state 的情况。而传递一个函数适用于新的 state 需要基于前一个 state 计算得出的情况。
 
 
 ```js
