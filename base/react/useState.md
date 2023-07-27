@@ -36,6 +36,7 @@ setDataObj({...dataObj, {a: 1} });
 
 ## 2、传递一个函数
 
+### 使用前
 在下面的代码中，无论 `for` 循环执行多少次，`count` 都只会增加一次。这是因为所有的 `setCount` 调用都在同一个渲染周期中，共享了同一个 `count` 值。
 
 ```js
@@ -64,6 +65,7 @@ function IncrementLoop() {
 <img width="194" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b1dddaba-451c-4c60-9f08-da481b217da3">
 
 
+### 使用后
 ```js
 function IncrementLoop() {
   const [count, setCount] = useState(0);
