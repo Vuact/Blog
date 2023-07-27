@@ -66,6 +66,9 @@ function IncrementLoop() {
 
 
 ### 使用后
+
+当你使用 `setState` 的函数形式时，React 会把传入的函数加入到一个队列中，并在更新时依次执行。每个函数都会接收到前一个函数操作过的 state，从而确保每次更新都是基于最新的 state。
+
 ```js
 function IncrementLoop() {
   const [count, setCount] = useState(0);
@@ -89,6 +92,7 @@ function IncrementLoop() {
 }
 ```
 点击后控制台输出：
+
 <img width="205" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/40b45033-9322-4818-afd1-2e82283fd38f">
 
 点击后UI界面：
