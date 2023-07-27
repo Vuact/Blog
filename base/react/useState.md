@@ -43,6 +43,8 @@ setDataObj({...dataObj, {a: 1} });
 function IncrementLoop() {
   const [count, setCount] = useState(0);
 
+  console.log("render");
+
   const handleClick = () => {
     for (let i = 0; i < 5; i++) {
       console.log(count);
@@ -59,7 +61,7 @@ function IncrementLoop() {
 }
 ```
 点击后控制台输出：
-<img width="226" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/726cef39-e6a0-437b-a1a9-238d71c2d85a">
+<img width="199" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/88a7de07-819f-415b-bf5d-7856a00345b1">
 
 点击后UI界面：
 <img width="194" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b1dddaba-451c-4c60-9f08-da481b217da3">
@@ -68,6 +70,8 @@ function IncrementLoop() {
 ### 使用后
 
 当你使用 `setState` 的函数形式时，React 会把传入的函数加入到一个队列中，并在更新时依次执行。每个函数都会接收到前一个函数操作过的 state，从而确保每次更新都是基于最新的 state。
+
+虽然调用了多次setCount，但React会将其优化，最后只渲染一次。
 
 ```js
 function IncrementLoop() {
@@ -94,7 +98,6 @@ function IncrementLoop() {
 }
 ```
 点击后控制台输出：
-
 <img width="200" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/95da99ff-466e-414e-b1d0-6ed9337dd0be">
 
 点击后UI界面：
