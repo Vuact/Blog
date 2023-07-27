@@ -57,7 +57,11 @@ function IncrementLoop() {
   );
 }
 ```
+点击后控制台输出：
 <img width="226" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/726cef39-e6a0-437b-a1a9-238d71c2d85a">
+
+点击后UI界面：
+<img width="194" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b1dddaba-451c-4c60-9f08-da481b217da3">
 
 
 ```js
@@ -82,9 +86,11 @@ function IncrementLoop() {
   );
 }
 ```
-
+点击后控制台输出：
 <img width="205" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/40b45033-9322-4818-afd1-2e82283fd38f">
 
+点击后UI界面：
+<img width="169" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b8ebc388-00fd-44fd-aad1-a5c83ec69059">
 
 <br>
 
