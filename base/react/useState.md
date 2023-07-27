@@ -10,7 +10,7 @@
 
 两种方式有着不同的使用场景。直接传递新的 state 值适用于新的 state 不依赖于前一个 state 的情况。而传递一个函数适用于新的 state 需要基于前一个 state 计算得出的情况。
 
-## 1、直接传递一个新的 state
+## 1、传递一个新的 state
 ```js
 function Counter({ initialCount }) {
   const [count, setCount] = useState(initialCount);
