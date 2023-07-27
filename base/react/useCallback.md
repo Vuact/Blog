@@ -173,7 +173,7 @@ count值为1；而这个不销毁的作用域保存的值（textObj、text、cou
 
 但由于countRef.current是引用地址，读取的永远是最新的值，故countRef.current值为1
 
-<br><br>
+<br>
 
 **源码：**
 ```js
