@@ -36,7 +36,6 @@
 - useReducer
 - useContext + useReducer 替代redux.md
 - [React Hooks 异步操作踩坑记](https://juejin.cn/post/6844903974647103496)
-- [21 个 React 性能优化技巧](https://www.infoq.cn/article/KVE8xtRs-uPphptq5LUz)
 
 
 ### 调试
