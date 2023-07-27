@@ -26,13 +26,17 @@ function Counter({ initialCount }) {
 }
 
 // 更新数组
+const [list, setList] = useState([]);
 setList([...list, 'New Item']);
 
 // 更新对象
+const [dataObj, setDataObj] = useState({});
 setDataObj({...dataObj, {a: 1} });
  ```
 
 ## 2、传递一个函数
+
+在下面的代码中，无论 `for` 循环执行多少次，`count` 都只会增加一次。这是因为所有的 `setCount` 调用都在同一个渲染周期中，共享了同一个 `count` 值。
 
 ```js
 function IncrementLoop() {
