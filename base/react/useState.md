@@ -14,6 +14,7 @@
 ```js
 function Counter({ initialCount }) {
   const [count, setCount] = useState(initialCount);
+
   return (
     <>
       Count: {count}
@@ -23,10 +24,14 @@ function Counter({ initialCount }) {
     </>
   );
 }
+
+// 更新数组
+setList([...list, 'New Item']);
  ```
 
 ## 2、传递一个函数
- 
+
+ 改变：对象或数组的值
  ```js
 // 更新数组
 const [list, setList] = useState([]);
@@ -36,6 +41,56 @@ setList(list => [...list, 'New Item']);
 const [dataObj, setDataObj] = useState({});
 setDataObj(dataObj => {...dataObj, {a: 1} });
  ```
+
+
+```js
+function IncrementLoop() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    for (let i = 0; i < 5; i++) {
+      console.log(count);
+      setCount(count + 1);
+    }
+  };
+
+  return (
+    <div>
+      {count}
+      <button onClick={handleClick}>Increase</button>
+    </div>
+  );
+}
+```
+<img width="226" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/726cef39-e6a0-437b-a1a9-238d71c2d85a">
+
+
+```js
+function IncrementLoop() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    for (let i = 0; i < 5; i++) {
+      console.log("count", count);
+      setCount((prevCount) => {
+        console.log("prevCount", prevCount);
+        return prevCount + 1;
+      });
+    }
+  };
+
+  return (
+    <div>
+      {count}
+      <button onClick={handleClick}>Increase</button>
+    </div>
+  );
+}
+```
+
+<img width="205" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/40b45033-9322-4818-afd1-2e82283fd38f">
+
+
 <br>
 
 # 二、useState的坑
