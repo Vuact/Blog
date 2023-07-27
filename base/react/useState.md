@@ -5,15 +5,13 @@
 
 `setState` 函数提供了两种方式来更新 state：
 
-1. 直接传递一个新的 state 值：`setCount(count + 1)`；场景：
+1. 直接传递一个新的 state 值：`setCount(count + 1)` 
 2. 传递一个函数，该函数接受当前 state 作为参数并返回新的 state：`setCount(prevCount => prevCount + 1)`
 
 两种方式有着不同的使用场景。直接传递新的 state 值适用于新的 state 不依赖于前一个 state 的情况。而传递一个函数适用于新的 state 需要基于前一个 state 计算得出的情况。
 
-
+## 1、直接传递一个新的 state
 ```js
-import React, { useState } from 'react';
-
 function Counter({ initialCount }) {
   const [count, setCount] = useState(initialCount);
   return (
@@ -26,6 +24,8 @@ function Counter({ initialCount }) {
   );
 }
  ```
+
+## 2、传递一个函数
  
  ```js
 // 更新数组
