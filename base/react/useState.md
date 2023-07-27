@@ -27,21 +27,12 @@ function Counter({ initialCount }) {
 
 // 更新数组
 setList([...list, 'New Item']);
+
+// 更新对象
+setDataObj({...dataObj, {a: 1} });
  ```
 
 ## 2、传递一个函数
-
- 改变：对象或数组的值
- ```js
-// 更新数组
-const [list, setList] = useState([]);
-setList(list => [...list, 'New Item']);
-
-// 更新对象
-const [dataObj, setDataObj] = useState({});
-setDataObj(dataObj => {...dataObj, {a: 1} });
- ```
-
 
 ```js
 function IncrementLoop() {
