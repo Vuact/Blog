@@ -176,7 +176,8 @@ const Chat = () => {
 而count是因为脱离了useCallback对应的Chat组件的管理，所以不会保存count的值，故能读到最新的值
 
 >因为这里涉及到虚拟DOM、hook的原理，所以不能用常规js作用域链的方式来分析
-
+>
+>还有一种说法：可以理解为Chat组件是一个闭包，每次重新渲染useCallback都会记住该函数最开始渲染的变量，故text和textObj值不变，其实翻译过来说法和上面一样
 
 <br>
 
