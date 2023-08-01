@@ -57,12 +57,12 @@ function Component() {
   );
 }
 ```
-- 当点击`同步执行`按钮时，只重新 render 了`一次`
-![image](https://github.com/Vuact/Blog/assets/74364990/39e17512-9ff4-4aa4-81f4-93e881b01384)
+- 当点击`同步执行`按钮时，只重新 render 了`1次`
+![image](https://github.com/Vuact/Blog/assets/74364990/45063605-5857-4f4f-8ac3-823d1a392907)
 
-- 当点击`异步执行`按钮时，render 了`四次`
+- 当点击`异步执行`按钮时，render 了`6次`
 
-![image](https://github.com/Vuact/Blog/assets/74364990/ff90295f-5870-4de2-835d-f57d5e7560f1)
+![image](https://github.com/Vuact/Blog/assets/74364990/26cddac1-772c-4bda-a651-f0d98f7f2455)
 
 
 ## 2、再看 setState
