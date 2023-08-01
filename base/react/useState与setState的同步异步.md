@@ -185,8 +185,9 @@ class Component extends React.Component {
 所以当遇到 `setTimeout/setInterval/Promise.then(fn)/fetch 回调/xhr 网络回调`时，react 都是无法控制的。
   
 
+<br><br>
 
-### 总结：
+## 总结：
 
 无论在 函数式组件 还是 类组件 ：
 - 在`同步执行`中（即在正常的React的事件流里）：多次执行 setState或useState 都只会调用一次重新渲染render。
