@@ -4,7 +4,7 @@
 
 ## 1、先看useState
 
-### 同步和异步情况下，连续执行多个 useState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-4gxr2?file=/src/index.js)
+同步和异步情况下，连续执行多个 useState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-4gxr2?file=/src/index.js)
 
 ```js
 function Component() {
