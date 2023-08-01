@@ -76,8 +76,9 @@ class Component extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      a: 1,
-      b: "b"
+      a: 0,
+      b: 0,
+      c: "init"
     };
   }
 
@@ -93,22 +94,27 @@ class Component extends React.Component {
   handleClickWithPromise = async () => {
     await this.ajaxAsync();
 
-    this.setState({ ...this.state, b: "bb" });
-    this.setState({ ...this.state, b: "cc" });
+    this.setState({ ...this.state, c: "change1" });
+    this.setState({ ...this.state, c: "change2" });
+    this.setState({ ...this.state, b: this.state.b + 1 });
+    this.setState({ ...this.state, b: this.state.b + 1 });
     this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
     this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
   };
 
   handleClickWithoutPromise = () => {
-    this.setState({ ...this.state, b: "bb" });
-    this.setState({ ...this.state, b: "cc" });
+    this.setState({ ...this.state, c: "change1" });
+    this.setState({ ...this.state, c: "change2" });
+    this.setState({ ...this.state, b: this.state.b + 1 });
+    this.setState({ ...this.state, b: this.state.b + 1 });
     this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
     this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
   };
 
   render() {
-    const { a, b } = this.state;
-    console.log("render", a, b);
+    const { a, b, c } = this.state;
+
+    console.log("render", `a => ${a}; b => ${b}; c => ${c};`);
 
     return (
       <>
@@ -119,10 +125,14 @@ class Component extends React.Component {
   }
 }
 ```
-#### 跟useState的结果一样
 
-- 当点击`同步执行`按钮时，只重新 render 了`一次`
-- 当点击`异步执行`按钮时，render 了`四次`
+- 当点击`同步执行`按钮时，只重新 render 了`1次`
+
+![image](https://github.com/Vuact/Blog/assets/74364990/d999f9c2-ba1d-457b-93ad-b585d0c97c30)
+
+- 当点击`异步执行`按钮时，render 了`6次`
+
+![image](https://github.com/Vuact/Blog/assets/74364990/0e52ae51-151e-49a4-a563-f9e704bee3f8)
 
 
 # 二、分析
