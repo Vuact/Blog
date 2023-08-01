@@ -130,6 +130,8 @@ class Component extends React.Component {
 
 ![image](https://github.com/Vuact/Blog/assets/74364990/d999f9c2-ba1d-457b-93ad-b585d0c97c30)
 
+> 注意：这里c的输出一直为init，原因是因为：React中每次调用setState都需要手动合并state，而这里的c的state被后来的 `this.setState({ ...this.state, b: this.state.b + 1 });` 覆盖为了init
+
 - 当点击`异步执行`按钮时，render 了`6次`
 
 ![image](https://github.com/Vuact/Blog/assets/74364990/0e52ae51-151e-49a4-a563-f9e704bee3f8)
