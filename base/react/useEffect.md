@@ -364,4 +364,39 @@ function Dong() {
 
 ![Jun-06-2022 02-22-51](https://user-images.githubusercontent.com/74364990/172064955-f3a211b6-99c4-4934-bca6-26a7d786e5e3.gif)
 
+你可能会疑惑，为什么连续输出 4次 111 ，才会输出 333；不应该是连续输出 3次 111 就输出 333吗？
+
+看这个例子你就懂了：
+```
+function Dong() {
+  const ref = useRef(1);
+  const [, setState] = useState();
+
+  console.log("render");
+
+  useEffect(() => {
+    console.log(111);
+  });
+
+  useEffect(() => {
+    console.log(333);
+  }, [ref.current]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      ref.current = 2;
+    }, 1000);
+  }, []);
+
+  return <div>dong</div>;
+}
+```
+控制台自始至终，都只会输出下图，且不会在1秒后有任何变化：
+
+![image](https://github.com/Vuact/Blog/assets/74364990/7251938e-0563-49bd-8874-38f68ccba850)
+
+因为React中改变 `ref` 并不会触发再次渲染，即使 useEffect监听了 `ref.current` 这个变量。
+
+
+
 
