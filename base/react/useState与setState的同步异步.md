@@ -62,7 +62,7 @@ function Component() {
 
 ## 2、再看 setState
 
-### 同步和异步情况下，连续执行两个 setState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-uleks?file=/src/index.js)
+### 同步和异步情况下，连续执行多个 setState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-uleks?file=/src/index.js)
 
 ```js
 class Component extends React.Component {
@@ -70,25 +70,39 @@ class Component extends React.Component {
     super(props);
     this.state = {
       a: 1,
-      b: 'b',
+      b: "b"
     };
   }
 
-  handleClickWithPromise = () => {
-    Promise.resolve().then(() => {
-      this.setState({ ...this.state, a: 'aa' });
-      this.setState({ ...this.state, b: 'bb' });
+  // 模拟网络请求
+  ajaxAsync = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000);
     });
   };
 
+  handleClickWithPromise = async () => {
+    await this.ajaxAsync();
+
+    this.setState({ ...this.state, b: "bb" });
+    this.setState({ ...this.state, b: "cc" });
+    this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
+    this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
+  };
+
   handleClickWithoutPromise = () => {
-    this.setState({ ...this.state, a: 'aa' });
-    this.setState({ ...this.state, b: 'bb' });
+    this.setState({ ...this.state, b: "bb" });
+    this.setState({ ...this.state, b: "cc" });
+    this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
+    this.setState((prevState) => ({ ...prevState, a: prevState.a + 1 }));
   };
 
   render() {
-    console.log('render');
-    
+    const { a, b } = this.state;
+    console.log("render", a, b);
+
     return (
       <>
         <button onClick={this.handleClickWithPromise}>异步执行</button>
@@ -101,46 +115,8 @@ class Component extends React.Component {
 #### 跟useState的结果一样
 
 - 当点击`同步执行`按钮时，只重新 render 了`一次`
-- 当点击`异步执行`按钮时，render 了`两次`
+- 当点击`异步执行`按钮时，render 了`四次`
 
-### 同步和异步情况下，连续执行两次同一个 setState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-q3dhy?file=/src/index.js)
-
-```js
-class Component extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      a: 1,
-    };
-  }
-
-  handleClickWithPromise = () => {
-    Promise.resolve().then(() => {
-      this.setState({ a: this.state.a + 1 });
-      this.setState({ a: this.state.a + 1 });
-    });
-  };
-
-  handleClickWithoutPromise = () => {
-    this.setState({ a: this.state.a + 1 });
-    this.setState({ a: this.state.a + 1 });
-  };
-
-  render() {
-    console.log('a', this.state.a);
-
-    return (
-      <>
-        <button onClick={this.handleClickWithPromise}>异步执行</button>
-        <button onClick={this.handleClickWithoutPromise}>同步执行</button>
-      </>
-    );
-  }
-}
-```
-#### 也跟useState的结果一样
-- 当点击`同步执行`按钮时，两次 setState 合并，只执行了最后一次，打印: `2`
-- 当点击`异步执行`按钮时，两次 setState 各自 render 一次，分别打印: `2` `3`
 
 # 二、分析
 
