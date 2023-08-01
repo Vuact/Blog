@@ -56,6 +56,7 @@ function Component() {
 ![image](https://github.com/Vuact/Blog/assets/74364990/39e17512-9ff4-4aa4-81f4-93e881b01384)
 
 - 当点击`异步执行`按钮时，render 了`四次`
+
 ![image](https://github.com/Vuact/Blog/assets/74364990/ff90295f-5870-4de2-835d-f57d5e7560f1)
 
 
