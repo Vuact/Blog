@@ -12,7 +12,7 @@ function Component() {
   const [b, setB] = useState(0);
   const [c, setC] = useState("init");
 
-  console.log("render", a, b, c);
+  console.log("render", `a => ${a}; b => ${b}; c => ${c};`);
 
   // 模拟网络请求
   const ajaxAsync = () => {
@@ -58,11 +58,13 @@ function Component() {
 }
 ```
 - 当点击`同步执行`按钮时，只重新 render 了`1次`
-![image](https://github.com/Vuact/Blog/assets/74364990/45063605-5857-4f4f-8ac3-823d1a392907)
+
+![image](https://github.com/Vuact/Blog/assets/74364990/a8e09022-63f0-4b5e-959d-22ed387323af)
 
 - 当点击`异步执行`按钮时，render 了`6次`
 
-![image](https://github.com/Vuact/Blog/assets/74364990/26cddac1-772c-4bda-a651-f0d98f7f2455)
+![image](https://github.com/Vuact/Blog/assets/74364990/6702057b-fccf-43a4-bf59-8b41c38b3cb3)
+
 
 
 ## 2、再看 setState
