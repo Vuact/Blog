@@ -8,10 +8,11 @@
 
 ```js
 function Component() {
-  const [a, setA] = useState(1);
-  const [b, setB] = useState('b');
+  const [a, setA] = useState(0);
+  const [b, setB] = useState(0);
+  const [c, setC] = useState("init");
 
-  console.log('render', a, b);
+  console.log("render", a, b, c);
 
   // 模拟网络请求
   const ajaxAsync = () => {
@@ -28,25 +29,29 @@ function Component() {
 
     setA((a) => a + 1);
     setA((a) => a + 1);
-    setB('bb');
-    setB('cc');
+    setB(b + 1);
+    setB(b + 1);
+    setC("change1");
+    setC("change2");
   }
-  
+
   // 同步情况下
   function handleClickWithoutPromise() {
     setA((a) => a + 1);
     setA((a) => a + 1);
-    setB('bb');
-    setB('cc');
+    setB(b + 1);
+    setB(b + 1);
+    setC("change1");
+    setC("change2");
   }
 
   return (
     <>
       <button onClick={handleClickWithPromise}>
-        {a}-{b} 异步执行
+        {a}-{b}-{c} 异步执行
       </button>
       <button onClick={handleClickWithoutPromise}>
-        {a}-{b} 同步执行
+        {a}-{b}-{c} 同步执行
       </button>
     </>
   );
