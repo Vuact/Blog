@@ -69,7 +69,7 @@ function Component() {
 
 ## 2、再看 setState
 
-同步和异步情况下，连续执行多个 setState [(示例)](https://codesandbox.io/s/does-react-batches-state-update-functions-when-using-hooks-forked-uleks?file=/src/index.js)
+同步和异步情况下，连续执行多个 setState
 
 ```js
 class Component extends React.Component {
