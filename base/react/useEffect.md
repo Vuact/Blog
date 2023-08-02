@@ -9,6 +9,8 @@
 
 简介
 
+useEffect支持两个参数，第一个参数是回调函数，第二个参数是依赖。
+
 ```js
 type DependencyList = ReadonlyArray<any>;
 
@@ -39,6 +41,9 @@ useEffect(() => {
 # 参数二：deps
 
 第二个参数可以不传或者是一个`数组`，`非必传项`。数组里面依赖改变时候副作用函数才会重新更新。所谓依赖改变就是 `[ 之前值 === 之后值 ]` ，如果`为true不执行useEffect`，`为false重新执行useEffect`。
+
+
+当第二个参数不传 或为 null 或 undefined 的时候，回调函数每次 render 都会执行。
 
 ## 1、不传值
 
