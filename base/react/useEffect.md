@@ -44,8 +44,7 @@ useEffect(() => {
 
 第二个参数传`数组` 时，数组里依赖改变，回调函数才会重新更新。所谓依赖改变就是 `[ 之前值 === 之后值 ]` ，如果`为true不执行回调函数`，`为false重新执行回调函数`。
 
->注意: useEffect并不是去监听第二个参数是否改变来决定是否执行回调的。而是每次重新执行函数式组件后，执行到useEffect再去判断依赖是否发生变化，从而决定是否触发回调的。
->所以函数式组件不重新执行，即使useEffect依赖发生变化也不会触发回调。
+>注意: useEffect 并不会"监听"这些值的变化。而是在每次组件重新执行后，检查这些值是否变化，如果变化，就执行回调。如果组件没有重新执行，那么即使这些值发生了变化，回调也不会执行。
 
 ## 1、不传值
 
@@ -144,7 +143,7 @@ useEffect(() => {
 原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项arr发生变化，此处依赖数组执行`浅层比较`（`[...] === [...] 为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
 
 
-### 上述数组作为依赖代码，去除setTimeout会出现什么情况？
+#### 上述数组作为依赖代码，去除setTimeout会出现什么情况？
 
 ```tsx
 const [count, setCount] = useState(1);
@@ -161,7 +160,7 @@ useEffect(() => {
 
 因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
 
-### 如何解决：使用useRef
+#### 如何解决：使用useRef
 
 useRef会在每次渲染时返回同一个ref对象，返回的ref在组件的整个生命周期内保持不变，且ref值改变不会导致重新渲染
 
@@ -206,7 +205,7 @@ useEffect(() => {
 
 原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项consoleFunction函数发生变化，此处依赖函数执行`浅层比较`（每次渲染都重新创建一个新的函数 `function(前) === function（后）为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
 
-### 上述函数作为依赖代码，去除setTimeout会出现什么情况？
+#### 上述函数作为依赖代码，去除setTimeout会出现什么情况？
 
 ```tsx
 const [count, setCount] = useState(1);
@@ -226,7 +225,7 @@ useEffect(() => {
 
 因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
 
-### 如何解决：使用useCallback
+#### 如何解决：使用useCallback
 
 useCallback返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。
 
@@ -275,7 +274,7 @@ useEffect(() => {
 
 原因：第一次渲染后执行一次useEffect，useEffect中回调函数改变state值，state值改变触发组件重新渲染，useEffect依赖项obj发生变化，此处依赖对象执行`浅层比较`（ `{...}=== {...} 为false`）useEffect重新执行，useEffect中回调函数改变state值，state值改变触发组件`重新渲染，无限循环`。
 
-### 上述对象作为依赖代码，去除setTimeout会出现什么情况？
+#### 上述对象作为依赖代码，去除setTimeout会出现什么情况？
 
 ```tsx
 const obj = { name: 'zhangsan' };
@@ -293,7 +292,7 @@ useEffect(() => {
 因为useEffect在短时间内疯狂调用setCount，导致state不断改变，从而疯狂渲染，所以导致控制台报错：`"超过最大更新深度"`。
 
 
-### 如何解决：使用useMemo
+#### 如何解决：使用useMemo
 
 useMemo该回调函数仅在某个依赖项改变时才会更新。此处使用[]依赖，组件重新渲染后对象不再重新定义。
 
@@ -402,7 +401,7 @@ function Dong() {
 
 ![image](https://github.com/Vuact/Blog/assets/74364990/7251938e-0563-49bd-8874-38f68ccba850)
 
-因为React中改变 `ref` 并不会触发再次渲染，即使 useEffect监听了 `ref.current` 这个变量。
+因为React中改变 `ref` 并不会触发函数式组件的重新执行，即使 useEffect 的依赖改变了。
 
 
 
