@@ -36,6 +36,7 @@
 - useReducer
 - useContext + useReducer 替代redux.md
 - [React Hooks 异步操作踩坑记](https://juejin.cn/post/6844903974647103496)
+- [由浅入深React的Fiber架构](https://github.com/careteenL/react/tree/master/packages/fiber)
 
 
 ### 调试
