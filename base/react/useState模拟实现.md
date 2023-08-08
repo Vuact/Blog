@@ -103,7 +103,7 @@ ReactDOM.render(<App />, rootElement);
 
 ![image](https://user-images.githubusercontent.com/74364990/171037994-10557466-dc67-44e3-973c-6762c5ca69ec.png)
 
-你可能会有疑问，上述的 App 组件用了 `x` 和 `index` ，那么其他组件用什么呢？很显然 React 会给每一个组件创建一个 `x` 和 `index`，但是如果全部放在全局作用域下，就会很容易导致重名，为了避免这个问题，React 将其放在了每个组件对应的虚拟节点对象上。
+你可能会有疑问，上述的 App 组件用了 `x` 和 `index` ，那么其他组件用什么呢？很显然 React 会给每一个组件创建一个 `x` 和 `index`，但是如果全部放在全局作用域下，就会很容易导致重名，为了避免这个问题，React 将其放在了每个组件对应的虚拟节点对象上(react16后，放到了fiber节点上)。
 
 ### 小总结：
 >`每个函数组件对应一个 React 节点，每个节点保存着 x 和 index ，useX 会读取 x[index] ，index 由 useState 出现的顺序决定，setX 会改变 state 的值并触发页面更新`。
