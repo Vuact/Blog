@@ -198,3 +198,70 @@ class Component extends React.Component {
 
 >异步执行例如：setTimeout，Promise.then、await等事件
 
+
+<br><br>
+
+# 三、React18抹平了同步异步之间的差异
+
+上面Demo提及的同步异步的输出，在React17及以前版本均适用，但 React18 对于脱离React事件流引发的多次组件执行进行了优化合并，与同步情况下的行为保持了一致。
+
+代码：
+```js
+function Component() {
+  const [a, setA] = useState(0);
+  const [b, setB] = useState(0);
+  const [c, setC] = useState('init');
+
+  console.log('render', a, b, c);
+
+  // 模拟网络请求
+  const ajaxAsync = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    });
+  };
+
+  // 异步情况下
+  async function handleClickWithPromise() {
+    await ajaxAsync();
+
+    setA((a) => a + 1);
+    setA((a) => a + 1);
+    setB(b + 1);
+    setB(b + 1);
+    setC('change1');
+    setC('change2');
+  }
+
+  // 同步情况下
+  function handleClickWithoutPromise() {
+    setA((a) => a + 1);
+    setA((a) => a + 1);
+    setB(b + 1);
+    setB(b + 1);
+    setC('change1');
+    setC('change2');
+  }
+
+  return (
+    <>
+      <button onClick={handleClickWithPromise}>
+        {a}-{b} 异步执行
+      </button>
+      <button onClick={handleClickWithoutPromise}>
+        {a}-{b} 同步执行
+      </button>
+    </>
+  );
+}
+```
+点击 同步执行 按钮，输出：
+
+<img width="197" alt="企业微信截图_fd30d280-2aee-4f74-b18f-f31da09d9264" src="https://github.com/Vuact/Blog/assets/74364990/d37e15f9-ad9b-4d15-ad87-0d2a57d92eb8">
+
+点击 异步执行 按钮，输出：
+<img width="215" alt="企业微信截图_a5fa0ba5-aa39-46a4-88fb-22fe75916f05" src="https://github.com/Vuact/Blog/assets/74364990/9081c2e7-604f-49eb-a002-ba0cbdb7b568">
+
+
