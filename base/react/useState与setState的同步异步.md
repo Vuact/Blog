@@ -257,11 +257,12 @@ function Component() {
   );
 }
 ```
-点击 同步执行 按钮，输出：
+- 点击 同步执行 按钮，输出：
 
 <img width="197" alt="企业微信截图_fd30d280-2aee-4f74-b18f-f31da09d9264" src="https://github.com/Vuact/Blog/assets/74364990/d37e15f9-ad9b-4d15-ad87-0d2a57d92eb8">
 
-点击 异步执行 按钮，输出：
+- 点击 异步执行 按钮，输出：
+
 <img width="215" alt="企业微信截图_a5fa0ba5-aa39-46a4-88fb-22fe75916f05" src="https://github.com/Vuact/Blog/assets/74364990/9081c2e7-604f-49eb-a002-ba0cbdb7b568">
 
 
