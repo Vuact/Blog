@@ -1,1 +1,3 @@
+- [webpack原理](https://juejin.cn/post/6844903614469636103)
+- [webpack插件编写及原理解析](https://www.jianshu.com/p/2995fbf92e66)
 - [hash、chunkhash、contenthash 的区别是什么？](https://www.cnblogs.com/skychx/p/webpack-hash-chunkhash-contenthash.html)
