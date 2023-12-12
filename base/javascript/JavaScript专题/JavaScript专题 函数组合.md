@@ -95,7 +95,7 @@ const compose = (...funcs) => {
 在React中的应用：
 
 ### （1）组合高阶组件
-比如我们想为myapp组件添加 获取用户信息 和 打印日志 两个功能，那我们可以这么写：
+比如我们想为MyComponent组件添加 获取用户信息 和 打印日志 两个功能，那我们可以这么写：
 ```js
 const compose = (...funcs) => {
   return (component) => {
