@@ -102,30 +102,44 @@ const compose = (...funcs) => {
   };
 };
 
-//myapp组件
-const myapp = (props) => {
-  return (<div>123</div>)
+// 原始组件
+const MyComponent = ({ user, ...props }) => {
+  return (
+    <div>
+      <h1>Welcome, {user.name}!</h1>
+      <p>Your age is {user.age}.</p>
+      {/* 其他组件内容 */}
+    </div>
+  );
 };
 
-//打印log功能
-const printLog = (component) => {
-  const C = component;
-  console.log('logged');
-  return (props) => <C ...props/>;
+// 高阶组件1：添加日志功能
+const withLogging = (WrappedComponent) => {
+  return (props) => {
+    console.log('Logging props:', props);
+    return <WrappedComponent {...props} />;
+  };
 };
 
-//获取用户信息功能
-const getUser = () => {
-  const C = component;
-  getUserMess(); 
-  return (props) => <C ...props/>;
+// 高阶组件2：添加用户信息
+const withUser = (WrappedComponent) => {
+  const userInfo = getUserMess();
+
+  return (props) => {
+    return <WrappedComponent {...props} user={userInfo} />;
+  };
 };
 
-//应用函数组合
-const withUserLog = compose(printLog, getUser);
+// 应用高阶组件
+const enhance = compose(withLogging, withUser);
 
-//I为包裹两个功能后的组件
-const I = withUserLog(myqpp);
+// 增强后的组件
+const EnhancedMyComponent = enhance(MyComponent);
+
+// 在应用中使用增强后的组件
+const App = () => {
+  return <EnhancedMyComponent someProp="Some value" />;
+};
 ```
 
 <br>
