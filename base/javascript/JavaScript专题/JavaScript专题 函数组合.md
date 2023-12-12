@@ -148,7 +148,8 @@ const App = () => {
 假设我们有三个不同的Context：UserContext、ThemeContext和LanguageContext。每个Context都有一个对应的Provider组件，我们希望在应用的顶层组合这些Provider，以便它们的值在整个组件树中都可用。
 
 首先，我们定义三个Context和它们的Provider组件：
-```
+
+```js
 import React, { createContext } from 'react';
 
 // 创建三个Context
@@ -171,7 +172,7 @@ export const LanguageProvider = ({ children, language }) => (
 ```
 接下来，我们可以使用compose函数来组合这些Provider组件：
 
-```
+```js
 import { compose } from 'redux'; // 或者你可以自己实现一个compose函数
 
 // 假设我们有一个compose函数
