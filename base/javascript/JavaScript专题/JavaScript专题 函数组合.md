@@ -88,12 +88,13 @@ const compose = (...funcs) => {
 
 
 
-## 2、使用
+## 2、React中的使用
 
 现在的 compose 函数已经可以支持多个函数了，然而有了这个又有什么用呢？
 
 在React中的应用：
 
+### （1）组合高阶组件
 比如我们想为myapp组件添加 获取用户信息 和 打印日志 两个功能，那我们可以这么写：
 ```js
 const compose = (...funcs) => {
@@ -142,6 +143,142 @@ const App = () => {
 };
 ```
 
+### （2）组合Context提供者
+
+假设我们有三个不同的Context：UserContext、ThemeContext和LanguageContext。每个Context都有一个对应的Provider组件，我们希望在应用的顶层组合这些Provider，以便它们的值在整个组件树中都可用。
+
+首先，我们定义三个Context和它们的Provider组件：
+```
+import React, { createContext } from 'react';
+
+// 创建三个Context
+export const UserContext = createContext();
+export const ThemeContext = createContext();
+export const LanguageContext = createContext();
+
+// 创建三个Provider组件
+export const UserProvider = ({ children, user }) => (
+  <UserContext.Provider value={user}>{children}</UserContext.Provider>
+);
+
+export const ThemeProvider = ({ children, theme }) => (
+  <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+);
+
+export const LanguageProvider = ({ children, language }) => (
+  <LanguageContext.Provider value={language}>{children}</LanguageContext.Provider>
+);
+```
+接下来，我们可以使用compose函数来组合这些Provider组件：
+
+```
+import { compose } from 'redux'; // 或者你可以自己实现一个compose函数
+
+// 假设我们有一个compose函数
+const composeProviders = (...providers) => {
+  return providers.reduce(
+    (Combined, Provider) => ({ children }) => (
+      <Provider>
+        <Combined>{children}</Combined>
+      </Provider>
+    ),
+    ({ children }) => <>{children}</>
+  );
+};
+
+// 使用composeProviders来组合Provider组件
+const CombinedProviders = composeProviders(
+  UserProvider,
+  ThemeProvider,
+  LanguageProvider
+);
+
+// 在App组件中使用CombinedProviders
+const App = () => {
+  const user = { name: 'Alice' };
+  const theme = { color: 'blue' };
+  const language = 'en';
+
+  return (
+    <CombinedProviders user={user} theme={theme} language={language}>
+      {/* 应用的其余部分 */}
+    </CombinedProviders>
+  );
+};
+```
+
+### （3）组合渲染道具
+
+假设我们有三个组件，每个组件都使用了渲染道具模式来提供不同的功能：MouseTracker提供鼠标位置，WindowSize提供窗口大小，UserFetcher提供用户数据。我们想要在一个组件中同时使用这些功能。
+
+首先，我们定义这些组件：
+```
+// MouseTracker组件
+const MouseTracker = ({ render }) => {
+  // ...鼠标跟踪逻辑
+  const mousePosition = { x: 100, y: 200 }; // 示例位置
+  return render(mousePosition);
+};
+
+// WindowSize组件
+const WindowSize = ({ render }) => {
+  // ...窗口大小跟踪逻辑
+  const windowSize = { width: window.innerWidth, height: window.innerHeight };
+  return render(windowSize);
+};
+
+// UserFetcher组件
+const UserFetcher = ({ render }) => {
+  // ...用户数据获取逻辑
+  const userData = { name: 'Alice', age: 30 };
+  return render(userData);
+};
+```
+接下来，我们可以使用compose函数来组合这些组件的渲染道具：
+```
+// 假设我们有一个compose函数
+const composeRenderProps = (...components) => {
+  return components.reduce(
+    (Combined, Component) => ({ render, ...props }) => (
+      <Component
+        {...props}
+        render={(componentProps) => (
+          <Combined
+            {...props}
+            render={(combinedProps) => render({ ...combinedProps, ...componentProps })}
+          />
+        )}
+      />
+    ),
+    ({ render, ...props }) => render(props)
+  );
+};
+
+// 使用composeRenderProps来组合渲染道具组件
+const CombinedComponents = composeRenderProps(
+  MouseTracker,
+  WindowSize,
+  UserFetcher
+);
+
+// 在某个组件中使用CombinedComponents
+const MyComponent = () => {
+  return (
+    <CombinedComponents
+      render={({ x, y, width, height, name, age }) => (
+        <div>
+          <p>Mouse position: {`x: ${x}, y: ${y}`}</p>
+          <p>Window size: {`width: ${width}, height: ${height}`}</p>
+          <p>User: {`name: ${name}, age: ${age}`}</p>
+        </div>
+      )}
+    />
+  );
+};
+```
+在这个例子中，composeRenderProps函数接受任意数量的使用渲染道具模式的组件，并返回一个新的组件，该组件将所有渲染道具组合在一起。然后，我们在MyComponent中使用CombinedComponents来渲染所有这些组件提供的数据。
+
+这种方式允许我们在一个组件中组合多个渲染道具，而不需要嵌套它们，从而保持了代码的清晰和简洁。
 <br>
 
 compose还有什么用？我们再了解一个概念叫做 pointfree。
