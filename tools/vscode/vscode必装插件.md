@@ -1,4 +1,5 @@
 - [Chinese (Simplified)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)：vscode编辑器汉化包
+- [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost): 在编辑器中内联显示导入包的大小
 - [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)：提供了漂亮的目录树图标主题
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)：重命名成对的HTML/XML标记
 - [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)：自动闭合HTML/XML标签
