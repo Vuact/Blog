@@ -53,5 +53,5 @@
 - [JS代码注释](http://itmyhome.com/js/lei_xing_ding_yi.html)
 
 ### 性能
-[链接)https://guide.duanhl.com/project/monitor/performance.html#performance-api
+https://guide.duanhl.com/project/monitor/performance.html#performance-api
 
