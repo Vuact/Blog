@@ -30,3 +30,4 @@
 ### 相关链接
 - 参数表: https://docs.midjourney.com/docs/parameter-list
 - 命令表: https://docs.midjourney.com/docs/command-list
+- 提示词网站: [midlibrary](https://midlibrary.io/)
