@@ -20,7 +20,8 @@
   Upscale可以理解为将低像素图片，增加为高像素图片（高像素即意味着图片的细节纹理更加清晰）
   - Upscale (Subtle)按钮使图像尺寸加倍(例如像素 由 1024 x 1024 加倍为 2048 x 2048)，并保持细节与原始图像非常相似
   - Upscale (Creative)按钮会使图像尺寸加倍并为图像添加新的细节
-  
+  <img width="890" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5ebbfe82-817c-4060-ac05-a6a264da5e2d">
+
 - ### Vary (Strong/Subtle/Region)
   Vary (Strong/Subtle/Region)按钮的功能类似于先前V行的按钮，可以根据这张大图的主题和风格，再次生成四张风格相似的图片供你选择。
   - Vary (Strong)按钮将带来较大的变化
@@ -32,9 +33,14 @@
   - Zoom Out 2x: 表示缩小2倍
   - Zoom Out 1.5x: 表示缩小1.5倍
   - Custom Zoom: 允许自定义缩小的倍数，你可以通过修改弹出窗口中的最后一个参数来实现
+  <img width="910" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/ecacb2dc-9992-4c65-8c37-eb6f13d034c7">
 
-- ### Make Square
-  待补充
+- ### [Make Square](https://docs.midjourney.com/docs/zoom-out)
+  Make Square即制作正方形。Make Square可以调整非方形图像的纵横比使其成为方形。如果原始宽高比较宽（横向），则会垂直扩展。如果它很高（纵向），它将水平扩展。
+  <img width="890" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/6e9b3155-7055-46cc-b584-5cb7b0dcbfb4">
+
   
 - ### [上下左右](https://docs.midjourney.com/docs/pan)
   上下左右按钮用于移动视窗，生成你指定方向的内容。例如，如果你刚刚点击 ⬅️ 按钮，那么它就会在原图的左边添加更多的内容，增加的部分将占据原来图片的一半。
+  <img width="888" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/4448bdc5-1867-4c45-bad8-1d2e7c853254">
+
