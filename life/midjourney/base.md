@@ -16,6 +16,9 @@
 
 <img width="867" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/ac4173d3-14bc-4c89-872a-f252fbd9b6ef">
 
+- ### Upscale（Subtle/Creative）
+  待补充
+  
 - ### Vary (Strong/Subtle/Region)
   Vary (Strong/Subtle/Region)按钮的功能类似于先前V行的按钮，可以根据这张大图的主题和风格，再次生成四张风格相似的图片供你选择。
   - Vary (Strong)按钮将带来较大的变化
@@ -27,6 +30,9 @@
   - Zoom Out 2x: 表示缩小2倍
   - Zoom Out 1.5x: 表示缩小1.5倍
   - Custom Zoom: 允许自定义缩小的倍数，你可以通过修改弹出窗口中的最后一个参数来实现
+
+- ### Make Square
+  待补充
   
 - ### 上下左右
   上下左右按钮用于移动视窗，生成你指定方向的内容。例如，如果你刚刚点击 ⬅️ 按钮，那么它就会在原图的左边添加更多的内容，增加的部分将占据原来图片的一半。
