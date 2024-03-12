@@ -23,6 +23,7 @@
   - NIji V5风格: --style expressive/cute/scenic/original
   - 初始图混乱: [--c <0~100>](https://docs.midjourney.com/docs/chaos-1) (默认值为0)
   - 诡异风格: [--weird <0~3000>](https://docs.midjourney.com/docs/weird-1) (默认值为0)
+- 图生图的原图权重: --iw <value>
 - 种子: [--seed <0–4294967295>](https://docs.midjourney.com/docs/seeds-1)
 - 纹理无缝拼接: [--tile](https://docs.midjourney.com/docs/tile-2)
 - 视频: [--video](https://docs.midjourney.com/docs/video-1)
