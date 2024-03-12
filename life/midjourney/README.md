@@ -1,6 +1,6 @@
 
 - base
-- command
+- settings
 - 图生图
 
 
@@ -25,3 +25,8 @@
 - 种子: [--seed <0–4294967295>](https://docs.midjourney.com/docs/seeds-1)
 - 纹理无缝拼接: [--tile](https://docs.midjourney.com/docs/tile-2)
 - 视频: [--video](https://docs.midjourney.com/docs/video-1)
+
+
+### 相关链接
+- 参数表: https://docs.midjourney.com/docs/parameter-list
+- 命令表: https://docs.midjourney.com/docs/command-list
