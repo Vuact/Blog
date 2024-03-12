@@ -32,3 +32,7 @@
 - 参数表: https://docs.midjourney.com/docs/parameter-list
 - 命令表: https://docs.midjourney.com/docs/command-list
 - 提示词网站: [midlibrary](https://midlibrary.io/)
+
+
+待学习：
+- https://zhuanlan.zhihu.com/p/681960971
