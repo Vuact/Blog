@@ -16,8 +16,9 @@
 
 <img width="867" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/ac4173d3-14bc-4c89-872a-f252fbd9b6ef">
 
-- ### Upscale（Subtle/Creative）
-  待补充
+- ### [Upscale（Subtle/Creative）](https://docs.midjourney.com/docs/upscalers-1)
+  - Upscale (Subtle)按钮使图像尺寸加倍(例如像素 由 1024 x 1024 加倍为 2048 x 2048)，并保持细节与原始图像非常相似
+  - Upscale (Creative)按钮会使图像尺寸加倍并为图像添加新的细节
   
 - ### Vary (Strong/Subtle/Region)
   Vary (Strong/Subtle/Region)按钮的功能类似于先前V行的按钮，可以根据这张大图的主题和风格，再次生成四张风格相似的图片供你选择。
