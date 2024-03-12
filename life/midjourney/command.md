@@ -1,10 +1,12 @@
 
-- 宽高比: --ar 16:9
-- 原始风格: [--style raw](https://docs.midjourney.com/docs/style-1)
-- 艺术氛围参数: [--s <50~750>](https://docs.midjourney.com/docs/stylize-1)
-- NIji V5风格: --style expressive/cute/scenic/original
-- 初始图混乱: [--c <0-100>](https://docs.midjourney.com/docs/chaos-1) (默认值为0)
 
+- 宽高比: --ar 16:9
+- 风格参数：
+  - 原始风格: [--style raw](https://docs.midjourney.com/docs/style-1)
+  - 艺术氛围参数: [--s <0~1000>](https://docs.midjourney.com/docs/stylize-1)（默认值为 100）
+  - NIji V5风格: --style expressive/cute/scenic/original
+  - 初始图混乱: [--c <0~100>](https://docs.midjourney.com/docs/chaos-1) (默认值为0)
+  - 诡异风格: [--weird <0~3000>](https://docs.midjourney.com/docs/weird-1) (默认值为0)
 
 -----
 
