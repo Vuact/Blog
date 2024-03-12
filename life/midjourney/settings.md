@@ -1,10 +1,13 @@
-<img width="730" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/d41b7662-21c3-4de7-8035-c9f79bfed335">
 
 - 宽高比: --ar 16:9
 - 原始风格: --style raw
 - 艺术氛围参数: --s {50~750}
 - NIji V5风格: --style expressive/cute/scenic/original
 
+
+-----
+
+<img width="730" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/d41b7662-21c3-4de7-8035-c9f79bfed335">
 
 -----
 
