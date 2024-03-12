@@ -2,14 +2,15 @@
 
 
 - 模型
-  - MJ Model V1~6:  写实风格
+  - MJ Model V1~6: 写实风格
   - Niji Model: 二次元的风格
 - Stylize X
-  - Stylize low
-  - Stylize med
-  - Stylize high
-  - Stylize very high
-- Fast/Relax mode
+  - Stylize low: --s 50
+  - Stylize med: --s 100
+  - Stylize high: --s 250
+  - Stylize very high: --s 750
+- Turbo/Fast/Relax mode
+  - Turbo mode: 比Fast更快的出图
   - Fast mode: 快速通道，出图不用排队
   - Relax mode: 则需要排队，创作图片的速度就根据服务器当前的情况来决定
 - Public/Private mode
