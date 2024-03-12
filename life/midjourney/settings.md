@@ -36,10 +36,14 @@ Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图�
 
 ### High/Low Variation Mode（变异程度）
 
+![image](https://github.com/Vuact/Blog/assets/74364990/c03ba338-783b-461d-ae9b-5d04206da47d)
+
 ### Turbo/Fast/Relax mode（出图速度）
-  - Turbo mode: 比Fast更快的出图
-  - Fast mode: 快速通道，出图不用排队
-  - Relax mode: 则需要排队，创作图片的速度就根据服务器当前的情况来决定
+- 快速模式（Fast mode）是默认模式，按照正常速度生成图片，并消耗你订购套餐中的GPU分钟数，一般1分钟完成。
+- 放松模式（Relax mode）只有在你订购的套餐是$30/月以上时可以选择。放松模式不会消耗任何你购买的GPU时间，但需要排队等待GPU处理，一般需要等待0-10分钟。
+- 急速模式（Turbo mode）使用高速实验性GPU，最多可以提高四倍生成图片速度，但消耗的订购套餐中的GPU分钟数是快速模式的两倍。仅适用于模型版本V5、V5.1和V5.2。如果选择了Turbo模式，但GPU不可用，或者与所选的模型版本不兼容，则将在快速模式下生成图片。
+
+> 小贴士：当你只想为单张图片指定生成速度时，仅需在提示词后加上“--fast”、“--turbo”或“--relax”，无需改变全局设定即可生效。
 
 
 
