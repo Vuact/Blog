@@ -57,6 +57,7 @@ Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图�
 - Original Style：这保持了2023年5月26日之前的Niji V5的原始模型风格，对于喜欢早期模型风格的用户来说是个不错的选择。
 
 个人认为，这四种风格各有千秋，适用于不同的创作场景。无论你是要绘制梦中的场景，还是创作一张适合儿童阅读的插图，都能在其中找到最合适的风格。
+
 ![image](https://github.com/Vuact/Blog/assets/74364990/a79ddd0d-4174-433e-bc34-dc24bd4c47ff)
 
 > 小贴士：在使用Niji V5版本时，当你只想为单张图片指定生成风格时，仅需在提示词后加上“--style expressive”、“--style cute”、“--style scenic”或“--style original”，无需改变全局设定即可生效。
