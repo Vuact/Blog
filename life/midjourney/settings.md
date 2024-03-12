@@ -22,7 +22,7 @@ Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图�
 
 > 小贴士：当你只想为单张图片指定艺术风格时，仅需在提示词后加上“--s ”或“--stylize ”后跟数字（例如“--s 500”），无需改变全局设定即可生效。
 
-### Public/Private mode
+### Public/Private mode（权限）
   - Public mode: 所创作的图都是公开的
   - Private mode: 创作的图只有你自己才能看到的
 
@@ -34,7 +34,9 @@ Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图�
 
 > 小贴士：除了点击按钮，你也可以直接使用命令“/prefer remix”来快速开关此模式
 
-### Turbo/Fast/Relax mode
+### High/Low Variation Mode（变异程度）
+
+### Turbo/Fast/Relax mode（出图速度）
   - Turbo mode: 比Fast更快的出图
   - Fast mode: 快速通道，出图不用排队
   - Relax mode: 则需要排队，创作图片的速度就根据服务器当前的情况来决定
