@@ -1,5 +1,13 @@
 <img width="730" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/d41b7662-21c3-4de7-8035-c9f79bfed335">
 
+- 宽高比: --ar 16:9
+- 原始风格: --style raw
+- 艺术氛围参数: --s [50~750] 或 --stylize [50~750]
+- NIji V5风格: --style expressive/cute/scenic/original
+
+
+-----
+
 ### 模型版本选择
   - MJ Model V1~6: 写实风格
   - Niji Model: 二次元的风格
@@ -10,7 +18,7 @@
 
 > 小贴士：当你只想为单张图片指定按原始风格生成时，仅需在提示词后加上`--style raw`，无需改变全局设定即可生效。
 
-### Stylize X（艺术风格化参数）
+### Stylize X（艺术氛围参数）
 Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图像更符合描述，但艺术氛围略显稀薄；而高Stylize值则为生成的图像带来浓烈的艺术感受，但与描述的关联度降低。你可以在0-1000之间自由调节Stylize值，其中这四个预设按钮对应的值分别是：
 - Stylize Low = --s 50
 - Stylize Med = --s 100
