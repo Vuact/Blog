@@ -25,9 +25,19 @@ Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图�
 ### Public/Private mode
   - Public mode: 所创作的图都是公开的
   - Private mode: 创作的图只有你自己才能看到的
-    
+
+### Remix mode（带提示词重新生成）
+
+带提示词重新生成（Remix）。不少用户在使用AI绘图时，可能对初次生成的图片感到满意，但随后想要做出些许变化。这时，仅通过简单的“重新生成”操作，结果可能并不如意。但“带提示词重新生成”功能却能让你细致指导图像的变化方向，比如你可以为其添加“夕阳”或“樱花”等提示词，使图像更符合你的预期。此外，结合参数--ar和--no（后面会详细讲到），可以进一步调整图像的宽高比或排除某些不需要的元素。
+
+<img width="868" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5a5d393c-51fd-4692-84cd-9b1bd4415f9a">
+
+> 小贴士：除了点击按钮，你也可以直接使用命令“/prefer remix”来快速开关此模式
+
 ### Turbo/Fast/Relax mode
   - Turbo mode: 比Fast更快的出图
   - Fast mode: 快速通道，出图不用排队
   - Relax mode: 则需要排队，创作图片的速度就根据服务器当前的情况来决定
+
+
 
