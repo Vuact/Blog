@@ -2,7 +2,7 @@
 
 - 宽高比: --ar 16:9
 - 原始风格: --style raw
-- 艺术氛围参数: --s [50~750] 或 --stylize [50~750]
+- 艺术氛围参数: --s {50~750}
 - NIji V5风格: --style expressive/cute/scenic/original
 
 
