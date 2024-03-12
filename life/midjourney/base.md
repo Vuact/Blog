@@ -17,6 +17,7 @@
 <img width="867" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/ac4173d3-14bc-4c89-872a-f252fbd9b6ef">
 
 - ### [Upscale（Subtle/Creative）](https://docs.midjourney.com/docs/upscalers-1)
+  Upscale可以理解为将低像素图片，增加为高像素图片（高像素即意味着图片的细节纹理更加清晰）
   - Upscale (Subtle)按钮使图像尺寸加倍(例如像素 由 1024 x 1024 加倍为 2048 x 2048)，并保持细节与原始图像非常相似
   - Upscale (Creative)按钮会使图像尺寸加倍并为图像添加新的细节
   
@@ -26,7 +27,7 @@
   - Vary (Subtle)按钮则会产生较微妙的变化
   - Vary (Region)按钮则可以让指定区域发生变化
 
-- ### Zoom Out 与 Custom Zoom
+- ### [Zoom Out 与 Custom Zoom](https://docs.midjourney.com/docs/zoom-out)
   Zoom Out 与 Custom Zoom按钮允许你缩小图像的显示范围，从而呈现更广阔的场景。点击这里的任意一个按钮都将生成四张新的图片供你选择。
   - Zoom Out 2x: 表示缩小2倍
   - Zoom Out 1.5x: 表示缩小1.5倍
