@@ -22,11 +22,17 @@
   - Upscale (Creative)按钮会使图像尺寸加倍并为图像添加新的细节
   <img width="890" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5ebbfe82-817c-4060-ac05-a6a264da5e2d">
 
-- ### Vary (Strong/Subtle/Region)
+- ### [Vary (Strong/Subtle)](https://docs.midjourney.com/docs/variations)
   Vary (Strong/Subtle/Region)按钮的功能类似于先前V行的按钮，可以根据这张大图的主题和风格，再次生成四张风格相似的图片供你选择。
   - Vary (Strong)按钮将带来较大的变化
   - Vary (Subtle)按钮则会产生较微妙的变化
-  - Vary (Region)按钮则可以让指定区域发生变化
+  <img width="1142" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/7f43ea47-bc97-4f01-8d1b-c290a36dd1b9">
+
+
+- ### [Vary Region](https://docs.midjourney.com/docs/vary-region)
+  Vary (Region)按钮可以让指定区域发生变化
+  <img width="912" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/96e4c687-981a-4984-8222-999128af8945">
+
 
 - ### [Zoom Out 与 Custom Zoom](https://docs.midjourney.com/docs/zoom-out)
   Zoom Out 与 Custom Zoom按钮允许你缩小图像的显示范围，从而呈现更广阔的场景。点击这里的任意一个按钮都将生成四张新的图片供你选择。
