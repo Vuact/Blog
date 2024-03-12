@@ -51,7 +51,14 @@ Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图�
 > 小贴士：除了点击按钮，你也可以直接使用命令 `/prefer remix` 来快速开关此模式
 
 
-## High/Low Variation Mode（变异程度）
+## Low/High Variation Mode（变异程度）
+
+高变异和低变异（Low/High Variation Mode）与下图中的 Vary (Subtle/Strong) 的效果一致。
+
+<img width="823" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/9547f72c-e543-4896-bdf0-fc4942ce2863">
+
+- Low Variation Mode 即 Vary (Subtle)：低变异模式下会保留原始图像的主要构图，但会在细节上引入微妙的变化。低变异模式有助于对图像进行微调或进行轻微的调整。
+- High Variation Mode 即 Vary (Strong)：高变异模式下生成的新图像，可能会改变图像的构图、元素数量、颜色以及图像内的细节类型。高变异模式可用于基于单个生成的图像创建多个概念
 
 ![image](https://github.com/Vuact/Blog/assets/74364990/c03ba338-783b-461d-ae9b-5d04206da47d)
 
