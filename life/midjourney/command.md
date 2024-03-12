@@ -3,6 +3,7 @@
 - 原始风格: [--style raw](https://docs.midjourney.com/docs/style-1)
 - 艺术氛围参数: [--s <50~750>](https://docs.midjourney.com/docs/stylize-1)
 - NIji V5风格: --style expressive/cute/scenic/original
+- 初始图混乱: [--c <0-100>](https://docs.midjourney.com/docs/chaos-1) (默认值为0)
 
 
 -----
