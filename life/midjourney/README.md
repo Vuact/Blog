@@ -33,6 +33,10 @@
 - 命令表: https://docs.midjourney.com/docs/command-list
 - 提示词网站: [midlibrary](https://midlibrary.io/)
 
+### 应用
+- [如何用AI工具快速设计微信红包封面](https://zhuanlan.zhihu.com/p/679742855)
+
 
 待学习：
 - https://zhuanlan.zhihu.com/p/681960971
+- https://zhuanlan.zhihu.com/p/681495115
