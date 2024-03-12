@@ -1,7 +1,7 @@
 
 - 宽高比: --ar 16:9
-- 原始风格: --style raw
-- 艺术氛围参数: --s {50~750}
+- 原始风格: [--style raw](https://docs.midjourney.com/docs/style-1)
+- 艺术氛围参数: [--s <50~750>](https://docs.midjourney.com/docs/stylize-1)
 - NIji V5风格: --style expressive/cute/scenic/original
 
 
@@ -18,21 +18,28 @@
 
 
 ## Raw Mode（原始风格）
-模型版本 >= V5.1 才可以使用。开启此功能将减少Midjourney对图片的“美化”处理，令其更加忠实于你的描述与提供的照片参考。尽管我不常用此功能，但如果你希望结果更接近真实照片，不妨试一试。
-![image](https://github.com/Vuact/Blog/assets/74364990/dfce5108-8291-4a84-a68f-0ea8277172e0)
+
+使用 [Raw Mode](https://docs.midjourney.com/docs/style-1) 可以让Midjourney较少的使用自动美化。
+
+<img width="914" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/3a7a2ab4-8c82-4d10-9dd1-797cec6788b2">
+<img width="894" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/8c1732de-b4ae-4345-b467-9bcfc94bc7da">
+<img width="922" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/46b059b2-1358-4dcf-9e45-eec9df382990">
+
 
 > 小贴士：当你只想为单张图片指定按原始风格生成时，仅需在提示词后加上`--style raw`，无需改变全局设定即可生效。
 
 
 ## Stylize X（艺术氛围参数）
-Stylize X用于设定图片艺术风格的。低Stylize值意味着生成的图像更符合描述，但艺术氛围略显稀薄；而高Stylize值则为生成的图像带来浓烈的艺术感受，但与描述的关联度降低。你可以在0-1000之间自由调节Stylize值，其中这四个预设按钮对应的值分别是：
+[Stylize X](https://docs.midjourney.com/docs/stylize-1)用于设定图片艺术风格的。低Stylize值意味着生成的图像更符合描述，但艺术氛围略显稀薄；而高Stylize值则为生成的图像带来浓烈的艺术感受，但与描述的关联度降低。你可以在0-1000之间自由调节Stylize值，其中这四个预设按钮对应的值分别是：
 - Stylize Low = --s 50
 - Stylize Med = --s 100
 - Stylize High = --s 250
 - Stylize Very High = --s 750
 
 一般情况下，Med和High的设定较为合适。
-![image](https://github.com/Vuact/Blog/assets/74364990/eb6d9649-b5c1-4458-a73a-31010e80db3a)
+
+<img width="908" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/81866da5-50d1-46e7-a52c-ecad5970feff">
+<img width="912" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/821ed788-d019-41f8-8771-42d6ece93589">
 
 > 小贴士：当你只想为单张图片指定艺术风格时，仅需在提示词后加上 `--s` 或 `--stylize` 后跟数字（例如`--s 500`），无需改变全局设定即可生效。
 
