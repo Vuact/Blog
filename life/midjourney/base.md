@@ -20,7 +20,10 @@
   Upscale可以理解为将低像素图片，增加为高像素图片（高像素即意味着图片的细节纹理更加清晰）
   - Upscale (Subtle)按钮使图像尺寸加倍(例如像素 由 1024 x 1024 加倍为 2048 x 2048)，并保持细节与原始图像非常相似
   - Upscale (Creative)按钮会使图像尺寸加倍并为图像添加新的细节
+ 
   <img width="890" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5ebbfe82-817c-4060-ac05-a6a264da5e2d">
+
+> Subtle放大名副其实，旨在忠实于原始图像。其主要目标是提高分辨率，同时尽可能保留原有的细节。而在某些情况下，Creative放大可能会通过“过度重新想象”或添加太多细节来“损害”图片，而Subtle选项则尽力保持原创作品的完整性，同时为其提供更清晰、更精致的完成效果。就我经验而言，放大的时候基本已经是定稿的时候了，所以Creative放大很少有实用的时候。可参考：https://midlibrary.io/midguide/midjourney-v6-in-depth-review-part-4-upscalers
 
 - ### [Vary (Strong/Subtle)](https://docs.midjourney.com/docs/variations)
   Vary (Strong/Subtle/Region)按钮的功能类似于先前V行的按钮，可以根据这张大图的主题和风格，再次生成四张风格相似的图片供你选择。
