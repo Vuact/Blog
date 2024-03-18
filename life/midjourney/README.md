@@ -38,6 +38,9 @@
 ### 应用
 - [如何用AI工具快速设计微信红包封面](https://zhuanlan.zhihu.com/p/679742855)
 
+### 工具
+- [prompt提示](https://moonvy.com/apps/ops/)
+
 
 待学习：
 - https://zhuanlan.zhihu.com/p/681960971
