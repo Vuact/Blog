@@ -28,6 +28,7 @@
 - 纹理无缝拼接: [--tile](https://docs.midjourney.com/docs/tile-2)
 - 视频: [--video](https://docs.midjourney.com/docs/video-1)
 
+> 如果你希望V6完全遵循你的提示词的话，“--s”值的最佳点在55到默认值100之间，强烈倾向于75。最低值0往往产生类似草图的图像，有时容易出错。随着值的增加，更普遍的“美丽”美学开始占据主导。在最大“--s”值下，提示词的关键部分会“丢失”。这个显然比V5要低不少，在V5，这个值我一般设置在250。
 
 ### 相关链接
 - 参数表: https://docs.midjourney.com/docs/parameter-list
