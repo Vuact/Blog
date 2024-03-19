@@ -25,13 +25,25 @@ new Promise((_, reject) => reject(1)).then(
   a => console.log('reject', a)
 );
 
-// 等同于
+// 等价于
 new Promise((_, reject) => reject(1)).then(
   a => console.log('resolve', a)
 ).catch(err => console.log('reject', err));
 ```
 输出：<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b990b988-8e4a-425b-b8da-0f6e3cd38538">
 
+
+```js
+new Promise((resolve, reject) => { throw new Error('test'); })
+  .then(() => {}, a => console.log('reject', a))
+  .catch((error) => console.log(error));
+
+// 等价于
+new Promise((resolve, reject) => { reject(new Error('test')); })
+  .then(() => {}, a => console.log('reject', a))
+  .catch((error) => console.log(error));
+```
+输出：<img width="280" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/c8b2fd82-88be-490c-9161-7fe8ab2fe098">
 
 
 
