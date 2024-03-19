@@ -8,6 +8,24 @@ Promise特点：
 
 <br>
 
+# 小时牛刀
+```
+new Promise((resolve) => resolve(1)).then(a => console.log(a));
+```
+输出：<img width="266" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5dcf333f-e942-4696-bacc-af68288d806a">
+
+```
+new Promise((_, reject) => reject(1)).then(a => console.log(a));
+```
+输出：<img width="249" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/02279dd7-84e3-47dd-b64a-e12d70f3c27e">
+
+```
+new Promise((_, reject) => reject(1)).then(a => console.log(a)).catch(err => console.log(err));
+```
+输出：<img width="267" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/115ac286-3fc6-4abe-bc69-5eab423f2c02">
+
+
+
 # 实现Promise
 
 ## 第一步：架子
