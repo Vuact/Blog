@@ -1,7 +1,7 @@
 
 Promise特点：
 - Promise有三种状态：pending(进行中)、fullfilled(成功)、rejected(失败)；
-- Promise是一个类，它的构造函数接受一个函数，函数的两个参数也都是函数
+- Promise是一个类，它的构造函数接受一个函数，该函数的两个入参(resolve、reject)也都是函数
 - 在传入的函数中执行resolve表示成功，执行reject表示失败，传入的值会传给then方法的回调函数
 - Promise有一个叫做then的方法，该方法有两个参数，第一个参数是成功之后执行的回调函数，第二个参数是失败之后执行的回调函数。then方法在resolve或者reject执行之后才会执行，并且then方法中的值是传给resolve或reject的参数
 - Promise支持链式调用
