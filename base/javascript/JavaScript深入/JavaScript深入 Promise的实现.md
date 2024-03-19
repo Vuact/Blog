@@ -24,16 +24,14 @@ new Promise((_, reject) => reject(1)).then(
   a => console.log('resolve', a),
   a => console.log('reject', a)
 );
+
+// 等同于
+new Promise((_, reject) => reject(1)).then(
+  a => console.log('resolve', a)
+).catch(err => console.log('resolve', err));
 ```
 输出：<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b990b988-8e4a-425b-b8da-0f6e3cd38538">
 
-```
-new Promise((_, reject) => reject(1)).then(
-  a => console.log('resolve', a),
-  a => console.log('reject', a)
-).catch(err => console.log('err', err));
-```
-输出：<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b76575d3-f7aa-49aa-a09c-30c9f229bfcd">
 
 
 
