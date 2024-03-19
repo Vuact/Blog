@@ -22,7 +22,7 @@ new Promise((_, reject) => reject(1)).then(a => console.log(a));
 ```
 new Promise((_, reject) => reject(1)).then(a => console.log(a)).catch(err => console.log(1111, err));
 ```
-输出：<img width="265" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/4b7cfadf-cd7a-470c-b747-80c44da499f9">
+输出：<img width="261" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/c11950fc-3ce5-4ad6-815b-79a11fd6cef3">
 
 
 
