@@ -20,9 +20,20 @@ new Promise((_, reject) => reject(1)).then(a => console.log(a));
 输出：<img width="249" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/02279dd7-84e3-47dd-b64a-e12d70f3c27e">
 
 ```
-new Promise((_, reject) => reject(1)).then(a => console.log(a)).catch(err => console.log(1111, err));
+new Promise((_, reject) => reject(1)).then(
+  a => console.log('resolve', a),
+  a => console.log('reject', a)
+);
 ```
-输出：<img width="261" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/c11950fc-3ce5-4ad6-815b-79a11fd6cef3">
+输出：<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b990b988-8e4a-425b-b8da-0f6e3cd38538">
+
+```
+new Promise((_, reject) => reject(1)).then(
+  a => console.log('resolve', a),
+  a => console.log('reject', a)
+).catch(err => console.log('err', err));
+```
+输出：<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b76575d3-f7aa-49aa-a09c-30c9f229bfcd">
 
 
 
