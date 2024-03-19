@@ -6,6 +6,10 @@ Promise特点：
 - Promise有一个叫做then的方法，该方法有两个参数，第一个参数是成功之后执行的回调函数，第二个参数是失败之后执行的回调函数。then方法在resolve或者reject执行之后才会执行，并且then方法中的值是传给resolve或reject的参数
 - Promise支持链式调用
 
+> Promise本质就是3个状态之间的来回转换：
+>   - 主动触发resolve则执行then的第一个参数
+>   - 代码报错或触发rejected，则执行then的第二个参数 并 被catch捕获
+
 <br>
 
 # 小时牛刀
