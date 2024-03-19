@@ -9,17 +9,17 @@ Promise特点：
 <br>
 
 # 小时牛刀
-```
+```js
 new Promise((resolve) => resolve(1)).then(a => console.log(a));
 ```
 输出：<img width="266" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5dcf333f-e942-4696-bacc-af68288d806a">
 
-```
+```js
 new Promise((_, reject) => reject(1)).then(a => console.log(a));
 ```
 输出：<img width="249" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/02279dd7-84e3-47dd-b64a-e12d70f3c27e">
 
-```
+```js
 new Promise((_, reject) => reject(1)).then(
   a => console.log('resolve', a),
   a => console.log('reject', a)
