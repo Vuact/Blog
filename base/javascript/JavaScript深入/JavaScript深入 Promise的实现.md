@@ -28,7 +28,7 @@ new Promise((_, reject) => reject(1)).then(
 // 等同于
 new Promise((_, reject) => reject(1)).then(
   a => console.log('resolve', a)
-).catch(err => console.log('resolve', err));
+).catch(err => console.log('reject', err));
 ```
 输出：<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b990b988-8e4a-425b-b8da-0f6e3cd38538">
 
