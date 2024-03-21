@@ -52,6 +52,9 @@ Prompt: Someone sitting in the middle of a concert --cref https://s.mj.run/usFTt
 
 ## 3、--cref更适用于动漫角色
 一样的Prompt, 使用 `--v 6` 生成的效果人脸会和`--cref`的参考图有所不同；不如 `--niji 6` 的效果好
+
+<img width="1385" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/9918b6c9-6953-43d3-b389-cf8c3e378878">
+
 <img width="1341" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/0244c89c-17d9-4798-a579-ea3e73a5a820">
 
 
