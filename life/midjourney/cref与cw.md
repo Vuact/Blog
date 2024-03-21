@@ -44,6 +44,11 @@ Prompt: Someone sitting in the middle of a concert --cref https://s.mj.run/usFTt
 
 <img width="665" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/231852d5-f93b-483b-90e8-dbef14065bd0">
 
+`如果 --cref 图像已包含想要的姿势和其他细节，可以仅描述设置、周围环境、上下文或背景，MJ 将努力将角色融入场景中`，但是可能会看到一些不连贯的结果，所以需要`使用更高的样式值(--s)重试，让--cref 图像更好的融入场景`，下面的例子中，使用--s 1000 之后的图片明显融合的更加好。
+
+<img width="857" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/4764e041-1192-482e-9be6-6e6404a4dd0b">
+
+
 ## 3、--cref更适用于动漫角色
 一样的Prompt, 使用 `--v 6` 生成的效果人脸会和`--cref`的参考图有所不同；不如 `--niji 6` 的效果好
 <img width="1341" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/0244c89c-17d9-4798-a579-ea3e73a5a820">
