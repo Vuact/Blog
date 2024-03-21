@@ -11,16 +11,23 @@ Promise特点：
 <br>
 
 # 小时牛刀
+### 例1
 ```js
 new Promise((resolve) => resolve(1)).then(a => console.log(a));
 ```
-输出：<img width="266" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5dcf333f-e942-4696-bacc-af68288d806a">
+输出：
 
+<img width="266" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5dcf333f-e942-4696-bacc-af68288d806a">
+
+### 例2
 ```js
 new Promise((_, reject) => reject(1)).then(a => console.log(a));
 ```
-输出：<img width="249" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/02279dd7-84e3-47dd-b64a-e12d70f3c27e">
+输出：
 
+<img width="249" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/02279dd7-84e3-47dd-b64a-e12d70f3c27e">
+
+### 例3
 ```js
 new Promise((_, reject) => reject(1)).then(
   a => console.log('resolve', a),
@@ -32,9 +39,12 @@ new Promise((_, reject) => reject(1)).then(
   a => console.log('resolve', a)
 ).catch(err => console.log('reject', err));
 ```
-输出：<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b990b988-8e4a-425b-b8da-0f6e3cd38538">
+输出：
+
+<img width="276" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b990b988-8e4a-425b-b8da-0f6e3cd38538">
 
 
+### 例4
 ```js
 new Promise((resolve, reject) => { throw new Error('test'); })
   .then(() => {}, a => console.log('reject', a))
@@ -45,7 +55,9 @@ new Promise((resolve, reject) => { reject(new Error('test')); })
   .then(() => {}, a => console.log('reject', a))
   .catch((error) => console.log(error));
 ```
-输出：<img width="280" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/c8b2fd82-88be-490c-9161-7fe8ab2fe098">
+输出：
+
+<img width="280" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/c8b2fd82-88be-490c-9161-7fe8ab2fe098">
 
 <br>
 
