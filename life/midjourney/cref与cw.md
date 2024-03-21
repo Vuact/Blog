@@ -58,6 +58,12 @@ Prompt: Someone sitting in the middle of a concert --cref https://s.mj.run/usFTt
 <img width="1341" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/0244c89c-17d9-4798-a579-ea3e73a5a820">
 
 
+而且使用V6生成的图作为--cref的值，然后再使用 `--niji 6` 绘画，效果出奇的好：
+
+<img width="1110" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/f14122d1-b76b-4746-a7ac-89207b4c596c">
+
+这也再次证明了 --cref更适用于动漫角色。
+
 # 三、高级使用
 
 ## 1、在一个画布上放置多个角色
