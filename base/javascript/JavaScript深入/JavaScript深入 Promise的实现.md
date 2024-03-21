@@ -82,15 +82,15 @@ class Promise {
 
     try {
       // 这里绑定this是为了防止执行时this的指向改变，this的指向问题，这里不过多赘述
-      executor(this._resolve.bind(this), this._reject.bind(this));
+      executor(this.#resolve.bind(this), this.#reject.bind(this));
     } catch (err) {
-      this._reject(err);
+      this.#reject(err);
     }
   }
 
-  _resolve() {}
+  #resolve() {}
 
-  _reject() {}
+  #reject() {}
 }
 ```
 
@@ -122,23 +122,23 @@ class Promise {
     }
 
     this.status = Promise.PENDING; // 初始化状态为pending
-    this.value = null; // 存储 this._resolve 即操作成功 返回的值
-    this.reason = null; // 存储 this._reject 即操作失败 返回的值
+    this.value = null; // 存储 this.#resolve 即操作成功 返回的值
+    this.reason = null; // 存储 this.#reject 即操作失败 返回的值
 
     try {
       // 这里绑定this是为了防止执行时this的指向改变，this的指向问题，这里不过多赘述
-      executor(this._resolve.bind(this), this._reject.bind(this));
+      executor(this.#resolve.bind(this), this.#reject.bind(this));
     } catch (err) {
-      this._reject(err);
+      this.#reject(err);
     }
   }
 
-  _resolve(value) {
+  #resolve(value) {
     this.value = value;
     this.status = Promise.FULFILLED; // 将状态设置为成功
   }
 
-  _reject(reason) {
+  #reject(reason) {
     this.reason = reason;
     this.status = Promise.REJECTED; // 将状态设置为失败
   }
@@ -160,12 +160,12 @@ class WPromise {
 
   constructor(executor) {
     this.status = WPromise.pending; // 初始化状态为pending
-    this.value = undefined; // 存储 this._resolve 即操作成功 返回的值
-    this.reason = undefined; // 存储 this._reject 即操作失败 返回的值
+    this.value = undefined; // 存储 this.#resolve 即操作成功 返回的值
+    this.reason = undefined; // 存储 this.#reject 即操作失败 返回的值
     // 存储then中传入的参数
     // 至于为什么是数组呢？因为同一个Promise的then方法可以调用多次
     this.callbacks = [];
-    executor(this._resolve.bind(this), this._reject.bind(this));
+    executor(this.#resolve.bind(this), this.#reject.bind(this));
   }
 
   // onFulfilled 是成功时执行的函数
@@ -179,22 +179,22 @@ class WPromise {
     });
   }
 
-  _resolve(value) {
+  #resolve(value) {
     this.value = value;
     this.status = WPromise.fulfilled; // 将状态设置为成功
 
     // 通知事件执行
-    this.callbacks.forEach(cb => this._handler(cb));
+    this.callbacks.forEach(cb => this.#handler(cb));
   }
 
-  _reject(reason) {
+  #reject(reason) {
     this.reason = reason;
     this.status = WPromise.rejected; // 将状态设置为失败
 
-    this.callbacks.forEach(cb => this._handler(cb));
+    this.callbacks.forEach(cb => this.#handler(cb));
   }
 
-  _handler(callback) {
+  #handler(callback) {
     const { onFulfilled, onRejected } = callback;
 
     if (this.status === WPromise.fulfilled && onFulfilled) {
