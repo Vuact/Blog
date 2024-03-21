@@ -26,7 +26,7 @@ Prompt: A French beauty is sitting on the sofa drinking coffee, she has an attra
 <img width="380" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/2f3d6f86-1340-42cb-8f43-bd4f30270375">
 
 
-## 1、--cref + --cw 0
+## 1、--cref 与 --cw 0
 
 之后我们可以使用`--cw 0`修改除脸以外的一切：
 
@@ -36,7 +36,7 @@ Prompt: A French beauty is sitting in front of the mountain, she has an attracti
 
 <img width="665" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/5c835599-722a-4fe4-91e1-1b46bdfcc2be">
 
-## 2、--cref + --cw 100
+## 2、--cref 与 --cw 100
 
 Prompt: Someone sitting in the middle of a concert --cref https://s.mj.run/usFTtuYaFuU --niji 6
 
