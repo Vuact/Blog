@@ -63,6 +63,21 @@ Promise: A French couple are sitting on the sofa drinking coffee, She has an att
 
 <img width="505" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/222859bb-5332-4691-acd9-ac43abc4d5d5">
 
-## 2、使用多个 URL 来混合多张图片中的信息/字符
+## 2、使用多个 URL 来混合多张图片中的信息
+
+我们可以使用多个 URL 来混合多张图片中的信息，例如 --cref URL1 URL2（这类似于多张图片或样式提示）
+
+底图：
+<img width="484" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/4a54b269-7c21-4f8d-852e-09f297fda3fc">
+
+Promise: A beautiful brunette women and a handsome man are in a restaurant, realistic photo, style natural photo --cref https://s.mj.run/MY-ng9ZtRV0 https://s.mj.run/00fx_IWnX68 --cw 0 --v 6.0
+
+翻译：一位褐发美女和一位英俊男子在一家餐厅用餐，写实照片, 风格自然照片
+
+<img width="505" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/25cc4a20-3505-43bf-8c61-ac660a9776cb">
+
+## 3、与 --sref 结合使用
+
+使用多个 URL 来混合图片，也可以同时与--sref 结合使用，效果也是很不错的
 
 > 参考：https://www.uisdc.com/midjourney-49
