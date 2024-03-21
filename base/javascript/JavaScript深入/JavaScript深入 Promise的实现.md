@@ -211,7 +211,7 @@ class WPromise {
 ```
 这个时候的Promise已经渐具雏形，现在可以来简单测试一下
 
-```
+```js
 function fetchData(success) {
     return new WPromise((resolve, reject) => {
         setTimeout(() => {
@@ -235,7 +235,7 @@ fetchData(false).then(null, (reason) => {
 
 但需要注意的是，以上代码除了链式调用外，还是有缺陷的，比如以下代码，console.log永远不会执行。再往下看会修复这个问题
 
-```
+```js
 function fetchData() {
   return new WPromise(resolve => resolve('willem'));
 }
