@@ -59,7 +59,7 @@ new Promise((resolve, reject) => { reject(new Error('test')); })
 
 <img width="280" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/c8b2fd82-88be-490c-9161-7fe8ab2fe098">
 
-<br>
+<br><br><br>
 
 > Promise本质就是3个状态之间的来回转换：
 >   - 主动触发resolve则执行then的第一个参数
@@ -148,13 +148,104 @@ class Promise {
 
 Promise有一个叫做then的方法，该方法有两个参数，第一个参数是成功之后执行的回调函数，第二个参数是失败之后执行的回调函数。then方法在resolve或者reject执行之后才会执行，并且then方法中的值是传给resolve或reject的参数
 
-
 需要注意的是这句`then方法在resolve或者reject执行之后才会执行`，我们知道Promise是异步的，也就是说then传入的函数是不能立马执行，需要存储起来，在resolve函数执行之后才拿出来执行。
 
 换句话说，这个过程有点类似于`发布订阅者模式`：我们使用then来注册事件，那什么时候来通知这些事件是否执行呢？答案就是在resolve方法执行或者reject方法执行时。
 
 ```js
+class WPromise {
+  static pending = 'pending';
+  static fulfilled = 'fulfilled';
+  static rejected = 'rejected';
+
+  constructor(executor) {
+    this.status = WPromise.pending; // 初始化状态为pending
+    this.value = undefined; // 存储 this._resolve 即操作成功 返回的值
+    this.reason = undefined; // 存储 this._reject 即操作失败 返回的值
+    // 存储then中传入的参数
+    // 至于为什么是数组呢？因为同一个Promise的then方法可以调用多次
+    this.callbacks = [];
+    executor(this._resolve.bind(this), this._reject.bind(this));
+  }
+
+  // onFulfilled 是成功时执行的函数
+  // onRejected 是失败时执行的函数
+  then(onFulfilled, onRejected) {
+    // 这里可以理解为在注册事件
+    // 也就是将需要执行的回调函数存储起来
+    this.callbacks.push({
+      onFulfilled,
+      onRejected,
+    });
+  }
+
+  _resolve(value) {
+    this.value = value;
+    this.status = WPromise.fulfilled; // 将状态设置为成功
+
+    // 通知事件执行
+    this.callbacks.forEach(cb => this._handler(cb));
+  }
+
+  _reject(reason) {
+    this.reason = reason;
+    this.status = WPromise.rejected; // 将状态设置为失败
+
+    this.callbacks.forEach(cb => this._handler(cb));
+  }
+
+  _handler(callback) {
+    const { onFulfilled, onRejected } = callback;
+
+    if (this.status === WPromise.fulfilled && onFulfilled) {
+      // 传入存储的值
+      onFulfilled(this.value);
+    }
+
+    if (this.status === WPromise.rejected && onRejected) {
+      // 传入存储的错误信息
+      onRejected(this.reason);
+    }
+  }
+}
 ```
+这个时候的Promise已经渐具雏形，现在可以来简单测试一下
+
+```
+function fetchData(success) {
+    return new WPromise((resolve, reject) => {
+        setTimeout(() => {
+            if (success) {
+                resolve("willem");
+            } else {
+                reject('error');
+            }
+        }, 1000);
+    });
+}
+
+fetchData(true).then(data => {
+    console.log(data); // after 1000ms: willem
+});
+
+fetchData(false).then(null, (reason) => {
+    console.log(reason); // after 1000ms: error
+});
+```
+
+但需要注意的是，以上代码除了链式调用外，还是有缺陷的，比如以下代码，console.log永远不会执行。再往下看会修复这个问题
+
+```
+function fetchData() {
+  return new WPromise(resolve => resolve('willem'));
+}
+
+fetchData().then((data) => {
+  console.log(111, data); // 永远不会执行
+});
+```
+
+
 
 --------
 先整个大概，晚点写····
