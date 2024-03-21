@@ -15,7 +15,7 @@
 
 ![image](https://github.com/Vuact/Blog/assets/74364990/e766cb78-2e22-4763-8c65-d412492673d6)
 
-# 二、快速上手
+# 二、基本使用
 
 > 官方说 `--cref` 此功能不是为真人/照片设计的，很可能会像普通图像提示一样使其变形 
 
@@ -48,3 +48,21 @@ Promise: Someone sitting in the middle of a concert --cref https://s.mj.run/usFT
 一样的promise, 生成的效果人脸会有所不同
 <img width="1341" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/0244c89c-17d9-4798-a579-ea3e73a5a820">
 
+
+# 三、高级使用
+
+## 1、在一个画布上放置多个角色
+
+想要在一个画面中出现多个角色，可以直接使用 pan 功能，同时对提示词做一些微调，比如这里我要在已有图片上加上一个男性的角色，这里需要对男性角色进行描述
+
+<img width="230" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/07204c3a-47e6-4220-a905-11bf81af4558">
+
+Promise: A French couple are sitting on the sofa drinking coffee, She has an attractive figure with her slender waist, Beautiful slender eyes, red lips, fair skin tone, The expression on the face is cold and proud, Dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes, He is wearing a black suit and a gold watch --niji 6
+
+翻译：一对法国夫妇正坐在沙发上喝咖啡，她身材窈窕，腰肢纤细，眼睛细长美丽，嘴唇红润，肤色白皙，脸上的表情冷漠而高傲，身着中性风格的西装，戴着显眼的项链、戒指和耳环，棕色短发，蓝色眼睛，他身着黑色西装，戴着金表。
+
+<img width="505" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/222859bb-5332-4691-acd9-ac43abc4d5d5">
+
+## 2、使用多个 URL 来混合多张图片中的信息/字符
+
+> 参考：https://www.uisdc.com/midjourney-49
