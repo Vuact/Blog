@@ -19,7 +19,7 @@
 
 > 官方说 `--cref` 此功能不是为真人/照片设计的，很可能会像普通图像提示一样使其变形 
 
-Promise: A French beauty is sitting on the sofa drinking coffee, she has an attractive figure with her slender waist, beautiful slender eyes, red lips, fair skin tone, the expression on the face is cold and proud, dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes --niji 6
+Prompt: A French beauty is sitting on the sofa drinking coffee, she has an attractive figure with her slender waist, beautiful slender eyes, red lips, fair skin tone, the expression on the face is cold and proud, dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes --niji 6
 
 翻译：一位法国美女正坐在沙发上喝咖啡，纤细的腰肢勾勒出迷人的身材，美丽细长的眼睛，红润的嘴唇，白皙的肤色，脸上的表情冷漠而高傲，身着中性风格的套装，佩戴着显眼的项链、戒指和耳环，棕色短发，蓝色眼睛。
 
@@ -30,7 +30,7 @@ Promise: A French beauty is sitting on the sofa drinking coffee, she has an attr
 
 之后我们可以使用`--cw 0`修改除脸以外的一切：
 
-Promise: A French beauty is sitting in front of the mountain, she has an attractive figure with her slender waist, beautiful slender eyes, red lips, fair skin tone, the expression on the face is cold and proud, dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes --cref https://s.mj.run/usFTtuYaFuU --cw 0 --niji 6
+Prompt: A French beauty is sitting in front of the mountain, she has an attractive figure with her slender waist, beautiful slender eyes, red lips, fair skin tone, the expression on the face is cold and proud, dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes --cref https://s.mj.run/usFTtuYaFuU --cw 0 --niji 6
 
 翻译：山前坐着一位法国美女，纤细的腰肢勾勒出迷人的身材，美丽细长的眼睛，红润的嘴唇，白皙的肤色，脸上的表情冷漠而高傲，身着中性风格的套装，佩戴着显眼的项链、戒指和耳环，棕色短发，蓝色眼睛。
 
@@ -38,14 +38,14 @@ Promise: A French beauty is sitting in front of the mountain, she has an attract
 
 ## 2、--cref + --cw 100
 
-Promise: Someone sitting in the middle of a concert --cref https://s.mj.run/usFTtuYaFuU --niji 6
+Prompt: Someone sitting in the middle of a concert --cref https://s.mj.run/usFTtuYaFuU --niji 6
 
 翻译：有人坐在音乐会舞台中间
 
 <img width="665" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/231852d5-f93b-483b-90e8-dbef14065bd0">
 
 ## 3、--cref更适用于动漫角色
-一样的promise, 生成的效果人脸会有所不同
+一样的Prompt, 使用 `--v 6` 生成的效果人脸会和`--cref`的参考图有所不同；不如 `--niji 6` 的效果好
 <img width="1341" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/0244c89c-17d9-4798-a579-ea3e73a5a820">
 
 
@@ -57,7 +57,7 @@ Promise: Someone sitting in the middle of a concert --cref https://s.mj.run/usFT
 
 <img width="230" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/07204c3a-47e6-4220-a905-11bf81af4558">
 
-Promise: A French couple are sitting on the sofa drinking coffee, She has an attractive figure with her slender waist, Beautiful slender eyes, red lips, fair skin tone, The expression on the face is cold and proud, Dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes, He is wearing a black suit and a gold watch --niji 6
+Prompt: A French couple are sitting on the sofa drinking coffee, She has an attractive figure with her slender waist, Beautiful slender eyes, red lips, fair skin tone, The expression on the face is cold and proud, Dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes, He is wearing a black suit and a gold watch --niji 6
 
 翻译：一对法国夫妇正坐在沙发上喝咖啡，她身材窈窕，腰肢纤细，眼睛细长美丽，嘴唇红润，肤色白皙，脸上的表情冷漠而高傲，身着中性风格的西装，戴着显眼的项链、戒指和耳环，棕色短发，蓝色眼睛，他身着黑色西装，戴着金表。
 
@@ -71,7 +71,7 @@ Promise: A French couple are sitting on the sofa drinking coffee, She has an att
 
 <img width="484" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/4a54b269-7c21-4f8d-852e-09f297fda3fc">
 
-Promise: A beautiful brunette women and a handsome man are in a restaurant, realistic photo, style natural photo --cref https://s.mj.run/MY-ng9ZtRV0 https://s.mj.run/00fx_IWnX68 --cw 0 --v 6.0
+Prompt: A beautiful brunette women and a handsome man are in a restaurant, realistic photo, style natural photo --cref https://s.mj.run/MY-ng9ZtRV0 https://s.mj.run/00fx_IWnX68 --cw 0 --v 6.0
 
 翻译：一位褐发美女和一位英俊男子在一家餐厅用餐，写实照片, 风格自然照片
 
