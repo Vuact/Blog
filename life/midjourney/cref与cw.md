@@ -24,7 +24,9 @@ Promise: A French beauty is sitting on the sofa drinking coffee, she has an attr
 翻译：一位法国美女正坐在沙发上喝咖啡，纤细的腰肢勾勒出迷人的身材，美丽细长的眼睛，红润的嘴唇，白皙的肤色，脸上的表情冷漠而高傲，身着中性风格的套装，佩戴着显眼的项链、戒指和耳环，棕色短发，蓝色眼睛。
 
 ![image](https://github.com/Vuact/Blog/assets/74364990/6a951ff2-2693-4500-93f6-c6f56957bc2c)
-![Uploading image.png…]()
+
+![image](https://github.com/Vuact/Blog/assets/74364990/1abc8991-f631-4581-a47d-e57448f14e4a)
+
 
 
 之后我们可以使用`--cw 0`修改除脸以外的一切：
