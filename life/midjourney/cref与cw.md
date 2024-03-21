@@ -15,7 +15,9 @@
 
 ![image](https://github.com/Vuact/Blog/assets/74364990/e766cb78-2e22-4763-8c65-d412492673d6)
 
-# 二、实战
+# 二、快速上手
+
+> 官方说 `--cref` 此功能不是为真人/照片设计的，很可能会像普通图像提示一样使其变形 
 
 Promise: A French beauty is sitting on the sofa drinking coffee, she has an attractive figure with her slender waist, beautiful slender eyes, red lips, fair skin tone, the expression on the face is cold and proud, dressed in a neutral-style suit, and wearing conspicuous necklaces, rings, and earrings, with brown short hair and blue eyes --niji 6
 
@@ -41,3 +43,8 @@ Promise: Someone sitting in the middle of a concert --cref https://s.mj.run/usFT
 翻译：有人坐在音乐会舞台中间
 
 <img width="665" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/231852d5-f93b-483b-90e8-dbef14065bd0">
+
+## 3、--cref更适用于动漫角色
+一样的promise, 生成的效果人脸会有所不同
+<img width="1341" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/0244c89c-17d9-4798-a579-ea3e73a5a820">
+
