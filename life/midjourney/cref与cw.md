@@ -100,13 +100,15 @@ Prompt: A beautiful brunette women and a handsome man are in a restaurant, reali
 
 ### 例1
 
-<img width="956" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/86a272ae-6d57-492b-a955-5b44ada348c9">
-
 Prompt: A beautiful brunette women --cref https://s.mj.run/MY-ng9ZtRV0 --sref https://s.mj.run/usFTtuYaFuU --niji 6
+
+<img width="956" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/86a272ae-6d57-492b-a955-5b44ada348c9">
 
 ### 例2
 
+Prompt: A beautiful brunette women --cref https://s.mj.run/MY-ng9ZtRV0 --sref https://s.mj.run/cFj-cHNgVzw --niji 6 
+
 <img width="949" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/347b5770-d404-4936-a024-d425a4977b55">
 
-Prompt: A beautiful brunette women --cref https://s.mj.run/MY-ng9ZtRV0 --sref https://s.mj.run/cFj-cHNgVzw --niji 6 
+
 
