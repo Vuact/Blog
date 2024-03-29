@@ -96,7 +96,7 @@ Prompt: A beautiful brunette women and a handsome man are in a restaurant, reali
 
 ## 3、与 --sref 结合使用
 
-使用多个 URL 来混合图片，也可以同时与--sref 结合使用，效果也是很不错的
+`--cref` 用来参考`角色`，而 `--sref` 用来参考`风格`。两者可以相结合使用。
 
 ### 例1
 
