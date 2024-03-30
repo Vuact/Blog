@@ -110,5 +110,17 @@ Prompt: A beautiful brunette women --cref https://s.mj.run/MY-ng9ZtRV0 --sref ht
 
 <img width="949" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/347b5770-d404-4936-a024-d425a4977b55">
 
+### 例3
 
+（1）如果我们将 --cref 和 --sref 都设置一样的值呢？
 
+Prompt: busts, muti-angle --cref https://s.mj.run/MY-ng9ZtRV0 --sref https://s.mj.run/MY-ng9ZtRV0 --sw 1000 --v 6.0
+
+<img width="921" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/0db48ae6-0b76-4c3e-ab09-cfba4e7e8316">
+
+（2）如果 Image Url、--cref、--sref 3个值都用同一张图片呢？
+Prompt: https://s.mj.run/7VkVAXv3lRU busts, muti-angle --cref https://s.mj.run/MY-ng9ZtRV0 --cw 90 --sref https://s.mj.run/MY-ng9ZtRV0 --sw 1000 --v 6.0 --iw 1.2
+
+<img width="884" alt="image" src="https://github.com/Vuact/Blog/assets/74364990/b60d9331-c0b0-4560-8fd7-86f7207742a1">
+
+> 参照：https://zhuanlan.zhihu.com/p/686962345 
