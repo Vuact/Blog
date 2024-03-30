@@ -6,6 +6,7 @@
 - 图生文
 - v6图像续写
 - v6图中加文本
+- cref与cw
 
 
 
@@ -28,6 +29,8 @@
   - 初始图混乱: [--c <0~100>](https://docs.midjourney.com/docs/chaos-1) (默认值为0)
   - 诡异风格: [--weird <0~3000>](https://docs.midjourney.com/docs/weird-1) (默认值为0)
 - 图片的权重: [--iw <0~2/3>](https://docs.midjourney.com/docs/en/image-prompts-1) (默认值通常为1)
+- 一致性:
+    - --cref URL + cw <0~100> (默认值为 100)
 - 种子: [--seed <0–4294967295>](https://docs.midjourney.com/docs/seeds-1)
 - 纹理无缝拼接: [--tile](https://docs.midjourney.com/docs/tile-2)
 - 视频: [--video](https://docs.midjourney.com/docs/video-1)
