@@ -35,7 +35,6 @@
   - 图像Prompt: 会覆盖--cref、--sref的效果
     - [URL + Prompt](https://docs.midjourney.com/docs/image-prompts)
     - [--iw <0~2/3>](https://docs.midjourney.com/docs/en/image-prompts-1) (默认值为1)
-
 - 其他
   - 质量: [--q](https://docs.midjourney.com/docs/quality) (默认值为1)
   - 视频: [--video](https://docs.midjourney.com/docs/video-1)
