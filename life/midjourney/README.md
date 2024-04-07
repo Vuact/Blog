@@ -35,6 +35,7 @@
   - 图像Prompt: 会覆盖--cref、--sref的效果
     - [URL + Prompt](https://docs.midjourney.com/docs/image-prompts)
     - [--iw <0~2/3>](https://docs.midjourney.com/docs/en/image-prompts-1) (默认值为1)
+  - 多图混合: [/blend指令](https://docs.midjourney.com/docs/en/blend-1)
 - 其他
   - [--test 与 --testp](https://tokenizedhq.com/midjourney-test-vs-testp/)
   - 质量: [--q](https://docs.midjourney.com/docs/quality) (默认值为1)
