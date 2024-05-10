@@ -33,9 +33,10 @@
   - 图片相似性: [--seed <0–4294967295>](https://docs.midjourney.com/docs/seeds-1)
   - 角色一致性: [--cref <URL> + cw <0~100>](https://docs.midjourney.com/docs/character-reference) (默认值为 100) 
   - 风格一致性: [--sref <URL> + sw <0~1000>](https://docs.midjourney.com/docs/style-reference) (默认值为 100) 值越大与原始风格越相似，一般250左右效果比较好，超500容易变形
-  - 图像Prompt: 会覆盖--cref、--sref的效果
+  - 图像Prompt: 会影响--cref、--sref的效果
     - [URL + Prompt](https://docs.midjourney.com/docs/image-prompts)
     - [--iw <0~2/3>](https://docs.midjourney.com/docs/en/image-prompts-1) (默认值为1)
+    - [与--cref、--sref一起使用教程](https://www.uisdc.com/character-reference)
   - 多图混合: [/blend指令](https://docs.midjourney.com/docs/en/blend-1)
 - 其他
   - [--test 与 --testp](https://tokenizedhq.com/midjourney-test-vs-testp/)
