@@ -57,7 +57,6 @@ f1通过__proto__，指向着Foo的原型对象。
 ```javascript
 function Foo(){}   	  			
 Foo.prototype.name = 'Feidian';  
-var f1 = new Foo();
 
 console.log(Foo.prototype.constructor === Foo)     // true
 ```
